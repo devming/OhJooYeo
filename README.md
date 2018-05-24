@@ -68,14 +68,14 @@ __port__:
    ```json 
 	[
 		{
-			"title”: "순서1 - 순서 1에 해당하는 제목”,
-			"detail”: "순서1 - 순서 1에 해당하는 상세 항목”,
-			"presenter”: "순서1 - 순서 1에 해당하는 대표자”
+			"title": "순서1 - 순서 1에 해당하는 제목",
+			"detail": "순서1 - 순서 1에 해당하는 상세 항목",
+			"presenter": "순서1 - 순서 1에 해당하는 대표자"
 		}, 
 		{
-			"title”: "순서2 - 순서 2에 해당하는 제목”,
-			"detail”: "순서2 - 순서 2에 해당하는 상세 항목”,
-			"presenter”: "순서2 - 순서 2에 해당하는 대표자”
+			"title": "순서2 - 순서 2에 해당하는 제목",
+			"detail": "순서2 - 순서 2에 해당하는 상세 항목",
+			"presenter": "순서2 - 순서 2에 해당하는 대표자"
 		}, 
 		...
 	]
@@ -116,7 +116,7 @@ __port__:
     
    ```json 
 	{
-		"phrase”: "런치 스크린에 나오는 말씀. ”
+		"phrase": "런치 스크린에 나오는 말씀. "
 	}
    ```
    
@@ -143,31 +143,31 @@ __port__:
    		"phrase": 
    			[
 				{
-					"start”: 
+					"start": 
 						{
-							"book”: "창세기”,
-							"chapter”:3,
-							"section”:1
+							"book": "창세기",
+							"chapter":3,
+							"section":1
 						},
-					"end”: 
+					"end": 
 						{
-							"book”: "창세기”,
-							"chapter”:3,
-							"section”:5
+							"book": "창세기",
+							"chapter":3,
+							"section":5
 						}
 				},
 				{
-					"start”: 
+					"start": 
 						{
-							"book”: "출애굽기”,
-							"chapter”:1,
-							"section”:4
+							"book": "출애굽기",
+							"chapter":1,
+							"section":4
 						},
-					"end”: 
+					"end": 
 						{
-							"book”: "출애굽기”,
-							"chapter”:1,
-							"section”:6
+							"book": "출애굽기",
+							"chapter":1,
+							"section":6
 						}
 				},
 				...
@@ -206,7 +206,7 @@ __port__:
    
    ```json    
 	{
-		"date”: "Date”
+		"date": "Date"
 	}	
    ```
    
@@ -214,7 +214,7 @@ __port__:
    
    ```json 
 	{
-		"date”: "2018-05-23”
+		"date": "2018-05-23"
 	}	
 	```
 
@@ -235,12 +235,12 @@ __port__:
    ```json 
    [
 		{
-			"title”: "환영”,
-			"contents”:”돈암동교회 청년예배에 처음 방문하신 여러분을 환영합니다.”
+			"title": "환영",
+			"contents":"돈암동교회 청년예배에 처음 방문하신 여러분을 환영합니다."
 		},
 		{
-			"title”: "청년예배”,
-			"contents”: "주일 오후 2시 입니다.”
+			"title": "청년예배",
+			"contents": "주일 오후 2시 입니다."
 		},
 		...
 	]
