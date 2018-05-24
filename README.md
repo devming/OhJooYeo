@@ -1,0 +1,297 @@
+# OhJooYeo REST API server
+
+This repository covers the API materials for the OhJooYeo mobile service. 
+
+Current Version: __v 0.0.1__
+
+## Architecture Overview ##
+
+__Server__: 
+
+__Database__: 
+
+__Framework__: 
+
+
+## API ##
+
+
+The API endpoint can be found at: 
+
+__hostname__: 
+
+__port__: 
+
+* Return Type에 별도의 표기 없이 Example만 적었다면 모두 String 타입이다.
+
+### <font color="green"> POST /order </font>
+
+1. __Description__ 
+   
+   주보의 가장 첫 화면 목록 리스트를 불러온다. 성공 했다면 200 코드를 반환하고, 주보 순서지에 해당하는 JSON 목록을 리턴받는다.
+ 
+2. __Headers__
+   
+   Content-Type: application/json
+
+3. __Body__
+   
+   - Data Type
+   
+   ```json 
+   {
+      "date": "Date"
+   }
+   ```
+   
+   - Data Sample
+   
+   ```json 
+   {
+      "date": "2018-05-23"
+   }
+   ```
+
+
+4. __Response__
+
+	- Response Code
+	
+    Status Code       | Response         
+    ------------|---------- 
+    200 | Operation succeeded.
+    400 | Unknown error. 
+    401 | Invalid parameter error.
+    404 | Data doesn't exist error.
+    
+    - Response Data
+    
+   ```json 
+	[
+		{
+			“title”: “순서1 - 순서 1에 해당하는 제목”,
+			“detail”: “순서1 - 순서 1에 해당하는 상세 항목”,
+			“presenter”: “순서1 - 순서 1에 해당하는 대표자”
+		}, 
+		{
+			“title”: “순서2 - 순서 2에 해당하는 제목”,
+			“detail”: “순서2 - 순서 2에 해당하는 상세 항목”,
+			“presenter”: “순서2 - 순서 2에 해당하는 대표자”
+		}, 
+		...
+	]
+   ```
+
+5. __Example__
+   
+   `curl -X POST --data "date=2018-05-23" host_ip:port/order`
+
+
+### <font color="blue"> GET /launch/:year </font>
+
+1. __Description__ 
+   
+   Launch Screen에서 띄워줄 말씀을 가져온다. Local에 저장된 말씀 연도가 바뀌면 가져온다. `:year`에 현재 날짜 기준의 연도(yyyy)에 해당하는 int 값을 전송한다. Status code값이 200 이면, 해당 연도에 매칭되는 말씀을 리턴 받는다.
+   
+2. __Headers__
+   
+   Content-Type: application/json
+
+3. __Body__
+   
+   null
+
+
+4. __Response__
+
+	- Response Code
+	
+    Status Code       | Response         
+    ------------|---------- 
+    200 | Operation succeeded.
+    400 | Unknown error. 
+    401 | Invalid year value(yyyy). 
+    404 | Data doesn't exist error.
+
+    - Response Data
+    
+   ```json 
+	{
+		“phrase”: “런치 스크린에 나오는 말씀. ”
+	}
+   ```
+   
+5. __Example__
+   
+   `curl -X GET host_ip:port/launch/2018`
+   
+   
+### <font color="green"> POST /detail/phrase </font>
+
+1. __Description__ 
+   
+   주보 순서지에 해당하는 말씀 내용을 불러온다. Request Parameter에 포함된 `date`와 `phrase`에 해당하는 말씀을 Response 받는다.
+ 
+2. __Headers__
+   
+   Content-Type: application/json
+
+3. __Body__
+   
+   ```json 
+   {
+   		"date": "2018-05-23",
+   		"phrase": 
+   			[
+				{
+					“start”: 
+						{
+							“book”: “창세기”,
+							“chapter”:3,
+							“section”:1
+						},
+					“end”: 
+						{
+							“book”: “창세기”,
+							“chapter”:3,
+							“section”:5
+						}
+				},
+				{
+					“start”: 
+						{
+							“book”: “출애굽기”,
+							“chapter”:1,
+							“section”:4
+						},
+					“end”: 
+						{
+							“book”: “출애굽기”,
+							“chapter”:1,
+							“section”:6
+						}
+				},
+				...
+			]
+	}
+   ```
+
+
+4. __Response__
+
+     Status Code       | Response         
+    ------------|---------- 
+     200 | Operation succeeded.
+     400 | Unknown error. 
+     401 | Invalid parameter error.
+     404 | Data doesn't exist error.
+
+5. __Example__
+   
+   `curl -X POST --data ""`
+    
+
+### <font color="green"> POST /advertisement </font>
+
+1. __Description__ 
+   
+   광고(교회소식) 내용을 불러온다.
+ 
+2. __Headers__
+   
+   Content-Type: application/json
+
+3. __Body__
+   
+   - Data Type
+   
+   ```json    
+	{
+		“date”: “Date”
+	}	
+   ```
+   
+   - Data Sample
+   
+   ```json 
+	{
+		“date”: “2018-05-23”
+	}	
+	```
+
+
+4. __Response__
+
+	- Response Code
+	
+    Status Code       | Response         
+    ------------|---------- 
+    200 | Operation succeeded.
+    400 | Unknown error. 
+    401 | Invalid parameter error.
+    404 | Data doesn't exist error.
+    
+    - Response Data
+    
+   ```json 
+   [
+		{
+			“title”: “환영”,
+			“contents”:”돈암동교회 청년예배에 처음 방문하신 여러분을 환영합니다.”
+		},
+		{
+			“title”: “청년예배”,
+			“contents”: “주일 오후 2시 입니다.”
+		},
+		...
+	]
+   ```
+
+5. __Example__
+   
+   `curl -X POST --data "date=2018-05-23" host_ip:port/advertisement`
+
+
+### <font color="green"> POST /praise </font>
+
+1. __Description__ 
+   
+   해당 날짜에 맞는 찬송 악보이미지를 가져온다.
+   
+   > 본 API는 이미지 라이센스에 대한 문제로 인해 사용할지에 대해 추후 논의가 필요하다.
+   
+2. __Headers__
+   
+   Content-Type: multipart/form-data
+
+3. __Body__
+   
+   multipart data. Consult appropriate HTTP documentation for more info. 
+
+4. __Response__
+
+	- Response Code
+	
+    Status Code       | Response         
+    ------------|---------- 
+    200 | Operation succeeded.
+    400 | Unknown error. 
+    401 | Invalid parameter error. 
+    404 | Data doesn't exist error.
+
+    - Response Data
+    
+   ```
+	Multipart Image datas.
+   ```
+   
+5. __Example__
+   
+   `curl -F "image=@/Users/devming/Desktop/temp.png;type=image/png" host_ip:port/praise`
+   
+   
+  
+  
+  
+  
+ 
