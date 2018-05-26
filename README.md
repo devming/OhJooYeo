@@ -65,20 +65,30 @@ __port__:
     
     - Response Data
     
-   ```json 
-	[
-		{
-			"title": "순서1 - 순서 1에 해당하는 제목",
-			"detail": "순서1 - 순서 1에 해당하는 상세 항목",
-			"presenter": "순서1 - 순서 1에 해당하는 대표자"
-		}, 
-		{
-			"title": "순서2 - 순서 2에 해당하는 제목",
-			"detail": "순서2 - 순서 2에 해당하는 상세 항목",
-			"presenter": "순서2 - 순서 2에 해당하는 대표자"
-		}, 
-		...
-	]
+   ```json
+   { 
+	   "mainPresenter": "박요한",
+	   "order":
+			[
+				{
+					"title": "순서1 - 순서 1에 해당하는 제목",
+					"detail": "순서1 - 순서 1에 해당하는 상세 항목",
+					"presenter": "순서1 - 순서 1에 해당하는 대표자"
+				}, 
+				{
+					"title": "순서2 - 순서 2에 해당하는 제목",
+					"detail": "순서2 - 순서 2에 해당하는 상세 항목",
+					"presenter": "순서2 - 순서 2에 해당하는 대표자"
+				}, 
+				...
+			],
+		"nextPresenter": 
+			{
+				"mainPresenter":"김한나",
+				"prayer":"박요한",
+				"offer":"서동주"
+			}
+	}
    ```
 
 5. __Example__
@@ -178,6 +188,8 @@ __port__:
 
 4. __Response__
 
+	- Response Code
+	 
      Status Code       | Response         
     ------------|---------- 
      200 | Operation succeeded.
@@ -185,6 +197,21 @@ __port__:
      401 | Invalid parameter error.
      404 | Data doesn't exist error.
 
+    - Response Data
+
+    ```json
+    [
+    	{
+	    	"phrase":"창 1:3",
+	    	"contents":"말씀내용"
+    	},
+    	{
+	    	"phrase":"창 1:4",
+	    	"contents":"말씀내용"
+    	},
+    	...
+    ]
+    ```
 5. __Example__
    
    `curl -X POST --data ""`
