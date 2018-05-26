@@ -7,5 +7,6 @@ target 'OhJooYeo' do
 
   # Pods for OhJooYeo
   pod 'RAMAnimatedTabBarController'
-  
+  pod 'SwiftyJSON'
+  pod 'Alamofire'
 end

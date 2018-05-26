@@ -11,4 +11,7 @@ import UIKit
 class OrderTableViewCell: UITableViewCell {
 
     static let cellName = "orderCell"
+    @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var detailLabel: UILabel!
+    @IBOutlet weak var presenterLabel: UILabel!
 }

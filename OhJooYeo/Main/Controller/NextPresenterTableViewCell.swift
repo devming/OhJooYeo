@@ -11,4 +11,8 @@ import UIKit
 class NextPresenterTableViewCell: UITableViewCell {
 
     static let cellName = "nextPresenterCell"
+    @IBOutlet weak var mainPresenterLabel: UILabel!
+    @IBOutlet weak var prayerLabel: UILabel!
+    @IBOutlet weak var offerLabel: UILabel!
+    
 }
