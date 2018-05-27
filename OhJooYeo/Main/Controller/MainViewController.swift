@@ -28,9 +28,8 @@ class MainViewController: UIViewController {
         makeDummyDatasForNextPresenter()
         self.listTableView.reloadData()
     }
-
     
-
+    
 }
 
 extension MainViewController: UITableViewDataSource {
