@@ -14,6 +14,7 @@ class MainViewController: UIViewController {
     var nextPresenters: NextPresenter?
     
     @IBOutlet weak var listTableView: UITableView!
+    @IBOutlet weak var dateLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,6 +27,9 @@ class MainViewController: UIViewController {
         
         makeDummyDatas()
         makeDummyDatasForNextPresenter()
+        
+        showDateData()
+        
         self.listTableView.reloadData()
     }
     
@@ -81,6 +85,28 @@ extension MainViewController: UITableViewDelegate {
         }
         
         return 50
+    }
+}
+
+/// Custom Methods
+extension MainViewController {
+    func showDateData() {
+        let formatter = DateFormatter()
+        formatter.dateStyle = .long
+        formatter.timeStyle = .none
+        formatter.locale = Locale(identifier: "ko-KR")
+        let date = Date()   // TODO: 예배 날짜로 바꿔야함
+        guard let dateString = formatter.string(for: date) else {
+            return
+        }
+        
+        // TODO: 예배 날짜로 바꿔야함
+        let weekOfYear = Calendar.current.component(.weekOfYear, from: Date.init(timeIntervalSinceNow: 0))
+
+        // TODO: 36권을 호출해서 받아야함.
+        self.dateLabel.text = "제 \(36)권 제 \(weekOfYear)호 \(dateString)"
+        
+        
     }
 }
 

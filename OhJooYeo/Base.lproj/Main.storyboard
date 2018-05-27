@@ -323,6 +323,7 @@
                         <inset key="imageInsets" minX="0.0" minY="1" maxX="0.0" maxY="1"/>
                     </tabBarItem>
                     <connections>
+                        <outlet property="dateLabel" destination="AbS-dO-yCe" id="grp-3l-UWg"/>
                         <outlet property="listTableView" destination="7OI-tv-Dqf" id="NvA-iy-1Cd"/>
                     </connections>
                 </viewController>
