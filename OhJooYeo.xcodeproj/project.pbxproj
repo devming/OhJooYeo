@@ -20,6 +20,8 @@
 		CA4FA40F20B9406300BE6730 /* OrderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA4FA40E20B9406300BE6730 /* OrderTableViewCell.swift */; };
 		CA4FA41220B940D900BE6730 /* NextPresenterTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA4FA41120B940D900BE6730 /* NextPresenterTableViewCell.swift */; };
 		CA4FA41520B9420400BE6730 /* Order.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA4FA41420B9420400BE6730 /* Order.swift */; };
+		CA70536220BAECAF00815D37 /* PhraseDetailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA70536120BAECAF00815D37 /* PhraseDetailTableViewCell.swift */; };
+		CA70536420BAEDBC00815D37 /* PhraseMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA70536320BAEDBC00815D37 /* PhraseMessage.swift */; };
 		CA7A426A20B94C080097D99E /* NextPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7A426920B94C080097D99E /* NextPresenter.swift */; };
 /* End PBXBuildFile section */
 
@@ -40,6 +42,8 @@
 		CA4FA40E20B9406300BE6730 /* OrderTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderTableViewCell.swift; sourceTree = "<group>"; };
 		CA4FA41120B940D900BE6730 /* NextPresenterTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NextPresenterTableViewCell.swift; sourceTree = "<group>"; };
 		CA4FA41420B9420400BE6730 /* Order.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Order.swift; sourceTree = "<group>"; };
+		CA70536120BAECAF00815D37 /* PhraseDetailTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhraseDetailTableViewCell.swift; sourceTree = "<group>"; };
+		CA70536320BAEDBC00815D37 /* PhraseMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhraseMessage.swift; sourceTree = "<group>"; };
 		CA7A426920B94C080097D99E /* NextPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NextPresenter.swift; sourceTree = "<group>"; };
 		DEDF49268E2C1C3E395793F3 /* Pods-OhJooYeo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OhJooYeo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-OhJooYeo/Pods-OhJooYeo.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -120,7 +124,8 @@
 		CA4FA40B20B9400900BE6730 /* PhraseDetail */ = {
 			isa = PBXGroup;
 			children = (
-				CA4FA40320B926C600BE6730 /* PhraseDetailViewController.swift */,
+				CA7A428E20BAE6C00097D99E /* Model */,
+				CA7A428F20BAE6F00097D99E /* Controller */,
 			);
 			path = PhraseDetail;
 			sourceTree = "<group>";
@@ -158,6 +163,23 @@
 				CA7A426920B94C080097D99E /* NextPresenter.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		CA7A428E20BAE6C00097D99E /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				CA70536320BAEDBC00815D37 /* PhraseMessage.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		CA7A428F20BAE6F00097D99E /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				CA4FA40320B926C600BE6730 /* PhraseDetailViewController.swift */,
+				CA70536120BAECAF00815D37 /* PhraseDetailTableViewCell.swift */,
+			);
+			path = Controller;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -283,6 +305,8 @@
 				CA4FA41520B9420400BE6730 /* Order.swift in Sources */,
 				CA22838920943F2B0023B3C1 /* OhJooYeo.xcdatamodeld in Sources */,
 				CA4FA40F20B9406300BE6730 /* OrderTableViewCell.swift in Sources */,
+				CA70536420BAEDBC00815D37 /* PhraseMessage.swift in Sources */,
+				CA70536220BAECAF00815D37 /* PhraseDetailTableViewCell.swift in Sources */,
 				CA22838320943F2A0023B3C1 /* MainViewController.swift in Sources */,
 				CA22838120943F2A0023B3C1 /* AppDelegate.swift in Sources */,
 				CA4FA40720B926E400BE6730 /* AdvertisementViewController.swift in Sources */,

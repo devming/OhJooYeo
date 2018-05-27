@@ -110,6 +110,7 @@ extension MainViewController {
     }
 }
 
+/// Dummy datas
 extension MainViewController {
     func makeDummyDatas() {
         orderList = [Order]()
