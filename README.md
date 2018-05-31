@@ -200,17 +200,19 @@ __port__:
     - Response Data
 
     ```json
-    [
-    	{
-	    	"phrase":"창 1:3",
-	    	"contents":"말씀내용"
-    	},
-    	{
-	    	"phrase":"창 1:4",
-	    	"contents":"말씀내용"
-    	},
-    	...
-    ]
+    {
+    	"phraseList": [
+	    	{
+		    	"phrase":"창 1:3",
+		    	"contents":"말씀내용"
+	    	},
+	    	{
+		    	"phrase":"창 1:4",
+		    	"contents":"말씀내용"
+	    	},
+	    	...
+	    ]
+	 }
     ```
 5. __Example__
    
@@ -260,17 +262,19 @@ __port__:
     - Response Data
     
    ```json 
-   [
-		{
-			"title": "환영",
-			"contents":"돈암동교회 청년예배에 처음 방문하신 여러분을 환영합니다."
-		},
-		{
-			"title": "청년예배",
-			"contents": "주일 오후 2시 입니다."
-		},
-		...
-	]
+   {
+   		"phraseList": [
+			{
+				"title": "환영",
+				"contents":"돈암동교회 청년예배에 처음 방문하신 여러분을 환영합니다."
+			},
+			{
+				"title": "청년예배",
+				"contents": "주일 오후 2시 입니다."
+			},
+			...
+		]
+	}
    ```
 
 5. __Example__
