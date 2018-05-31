@@ -37,8 +37,7 @@ __port__:
 3. __Body__
    
    - Data Type
-   ```
-   json
+   ```json
    {
       "date": "Date"
    }
