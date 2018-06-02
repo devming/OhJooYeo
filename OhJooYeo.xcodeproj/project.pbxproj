@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		ABE5FDB09BF82363A5E976B2 /* Pods_OhJooYeo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2DC05C92859A22DAA1E8A736 /* Pods_OhJooYeo.framework */; };
+		CA0AB21620C23C190028BC69 /* AdvertisementTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA0AB21520C23C190028BC69 /* AdvertisementTableViewCell.swift */; };
+		CA0AB21820C23ECE0028BC69 /* Advertisement.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA0AB21720C23ECE0028BC69 /* Advertisement.swift */; };
 		CA22838120943F2A0023B3C1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA22838020943F2A0023B3C1 /* AppDelegate.swift */; };
 		CA22838320943F2A0023B3C1 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA22838220943F2A0023B3C1 /* MainViewController.swift */; };
 		CA22838620943F2B0023B3C1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CA22838420943F2B0023B3C1 /* Main.storyboard */; };
@@ -28,6 +30,8 @@
 /* Begin PBXFileReference section */
 		2DC05C92859A22DAA1E8A736 /* Pods_OhJooYeo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_OhJooYeo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BFB1C7F459FC8559E66D199F /* Pods-OhJooYeo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OhJooYeo.release.xcconfig"; path = "Pods/Target Support Files/Pods-OhJooYeo/Pods-OhJooYeo.release.xcconfig"; sourceTree = "<group>"; };
+		CA0AB21520C23C190028BC69 /* AdvertisementTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdvertisementTableViewCell.swift; sourceTree = "<group>"; };
+		CA0AB21720C23ECE0028BC69 /* Advertisement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Advertisement.swift; sourceTree = "<group>"; };
 		CA22837D20943F290023B3C1 /* OhJooYeo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OhJooYeo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CA22838020943F2A0023B3C1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CA22838220943F2A0023B3C1 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
@@ -77,6 +81,30 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		CA0AB21220C23B960028BC69 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				CA0AB21720C23ECE0028BC69 /* Advertisement.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		CA0AB21320C23BA30028BC69 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				CA4FA40620B926E400BE6730 /* AdvertisementViewController.swift */,
+				CA0AB21520C23C190028BC69 /* AdvertisementTableViewCell.swift */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		CA0AB21420C23BEB0028BC69 /* Util */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Util;
+			sourceTree = "<group>";
+		};
 		CA22837420943F290023B3C1 = {
 			isa = PBXGroup;
 			children = (
@@ -98,6 +126,7 @@
 		CA22837F20943F2A0023B3C1 /* OhJooYeo */ = {
 			isa = PBXGroup;
 			children = (
+				CA0AB21420C23BEB0028BC69 /* Util */,
 				CA4FA40A20B93FF200BE6730 /* Main */,
 				CA4FA40B20B9400900BE6730 /* PhraseDetail */,
 				CA4FA40C20B9401300BE6730 /* Advertisement */,
@@ -116,7 +145,7 @@
 			isa = PBXGroup;
 			children = (
 				CA4FA41320B941F600BE6730 /* Model */,
-				CA4FA41020B9406700BE6730 /* Controller */,
+				CA4FA41020B9406700BE6730 /* ViewController */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -125,7 +154,7 @@
 			isa = PBXGroup;
 			children = (
 				CA7A428E20BAE6C00097D99E /* Model */,
-				CA7A428F20BAE6F00097D99E /* Controller */,
+				CA7A428F20BAE6F00097D99E /* ViewController */,
 			);
 			path = PhraseDetail;
 			sourceTree = "<group>";
@@ -133,7 +162,8 @@
 		CA4FA40C20B9401300BE6730 /* Advertisement */ = {
 			isa = PBXGroup;
 			children = (
-				CA4FA40620B926E400BE6730 /* AdvertisementViewController.swift */,
+				CA0AB21220C23B960028BC69 /* Model */,
+				CA0AB21320C23BA30028BC69 /* ViewController */,
 			);
 			path = Advertisement;
 			sourceTree = "<group>";
@@ -146,14 +176,14 @@
 			path = Praise;
 			sourceTree = "<group>";
 		};
-		CA4FA41020B9406700BE6730 /* Controller */ = {
+		CA4FA41020B9406700BE6730 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
 				CA22838220943F2A0023B3C1 /* MainViewController.swift */,
 				CA4FA40E20B9406300BE6730 /* OrderTableViewCell.swift */,
 				CA4FA41120B940D900BE6730 /* NextPresenterTableViewCell.swift */,
 			);
-			path = Controller;
+			path = ViewController;
 			sourceTree = "<group>";
 		};
 		CA4FA41320B941F600BE6730 /* Model */ = {
@@ -173,13 +203,13 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
-		CA7A428F20BAE6F00097D99E /* Controller */ = {
+		CA7A428F20BAE6F00097D99E /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
 				CA4FA40320B926C600BE6730 /* PhraseDetailViewController.swift */,
 				CA70536120BAECAF00815D37 /* PhraseDetailTableViewCell.swift */,
 			);
-			path = Controller;
+			path = ViewController;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -299,12 +329,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CA0AB21620C23C190028BC69 /* AdvertisementTableViewCell.swift in Sources */,
 				CA4FA40920B9270800BE6730 /* PraiseViewController.swift in Sources */,
 				CA4FA40420B926C600BE6730 /* PhraseDetailViewController.swift in Sources */,
 				CA4FA41220B940D900BE6730 /* NextPresenterTableViewCell.swift in Sources */,
 				CA4FA41520B9420400BE6730 /* Order.swift in Sources */,
 				CA22838920943F2B0023B3C1 /* OhJooYeo.xcdatamodeld in Sources */,
 				CA4FA40F20B9406300BE6730 /* OrderTableViewCell.swift in Sources */,
+				CA0AB21820C23ECE0028BC69 /* Advertisement.swift in Sources */,
 				CA70536420BAEDBC00815D37 /* PhraseMessage.swift in Sources */,
 				CA70536220BAECAF00815D37 /* PhraseDetailTableViewCell.swift in Sources */,
 				CA22838320943F2A0023B3C1 /* MainViewController.swift in Sources */,

@@ -1,0 +1,17 @@
+//
+//  AdvertisementTableViewCell.swift
+//  OhJooYeo
+//
+//  Created by Minki on 2018. 6. 2..
+//  Copyright © 2018년 devming. All rights reserved.
+//
+
+import UIKit
+
+class AdvertisementTableViewCell: UITableViewCell {
+
+    static let cellName = "cell"
+
+    @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var descriptionLabel: UILabel!
+}
