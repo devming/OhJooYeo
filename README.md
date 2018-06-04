@@ -24,6 +24,58 @@ __port__:
 
 * Return Type에 별도의 표기 없이 Example만 적었다면 모두 String 타입이다.
 
+
+
+### <font color="blue"> GET /version/:date </font>
+
+1. __Description__ 
+   
+   현재 날짜 기준 최신 주보의 버전을 가져온다. 앱에 저장되어 있는 버전이 응답받은 서버의 버전과 다르면 데이터 새로고침을 위한 API를 호출하고, 같다면 API호출 없이 내부적으로 저장된 데이터를 사용한다.
+   
+2. __Headers__
+   
+   Content-Type: application/json
+
+3. __Body__
+   
+   null
+
+
+4. __Response__
+
+	- Response Code
+	
+    Status Code       | Response         
+    ------------|---------- 
+    200 | Operation succeeded.
+    400 | Unknown error. 
+    401 | Invalid date value. 
+    404 | Data doesn't exist error.
+
+    - Response Data
+    
+   ```json 
+	{
+		"version": "acb"
+	}
+   ```
+   
+   - Response Description
+	
+	```   
+	Description: 버전(a - z): z로 갈수록 최신 버전
+	
+	위의 "acb"를 예로 들었을 경우 다음과 같다. 
+	   
+	a: 요청 date에서 "순서"에 대한 수정 버전(첫번째 문자)  -> 순서에 대한 첫번째 버전
+	c: 요청 date에서 "광고"에 대한 수정 버전(두번째 문자)  -> 광고에 대한 세번째 업데이트 버전
+	b: 요청 date에서 "악보"에 대한 수정 버전(세번째 문자)  -> 악보에 대한 두번째 업데이트 버전
+   ```
+   
+5. __Example__
+   
+   `curl -X GET host_ip:port/version`
+
 ### <font color="green"> POST /order </font>
 
 1. __Description__ 
@@ -138,7 +190,7 @@ __port__:
 
 1. __Description__ 
    
-   주보 순서지에 해당하는 말씀 내용을 불러온다. Request Parameter에 포함된 `date`와 `phrase`에 해당하는 말씀을 Response 받는다.
+   주보 순서지에 해당하는 말씀 내용을 불러온다. Request Parameter에 포함된 `phrase`에 해당하는 말씀을 Response 받는다.
  
 2. __Headers__
    
@@ -148,7 +200,6 @@ __port__:
    
    ```json 
    {
-   		"date": "2018-05-23",
    		"phrase": 
    			[
 				{

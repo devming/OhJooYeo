@@ -329,11 +329,39 @@
                                     <constraint firstAttribute="trailing" secondItem="0UR-5B-wth" secondAttribute="trailing" id="wWm-5y-7Td"/>
                                 </constraints>
                             </view>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="gFo-mZ-krt">
+                                <rect key="frame" x="0.0" y="80" width="375" height="538"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="BC4-Et-Ilh">
+                                    <size key="itemSize" width="50" height="50"/>
+                                    <size key="headerReferenceSize" width="50" height="50"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="GXG-9T-oVF">
+                                        <rect key="frame" x="0.0" y="50" width="50" height="50"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
+                                            <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </view>
+                                    </collectionViewCell>
+                                </cells>
+                                <collectionReusableView key="sectionHeaderView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="Lgz-PE-GeB">
+                                    <rect key="frame" x="0.0" y="0.0" width="240" height="50"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </collectionReusableView>
+                            </collectionView>
                         </subviews>
                         <constraints>
+                            <constraint firstItem="gFo-mZ-krt" firstAttribute="leading" secondItem="PfE-Dp-eRj" secondAttribute="leading" id="5Fb-YE-dgF"/>
                             <constraint firstItem="6sb-sF-EYr" firstAttribute="top" secondItem="PfE-Dp-eRj" secondAttribute="top" id="7oI-uO-pvR"/>
+                            <constraint firstItem="gFo-mZ-krt" firstAttribute="top" secondItem="6sb-sF-EYr" secondAttribute="bottom" id="Ooo-vQ-s4k"/>
                             <constraint firstItem="PfE-Dp-eRj" firstAttribute="trailing" secondItem="6sb-sF-EYr" secondAttribute="trailing" id="Qn5-4p-jSz"/>
                             <constraint firstItem="6sb-sF-EYr" firstAttribute="leading" secondItem="S7t-ZI-il8" secondAttribute="leading" id="UIT-kK-hIh"/>
+                            <constraint firstItem="PfE-Dp-eRj" firstAttribute="trailing" secondItem="gFo-mZ-krt" secondAttribute="trailing" id="Zwf-6y-uRl"/>
+                            <constraint firstItem="PfE-Dp-eRj" firstAttribute="bottom" secondItem="gFo-mZ-krt" secondAttribute="bottom" id="r0g-EO-btT"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="PfE-Dp-eRj"/>
                     </view>
@@ -353,7 +381,7 @@
                     </userDefinedRuntimeAttributes>
                 </customObject>
             </objects>
-            <point key="canvasLocation" x="430" y="466"/>
+            <point key="canvasLocation" x="429.60000000000002" y="465.51724137931041"/>
         </scene>
         <!--순서-->
         <scene sceneID="lPK-V5-pbZ">
