@@ -200,7 +200,7 @@ __port__:
    
    ```json 
    {
-   		"phrase": 
+   		"phrases": 
    			[
 				{
 					"start": 
@@ -313,7 +313,7 @@ __port__:
     
    ```json 
    {
-   		"phraseList": [
+   		"advertisementList": [
 			{
 				"title": "환영",
 				"contents":"돈암동교회 청년예배에 처음 방문하신 여러분을 환영합니다."
