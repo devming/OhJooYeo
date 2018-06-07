@@ -200,39 +200,8 @@ __port__:
    
    ```json 
    {
-   		"phrases": 
-   			[
-				{
-					"start": 
-						{
-							"book": "창세기",
-							"chapter":3,
-							"section":1
-						},
-					"end": 
-						{
-							"book": "창세기",
-							"chapter":3,
-							"section":5
-						}
-				},
-				{
-					"start": 
-						{
-							"book": "출애굽기",
-							"chapter":1,
-							"section":4
-						},
-					"end": 
-						{
-							"book": "출애굽기",
-							"chapter":1,
-							"section":6
-						}
-				},
-				...
-			]
-	}
+   		"date": "2018-06-07"
+   	}
    ```
 
 
