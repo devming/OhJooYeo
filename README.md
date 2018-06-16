@@ -40,7 +40,7 @@ __port__:
    
     - Request Data
     
-   ```json 
+   ```
     1. 첫 번째 샘플
 	{
 		"version": "acb"
@@ -117,26 +117,26 @@ __port__:
 				}
 		},
 		"phrase": [
-	    	{
-		    	"phrase":"창 1:3",
-		    	"contents":"말씀내용"
-	    	},
-	    	{
-		    	"phrase":"창 1:4",
-		    	"contents":"말씀내용"
-	    	},
-	    	...
-	    ],
+		    	{
+			    	"phrase":"창 1:3",
+			    	"contents":"말씀내용"
+		    	},
+		    	{
+			    	"phrase":"창 1:4",
+			    	"contents":"말씀내용"
+		    	},
+		    	...
+	   ],
 		"advertisement": [
-			{
-				"title": "환영",
-				"contents":"돈암동교회 청년예배에 처음 방문하신 여러분을 환영합니다."
-			},
-			{
-				"title": "청년예배",
-				"contents": "주일 오후 2시 입니다."
-			},
-			...
+				{
+					"title": "환영",
+					"contents":"돈암동교회 청년예배에 처음 방문하신 여러분을 환영합니다."
+				},
+				{
+					"title": "청년예배",
+					"contents": "주일 오후 2시 입니다."
+				},
+				...
 		],	
 		"praise": {
 			
