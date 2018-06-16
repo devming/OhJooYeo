@@ -26,7 +26,7 @@ __port__:
 
 
 
-### <font color="blue"> GET /version/:date </font>
+### <font color="blue"> POST /version/:date </font>
 
 1. __Description__ 
    
@@ -38,7 +38,42 @@ __port__:
 
 3. __Body__
    
-   null
+    - Request Data
+    
+   ```json 
+   1. 첫 번째 샘플
+	{
+		"version": "acb"
+		"date": "2018-06-19"
+	}
+	
+	2. 두 번째 샘플
+	{
+		"version": "d#a"
+		"date": "2018-06-19"
+	}
+	
+	3. 세 번째 샘플
+	{
+		"version": "###"
+		"date": "2018-06-19"
+	}
+   ```
+   
+   - Request Description
+   
+	```   
+	Description: 버전(a - z): z로 갈수록 최신 버전
+	
+	위의 "acb"를 예로 들었을 경우 다음과 같다. 
+	   
+	a: 요청 date에서 "순서"에 대한 수정 버전(첫번째 문자)  -> 순서에 대한 첫번째 버전
+	c: 요청 date에서 "광고"에 대한 수정 버전(두번째 문자)  -> 광고에 대한 세번째 업데이트 버전
+	b: 요청 date에서 "악보"에 대한 수정 버전(세번째 문자)  -> 악보에 대한 두번째 업데이트 버전
+	
+	#: 최초 요청
+   ```
+
 
 
 4. __Response__
@@ -56,26 +91,65 @@ __port__:
     
    ```json 
 	{
-		"version": "acb"
+		"worship": {
+		   "mainPresenter": "박요한",
+		   "worshipOrder":
+				[
+					{
+						"title": "순서1 - 순서 1에 해당하는 제목",
+						"detail": "순서1 - 순서 1에 해당하는 상세 항목",
+						"presenter": "순서1 - 순서 1에 해당하는 대표자",
+						"order": (integer값 - 예배 순서)
+					}, 
+					{
+						"title": "순서2 - 순서 2에 해당하는 제목",
+						"detail": "순서2 - 순서 2에 해당하는 상세 항목",
+						"presenter": "순서2 - 순서 2에 해당하는 대표자",
+						"order": (integer값 - 예배 순서)
+					}, 
+					...
+				],
+			"nextPresenter": 
+				{
+					"mainPresenter":"김한나",
+					"prayer":"박요한",
+					"offer":"서동주"
+				}
+		},
+		"phrase": [
+	    	{
+		    	"phrase":"창 1:3",
+		    	"contents":"말씀내용"
+	    	},
+	    	{
+		    	"phrase":"창 1:4",
+		    	"contents":"말씀내용"
+	    	},
+	    	...
+	    ],
+		"advertisement": [
+			{
+				"title": "환영",
+				"contents":"돈암동교회 청년예배에 처음 방문하신 여러분을 환영합니다."
+			},
+			{
+				"title": "청년예배",
+				"contents": "주일 오후 2시 입니다."
+			},
+			...
+		],	
+		"praise": {
+			
+		}
 	}
    ```
    
    - Response Description
-	
-	```   
-	Description: 버전(a - z): z로 갈수록 최신 버전
-	
-	위의 "acb"를 예로 들었을 경우 다음과 같다. 
-	   
-	a: 요청 date에서 "순서"에 대한 수정 버전(첫번째 문자)  -> 순서에 대한 첫번째 버전
-	c: 요청 date에서 "광고"에 대한 수정 버전(두번째 문자)  -> 광고에 대한 세번째 업데이트 버전
-	b: 요청 date에서 "악보"에 대한 수정 버전(세번째 문자)  -> 악보에 대한 두번째 업데이트 버전
+   
    ```
-   
-5. __Example__
-   
-   `curl -X GET host_ip:port/version`
-
+	worship, phrase, advertisement, praise가 null이라면 최신버전인 것이다.
+   ```
+	
 ### <font color="green"> POST /order </font>
 
 1. __Description__ 
@@ -119,17 +193,19 @@ __port__:
    ```json
    { 
 	   "mainPresenter": "박요한",
-	   "order":
+	   "worshipOrder":
 			[
 				{
 					"title": "순서1 - 순서 1에 해당하는 제목",
 					"detail": "순서1 - 순서 1에 해당하는 상세 항목",
-					"presenter": "순서1 - 순서 1에 해당하는 대표자"
+					"presenter": "순서1 - 순서 1에 해당하는 대표자",
+					"order": (integer값 - 예배 순서)
 				}, 
 				{
 					"title": "순서2 - 순서 2에 해당하는 제목",
 					"detail": "순서2 - 순서 2에 해당하는 상세 항목",
-					"presenter": "순서2 - 순서 2에 해당하는 대표자"
+					"presenter": "순서2 - 순서 2에 해당하는 대표자",
+					"order": (integer값 - 예배 순서)
 				}, 
 				...
 			],
@@ -142,12 +218,8 @@ __port__:
 	}
    ```
 
-5. __Example__
-   
-   `curl -X POST --data "date=2018-05-23" host_ip:port/order`
 
-
-### <font color="blue"> GET /launch/:year </font>
+### <font color="blue"> POST /launch/:date </font>
 
 1. __Description__ 
    
@@ -180,11 +252,7 @@ __port__:
 		"phrase": "런치 스크린에 나오는 말씀. "
 	}
    ```
-   
-5. __Example__
-   
-   `curl -X GET host_ip:port/launch/2018`
-   
+
    
 ### <font color="green"> POST /detail/phrase </font>
 
@@ -233,10 +301,7 @@ __port__:
 	    ]
 	 }
     ```
-5. __Example__
-   
-   `curl -X POST --data ""`
-    
+ 
 
 ### <font color="green"> POST /advertisement </font>
 
@@ -296,9 +361,6 @@ __port__:
 	}
    ```
 
-5. __Example__
-   
-   `curl -X POST --data "date=2018-05-23" host_ip:port/advertisement`
 
 
 ### <font color="green"> POST /praise </font>
@@ -334,13 +396,6 @@ __port__:
 	Multipart Image datas.
    ```
    
-5. __Example__
-   
-   `curl -F "image=@/Users/devming/Desktop/temp.png;type=image/png" host_ip:port/praise`
-   
-   
-  
-  
-  
+
   
  
