@@ -2,7 +2,7 @@
 //  NextPresenter.swift
 //  OhJooYeo
 //
-//  Created by Minki on 2018. 5. 26..
+//  Created by Minki on 2018. 6. 16..
 //  Copyright © 2018년 devming. All rights reserved.
 //
 

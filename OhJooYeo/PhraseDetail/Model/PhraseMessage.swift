@@ -17,3 +17,4 @@ struct PhraseMessage {
         self.phraseMessage = phraseMessage
     }
 }
+

@@ -9,10 +9,8 @@
 import Foundation
 import SwiftyJSON
 
-struct Order {
+struct WorshipOrder {
     var title: String?
     var detail: String?
     var presenter: String?
-    
-    
 }
