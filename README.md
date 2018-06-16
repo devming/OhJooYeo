@@ -41,7 +41,7 @@ __port__:
     - Request Data
     
    ```json 
-   1. 첫 번째 샘플
+    1. 첫 번째 샘플
 	{
 		"version": "acb"
 		"date": "2018-06-19"
@@ -89,7 +89,7 @@ __port__:
 
     - Response Data
     
-   ```json 
+   ```
 	{
 		"worship": {
 		   "mainPresenter": "박요한",
@@ -190,7 +190,7 @@ __port__:
     
     - Response Data
     
-   ```json
+   ```
    { 
 	   "mainPresenter": "박요한",
 	   "worshipOrder":
@@ -286,7 +286,7 @@ __port__:
 
     - Response Data
 
-    ```json
+    ```
     {
     	"phraseList": [
 	    	{
@@ -345,7 +345,7 @@ __port__:
     
     - Response Data
     
-   ```json 
+   ```
    {
    		"advertisementList": [
 			{
