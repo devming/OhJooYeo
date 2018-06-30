@@ -215,8 +215,8 @@
 		CA7A428E20BAE6C00097D99E /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				CA70536320BAEDBC00815D37 /* PhraseMessage.swift */,
 				CAFB287620D4D61600B72722 /* PhraseMessage+DataManager.swift */,
+				CA70536320BAEDBC00815D37 /* PhraseMessage.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";

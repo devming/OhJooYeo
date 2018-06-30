@@ -69,9 +69,9 @@ __port__:
     
    ```
 	{
-		"worship": {
+		"mainOrder": {
 		   "mainPresenter": "박요한",
-		   "worshipOrder":
+		   "order":
 				[
 					{
 						"title": "순서1 - 순서 1에 해당하는 제목",
@@ -94,29 +94,20 @@ __port__:
 					"offer":"서동주"
 				}
 		},
-		"phrase": [
-		    	{
-			    	"phrase":"창 1:3",
-			    	"contents":"말씀내용"
-		    	},
-		    	{
-			    	"phrase":"창 1:4",
-			    	"contents":"말씀내용"
-		    	},
-		    	...
-	   ],
 		"advertisement": [
 				{
 					"title": "환영",
-					"contents":"돈암동교회 청년예배에 처음 방문하신 여러분을 환영합니다."
+					"contents":"돈암동교회 청년예배에 처음 방문하신 여러분을 환영합니다.",
+                "order": 1 
 				},
 				{
 					"title": "청년예배",
-					"contents": "주일 오후 2시 입니다."
+					"contents": "주일 오후 2시 입니다.",
+                "order": 2
 				},
 				...
 		],	
-		"praise": {
+		"music": {
 			
 		}
 	}
@@ -145,10 +136,10 @@ __port__:
                    "order": 2
                },
                {
-               "presenter": "인도자",
-               "detail": "욘 2:7-2:10/고전 2:1-3:1",
-               "title": "성경봉독",
-               "order": 3
+                   "presenter": "인도자",
+                   "detail": "욘 2:7-2:10/고전 2:1-3:1",
+                   "title": "성경봉독",
+                   "order": 3
                },
                {
                    "presenter": "김희선전도사님",
@@ -184,8 +175,7 @@ __port__:
            ]
        },
        "music": "",
-       "advertisement": {
-           "advertisementList": [
+       "advertisement": [
                {
                    "title": "환영",
                    "content": "돈암동교회 청년예배에 처음 방문하신 여러분을 환영합니다.",
@@ -210,9 +200,8 @@ __port__:
                    "content": "오늘은 사순절 제3주 입니다.",
                    "order": 5
                }
-           ]
-       },
-       "currentVersion": "bbb"
+           ],
+       "currentVersion": "bbb"  <- test용!
    }
    ```
    
