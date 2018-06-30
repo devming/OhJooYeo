@@ -26,7 +26,7 @@ __port__:
 
 
 
-### <font color="blue"> POST /version/:date </font>
+### <font color="blue"> POST /version/:date/:version </font>
 
 1. __Description__ 
    
@@ -38,34 +38,12 @@ __port__:
 
 3. __Body__
    
-    - Request Data
-    
-   ```
-    1. 첫 번째 샘플
-	{
-		"version": "acb"
-		"date": "2018-06-19"
-	}
-	
-	2. 두 번째 샘플
-	{
-		"version": "d*a"
-		"date": "2018-06-19"
-	}
-	
-	3. 세 번째 샘플
-	{
-		"version": "***"
-		"date": "2018-06-19"
-	}
-   ```
-   
-   - Request Description
+   - Request Parameter Description
    
 	```   
 	Description: 버전(a - z): z로 갈수록 최신 버전
 	
-	위의 "acb"를 예로 들었을 경우 다음과 같다. 
+	"acb"를 예로 들었을 경우 다음과 같다. 
 	   
 	a: 요청 date에서 "순서"에 대한 수정 버전(첫번째 문자)  -> 순서에 대한 첫번째 버전
 	c: 요청 date에서 "광고"에 대한 수정 버전(두번째 문자)  -> 광고에 대한 세번째 업데이트 버전
@@ -142,6 +120,100 @@ __port__:
 			
 		}
 	}
+   ```
+   
+   - Response Example
+   
+   ```
+   {
+       "mainOrder": {
+           "nextPresenter": {
+               "offer": "서동주",
+               "prayer": "박요한",
+               "mainPresenter": "김한나"
+           },
+           "mainPresenter": "박요한",
+           "order": [
+               {
+                   "presenter": "회중",
+                   "title": "경배와찬양",
+                   "order": 1
+               },
+               {
+                   "presenter": "정애림",
+                   "title": "기도",
+                   "order": 2
+               },
+               {
+               "presenter": "인도자",
+               "detail": "욘 2:7-2:10/고전 2:1-3:1",
+               "title": "성경봉독",
+               "order": 3
+               },
+               {
+                   "presenter": "김희선전도사님",
+                   "detail": "감사의 노래",
+                   "title": "설교",
+                   "order": 4
+               },
+               {
+                   "presenter": "표준범",
+                   "title": "헌금",
+                   "order": 5
+               },
+               {
+                   "presenter": "설교자",
+                   "title": "헌금기도",
+                   "order": 6
+               },
+               {
+                   "presenter": "인도자",
+                   "title": "성도의교제",
+                   "order": 7
+               },
+               {
+                   "presenter": "회중",
+                   "title": "파송찬양",
+                   "order": 8
+               },
+               {
+                   "presenter": "회중",
+                   "title": "주기도문",
+                   "order": 9
+               }
+           ]
+       },
+       "music": "",
+       "advertisement": {
+           "advertisementList": [
+               {
+                   "title": "환영",
+                   "content": "돈암동교회 청년예배에 처음 방문하신 여러분을 환영합니다.",
+                   "order": 1
+               },
+               {
+                   "title": "청년예배",
+                   "content": "주일 오후2시 입니다.",
+                   "order": 2
+               },
+               {
+                   "title": "기도모임",
+                   "content": "주일 오후1시30분(1330기도회)",
+                   "order": 3
+               },
+               {
+                   "title": "대표기도 및 특송",
+                   "content": "신청하고자 하시는 분은 임원에게 문의해주십시오",
+                   "order": 4
+               },
+               {
+                   "content": "오늘은 사순절 제3주 입니다.",
+                   "order": 5
+               }
+           ]
+       },
+       "currentVersion": "bbb"
+   }
    ```
    
    - Response Description
