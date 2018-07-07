@@ -21,9 +21,21 @@ protocol API {
 //    func closeIssue(owner: String, repo: String, number: Int, issue: Model.Issue, completionHandler: @escaping (DataResponse<Model.Issue>) -> Void)
 //    func openIssue(owner: String, repo: String, number: Int, issue: Model.Issue, completionHandler: @escaping (DataResponse<Model.Issue>) -> Void)
 //    func createIssue(owner: String, repo: String, title: String, body: String, completionHandler: @escaping (DataResponse<Model.Issue>) -> Void )
+    func getRecentDatas(date: Date, version: String, handler: @escaping (()-> Void)) -> Void
 }
 
 struct OhJooYeoAPI: API {
+    func getRecentDatas(date: Date, version: String, handler: @escaping (() -> Void)) {
+        let parameters: Parameters = ["page": date, "version": version]
+        APIRouter.manager.request(APIRouter.getRecentDatas(date: date, version: version, parameters: parameters)).responseJSON { (dataResponse: DataResponse<Any>) in
+            guard let jsonData = dataResponse.data else{
+                return
+            }
+            let result = JSON(jsonData)
+            print(result)
+        }
+    }
+}
 //    let oauth = OAuth2Swift(consumerKey: "dc7db1de744aa3e82a47",
 //                             consumerSecret: "554a3e9b89f140736050a37e3e37379aa3bc7e39",
 //                             authorizeUrl: "https://github.com/login/oauth/authorize",
@@ -127,83 +139,53 @@ struct OhJooYeoAPI: API {
 //            completionHandler(result)
 //        }
 //    }
+//}
+
+enum APIRouter {
+    case getRecentDatas(date: Date, version: String, parameters: Parameters)
 }
 
-//enum APIRouter {
-//    case repoIssues(owner: String, repo: String, parameters: Parameters)
-//    case issueComment(owner: String, repo: String, number: Int, parameters: Parameters)
-//    case createComment(owner: String, repo: String, number: Int, parameters: Parameters)
-//    case editIssue(owner: String, repo: String, number: Int, parameters: Parameters)
-//    case createIssue(owner: String, repo: String, parameters: Parameters)
-//}
-//
-//extension APIRouter: URLRequestConvertible {
-//    static let baseURLString: String = "https://api.github.com"
-//    static let manager: Alamofire.SessionManager = {
-//        let configuration = URLSessionConfiguration.default
-//        configuration.timeoutIntervalForRequest = 30 // seconds
-//        configuration.timeoutIntervalForResource = 30
-//        configuration.httpCookieStorage = HTTPCookieStorage.shared
-//        configuration.urlCache = URLCache(memoryCapacity: 0, diskCapacity: 0, diskPath: nil)
-//        let manager = Alamofire.SessionManager(configuration: configuration)
-//        return manager
-//    }()
-//
-//    var method: HTTPMethod {
-//        switch self {
-//        case .repoIssues,
-//             .issueComment:
-//            return .get
-//        case .createComment,
-//             .createIssue:
-//            return .post
-//        case .editIssue
-//            :
-//            return .patch
-//        }
-//    }
-//
-//    var path: String {
-//        switch self {
-//        case let .repoIssues(owner, repo, _):
-//            return "/repos/\(owner)/\(repo)/issues"
-//        case let .issueComment(owner, repo, number, _):
-//            return "/repos/\(owner)/\(repo)/issues/\(number)/comments"
-//        case let .createComment(owner, repo, number, _):
-//            return "/repos/\(owner)/\(repo)/issues/\(number)/comments"
-//        case let .editIssue(owner, repo, number, _):
-//            return "/repos/\(owner)/\(repo)/issues/\(number)"
-//        case let .createIssue(owner, repo, _):
-//            return "/repos/\(owner)/\(repo)/issues"
-//        }
-//    }
-//
-//    func asURLRequest() throws -> URLRequest {
-//        let url = try APIRouter.baseURLString.asURL()
-//
-//        var urlRequest = URLRequest(url: url.appendingPathComponent(path))
-//        urlRequest.httpMethod = method.rawValue
-//        if let token = GlobalState.instance.token, !token.isEmpty {
-//            urlRequest.setValue("token \(token)", forHTTPHeaderField: "Authorization")
-//        }
-//
-//        switch self {
-//        case let .repoIssues(_, _, parameters):
-//            urlRequest = try URLEncoding.default.encode(urlRequest, with: parameters)
-//        case let .issueComment(_, _, _, parameters):
-//            urlRequest = try URLEncoding.default.encode(urlRequest, with: parameters)
-//        case let .createComment(_, _, _, parameters):
-//            urlRequest = try JSONEncoding.default.encode(urlRequest, with: parameters)
-//        case let .editIssue(_, _, _, parameters):
-//            urlRequest = try JSONEncoding.default.encode(urlRequest, with: parameters)
-//        case let .createIssue(_, _, parameters):
-//            urlRequest = try JSONEncoding.default.encode(urlRequest, with: parameters)
-//        }
-//
-//        return urlRequest
-//    }
-//
-//
-//}
-//
-//
+extension APIRouter: URLRequestConvertible {
+    static let baseURLString: String = "https://api.github.com"
+    static let manager: Alamofire.SessionManager = {
+        let configuration = URLSessionConfiguration.default
+        configuration.timeoutIntervalForRequest = 30 // seconds
+        configuration.timeoutIntervalForResource = 30
+        configuration.httpCookieStorage = HTTPCookieStorage.shared
+        configuration.urlCache = URLCache(memoryCapacity: 0, diskCapacity: 0, diskPath: nil)
+        let manager = Alamofire.SessionManager(configuration: configuration)
+        return manager
+    }()
+
+    var method: HTTPMethod {
+        switch self {
+        case .getRecentDatas:
+            return .post
+        }
+    }
+
+    var path: String {
+        switch self {
+        case let .getRecentDatas(date, version, _):
+            return "/version/\(date)/\(version)"
+        }
+    }
+
+    func asURLRequest() throws -> URLRequest {
+        let url = try APIRouter.baseURLString.asURL()
+
+        var urlRequest = URLRequest(url: url.appendingPathComponent(path))
+        urlRequest.httpMethod = method.rawValue
+
+        switch self {
+        case let .getRecentDatas(_, _, parameters):
+            urlRequest = try URLEncoding.default.encode(urlRequest, with: parameters)
+        }
+
+        return urlRequest
+    }
+
+
+}
+
+

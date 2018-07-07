@@ -41,6 +41,8 @@ __port__:
    - Request Parameter Description
    
 	```   
+	[ex] /version/2018-04-29/acb
+	
 	Description: 버전(a - z): z로 갈수록 최신 버전
 	
 	"acb"를 예로 들었을 경우 다음과 같다. 
@@ -70,7 +72,7 @@ __port__:
    ```
 	{
 		"mainOrder": {
-		   "mainPresenter": "박요한",
+		   "mainPresenter": "인도자 이름",
 		   "order":
 				[
 					{
@@ -89,9 +91,9 @@ __port__:
 				],
 			"nextPresenter": 
 				{
-					"mainPresenter":"김한나",
-					"prayer":"박요한",
-					"offer":"서동주"
+					"mainPresenter":"다음주 인도자 이름",
+					"prayer":"다음주 기도자 이름",
+					"offer":"다음주 헌금위원 이름"
 				}
 		},
 		"advertisement": [
@@ -109,7 +111,8 @@ __port__:
 		],	
 		"music": {
 			
-		}
+		},
+       "currentVersion": "현재 서버에서의 버전 정보"
 	}
    ```
    
