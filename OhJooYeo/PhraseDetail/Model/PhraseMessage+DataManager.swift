@@ -10,7 +10,7 @@ import Foundation
 import CoreData
 
 extension DbManager {
-    func addWorship(with mainPresenter: String, worshipOrder: [WorshipOrder], nextPresenter: [Worship.NextPresenter]) {
+    func addWorship(with mainPresenter: String, worshipOrder: [Model.WorshipElement], nextPresenter: [Model.Worship.NextPresenter]) {
         if let newPhrase = NSEntityDescription.insertNewObject(forEntityName: "Worship", into: defaultContext) as? WorshipEntity {      // type casting을 해서 내가 사용할 엔티티를 가져와야한다.
             newPhrase.mainPresenter = mainPresenter
             

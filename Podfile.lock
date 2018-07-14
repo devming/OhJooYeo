@@ -1,24 +1,30 @@
 PODS:
   - Alamofire (4.5.1)
+  - Alamofire-SwiftyJSON (3.0.0):
+    - Alamofire (~> 4.5)
+    - SwiftyJSON (~> 4.0.0)
   - RAMAnimatedTabBarController (3.0.0)
   - SwiftyJSON (4.0.0)
 
 DEPENDENCIES:
   - Alamofire
+  - Alamofire-SwiftyJSON
   - RAMAnimatedTabBarController
   - SwiftyJSON
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
     - Alamofire
+    - Alamofire-SwiftyJSON
     - RAMAnimatedTabBarController
     - SwiftyJSON
 
 SPEC CHECKSUMS:
   Alamofire: 2d95912bf4c34f164fdfc335872e8c312acaea4a
+  Alamofire-SwiftyJSON: 2b3649d57dc7bb2880fb8b86f8bb969397666916
   RAMAnimatedTabBarController: 6d0638ad14db4939006e8c58933e05bde93e66f6
   SwiftyJSON: 070dabdcb1beb81b247c65ffa3a79dbbfb3b48aa
 
-PODFILE CHECKSUM: dfff521a97f82c3659a696d6b4c863e229ef485e
+PODFILE CHECKSUM: 6c3c98953d2d7d106cdc1b6abed71c1963f37b89
 
-COCOAPODS: 1.5.2
+COCOAPODS: 1.5.3

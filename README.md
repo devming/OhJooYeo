@@ -110,7 +110,10 @@ __port__:
 				...
 		],	
 		"music": {
-			
+				"id": f828d98a81a828c8e81eda831,
+				"title": "주께 경배",
+				"image": *** Image Data ***,
+				"order": 1
 		},
        "currentVersion": "현재 서버에서의 버전 정보"
 	}

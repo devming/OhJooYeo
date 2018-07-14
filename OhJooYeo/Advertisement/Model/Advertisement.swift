@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import SwiftyJSON
 
 struct Advertisement {
     var title: String?
@@ -14,6 +15,18 @@ struct Advertisement {
     
     init(title: String?, description: String?) {
         self.title = title
+        self.description = description
+    }
+    
+    init?(json: JSON) {
+        guard let title = json["title"].string else {
+            return nil
+        }
+        self.title = title
+        
+        guard let description = json["description"].string else {
+            return nil
+        }
         self.description = description
     }
 }

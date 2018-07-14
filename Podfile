@@ -9,4 +9,5 @@ target 'OhJooYeo' do
   pod 'RAMAnimatedTabBarController'
   pod 'SwiftyJSON'
   pod 'Alamofire'
+  pod 'Alamofire-SwiftyJSON'
 end

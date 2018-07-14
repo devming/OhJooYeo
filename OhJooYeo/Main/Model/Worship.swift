@@ -9,24 +9,56 @@
 import Foundation
 import SwiftyJSON
 
-struct Worship {
-    var mainPresenter: String?
-    var nextPresenter: NextPresenter?
-    var version: Int?
-    var worshipDate: Date?
-    
-    struct NextPresenter {
-        var mainPresenter: String?
-        var prayer: String?
-        var offer: String?
+extension Model {
+    struct Worship {
+        var mainPresenter: String
+        var nextPresenter: NextPresenter
+        var order: WorshipElement
         
-        init?(mainPresenter: String?, prayer: String?, offer: String?) {
-            guard let mainPresenter = mainPresenter, let prayer = prayer, let offer = offer else {
+        struct NextPresenter {
+            var mainPresenter: String
+            var prayer: String
+            var offer: String
+            
+            init(mainPresenter: String, prayer: String, offer: String) {
+                self.mainPresenter = mainPresenter
+                self.prayer = prayer
+                self.offer = offer
+            }
+            
+            init?(json: JSON) {
+                guard let mainPresenter = json["mainPresenter"].string else {
+                    return nil
+                }
+                self.mainPresenter = mainPresenter
+                
+                guard let prayer = json["prayer"].string else {
+                    return nil
+                }
+                self.prayer = prayer
+                
+                guard let offer = json["offer"].string else {
+                    return nil
+                }
+                self.offer = offer
+            }
+        }
+        
+        init?(json: JSON) {
+            guard let mainPresenter = json["mainPresenter"].string else {
                 return nil
             }
             self.mainPresenter = mainPresenter
-            self.prayer = prayer
-            self.offer = offer
+            
+            guard let nextPresenter = NextPresenter(json: json["nextPresenter"]) else {
+                return nil
+            }
+            self.nextPresenter = nextPresenter
+            
+            guard let order = WorshipElement(json: json["order"]) else {
+                return nil
+            }
+            self.order = order
         }
     }
 }
