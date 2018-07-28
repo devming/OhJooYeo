@@ -1,16 +1,18 @@
-# OhJooYeo REST API server
+# OhJooYeo README
 
 This repository covers the API materials for the OhJooYeo mobile service. 
 
 Current Version: __v 0.0.1__
 
-## Architecture Overview ##
+## TODO List (인지하고 있어야함)
 
-__Server__: 
+__1__: 웹 관리자 페이지에서 관리자가 악보 입력할 때, 제목, 카테고리, 순서 정보도 넣어줘야함
 
-__Database__: 
+__2__: 이미지 Request, Response 
 
-__Framework__: 
+## Tech Stack(include libraries) ##
+
+Xcode, Git, Swift4, CoreData, Alamofire, SwiftyJSON, 
 
 
 ## API ##
@@ -98,25 +100,49 @@ __port__:
 		},
 		"advertisement": [
 				{
-					"title": "환영",
-					"contents":"돈암동교회 청년예배에 처음 방문하신 여러분을 환영합니다.",
-                "order": 1 
+					"title": "광고 소식1",
+					"contents":"광고 내용1",
+                	"order": (integer값 - 광고 순서1)
 				},
 				{
-					"title": "청년예배",
-					"contents": "주일 오후 2시 입니다.",
-                "order": 2
+					"title": "광고 소식2",
+					"contents": "광고 내용2",
+                 "order": (integer값 - 광고 순서2)
 				},
 				...
 		],	
-		"music": {
-				"id": f828d98a81a828c8e81eda831,
-				"title": "주께 경배",
-				"image": *** Image Data ***,
-				"order": 1
+		"music": [{
+				"id": 악보 이미지 데이터 index값,
+				"title": "찬양 제목1",
+				"imageName": "악보 이미지 파일 이름.확장자",
+				"category": 카테고리 번호(자세한 종류는 아래 category enum 참고)
+				"order": (integer값 - 악보 순서1)
 		},
+		{
+				"id": 악보 이미지 데이터 index값,
+				"title": "찬양 제목2",
+				"imageName": "악보 이미지 파일 이름.확장자",
+				"category": 카테고리 번호(자세한 종류는 아래 category enum 참고)
+				"order": (integer값 - 악보 순서2)
+		},
+		{
+				"id": 악보 이미지 데이터 index값,
+				"title": "찬양 제목3",
+				"imageName": "악보 이미지 파일 이름.확장자",
+				"category": 카테고리 번호(자세한 종류는 아래 category enum 참고)
+				"order": (integer값 - 악보 순서3)
+		}],
        "currentVersion": "현재 서버에서의 버전 정보"
 	}
+   ```
+   
+
+	- Category Enum
+	
+   ```
+   1: "찬양시간"
+   2: "봉헌"
+   3: "말씀후찬양"
    ```
    
    - Response Example
@@ -180,7 +206,6 @@ __port__:
                }
            ]
        },
-       "music": "",
        "advertisement": [
                {
                    "title": "환영",
@@ -207,6 +232,27 @@ __port__:
                    "order": 5
                }
            ],
+           "music": [{
+				"id": 5,
+				"title": "주께 경배",
+				"imageName": "img005.png",
+				"category": 1
+				"order": (integer값 - 악보 순서)
+		},
+		{
+				"id": 12,
+				"title": "주께 경배",
+				"imageName": "img012.png",
+				"category": 1
+				"order": 1
+		},
+		{
+				"id": 9,
+				"title": "주께 경배",
+				"imageName": "img009.png",
+				"category": 2
+				"order": 1
+		}],
        "currentVersion": "bbb"  <- test용!
    }
    ```

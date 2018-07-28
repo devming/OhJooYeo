@@ -26,6 +26,7 @@
 		CA70536420BAEDBC00815D37 /* PhraseMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA70536320BAEDBC00815D37 /* PhraseMessage.swift */; };
 		CA7A426A20B94C080097D99E /* Worship.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7A426920B94C080097D99E /* Worship.swift */; };
 		CAA6B99E20F9CAFB00E802BC /* Music.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAA6B99D20F9CAFB00E802BC /* Music.swift */; };
+		CAFA549C2104765300C4A808 /* OhJooYeoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAFA549B2104765300C4A808 /* OhJooYeoTests.swift */; };
 		CAFB287520D4D47200B72722 /* DbManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAFB287420D4D47200B72722 /* DbManager.swift */; };
 		CAFB287720D4D61600B72722 /* PhraseMessage+DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAFB287620D4D61600B72722 /* PhraseMessage+DataManager.swift */; };
 		CAFB287920D4E6F400B72722 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAFB287820D4E6F400B72722 /* API.swift */; };
@@ -34,6 +35,16 @@
 		CAFB288020D4EF1F00B72722 /* OhJooYeo.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = CAFB287E20D4EF1F00B72722 /* OhJooYeo.xcdatamodeld */; };
 		CAFB288220D4F13A00B72722 /* Worship+DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAFB288120D4F13900B72722 /* Worship+DataManager.swift */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		CAFA549E2104765300C4A808 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = CA22837520943F290023B3C1 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = CA22837C20943F290023B3C1;
+			remoteInfo = OhJooYeo;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		2DC05C92859A22DAA1E8A736 /* Pods_OhJooYeo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_OhJooYeo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -58,6 +69,9 @@
 		CA70536320BAEDBC00815D37 /* PhraseMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhraseMessage.swift; sourceTree = "<group>"; };
 		CA7A426920B94C080097D99E /* Worship.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Worship.swift; sourceTree = "<group>"; };
 		CAA6B99D20F9CAFB00E802BC /* Music.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Music.swift; sourceTree = "<group>"; };
+		CAFA54992104765300C4A808 /* OhJooYeoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = OhJooYeoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		CAFA549B2104765300C4A808 /* OhJooYeoTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OhJooYeoTests.swift; sourceTree = "<group>"; };
+		CAFA549D2104765300C4A808 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CAFB287420D4D47200B72722 /* DbManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DbManager.swift; sourceTree = "<group>"; };
 		CAFB287620D4D61600B72722 /* PhraseMessage+DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PhraseMessage+DataManager.swift"; sourceTree = "<group>"; };
 		CAFB287820D4E6F400B72722 /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
@@ -74,6 +88,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				ABE5FDB09BF82363A5E976B2 /* Pods_OhJooYeo.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CAFA54962104765300C4A808 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -130,6 +151,7 @@
 			isa = PBXGroup;
 			children = (
 				CA22837F20943F2A0023B3C1 /* OhJooYeo */,
+				CAFA549A2104765300C4A808 /* OhJooYeoTests */,
 				CA22837E20943F290023B3C1 /* Products */,
 				C4043A8EE63A261438825C5A /* Pods */,
 				A31CA44B33F291CE4346336F /* Frameworks */,
@@ -140,6 +162,7 @@
 			isa = PBXGroup;
 			children = (
 				CA22837D20943F290023B3C1 /* OhJooYeo.app */,
+				CAFA54992104765300C4A808 /* OhJooYeoTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -236,6 +259,15 @@
 			path = ViewController;
 			sourceTree = "<group>";
 		};
+		CAFA549A2104765300C4A808 /* OhJooYeoTests */ = {
+			isa = PBXGroup;
+			children = (
+				CAFA549B2104765300C4A808 /* OhJooYeoTests.swift */,
+				CAFA549D2104765300C4A808 /* Info.plist */,
+			);
+			path = OhJooYeoTests;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -258,19 +290,42 @@
 			productReference = CA22837D20943F290023B3C1 /* OhJooYeo.app */;
 			productType = "com.apple.product-type.application";
 		};
+		CAFA54982104765300C4A808 /* OhJooYeoTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = CAFA54A22104765300C4A808 /* Build configuration list for PBXNativeTarget "OhJooYeoTests" */;
+			buildPhases = (
+				CAFA54952104765300C4A808 /* Sources */,
+				CAFA54962104765300C4A808 /* Frameworks */,
+				CAFA54972104765300C4A808 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				CAFA549F2104765300C4A808 /* PBXTargetDependency */,
+			);
+			name = OhJooYeoTests;
+			productName = OhJooYeoTests;
+			productReference = CAFA54992104765300C4A808 /* OhJooYeoTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
 		CA22837520943F290023B3C1 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 0920;
+				LastSwiftUpdateCheck = 0940;
 				LastUpgradeCheck = 0920;
 				ORGANIZATIONNAME = devming;
 				TargetAttributes = {
 					CA22837C20943F290023B3C1 = {
 						CreatedOnToolsVersion = 9.2;
 						ProvisioningStyle = Automatic;
+					};
+					CAFA54982104765300C4A808 = {
+						CreatedOnToolsVersion = 9.4.1;
+						ProvisioningStyle = Automatic;
+						TestTargetID = CA22837C20943F290023B3C1;
 					};
 				};
 			};
@@ -288,6 +343,7 @@
 			projectRoot = "";
 			targets = (
 				CA22837C20943F290023B3C1 /* OhJooYeo */,
+				CAFA54982104765300C4A808 /* OhJooYeoTests */,
 			);
 		};
 /* End PBXProject section */
@@ -300,6 +356,13 @@
 				CA22838E20943F2C0023B3C1 /* LaunchScreen.storyboard in Resources */,
 				CA22838B20943F2C0023B3C1 /* Assets.xcassets in Resources */,
 				CA22838620943F2B0023B3C1 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CAFA54972104765300C4A808 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -380,7 +443,23 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		CAFA54952104765300C4A808 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CAFA549C2104765300C4A808 /* OhJooYeoTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		CAFA549F2104765300C4A808 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = CA22837C20943F290023B3C1 /* OhJooYeo */;
+			targetProxy = CAFA549E2104765300C4A808 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		CA22838420943F2B0023B3C1 /* Main.storyboard */ = {
@@ -543,6 +622,46 @@
 			};
 			name = Release;
 		};
+		CAFA54A02104765300C4A808 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = HGQ9YZ4HTR;
+				INFOPLIST_FILE = OhJooYeoTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.devming.OhJooYeoTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/OhJooYeo.app/OhJooYeo";
+			};
+			name = Debug;
+		};
+		CAFA54A12104765300C4A808 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = HGQ9YZ4HTR;
+				INFOPLIST_FILE = OhJooYeoTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.devming.OhJooYeoTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/OhJooYeo.app/OhJooYeo";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -560,6 +679,15 @@
 			buildConfigurations = (
 				CA22839320943F2C0023B3C1 /* Debug */,
 				CA22839420943F2C0023B3C1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		CAFA54A22104765300C4A808 /* Build configuration list for PBXNativeTarget "OhJooYeoTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CAFA54A02104765300C4A808 /* Debug */,
+				CAFA54A12104765300C4A808 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
