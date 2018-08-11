@@ -6,7 +6,6 @@ target 'OhJooYeo' do
   use_frameworks!
 
   # Pods for OhJooYeo
-  pod 'RAMAnimatedTabBarController'
   pod 'SwiftyJSON'
   pod 'Alamofire'
   pod 'Alamofire-SwiftyJSON'

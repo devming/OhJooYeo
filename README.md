@@ -28,7 +28,7 @@ __port__:
 
 
 
-### <font color="blue"> POST /version/:date/:version </font>
+### <font color="blue"> POST /date/{date}/check/version/{version} </font>
 
 1. __Description__ 
    
@@ -43,7 +43,7 @@ __port__:
    - Request Parameter Description
    
 	```   
-	[ex] /version/2018-04-29/acb
+	[ex] /date/2018-04-29/check/version/acb
 	
 	Description: 버전(a - z): z로 갈수록 최신 버전
 	
@@ -332,7 +332,7 @@ __port__:
    ```
 
 
-### <font color="blue"> POST /launch/:date </font>
+### <font color="blue"> POST /launch/{date} </font>
 
 1. __Description__ 
    

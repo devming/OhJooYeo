@@ -14,21 +14,29 @@ struct Model {}
 extension Model {
     struct Version {
         var mainOrder: Worship
-        var advertisement: Advertisement
-        var music: Music
+        var advertisements: [Advertisement]
+        var music: Music?
         var currentVersion: String
         
         init?(json: JSON) {
-            
             guard let mainOrder = Worship(json: json["mainOrder"]) else {
                 return nil
             }
             self.mainOrder = mainOrder
             
-            guard let advertisement = Advertisement(json: json["advertisement"]) else {
+            guard let advertisementList = json["advertisement"].array else {
                 return nil
             }
-            self.advertisement = advertisement
+            
+            self.advertisements = [Advertisement]()
+            
+            for advertisementJson in advertisementList {
+                
+                guard let advertisement = Advertisement(json: advertisementJson) else {
+                    return nil
+                }
+                self.advertisements.append(advertisement)
+            }
             
             guard let music = Music(json: json["music"]) else {
                 return nil

@@ -18,16 +18,32 @@ protocol API {
 
 struct OhJooYeoAPI: API {
     func getRecentDatas(date: Date, version: String, handler: @escaping (() -> Void)) {
-        let parameters: Parameters = ["page": date, "version": version]
-        APIRouter.manager.request(APIRouter.getRecentDatas(date: date, version: version, parameters: parameters)).responseSwiftyJSON { (dataResponse: DataResponse<JSON>) in
+        let parameters: Parameters = ["version": version]
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy-MM-dd"
+        formatter.locale = Locale(identifier: "ko")
+        guard var dateString = formatter.string(for: date) else {
+            return
+        }
+        print(dateString)
+        dateString = "2018-08-04"
+        
+        APIRouter.manager.request(APIRouter.getRecentDatas(date: dateString, version: "", parameters: parameters)).responseSwiftyJSON { (dataResponse: DataResponse<JSON>) in
             
-            let result = dataResponse.map({ (json: JSON) -> Model.Version? in
-                guard let data = Model.Version(json: json) else {
-                    return nil
-                }
-                return data
-            })
-            print(result)
+            print("response result: \(dataResponse.data)")
+//            if dataResponse.error != nil {
+            
+                let result = dataResponse.map({ (json: JSON) -> Model.Version? in
+                    print("json data: \(json)")
+                    
+                    guard let data = Model.Version(json: json) else {
+                        return nil
+                    }
+                    return data
+                })
+//            } else {
+//                print("response error")
+//            }
         }
     }
     
@@ -41,9 +57,9 @@ struct OhJooYeoAPI: API {
                 print(response.result)
                 
                 // Show the downloaded image:
-                if let data = response.data, let image = UIImage(data: data) {
-                    handler(image)
-                }
+//                if let data = response.data, let image = UIImage(data: data) {
+//                    handler(image)
+//                }
             }
         }
     }
@@ -51,12 +67,12 @@ struct OhJooYeoAPI: API {
 }
 
 enum APIRouter {
-    case getRecentDatas(date: Date, version: String, parameters: Parameters)
+    case getRecentDatas(date: String, version: String, parameters: Parameters?)
     case getMusicImageDatas(parameters: Parameters)
 }
 
 extension APIRouter: URLRequestConvertible {
-    static let baseURLString: String = "https://ec2-13-125-210-249.ap-northeast-2.compute.amazonaws.com"
+    static let baseURLString: String = "http://ec2-52-79-233-2.ap-northeast-2.compute.amazonaws.com:8080"
     static let manager: Alamofire.SessionManager = {
         let configuration = URLSessionConfiguration.default
         configuration.timeoutIntervalForRequest = 30 // seconds
@@ -70,7 +86,7 @@ extension APIRouter: URLRequestConvertible {
     var method: HTTPMethod {
         switch self {
         case .getRecentDatas:
-            return .post
+            return .get
         case .getMusicImageDatas:
             return .post
         }
@@ -78,8 +94,9 @@ extension APIRouter: URLRequestConvertible {
 
     var path: String {
         switch self {
-        case let .getRecentDatas(date, version, _):
-            return "/version/\(date)/\(version)"
+        case let .getRecentDatas(date, _, _):
+            return "/version/\(date)"
+//            return "/date/\(date)/check/version\(version)"
         case .getMusicImageDatas(_):
             return "/music"
         }
@@ -90,7 +107,8 @@ extension APIRouter: URLRequestConvertible {
 
         var urlRequest = URLRequest(url: url.appendingPathComponent(path))
         urlRequest.httpMethod = method.rawValue
-
+        urlRequest.addValue("Content-Type", forHTTPHeaderField: "application/json;charset=UTF-8")
+        
         switch self {
         case let .getRecentDatas(_, _, parameters):
             urlRequest = try URLEncoding.default.encode(urlRequest, with: parameters)

@@ -115,15 +115,15 @@ extension MainViewController {
     func makeDummyDatas() {
         orderList = [Model.WorshipElement]()
         
-        orderList?.append(Model.WorshipElement(title: "경배와찬양", detail: "", presenter: "회중"))
-        orderList?.append(Model.WorshipElement(title: "기도", detail: "", presenter: "황대연"))
-        orderList?.append(Model.WorshipElement(title: "*성경봉독", detail: "요나서 2:7-10", presenter: "인도자"))
-        orderList?.append(Model.WorshipElement(title: "설교", detail: "감사의 노래", presenter: "김희선전도사"))
-        orderList?.append(Model.WorshipElement(title: "*헌금", detail: "", presenter: "표준범"))
-        orderList?.append(Model.WorshipElement(title: "*봉헌기도", detail: "", presenter: "설교자"))
-        orderList?.append(Model.WorshipElement(title: "성도의교제", detail: "", presenter: "인도자"))
-        orderList?.append(Model.WorshipElement(title: "*파송찬양", detail: "", presenter: "회중"))
-        orderList?.append(Model.WorshipElement(title: "*주기도문", detail: "", presenter: "회중"))
+//        orderList?.append(Model.WorshipElement(title: "경배와찬양", detail: "", presenter: "회중"))
+//        orderList?.append(Model.WorshipElement(title: "기도", detail: "", presenter: "황대연"))
+//        orderList?.append(Model.WorshipElement(title: "*성경봉독", detail: "요나서 2:7-10", presenter: "인도자"))
+//        orderList?.append(Model.WorshipElement(title: "설교", detail: "감사의 노래", presenter: "김희선전도사"))
+//        orderList?.append(Model.WorshipElement(title: "*헌금", detail: "", presenter: "표준범"))
+//        orderList?.append(Model.WorshipElement(title: "*봉헌기도", detail: "", presenter: "설교자"))
+//        orderList?.append(Model.WorshipElement(title: "성도의교제", detail: "", presenter: "인도자"))
+//        orderList?.append(Model.WorshipElement(title: "*파송찬양", detail: "", presenter: "회중"))
+//        orderList?.append(Model.WorshipElement(title: "*주기도문", detail: "", presenter: "회중"))
     }
     func makeDummyDatasForNextPresenter() {
         nextPresenters = Model.Worship.NextPresenter(mainPresenter: "정민기", prayer: "강윤호", offer: "박재현")

@@ -9,24 +9,33 @@
 import Foundation
 import SwiftyJSON
 
-struct Advertisement {
-    var title: String?
-    var description: String?
-    
-    init(title: String?, description: String?) {
-        self.title = title
-        self.description = description
-    }
-    
-    init?(json: JSON) {
-        guard let title = json["title"].string else {
-            return nil
-        }
-        self.title = title
+extension Model {
+    struct Advertisement {
+        var title: String
+        var description: String
+        var order: Int
         
-        guard let description = json["description"].string else {
-            return nil
+        init(title: String, description: String, order: Int) {
+            self.title = title
+            self.description = description
+            self.order = order
         }
-        self.description = description
+        
+        init?(json: JSON) {
+            guard let title = json["title"].string else {
+                return nil
+            }
+            self.title = title
+            
+            guard let description = json["description"].string else {
+                return nil
+            }
+            self.description = description
+            
+            guard let order = json["order"].int else {
+                return nil
+            }
+            self.order = order
+        }
     }
 }

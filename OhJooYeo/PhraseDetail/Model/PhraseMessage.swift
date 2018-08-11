@@ -8,13 +8,14 @@
 
 import Foundation
 
-struct PhraseMessage {
-    var phraseKey: String?
-    var phraseMessage: String?
-    
-    init(phraseKey: String?, phraseMessage: String?) {
-        self.phraseKey = phraseKey
-        self.phraseMessage = phraseMessage
+extension Model {
+    struct PhraseMessage {
+        var phraseKey: String?
+        var phraseMessage: String?
+        
+        init(phraseKey: String?, phraseMessage: String?) {
+            self.phraseKey = phraseKey
+            self.phraseMessage = phraseMessage
+        }
     }
 }
-

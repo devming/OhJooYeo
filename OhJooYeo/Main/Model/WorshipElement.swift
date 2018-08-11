@@ -14,11 +14,13 @@ extension Model {
         var title: String
         var detail: String
         var presenter: String
+        var order: Int
         
-        init(title: String, detail: String, presenter: String) {
+        init(title: String, detail: String, presenter: String, order: Int) {
             self.title = title
             self.detail = detail
             self.presenter = presenter
+            self.order = order
         }
         
         init?(json: JSON) {
@@ -27,15 +29,21 @@ extension Model {
             }
             self.title = title
             
-            guard let detail = json["detail"].string else {
-                return nil
+            if let detail = json["detail"].string {
+                self.detail = detail
+            } else {
+                self.detail = ""
             }
-            self.detail = detail
             
             guard let presenter = json["presenter"].string else {
                 return nil
             }
             self.presenter = presenter
+            
+            guard let order = json["order"].int else {
+                return nil
+            }
+            self.order = order
         }
     }
 }
