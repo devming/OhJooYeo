@@ -18,7 +18,7 @@ protocol API {
 
 struct OhJooYeoAPI: API {
     func getRecentDatas(date: Date, version: String, handler: @escaping (() -> Void)) {
-        let parameters: Parameters = ["version": version]
+        let parameters: Parameters = [:]
         let formatter = DateFormatter()
         formatter.dateFormat = "yyyy-MM-dd"
         formatter.locale = Locale(identifier: "ko")
@@ -28,9 +28,23 @@ struct OhJooYeoAPI: API {
         print(dateString)
         dateString = "2018-08-04"
         
-        APIRouter.manager.request(APIRouter.getRecentDatas(date: dateString, version: "", parameters: parameters)).responseSwiftyJSON { (dataResponse: DataResponse<JSON>) in
+        APIRouter.manager.request(APIRouter.getRecentDatas(date: dateString, version: version, parameters: parameters)).responseSwiftyJSON { (dataResponse: DataResponse<JSON>) in
             
-            print("response result: \(dataResponse.data)")
+            switch dataResponse.result
+            {
+            case .failure(let error):
+                if let data = dataResponse.data {
+                    print("Print Server Error: " + String(data: data, encoding: String.Encoding.utf8)!)
+                }
+                print(error)
+                
+            case .success(let value):
+                
+                print(value)
+            }
+            
+            
+            
 //            if dataResponse.error != nil {
             
                 let result = dataResponse.map({ (json: JSON) -> Model.Version? in
@@ -41,6 +55,8 @@ struct OhJooYeoAPI: API {
                     }
                     return data
                 })
+            
+            print("result:\(result)")
 //            } else {
 //                print("response error")
 //            }
@@ -72,7 +88,7 @@ enum APIRouter {
 }
 
 extension APIRouter: URLRequestConvertible {
-    static let baseURLString: String = "http://ec2-52-79-233-2.ap-northeast-2.compute.amazonaws.com:8080"
+    static let baseURLString: String = "http://ec2-52-79-233-2.ap-northeast-2.compute.amazonaws.com:8080/OhJooYeoMVC"
     static let manager: Alamofire.SessionManager = {
         let configuration = URLSessionConfiguration.default
         configuration.timeoutIntervalForRequest = 30 // seconds
@@ -86,7 +102,7 @@ extension APIRouter: URLRequestConvertible {
     var method: HTTPMethod {
         switch self {
         case .getRecentDatas:
-            return .get
+            return .post
         case .getMusicImageDatas:
             return .post
         }
@@ -94,8 +110,8 @@ extension APIRouter: URLRequestConvertible {
 
     var path: String {
         switch self {
-        case let .getRecentDatas(date, _, _):
-            return "/version/\(date)"
+        case let .getRecentDatas(date, version, _):
+            return "/date/\(date)/check/version/\(version)"
 //            return "/date/\(date)/check/version\(version)"
         case .getMusicImageDatas(_):
             return "/music"
@@ -111,7 +127,7 @@ extension APIRouter: URLRequestConvertible {
         
         switch self {
         case let .getRecentDatas(_, _, parameters):
-            urlRequest = try URLEncoding.default.encode(urlRequest, with: parameters)
+            urlRequest = try JSONEncoding.default.encode(urlRequest, with: parameters)
         case let .getMusicImageDatas(parameters):
             urlRequest = try URLEncoding.default.encode(urlRequest, with: parameters)
         }

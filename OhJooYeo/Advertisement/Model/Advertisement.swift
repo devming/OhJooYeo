@@ -27,7 +27,7 @@ extension Model {
             }
             self.title = title
             
-            guard let description = json["description"].string else {
+            guard let description = json["content"].string else {
                 return nil
             }
             self.description = description

@@ -101,12 +101,12 @@ __port__:
 		"advertisement": [
 				{
 					"title": "광고 소식1",
-					"contents":"광고 내용1",
+					"content":"광고 내용1",
                 	"order": (integer값 - 광고 순서1)
 				},
 				{
 					"title": "광고 소식2",
-					"contents": "광고 내용2",
+					"content": "광고 내용2",
                  "order": (integer값 - 광고 순서2)
 				},
 				...

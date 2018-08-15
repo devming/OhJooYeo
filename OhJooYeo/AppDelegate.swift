@@ -23,12 +23,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             
         }
         
-//        Alamofire.request("http://ec2-52-79-233-2.ap-northeast-2.compute.amazonaws.com:8080/version/2018-08-04?version=***", method: .get, parameters: nil, encoding: ParameterEncoding.encode("UTF-8"), headers: ["Content-Type":"application/json"]).responseJSON { (response) in
-//            response.result.ifSuccess {
-//                print("SUCCESS: \(response.result.value!)")
-//            }
-//        }
-        
         return true
     }
 
