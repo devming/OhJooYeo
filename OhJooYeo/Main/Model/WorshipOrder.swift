@@ -10,7 +10,7 @@ import Foundation
 import SwiftyJSON
 
 extension Model {
-    struct WorshipElement {
+    struct WorshipOrder {
         var title: String
         var detail: String
         var presenter: String

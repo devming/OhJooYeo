@@ -13,7 +13,7 @@ extension Model {
     struct Worship {
         var mainPresenter: String
         var nextPresenter: NextPresenter
-        var orders: [WorshipElement]
+        var worshipOrders: [WorshipOrder]
         
         struct NextPresenter {
             var mainPresenter: String
@@ -55,18 +55,18 @@ extension Model {
             }
             self.nextPresenter = nextPresenter
             
-            guard let orderList = json["order"].array else {
+            guard let orderList = json["worshipOrder"].array else {
                 return nil
             }
             
-            self.orders = [WorshipElement]()
+            self.worshipOrders = [WorshipOrder]()
             
             for orderJson in orderList {
                 
-                guard let order = WorshipElement(json: orderJson) else {
+                guard let order = WorshipOrder(json: orderJson) else {
                     return nil
                 }
-                self.orders.append(order)
+                self.worshipOrders.append(order)
             }
         }
     }

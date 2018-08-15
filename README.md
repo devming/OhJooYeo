@@ -10,6 +10,8 @@ __1__: 웹 관리자 페이지에서 관리자가 악보 입력할 때, 제목, 
 
 __2__: 이미지 Request, Response 
 
+__3__: 주보가 등록된 날짜 리스트를 불러오는 API -> Request(No Param) / Response([date + worship_id])
+
 ## Tech Stack(include libraries) ##
 
 Xcode, Git, Swift4, CoreData, Alamofire, SwiftyJSON, 
@@ -28,22 +30,13 @@ __port__:
 
 
 
-### <font color="blue"> POST /date/{date}/check/version/{version} </font>
+### <font color="blue"> POST /worship-id/{id}/check/version/{version} </font>
 
 1. __Description__ 
    
-   현재 날짜 기준 최신 주보의 버전을 가져온다. 앱에 저장되어 있는 버전이 응답받은 서버의 버전과 다르면 데이터 새로고침을 위한 API를 호출하고, 같다면 API호출 없이 내부적으로 저장된 데이터를 사용한다.
-   
-2. __Headers__
-   
-   Content-Type: application/json
-
-3. __Body__
-   
-   - Request Parameter Description
-   
-	```   
-	[ex] /date/2018-04-29/check/version/acb
+   현재 날짜 기준 최신 주보의 버전을 가져온다.-> 예배 id에 따라 주보의 버전을 가져온다.-> 앱에 저장되어 있는 버전이 응답받은 서버의 버전과 다르면 데이터 새로고침을 위한 API를 호출하고, 같다면 API호출 없이 내부적으로 저장된 데이터를 사용한다.
+   ```   
+	[ex] /date/2018-04-29/worship-id/36-09/check/version/acb
 	
 	Description: 버전(a - z): z로 갈수록 최신 버전
 	
@@ -55,8 +48,14 @@ __port__:
 	
 	*: 최초 요청
    ```
+   
+2. __Headers__
+   
+   Content-Type: application/json
 
-
+3. __Body__
+   
+   - No Parameter
 
 4. __Response__
 
@@ -73,66 +72,34 @@ __port__:
     
    ```
 	{
-		"mainOrder": {
-		   "mainPresenter": "인도자 이름",
-		   "order":
-				[
-					{
-						"title": "순서1 - 순서 1에 해당하는 제목",
-						"detail": "순서1 - 순서 1에 해당하는 상세 항목",
-						"presenter": "순서1 - 순서 1에 해당하는 대표자",
-						"order": (integer값 - 예배 순서)
-					}, 
-					{
-						"title": "순서2 - 순서 2에 해당하는 제목",
-						"detail": "순서2 - 순서 2에 해당하는 상세 항목",
-						"presenter": "순서2 - 순서 2에 해당하는 대표자",
-						"order": (integer값 - 예배 순서)
-					}, 
-					...
-				],
-			"nextPresenter": 
-				{
-					"mainPresenter":"다음주 인도자 이름",
-					"prayer":"다음주 기도자 이름",
-					"offer":"다음주 헌금위원 이름"
-				}
+		"worship": {
+		   "mainPresenter": "인도자 이름" [String],
+		   "worshipOrder": [{
+				"title": "순서1 - 순서 1에 해당하는 제목" [String],
+				"detail": "순서1 - 순서 1에 해당하는 상세 항목" [String],
+				"presenter": "순서1 - 순서 1에 해당하는 대표자" [String],
+				"order": 예배 순서 [Int]
+			}],
+			"nextPresenter": {
+				"mainPresenter":"다음주 인도자 이름",
+				"prayer":"다음주 기도자 이름",
+				"offer":"다음주 헌금위원 이름"
+			}
 		},
-		"advertisement": [
-				{
-					"title": "광고 소식1",
-					"content":"광고 내용1",
-                	"order": (integer값 - 광고 순서1)
-				},
-				{
-					"title": "광고 소식2",
-					"content": "광고 내용2",
-                 "order": (integer값 - 광고 순서2)
-				},
-				...
-		],	
+		"advertisement": [{
+				"title": "광고 소식1" [String],
+				"content":"광고 내용1" [String],
+            	"order": 광고 순서 [Int]
+		}],	
 		"music": [{
-				"id": 악보 이미지 데이터 index값,
-				"title": "찬양 제목1",
-				"imageName": "악보 이미지 파일 이름.확장자",
-				"category": 카테고리 번호(자세한 종류는 아래 category enum 참고)
-				"order": (integer값 - 악보 순서1)
-		},
-		{
-				"id": 악보 이미지 데이터 index값,
-				"title": "찬양 제목2",
-				"imageName": "악보 이미지 파일 이름.확장자",
-				"category": 카테고리 번호(자세한 종류는 아래 category enum 참고)
-				"order": (integer값 - 악보 순서2)
-		},
-		{
-				"id": 악보 이미지 데이터 index값,
-				"title": "찬양 제목3",
-				"imageName": "악보 이미지 파일 이름.확장자",
-				"category": 카테고리 번호(자세한 종류는 아래 category enum 참고)
-				"order": (integer값 - 악보 순서3)
+				"id": 악보 이미지 데이터 index값 [Int],
+				"title": "찬양 제목1" [String],
+				"imageName": "악보 이미지 파일 이름.확장자" [String],
+				"category": 카테고리 번호(자세한 종류는 아래 category enum 참고) [String]
+				"order": 악보 순서 [Int]
 		}],
-       "currentVersion": "현재 서버에서의 버전 정보"
+       "currentVersion": "현재 서버에서의 버전 정보" [String],
+       "worshipDate": "예배 날짜" [String]
 	}
    ```
    
@@ -149,14 +116,14 @@ __port__:
    
    ```
    {
-       "mainOrder": {
+       "worship": {
            "nextPresenter": {
                "offer": "서동주",
                "prayer": "박요한",
                "mainPresenter": "김한나"
            },
            "mainPresenter": "박요한",
-           "order": [
+           "worshipOrder": [
                {
                    "presenter": "회중",
                    "title": "경배와찬양",
@@ -253,7 +220,8 @@ __port__:
 				"category": 2
 				"order": 1
 		}],
-       "currentVersion": "bbb"  <- test용!
+       "currentVersion": "bbb",  <- test용!
+       "worshipDate": "2018-08-04"
    }
    ```
    
@@ -263,6 +231,44 @@ __port__:
 	worship, phrase, advertisement, praise가 null이라면 최신버전인 것이다.
    ```
 	
+
+
+### <font color="blue"> GET /worship-list </font>
+
+1. __Description__ 
+   
+   현재 주보 정보가 있는 날짜와 worship id에 대한 리스트 정보를 불러온다.
+   
+2. __Headers__
+   
+   Content-Type: application/json
+
+3. __Body__
+   
+   null
+
+4. __Response__
+
+	- Response Code
+	
+    Status Code       | Response         
+    ------------|---------- 
+    200 | Operation succeeded.
+    400 | Unknown error. 
+    404 | Data doesn't exist error.
+    405 | Invalid URL.
+
+    - Response Data
+    
+   ```json 
+	[{
+		"date": "주보 정보가 있는 날짜" [String],
+		"worshipId": "예배 별 ID 값" [String]
+	}]
+   ```
+
+
+
 ### <font color="green"> POST /order </font>
 
 1. __Description__ 
@@ -330,7 +336,6 @@ __port__:
 			}
 	}
    ```
-
 
 ### <font color="blue"> POST /launch/{date} </font>
 

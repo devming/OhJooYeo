@@ -19,8 +19,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         DbManager.shared.setup(with: "OhJooYeo")    // OhJooYeo.xcdatamodeld의 이름
         
-        App.api.getRecentDatas(date: Date(), version: "***") {
-            
+        App.api.getRecentDatas(date: Date(), version: "***") { (data) in
+            guard let data = data else {
+                return
+            }
+            DbManager.shared.addWorship(mainPresenter: data.worship.mainPresenter, worshipOrder: data.worship.worshipOrders, nextPresenter: data.worship.nextPresenter)
         }
         
         return true

@@ -10,7 +10,7 @@ import UIKit
 
 class MainViewController: UIViewController {
 
-    var orderList: [Model.WorshipElement]?
+    var orderList: [Model.WorshipOrder]?
     var nextPresenters: Model.Worship.NextPresenter?
     
     @IBOutlet weak var listTableView: UITableView!
@@ -113,7 +113,7 @@ extension MainViewController {
 /// Dummy datas
 extension MainViewController {
     func makeDummyDatas() {
-        orderList = [Model.WorshipElement]()
+        orderList = [Model.WorshipOrder]()
         
 //        orderList?.append(Model.WorshipElement(title: "경배와찬양", detail: "", presenter: "회중"))
 //        orderList?.append(Model.WorshipElement(title: "기도", detail: "", presenter: "황대연"))

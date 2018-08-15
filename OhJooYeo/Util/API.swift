@@ -12,12 +12,12 @@ import SwiftyJSON
 import Alamofire_SwiftyJSON
 
 protocol API {
-    func getRecentDatas(date: Date, version: String, handler: @escaping (()-> Void)) -> Void
+    func getRecentDatas(date: Date, version: String, handler: @escaping ((Model.Version?)-> Void)) -> Void
     func getMusicImageDatas(musicImageId: Int, handler: @escaping ((UIImage)-> Void)) -> Void
 }
 
 struct OhJooYeoAPI: API {
-    func getRecentDatas(date: Date, version: String, handler: @escaping (() -> Void)) {
+    func getRecentDatas(date: Date, version: String, handler: @escaping ((Model.Version?) -> Void)) {
         let parameters: Parameters = [:]
         let formatter = DateFormatter()
         formatter.dateFormat = "yyyy-MM-dd"
@@ -38,15 +38,7 @@ struct OhJooYeoAPI: API {
                 }
                 print(error)
                 
-            case .success(let value):
-                
-                print(value)
-            }
-            
-            
-            
-//            if dataResponse.error != nil {
-            
+            case .success:
                 let result = dataResponse.map({ (json: JSON) -> Model.Version? in
                     print("json data: \(json)")
                     
@@ -55,11 +47,11 @@ struct OhJooYeoAPI: API {
                     }
                     return data
                 })
+                if let responseWholeDatas = result.value {
+                    handler(responseWholeDatas)
+                }
+            }
             
-            print("result:\(result)")
-//            } else {
-//                print("response error")
-//            }
         }
     }
     

@@ -13,16 +13,16 @@ struct Model {}
 
 extension Model {
     struct Version {
-        var mainOrder: Worship
+        var worship: Worship
         var advertisements: [Advertisement]
         var music: Music?
         var currentVersion: String
         
         init?(json: JSON) {
-            guard let mainOrder = Worship(json: json["mainOrder"]) else {
+            guard let worship = Worship(json: json["worship"]) else {
                 return nil
             }
-            self.mainOrder = mainOrder
+            self.worship = worship
             
             guard let advertisementList = json["advertisement"].array else {
                 return nil
@@ -38,10 +38,9 @@ extension Model {
                 self.advertisements.append(advertisement)
             }
             
-            guard let music = Music(json: json["music"]) else {
-                return nil
+            if let music = Music(json: json["music"]) {
+                self.music = music
             }
-            self.music = music
             
             guard let currentVersion = json["currentVersion"].string else {
                 return nil

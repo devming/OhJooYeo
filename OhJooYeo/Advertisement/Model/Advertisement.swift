@@ -22,10 +22,11 @@ extension Model {
         }
         
         init?(json: JSON) {
-            guard let title = json["title"].string else {
-                return nil
+            if let title = json["title"].string {
+                self.title = title
+            } else {
+                self.title = ""
             }
-            self.title = title
             
             guard let description = json["content"].string else {
                 return nil
