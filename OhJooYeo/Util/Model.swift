@@ -13,39 +13,62 @@ struct Model {}
 
 extension Model {
     struct Version {
-        var worship: Worship
-        var advertisements: [Advertisement]
+        var worship: Worship?
+        var advertisements: [Advertisement]?
         var music: Music?
         var currentVersion: String
+        var worshipDate: String
         
         init?(json: JSON) {
-            guard let worship = Worship(json: json["worship"]) else {
-                return nil
-            }
-            self.worship = worship
-            
-            guard let advertisementList = json["advertisement"].array else {
-                return nil
+            if let worship = Worship(json: json[Name.worship]) {
+                self.worship = worship
+            } else {
+                self.worship = nil
             }
             
-            self.advertisements = [Advertisement]()
-            
-            for advertisementJson in advertisementList {
+            if let advertisementList = json[Name.advertisement].array {
                 
-                guard let advertisement = Advertisement(json: advertisementJson) else {
-                    return nil
+                self.advertisements = [Advertisement]()
+                
+                for advertisementJson in advertisementList {
+                    
+                    guard let advertisement = Advertisement(json: advertisementJson) else {
+                        return nil
+                    }
+                    self.advertisements?.append(advertisement)
                 }
-                self.advertisements.append(advertisement)
+            } else {
+                self.advertisements = nil
             }
             
-            if let music = Music(json: json["music"]) {
+            if let music = Music(json: json[Name.music]) {
                 self.music = music
+            } else {
+                self.music = nil
             }
             
-            guard let currentVersion = json["currentVersion"].string else {
-                return nil
+            if let currentVersion = json[Name.currentVersion].string {
+                self.currentVersion = currentVersion
+            } else {
+                self.currentVersion = ""
             }
-            self.currentVersion = currentVersion
+            
+            if let worshipDate = json[Name.worshipDate].string {
+                self.worshipDate = worshipDate
+            } else {
+                self.worshipDate = ""
+            }
         }
+    }
+    
+}
+
+extension Model.Version {
+    struct Name {
+        static let worship = "worship"
+        static let advertisement = "advertisement"
+        static let music = "music"
+        static let currentVersion = "currentVersion"
+        static let worshipDate = "worshipDate"
     }
 }

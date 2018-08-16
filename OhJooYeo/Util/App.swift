@@ -9,5 +9,5 @@
 import Foundation
 
 struct App {
-    static var api: API = OhJooYeoAPI()
+    static var api: API = APIService()
 }

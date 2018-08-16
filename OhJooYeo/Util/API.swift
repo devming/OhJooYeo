@@ -12,23 +12,18 @@ import SwiftyJSON
 import Alamofire_SwiftyJSON
 
 protocol API {
-    func getRecentDatas(date: Date, version: String, handler: @escaping ((Model.Version?)-> Void)) -> Void
+    func getWorshipList(handler: @escaping ()-> Void) -> Void
+    func getRecentDatas(worshipId: String, version: String, handler: @escaping ((Model.Version?)-> Void)) -> Void
     func getMusicImageDatas(musicImageId: Int, handler: @escaping ((UIImage)-> Void)) -> Void
 }
 
-struct OhJooYeoAPI: API {
-    func getRecentDatas(date: Date, version: String, handler: @escaping ((Model.Version?) -> Void)) {
-        let parameters: Parameters = [:]
-        let formatter = DateFormatter()
-        formatter.dateFormat = "yyyy-MM-dd"
-        formatter.locale = Locale(identifier: "ko")
-        guard var dateString = formatter.string(for: date) else {
-            return
-        }
-        print(dateString)
-        dateString = "2018-08-04"
+struct APIService: API {
+    func getWorshipList(handler: @escaping ()-> Void) {
         
-        APIRouter.manager.request(APIRouter.getRecentDatas(date: dateString, version: version, parameters: parameters)).responseSwiftyJSON { (dataResponse: DataResponse<JSON>) in
+    }
+    
+    func getRecentDatas(worshipId: String, version: String, handler: @escaping ((Model.Version?) -> Void)) {
+        APIRouter.manager.request(APIRouter.getRecentDatas(worshipId: worshipId, version: version, parameters: nil)).responseSwiftyJSON { (dataResponse: DataResponse<JSON>) in
             
             switch dataResponse.result
             {
@@ -75,8 +70,9 @@ struct OhJooYeoAPI: API {
 }
 
 enum APIRouter {
-    case getRecentDatas(date: String, version: String, parameters: Parameters?)
-    case getMusicImageDatas(parameters: Parameters)
+    case getWorshipList()
+    case getRecentDatas(worshipId: String, version: String, parameters: Parameters?)
+    case getMusicImageDatas(parameters: Parameters?)
 }
 
 extension APIRouter: URLRequestConvertible {
@@ -93,6 +89,8 @@ extension APIRouter: URLRequestConvertible {
 
     var method: HTTPMethod {
         switch self {
+        case .getWorshipList():
+            return .get
         case .getRecentDatas:
             return .post
         case .getMusicImageDatas:
@@ -102,9 +100,10 @@ extension APIRouter: URLRequestConvertible {
 
     var path: String {
         switch self {
-        case let .getRecentDatas(date, version, _):
-            return "/date/\(date)/check/version/\(version)"
-//            return "/date/\(date)/check/version\(version)"
+        case .getWorshipList():
+            return "/worship-list"
+        case let .getRecentDatas(worshipId, version, _):
+            return "/worship-id/\(worshipId)/check/version/\(version)"
         case .getMusicImageDatas(_):
             return "/music"
         }
@@ -118,6 +117,8 @@ extension APIRouter: URLRequestConvertible {
         urlRequest.addValue("Content-Type", forHTTPHeaderField: "application/json;charset=UTF-8")
         
         switch self {
+        case .getWorshipList():
+            urlRequest = try URLEncoding.default.encode(urlRequest, with: nil)
         case let .getRecentDatas(_, _, parameters):
             urlRequest = try JSONEncoding.default.encode(urlRequest, with: parameters)
         case let .getMusicImageDatas(parameters):
