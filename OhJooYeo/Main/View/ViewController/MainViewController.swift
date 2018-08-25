@@ -9,9 +9,8 @@
 import UIKit
 
 class MainViewController: UIViewController {
-
-    var orderList: [Model.WorshipOrder]?
-    var nextPresenters: Model.Worship.NextPresenter?
+    
+    var worshipInfo: WorshipCellData?
     
     @IBOutlet weak var listTableView: UITableView!
     @IBOutlet weak var dateLabel: UILabel!
@@ -20,6 +19,9 @@ class MainViewController: UIViewController {
         super.viewDidLoad()
         
         self.listTableView.rowHeight = UITableViewAutomaticDimension
+        if let worship = Model.shared?.worship {
+            self.worshipInfo = WorshipCellData(worship: worship)
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -27,8 +29,6 @@ class MainViewController: UIViewController {
         
         makeDummyDatas()
         makeDummyDatasForNextPresenter()
-        
-        showDateData()
         
         self.listTableView.reloadData()
     }
@@ -38,8 +38,7 @@ class MainViewController: UIViewController {
 
 extension MainViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        
-        guard let orderList = self.orderList else {
+        guard let orderList = self.worshipInfo?.orderList else {
             return 0
         }
         
@@ -47,22 +46,26 @@ extension MainViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let orderList = self.orderList, let nextPresenters = self.nextPresenters else {
+        guard let orderList = self.worshipInfo?.orderList, let nextPresenters = self.worshipInfo?.nextPresenters else {
             return UITableViewCell()
         }
         
         switch indexPath.row {
         case 0..<orderList.count:
-            let cell = tableView.dequeueReusableCell(withIdentifier: OrderTableViewCell.cellName) as! OrderTableViewCell
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: OrderTableViewCell.cellName) as? OrderTableViewCell else {
+                return UITableViewCell()
+            }
             
             cell.titleLabel.text = orderList[indexPath.row].title
             cell.detailLabel.text = orderList[indexPath.row].detail
             cell.presenterLabel.text = orderList[indexPath.row].presenter
             
             return cell
-            
+
         case orderList.count:
-            let cell = tableView.dequeueReusableCell(withIdentifier: NextPresenterTableViewCell.cellName) as! NextPresenterTableViewCell
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: NextPresenterTableViewCell.cellName) as? NextPresenterTableViewCell else {
+                return UITableViewCell()
+            }
             
             cell.mainPresenterLabel.text = nextPresenters.mainPresenter
             cell.prayerLabel.text = nextPresenters.prayer
@@ -80,7 +83,7 @@ extension MainViewController: UITableViewDataSource {
 extension MainViewController: UITableViewDelegate {
    
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        if indexPath.row == orderList?.count {
+        if indexPath.row == self.worshipInfo?.orderList?.count {
             return 128
         }
         
@@ -90,30 +93,13 @@ extension MainViewController: UITableViewDelegate {
 
 /// Custom Methods
 extension MainViewController {
-    func showDateData() {
-        let formatter = DateFormatter()
-        formatter.dateStyle = .long
-        formatter.timeStyle = .none
-        formatter.locale = Locale(identifier: "ko-KR")
-        let date = Date()   // TODO: 예배 날짜로 바꿔야함
-        guard let dateString = formatter.string(for: date) else {
-            return
-        }
-        
-        // TODO: 예배 날짜로 바꿔야함
-        let weekOfYear = Calendar.current.component(.weekOfYear, from: Date.init(timeIntervalSinceNow: 0))
-
-        // TODO: 36권을 호출해서 받아야함.
-        self.dateLabel.text = "제 \(36)권 제 \(weekOfYear)호 \(dateString)"
-        
-        
-    }
+    
 }
 
 /// Dummy datas
 extension MainViewController {
     func makeDummyDatas() {
-        orderList = [Model.WorshipOrder]()
+        self.worshipInfo?.orderList = [Model.WorshipOrder]()
         
 //        orderList?.append(Model.WorshipElement(title: "경배와찬양", detail: "", presenter: "회중"))
 //        orderList?.append(Model.WorshipElement(title: "기도", detail: "", presenter: "황대연"))
@@ -126,7 +112,7 @@ extension MainViewController {
 //        orderList?.append(Model.WorshipElement(title: "*주기도문", detail: "", presenter: "회중"))
     }
     func makeDummyDatasForNextPresenter() {
-        nextPresenters = Model.Worship.NextPresenter(mainPresenter: "정민기", prayer: "강윤호", offer: "박재현")
+        self.worshipInfo?.nextPresenters = Model.Worship.NextPresenter(mainPresenter: "정민기", prayer: "강윤호", offer: "박재현")
     }
 }
 

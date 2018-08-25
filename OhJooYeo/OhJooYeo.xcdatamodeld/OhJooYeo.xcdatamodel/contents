@@ -29,7 +29,7 @@
     </entity>
     <entity name="WorshipOrder" representedClassName="WorshipOrderEntity" syncable="YES" codeGenerationType="class">
         <attribute name="detail" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="order" optional="YES" attributeType="Decimal" defaultValueString="0" syncable="YES"/>
+        <attribute name="order" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="presenter" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="worship" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Worship" inverseName="worshipOrder" inverseEntity="Worship" syncable="YES"/>

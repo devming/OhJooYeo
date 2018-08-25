@@ -14,5 +14,4 @@ class NextPresenterTableViewCell: UITableViewCell {
     @IBOutlet weak var mainPresenterLabel: UILabel!
     @IBOutlet weak var prayerLabel: UILabel!
     @IBOutlet weak var offerLabel: UILabel!
-    
 }

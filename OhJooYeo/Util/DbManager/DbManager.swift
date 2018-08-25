@@ -37,13 +37,13 @@ class DbManager{    // 싱글톤으로 구현할 것임
     }()
     
     var defaultContext: NSManagedObjectContext {
-        return persistentContainer.viewContext
+        return self.persistentContainer.viewContext
     }
     
     // MARK: - Core Data Saving
     func saveContext () {
         
-        let context = persistentContainer.viewContext
+        let context = self.persistentContainer.viewContext
         if context.hasChanges {
             do {
                 try context.save()  // save메소드만 호출하면 다 저장된다.
@@ -56,7 +56,7 @@ class DbManager{    // 싱글톤으로 구현할 것임
     
     /// DELETE
     func delete(_ obj: NSManagedObject) {
-        defaultContext.delete(obj)          /// context의 모든 작업은 메모리에서 이루어진다.
+        self.defaultContext.delete(obj)          /// context의 모든 작업은 메모리에서 이루어진다.
         saveContext()   /// 이걸 호출해야만!!! 실제로 지워진다.    context를 save해야 file에 저장이 된다.
     }
 }

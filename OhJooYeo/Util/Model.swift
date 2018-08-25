@@ -9,7 +9,9 @@
 import Foundation
 import SwiftyJSON
 
-struct Model {}
+struct Model {
+    static var shared: Version?
+}
 
 extension Model {
     struct Version {
