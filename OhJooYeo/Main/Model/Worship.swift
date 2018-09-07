@@ -14,6 +14,11 @@ extension Model {
         var mainPresenter: String
         var nextPresenter: NextPresenter
         var worshipOrders: [WorshipOrder]
+        var currentVersion: String
+        var worshipDate: String
+        var worshipId: String
+        var advertisements: [Advertisement]?
+        var music: Music?
         
         struct NextPresenter {
             var mainPresenter: String
@@ -68,6 +73,62 @@ extension Model {
                 }
                 self.worshipOrders.append(order)
             }
+            
+            if let currentVersion = json[Name.currentVersion].string {
+                self.currentVersion = currentVersion
+            } else {
+                self.currentVersion = Model.Constant.emptyString
+            }
+            
+            if let worshipDate = json[Name.worshipDate].string {
+                self.worshipDate = worshipDate
+            } else {
+                self.worshipDate = Model.Constant.emptyString
+            }
+            
+            if let worshipId = json[Name.worshipId].string {
+                self.worshipId = worshipId
+            } else {
+                self.worshipId = Model.Constant.emptyString
+            }
+            
+            if let advertisementList = json[Name.advertisement].array {
+                
+                self.advertisements = [Advertisement]()
+                
+                for advertisementJson in advertisementList {
+                    
+                    guard let advertisement = Advertisement(json: advertisementJson) else {
+                        return nil
+                    }
+                    self.advertisements?.append(advertisement)
+                }
+            } else {
+                self.advertisements = nil
+            }
+            
+            if let music = Music(json: json[Name.music]) {
+                self.music = music
+            } else {
+                self.music = nil
+            }
+            
+            if let currentVersion = json["currentVersion"].string {
+                GlobalState.shared.version = currentVersion
+            }
         }
+    }
+}
+
+extension Model.Worship {
+    struct Name {
+        static let mainPresenter = "mainPresenter"
+        static let nextPresenter = "nextPresenter"
+        static let worshipOrders = "worshipOrders"
+        static let currentVersion = "currentVersion"
+        static let worshipDate = "worshipDate"
+        static let worshipId = "worshipId"
+        static let advertisement = "advertisement"
+        static let music = "music"
     }
 }

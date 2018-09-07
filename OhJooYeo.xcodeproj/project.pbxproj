@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		ABE5FDB09BF82363A5E976B2 /* Pods_OhJooYeo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2DC05C92859A22DAA1E8A736 /* Pods_OhJooYeo.framework */; };
+		CA050141214196BC00B89F3D /* WorshipIdListData.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA050140214196BC00B89F3D /* WorshipIdListData.swift */; };
 		CA0AB21620C23C190028BC69 /* AdvertisementTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA0AB21520C23C190028BC69 /* AdvertisementTableViewCell.swift */; };
 		CA0AB21820C23ECE0028BC69 /* Advertisement.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA0AB21720C23ECE0028BC69 /* Advertisement.swift */; };
 		CA22838120943F2A0023B3C1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA22838020943F2A0023B3C1 /* AppDelegate.swift */; };
@@ -19,27 +20,27 @@
 		CA3080C92130FDB600255A7E /* UtilFunction.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA3080C82130FDB600255A7E /* UtilFunction.swift */; };
 		CA3080CC2130FE0400255A7E /* ConstantString.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA3080CB2130FE0400255A7E /* ConstantString.swift */; };
 		CA3080CE2130FE1600255A7E /* ExtensionNotificationName.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA3080CD2130FE1600255A7E /* ExtensionNotificationName.swift */; };
+		CA42ED10213A36F400F9BB6E /* WorshipIdDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA42ED0F213A36F400F9BB6E /* WorshipIdDate.swift */; };
 		CA4FA40420B926C600BE6730 /* PhraseDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA4FA40320B926C600BE6730 /* PhraseDetailViewController.swift */; };
 		CA4FA40720B926E400BE6730 /* AdvertisementViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA4FA40620B926E400BE6730 /* AdvertisementViewController.swift */; };
 		CA4FA40920B9270800BE6730 /* PraiseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA4FA40820B9270800BE6730 /* PraiseViewController.swift */; };
 		CA4FA40F20B9406300BE6730 /* OrderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA4FA40E20B9406300BE6730 /* OrderTableViewCell.swift */; };
 		CA4FA41220B940D900BE6730 /* NextPresenterTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA4FA41120B940D900BE6730 /* NextPresenterTableViewCell.swift */; };
 		CA4FA41520B9420400BE6730 /* WorshipOrder.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA4FA41420B9420400BE6730 /* WorshipOrder.swift */; };
-		CA50DCCC20F0623D00C441A0 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA50DCCB20F0623D00C441A0 /* Model.swift */; };
 		CA70536220BAECAF00815D37 /* PhraseDetailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA70536120BAECAF00815D37 /* PhraseDetailTableViewCell.swift */; };
 		CA70536420BAEDBC00815D37 /* PhraseMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA70536320BAEDBC00815D37 /* PhraseMessage.swift */; };
 		CA7A426A20B94C080097D99E /* Worship.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7A426920B94C080097D99E /* Worship.swift */; };
 		CAA6B99E20F9CAFB00E802BC /* Music.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAA6B99D20F9CAFB00E802BC /* Music.swift */; };
 		CAE645E42123C19700B109B7 /* DbEntityNameConstant.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAE645E32123C19700B109B7 /* DbEntityNameConstant.swift */; };
-		CAE645E62123C45F00B109B7 /* WorshipOrder+DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAE645E52123C45F00B109B7 /* WorshipOrder+DataManager.swift */; };
+		CAE645E62123C45F00B109B7 /* WorshipOrderDAO.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAE645E52123C45F00B109B7 /* WorshipOrderDAO.swift */; };
 		CAFA549C2104765300C4A808 /* OhJooYeoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAFA549B2104765300C4A808 /* OhJooYeoTests.swift */; };
 		CAFB287520D4D47200B72722 /* DbManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAFB287420D4D47200B72722 /* DbManager.swift */; };
-		CAFB287720D4D61600B72722 /* PhraseMessage+DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAFB287620D4D61600B72722 /* PhraseMessage+DataManager.swift */; };
+		CAFB287720D4D61600B72722 /* PhraseMessageDAO.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAFB287620D4D61600B72722 /* PhraseMessageDAO.swift */; };
 		CAFB287920D4E6F400B72722 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAFB287820D4E6F400B72722 /* API.swift */; };
 		CAFB287B20D4E7CA00B72722 /* App.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAFB287A20D4E7CA00B72722 /* App.swift */; };
 		CAFB287D20D4E7DE00B72722 /* GlobalState.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAFB287C20D4E7DE00B72722 /* GlobalState.swift */; };
 		CAFB288020D4EF1F00B72722 /* OhJooYeo.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = CAFB287E20D4EF1F00B72722 /* OhJooYeo.xcdatamodeld */; };
-		CAFB288220D4F13A00B72722 /* Worship+DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAFB288120D4F13900B72722 /* Worship+DataManager.swift */; };
+		CAFB288220D4F13A00B72722 /* WorshipDAO.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAFB288120D4F13900B72722 /* WorshipDAO.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,6 +56,7 @@
 /* Begin PBXFileReference section */
 		2DC05C92859A22DAA1E8A736 /* Pods_OhJooYeo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_OhJooYeo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BFB1C7F459FC8559E66D199F /* Pods-OhJooYeo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OhJooYeo.release.xcconfig"; path = "Pods/Target Support Files/Pods-OhJooYeo/Pods-OhJooYeo.release.xcconfig"; sourceTree = "<group>"; };
+		CA050140214196BC00B89F3D /* WorshipIdListData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorshipIdListData.swift; sourceTree = "<group>"; };
 		CA0AB21520C23C190028BC69 /* AdvertisementTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdvertisementTableViewCell.swift; sourceTree = "<group>"; };
 		CA0AB21720C23ECE0028BC69 /* Advertisement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Advertisement.swift; sourceTree = "<group>"; };
 		CA22837D20943F290023B3C1 /* OhJooYeo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OhJooYeo.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -68,29 +70,29 @@
 		CA3080C82130FDB600255A7E /* UtilFunction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UtilFunction.swift; sourceTree = "<group>"; };
 		CA3080CB2130FE0400255A7E /* ConstantString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConstantString.swift; sourceTree = "<group>"; };
 		CA3080CD2130FE1600255A7E /* ExtensionNotificationName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionNotificationName.swift; sourceTree = "<group>"; };
+		CA42ED0F213A36F400F9BB6E /* WorshipIdDate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorshipIdDate.swift; sourceTree = "<group>"; };
 		CA4FA40320B926C600BE6730 /* PhraseDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhraseDetailViewController.swift; sourceTree = "<group>"; };
 		CA4FA40620B926E400BE6730 /* AdvertisementViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdvertisementViewController.swift; sourceTree = "<group>"; };
 		CA4FA40820B9270800BE6730 /* PraiseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PraiseViewController.swift; sourceTree = "<group>"; };
 		CA4FA40E20B9406300BE6730 /* OrderTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderTableViewCell.swift; sourceTree = "<group>"; };
 		CA4FA41120B940D900BE6730 /* NextPresenterTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NextPresenterTableViewCell.swift; sourceTree = "<group>"; };
 		CA4FA41420B9420400BE6730 /* WorshipOrder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorshipOrder.swift; sourceTree = "<group>"; };
-		CA50DCCB20F0623D00C441A0 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		CA70536120BAECAF00815D37 /* PhraseDetailTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhraseDetailTableViewCell.swift; sourceTree = "<group>"; };
 		CA70536320BAEDBC00815D37 /* PhraseMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhraseMessage.swift; sourceTree = "<group>"; };
 		CA7A426920B94C080097D99E /* Worship.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Worship.swift; sourceTree = "<group>"; };
 		CAA6B99D20F9CAFB00E802BC /* Music.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Music.swift; sourceTree = "<group>"; };
 		CAE645E32123C19700B109B7 /* DbEntityNameConstant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DbEntityNameConstant.swift; sourceTree = "<group>"; };
-		CAE645E52123C45F00B109B7 /* WorshipOrder+DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "WorshipOrder+DataManager.swift"; sourceTree = "<group>"; };
+		CAE645E52123C45F00B109B7 /* WorshipOrderDAO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorshipOrderDAO.swift; sourceTree = "<group>"; };
 		CAFA54992104765300C4A808 /* OhJooYeoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = OhJooYeoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		CAFA549B2104765300C4A808 /* OhJooYeoTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OhJooYeoTests.swift; sourceTree = "<group>"; };
 		CAFA549D2104765300C4A808 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CAFB287420D4D47200B72722 /* DbManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DbManager.swift; sourceTree = "<group>"; };
-		CAFB287620D4D61600B72722 /* PhraseMessage+DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PhraseMessage+DataManager.swift"; sourceTree = "<group>"; };
+		CAFB287620D4D61600B72722 /* PhraseMessageDAO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhraseMessageDAO.swift; sourceTree = "<group>"; };
 		CAFB287820D4E6F400B72722 /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
 		CAFB287A20D4E7CA00B72722 /* App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = App.swift; sourceTree = "<group>"; };
 		CAFB287C20D4E7DE00B72722 /* GlobalState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalState.swift; sourceTree = "<group>"; };
 		CAFB287F20D4EF1F00B72722 /* OhJooYeo.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = OhJooYeo.xcdatamodel; sourceTree = "<group>"; };
-		CAFB288120D4F13900B72722 /* Worship+DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Worship+DataManager.swift"; sourceTree = "<group>"; };
+		CAFB288120D4F13900B72722 /* WorshipDAO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorshipDAO.swift; sourceTree = "<group>"; };
 		DEDF49268E2C1C3E395793F3 /* Pods-OhJooYeo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OhJooYeo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-OhJooYeo/Pods-OhJooYeo.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -153,7 +155,6 @@
 				CA3080CA2130FDBB00255A7E /* API */,
 				CAE645E22123C17300B109B7 /* DbManager */,
 				CAFB287C20D4E7DE00B72722 /* GlobalState.swift */,
-				CA50DCCB20F0623D00C441A0 /* Model.swift */,
 				CA3080C82130FDB600255A7E /* UtilFunction.swift */,
 				CA3080CB2130FE0400255A7E /* ConstantString.swift */,
 				CA3080CD2130FE1600255A7E /* ExtensionNotificationName.swift */,
@@ -184,6 +185,7 @@
 		CA22837F20943F2A0023B3C1 /* OhJooYeo */ = {
 			isa = PBXGroup;
 			children = (
+				CA42ED0E213A36DE00F9BB6E /* GlobalModel */,
 				CA0AB21420C23BEB0028BC69 /* Util */,
 				CA4FA40A20B93FF200BE6730 /* Main */,
 				CA4FA40B20B9400900BE6730 /* PhraseDetail */,
@@ -271,6 +273,15 @@
 			path = API;
 			sourceTree = "<group>";
 		};
+		CA42ED0E213A36DE00F9BB6E /* GlobalModel */ = {
+			isa = PBXGroup;
+			children = (
+				CA42ED0F213A36F400F9BB6E /* WorshipIdDate.swift */,
+				CA050140214196BC00B89F3D /* WorshipIdListData.swift */,
+			);
+			path = GlobalModel;
+			sourceTree = "<group>";
+		};
 		CA4FA40A20B93FF200BE6730 /* Main */ = {
 			isa = PBXGroup;
 			children = (
@@ -323,9 +334,9 @@
 			isa = PBXGroup;
 			children = (
 				CA7A426920B94C080097D99E /* Worship.swift */,
-				CAFB288120D4F13900B72722 /* Worship+DataManager.swift */,
+				CAFB288120D4F13900B72722 /* WorshipDAO.swift */,
 				CA4FA41420B9420400BE6730 /* WorshipOrder.swift */,
-				CAE645E52123C45F00B109B7 /* WorshipOrder+DataManager.swift */,
+				CAE645E52123C45F00B109B7 /* WorshipOrderDAO.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -333,8 +344,8 @@
 		CA7A428E20BAE6C00097D99E /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				CAFB287620D4D61600B72722 /* PhraseMessage+DataManager.swift */,
 				CA70536320BAEDBC00815D37 /* PhraseMessage.swift */,
+				CAFB287620D4D61600B72722 /* PhraseMessageDAO.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -514,20 +525,20 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CA50DCCC20F0623D00C441A0 /* Model.swift in Sources */,
 				CAFB287520D4D47200B72722 /* DbManager.swift in Sources */,
 				CA0AB21620C23C190028BC69 /* AdvertisementTableViewCell.swift in Sources */,
 				CAFB287D20D4E7DE00B72722 /* GlobalState.swift in Sources */,
 				CA4FA40920B9270800BE6730 /* PraiseViewController.swift in Sources */,
 				CA4FA40420B926C600BE6730 /* PhraseDetailViewController.swift in Sources */,
 				CA3080CC2130FE0400255A7E /* ConstantString.swift in Sources */,
-				CAFB287720D4D61600B72722 /* PhraseMessage+DataManager.swift in Sources */,
+				CAFB287720D4D61600B72722 /* PhraseMessageDAO.swift in Sources */,
 				CAA6B99E20F9CAFB00E802BC /* Music.swift in Sources */,
-				CAFB288220D4F13A00B72722 /* Worship+DataManager.swift in Sources */,
+				CAFB288220D4F13A00B72722 /* WorshipDAO.swift in Sources */,
 				CA4FA41220B940D900BE6730 /* NextPresenterTableViewCell.swift in Sources */,
 				CA4FA41520B9420400BE6730 /* WorshipOrder.swift in Sources */,
 				CA4FA40F20B9406300BE6730 /* OrderTableViewCell.swift in Sources */,
 				CAFB288020D4EF1F00B72722 /* OhJooYeo.xcdatamodeld in Sources */,
+				CA050141214196BC00B89F3D /* WorshipIdListData.swift in Sources */,
 				CAFB287B20D4E7CA00B72722 /* App.swift in Sources */,
 				CA3080CE2130FE1600255A7E /* ExtensionNotificationName.swift in Sources */,
 				CA0AB21820C23ECE0028BC69 /* Advertisement.swift in Sources */,
@@ -535,13 +546,14 @@
 				CA70536420BAEDBC00815D37 /* PhraseMessage.swift in Sources */,
 				CA70536220BAECAF00815D37 /* PhraseDetailTableViewCell.swift in Sources */,
 				CA3080C52130F6EC00255A7E /* WorshipCellData.swift in Sources */,
-				CAE645E62123C45F00B109B7 /* WorshipOrder+DataManager.swift in Sources */,
+				CAE645E62123C45F00B109B7 /* WorshipOrderDAO.swift in Sources */,
 				CA22838320943F2A0023B3C1 /* MainViewController.swift in Sources */,
 				CA22838120943F2A0023B3C1 /* AppDelegate.swift in Sources */,
 				CA4FA40720B926E400BE6730 /* AdvertisementViewController.swift in Sources */,
 				CAE645E42123C19700B109B7 /* DbEntityNameConstant.swift in Sources */,
 				CAFB287920D4E6F400B72722 /* API.swift in Sources */,
 				CA7A426A20B94C080097D99E /* Worship.swift in Sources */,
+				CA42ED10213A36F400F9BB6E /* WorshipIdDate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

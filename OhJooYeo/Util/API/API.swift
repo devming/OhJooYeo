@@ -12,17 +12,39 @@ import SwiftyJSON
 import Alamofire_SwiftyJSON
 
 protocol API {
-    func getWorshipList(handler: @escaping ()-> Void) -> Void
-    func getRecentDatas(worshipId: String, version: String, handler: @escaping ((Model.Version?)-> Void)) -> Void
-    func getMusicImageDatas(musicImageId: Int, handler: @escaping ((UIImage)-> Void)) -> Void
+    func getWorshipIdList(handler: @escaping ([Model.WorshipIdDate]?)-> Void) -> Void
+    func getRecentDatas(worshipId: String, version: String, handler: @escaping ((Model.Worship?)-> Void)) -> Void
 }
 
 struct APIService: API {
-    func getWorshipList(handler: @escaping ()-> Void) {
-        
+    func getWorshipIdList(handler: @escaping ([Model.WorshipIdDate]?) -> Void) {
+        APIRouter.manager.request(APIRouter.getWorshipIdList()).responseSwiftyJSON { (dataResponse: DataResponse<JSON>) in
+            
+            switch dataResponse.result
+            {
+            case .failure(let error):
+                if let data = dataResponse.data {
+                    print("Print Server Error: " + String(data: data, encoding: String.Encoding.utf8)!)
+                }
+                print(error)
+                
+            case .success:
+                let result = dataResponse.map({ (json: JSON) -> [Model.WorshipIdDate]? in
+                    print("json data: \(json)")
+                    
+                    WorshipIdListData.shared.setWorshipIdList(idList: json.array)
+                    
+                    return WorshipIdListData.shared.worshipIdList
+                })
+                if let responseData = result.value {
+                    handler(responseData)
+                }
+            }
+            
+        }
     }
     
-    func getRecentDatas(worshipId: String, version: String, handler: @escaping ((Model.Version?) -> Void)) {
+    func getRecentDatas(worshipId: String, version: String, handler: @escaping ((Model.Worship?) -> Void)) {
         APIRouter.manager.request(APIRouter.getRecentDatas(worshipId: worshipId, version: version, parameters: nil)).responseSwiftyJSON { (dataResponse: DataResponse<JSON>) in
             
             switch dataResponse.result
@@ -34,10 +56,10 @@ struct APIService: API {
                 print(error)
                 
             case .success:
-                let result = dataResponse.map({ (json: JSON) -> Model.Version? in
+                let result = dataResponse.map({ (json: JSON) -> Model.Worship? in
                     print("json data: \(json)")
                     
-                    guard let data = Model.Version(json: json) else {
+                    guard let data = Model.Worship(json: json) else {
                         return nil
                     }
                     return data
@@ -46,33 +68,13 @@ struct APIService: API {
                     handler(responseWholeDatas)
                 }
             }
-            
         }
     }
-    
-    func getMusicImageDatas(musicImageId: Int, handler: @escaping ((UIImage) -> Void)) {
-        
-        // Use Alamofire to download the image
-        // Content-Type: image/png
-        let parameters: Parameters = ["id": musicImageId]
-        APIRouter.manager.request(APIRouter.getMusicImageDatas(parameters: parameters)).responseData { (response) in
-            if response.error == nil {
-                print(response.result)
-                
-                // Show the downloaded image:
-//                if let data = response.data, let image = UIImage(data: data) {
-//                    handler(image)
-//                }
-            }
-        }
-    }
-    
 }
 
 enum APIRouter {
-    case getWorshipList()
+    case getWorshipIdList()
     case getRecentDatas(worshipId: String, version: String, parameters: Parameters?)
-    case getMusicImageDatas(parameters: Parameters?)
 }
 
 extension APIRouter: URLRequestConvertible {
@@ -89,23 +91,19 @@ extension APIRouter: URLRequestConvertible {
 
     var method: HTTPMethod {
         switch self {
-        case .getWorshipList():
+        case .getWorshipIdList:
             return .get
         case .getRecentDatas:
-            return .post
-        case .getMusicImageDatas:
             return .post
         }
     }
 
     var path: String {
         switch self {
-        case .getWorshipList():
+        case .getWorshipIdList():
             return "/worship-list"
         case let .getRecentDatas(worshipId, version, _):
             return "/worship-id/\(worshipId)/check/version/\(version)"
-        case .getMusicImageDatas(_):
-            return "/music"
         }
     }
 
@@ -117,18 +115,14 @@ extension APIRouter: URLRequestConvertible {
         urlRequest.addValue("Content-Type", forHTTPHeaderField: "application/json;charset=UTF-8")
         
         switch self {
-        case .getWorshipList():
+        case .getWorshipIdList():
             urlRequest = try URLEncoding.default.encode(urlRequest, with: nil)
         case let .getRecentDatas(_, _, parameters):
             urlRequest = try JSONEncoding.default.encode(urlRequest, with: parameters)
-        case let .getMusicImageDatas(parameters):
-            urlRequest = try URLEncoding.default.encode(urlRequest, with: parameters)
         }
 
         return urlRequest
     }
-
-
 }
 
 

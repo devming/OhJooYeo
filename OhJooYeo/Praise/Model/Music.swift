@@ -13,6 +13,7 @@ extension Model {
     struct Music {
         var id: String
         var title: String
+        //var imageName: String
         var image: UIImage?
         var order: Int
         

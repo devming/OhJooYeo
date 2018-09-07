@@ -1,20 +1,25 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="14135" systemVersion="17F77" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
-    <entity name="Advertisement" representedClassName="AdvertisementEntity" syncable="YES" codeGenerationType="class">
+    <entity name="Advertisement" representedClassName="AdvertisementMO" syncable="YES" codeGenerationType="class">
         <attribute name="content" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="order" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
-        <relationship name="worship" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Worship" inverseName="advertisement" inverseEntity="Worship" syncable="YES"/>
+        <relationship name="worship" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="Worship" inverseName="advertisements" inverseEntity="Worship" syncable="YES"/>
     </entity>
-    <entity name="PhraseMessage" representedClassName="PhraseMessageEntity" syncable="YES" codeGenerationType="class">
+    <entity name="PhraseMessage" representedClassName="PhraseMessageMO" syncable="YES" codeGenerationType="class">
         <attribute name="contents" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="order" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="phrase" optional="YES" attributeType="String" syncable="YES"/>
-        <relationship name="worship" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Worship" inverseName="phraseMessage" inverseEntity="Worship" syncable="YES"/>
+        <relationship name="worship" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="Worship" inverseName="phraseMessages" inverseEntity="Worship" syncable="YES"/>
     </entity>
-    <entity name="Praise" representedClassName="PraiseEntity" syncable="YES" codeGenerationType="class">
+    <entity name="Praise" representedClassName="PraiseMO" syncable="YES" codeGenerationType="class">
         <attribute name="image" optional="YES" attributeType="Binary" syncable="YES"/>
-        <relationship name="worship" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Worship" inverseName="praise" inverseEntity="Worship" syncable="YES"/>
+        <attribute name="imageName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="order" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="worship" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="Worship" inverseName="praises" inverseEntity="Worship" syncable="YES"/>
     </entity>
-    <entity name="Worship" representedClassName="WorshipEntity" syncable="YES" codeGenerationType="class">
+    <entity name="Worship" representedClassName="WorshipMO" syncable="YES" codeGenerationType="class">
         <attribute name="mainPresenter" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="nextOffer" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="nextPrayer" optional="YES" attributeType="String" syncable="YES"/>
@@ -22,23 +27,23 @@
         <attribute name="version" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="worshipDate" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="worshipId" optional="YES" attributeType="String" syncable="YES"/>
-        <relationship name="advertisement" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Advertisement" inverseName="worship" inverseEntity="Advertisement" syncable="YES"/>
-        <relationship name="phraseMessage" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="PhraseMessage" inverseName="worship" inverseEntity="PhraseMessage" syncable="YES"/>
-        <relationship name="praise" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Praise" inverseName="worship" inverseEntity="Praise" syncable="YES"/>
-        <relationship name="worshipOrder" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="WorshipOrder" inverseName="worship" inverseEntity="WorshipOrder" syncable="YES"/>
+        <relationship name="advertisements" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="Advertisement" inverseName="worship" inverseEntity="Advertisement" syncable="YES"/>
+        <relationship name="phraseMessages" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="PhraseMessage" inverseName="worship" inverseEntity="PhraseMessage" syncable="YES"/>
+        <relationship name="praises" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="Praise" inverseName="worship" inverseEntity="Praise" syncable="YES"/>
+        <relationship name="worshipOrders" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="WorshipOrder" inverseName="worship" inverseEntity="WorshipOrder" syncable="YES"/>
     </entity>
-    <entity name="WorshipOrder" representedClassName="WorshipOrderEntity" syncable="YES" codeGenerationType="class">
+    <entity name="WorshipOrder" representedClassName="WorshipOrderMO" syncable="YES" codeGenerationType="class">
         <attribute name="detail" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="order" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="order" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="presenter" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
-        <relationship name="worship" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Worship" inverseName="worshipOrder" inverseEntity="Worship" syncable="YES"/>
+        <relationship name="worship" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="Worship" inverseName="worshipOrders" inverseEntity="Worship" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Advertisement" positionX="-290" positionY="-153" width="128" height="90"/>
-        <element name="PhraseMessage" positionX="-38" positionY="153" width="128" height="90"/>
-        <element name="Praise" positionX="7" positionY="-151" width="128" height="75"/>
-        <element name="Worship" positionX="-551" positionY="99" width="128" height="210"/>
-        <element name="WorshipOrder" positionX="-288" positionY="54" width="128" height="120"/>
+        <element name="Advertisement" positionX="-776" positionY="227" width="128" height="103"/>
+        <element name="PhraseMessage" positionX="-297" positionY="180" width="128" height="103"/>
+        <element name="Praise" positionX="-236" positionY="306" width="128" height="118"/>
+        <element name="Worship" positionX="-504" positionY="197" width="128" height="208"/>
+        <element name="WorshipOrder" positionX="-785" positionY="386" width="128" height="118"/>
     </elements>
 </model>

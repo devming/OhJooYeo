@@ -12,7 +12,7 @@ import CoreData
 extension DbManager {
     
     func addPhraseMessage(with phrase: String, contents: String) {
-        if let newPhrase = NSEntityDescription.insertNewObject(forEntityName: "PhraseMessage", into: defaultContext) as? PhraseMessageEntity {      // type casting을 해서 내가 사용할 엔티티를 가져와야한다.
+        if let newPhrase = NSEntityDescription.insertNewObject(forEntityName: "PhraseMessage", into: defaultContext) as? PhraseMessageMO {      // type casting을 해서 내가 사용할 엔티티를 가져와야한다.
             newPhrase.phrase = phrase
             newPhrase.contents = contents
             
@@ -21,9 +21,9 @@ extension DbManager {
     }
     
     
-    func getMemoList() -> [PhraseMessageEntity] {
+    func getMemoList() -> [PhraseMessageMO] {
         // 1. NSFetchRequest
-        let request = NSFetchRequest<PhraseMessageEntity>(entityName: "PhraseMessage")
+        let request = NSFetchRequest<PhraseMessageMO>(entityName: "PhraseMessage")
         
         // 2. sorting
         let sortByDateDesc = NSSortDescriptor(key: "insertAt", ascending: false)
@@ -33,7 +33,7 @@ extension DbManager {
         if let result = try? defaultContext.fetch(request) {
             return result
         }
-        return [PhraseMessageEntity]()
+        return [PhraseMessageMO]()
         
         /// Pattern2-예외처리 하는 방식
         //        do {

@@ -15,15 +15,28 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
-
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         DbManager.shared.setup(with: "OhJooYeo")    // OhJooYeo.xcdatamodeld의 이름
         
-        App.api.getRecentDatas(worshipId: "36-09", version: "***") { (data) in
-            guard let data = data else {
+        App.api.getWorshipIdList { (worshipIdDates) in
+            guard var worshipIdDates = worshipIdDates else {
+                print("Error")
                 return
             }
-            DbManager.shared.addWorship(mainPresenter: data.worship?.mainPresenter, worshipOrder: data.worship?.worshipOrders, nextPresenter: data.worship?.nextPresenter)
+            worshipIdDates.sort {
+                return $0.worshipId > $1.worshipId
+            }
+            guard let worshipIdDate = worshipIdDates.first else {
+                return
+            }
+            GlobalState.shared.recentWorshipId = worshipIdDate.worshipId
+        }
+        App.api.getRecentDatas(worshipId: GlobalState.shared.recentWorshipId, version: GlobalState.shared.version) { (worshipData) in
+            guard let worshipData = worshipData else {
+                return
+            }
+            WorshipCellData.shared.setWorship(worshipData)
+            DbManager.shared.addWorship(mainPresenter: worshipData.mainPresenter, worshipOrder: worshipData.worshipOrders, nextPresenter: worshipData.nextPresenter)
         }
         
         return true

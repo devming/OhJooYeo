@@ -10,7 +10,8 @@ import Foundation
 
 class WorshipCellData {
     
-    let worshipInfo: Model.Worship?
+    static var shared = WorshipCellData()
+    var worship: Model.Worship?
     var orderList: [Model.WorshipOrder]?
     var nextPresenters: Model.Worship.NextPresenter?
     
@@ -20,8 +21,10 @@ class WorshipCellData {
         }
     }
     
-    init(worship: Model.Worship) {
-        self.worshipInfo = worship
+    private init() {}
+    
+    func setWorship(_ worship: Model.Worship) {
+        self.worship = worship
         
         self.dateInfo = ConstantString.definedStringNoValue
     }

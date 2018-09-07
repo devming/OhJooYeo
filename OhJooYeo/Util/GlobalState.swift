@@ -10,27 +10,30 @@ import Foundation
 
 
 final class GlobalState {
-    static let instance = GlobalState()
-    
-    enum Sample: String {
-        case tokenKey
-        case refreshTokenKey
-        case ownerKey
-        case repoKey
-        case reposKey
-    }
+    static let shared = GlobalState()
     
     enum Constants: String {
         case currentVersion
+        case recentWorshipId
     }
     
     var version: String {
         get {
-            let version = UserDefaults.standard.string(forKey: Constants.currentVersion.rawValue) ?? "####"
+            let version = UserDefaults.standard.string(forKey: Constants.currentVersion.rawValue) ?? "***"
             return version
         }
         set {
             UserDefaults.standard.set(newValue, forKey: Constants.currentVersion.rawValue)
+        }
+    }
+    
+    var recentWorshipId: String {
+        get {
+            let recentWorshipId = UserDefaults.standard.string(forKey: Constants.recentWorshipId.rawValue) ?? "---" ///TODO: 서버에서 예외처리
+            return recentWorshipId
+        }
+        set {
+            UserDefaults.standard.set(newValue, forKey: Constants.recentWorshipId.rawValue)
         }
     }
     

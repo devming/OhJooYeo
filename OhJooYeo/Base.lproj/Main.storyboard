@@ -336,10 +336,6 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                 </collectionReusableView>
                             </collectionView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8sc-wv-Hlm">
-                                <rect key="frame" x="0.0" y="64" width="375" height="538"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -356,9 +352,6 @@
                     <tabBarItem key="tabBarItem" title="찬양" image="tab_praise" id="mED-FI-axi">
                         <inset key="imageInsets" minX="0.0" minY="1" maxX="0.0" maxY="1"/>
                     </tabBarItem>
-                    <connections>
-                        <outlet property="testImageView" destination="8sc-wv-Hlm" id="J6M-GK-6yy"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pyl-8Q-Vu8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

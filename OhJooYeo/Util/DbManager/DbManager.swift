@@ -12,7 +12,6 @@ class DbManager{    // 싱글톤으로 구현할 것임
     static let shared = DbManager() /// 처음 사용할때 그때 생성되나?
     
     private init() {        // 싱글톤 구현할 때 기본적으로 private init으로 생성자를 만들어 준다. 그래야 밖에서 생성 못하니까.
-        
     }
     
     var selectedObj: NSManagedObject? /// CoreData로 읽어온 데이터를 저장할 수 있다.
@@ -25,12 +24,13 @@ class DbManager{    // 싱글톤으로 구현할 것임
     // MARK: - Core Data stack
     lazy var persistentContainer: NSPersistentContainer = {     // 내부적으로 sqlite를 관리하는 녀석.
         guard let name = self.modelName else {
-            fatalError("null name")
+            //TODO: 잘못 된
+            return NSPersistentContainer(name: "OhJooYeo")
         }
         let container = NSPersistentContainer(name: name)
         container.loadPersistentStores(completionHandler: { (storeDescription, error) in
             if let error = error as NSError? {
-//                fatalError("Unresolved error \(error), \(error.userInfo)")
+                print("Unresolved error \(error), \(error.userInfo)")
             }
         })
         return container

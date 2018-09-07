@@ -10,7 +10,6 @@ import UIKit
 
 class PraiseViewController: UIViewController {
 
-    @IBOutlet weak var testImageView: UIImageView!
     override func viewDidLoad() {
         super.viewDidLoad()
 

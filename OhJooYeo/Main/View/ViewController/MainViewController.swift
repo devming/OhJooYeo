@@ -10,7 +10,8 @@ import UIKit
 
 class MainViewController: UIViewController {
     
-    var worshipInfo: WorshipCellData?
+    var worshipOrderList: [Model.WorshipOrder]?
+    var nextPresenter: Model.Worship.NextPresenter?
     
     @IBOutlet weak var listTableView: UITableView!
     @IBOutlet weak var dateLabel: UILabel!
@@ -19,16 +20,15 @@ class MainViewController: UIViewController {
         super.viewDidLoad()
         
         self.listTableView.rowHeight = UITableViewAutomaticDimension
-        if let worship = Model.shared?.worship {
-            self.worshipInfo = WorshipCellData(worship: worship)
-        }
+        self.worshipOrderList = WorshipCellData.shared.orderList
+        self.nextPresenter = WorshipCellData.shared.nextPresenters
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        makeDummyDatas()
-        makeDummyDatasForNextPresenter()
+//        makeDummyDatas()
+//        makeDummyDatasForNextPresenter()
         
         self.listTableView.reloadData()
     }
@@ -38,7 +38,7 @@ class MainViewController: UIViewController {
 
 extension MainViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        guard let orderList = self.worshipInfo?.orderList else {
+        guard let orderList = self.worshipOrderList else {
             return 0
         }
         
@@ -46,7 +46,7 @@ extension MainViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let orderList = self.worshipInfo?.orderList, let nextPresenters = self.worshipInfo?.nextPresenters else {
+        guard let orderList = self.worshipOrderList, let nextPresenters = self.nextPresenter else {
             return UITableViewCell()
         }
         
@@ -83,7 +83,10 @@ extension MainViewController: UITableViewDataSource {
 extension MainViewController: UITableViewDelegate {
    
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        if indexPath.row == self.worshipInfo?.orderList?.count {
+        guard let worshipOrderList = self.worshipOrderList else {
+            return 50
+        }
+        if indexPath.row == worshipOrderList.count {
             return 128
         }
         
@@ -98,22 +101,22 @@ extension MainViewController {
 
 /// Dummy datas
 extension MainViewController {
-    func makeDummyDatas() {
-        self.worshipInfo?.orderList = [Model.WorshipOrder]()
-        
-//        orderList?.append(Model.WorshipElement(title: "경배와찬양", detail: "", presenter: "회중"))
-//        orderList?.append(Model.WorshipElement(title: "기도", detail: "", presenter: "황대연"))
-//        orderList?.append(Model.WorshipElement(title: "*성경봉독", detail: "요나서 2:7-10", presenter: "인도자"))
-//        orderList?.append(Model.WorshipElement(title: "설교", detail: "감사의 노래", presenter: "김희선전도사"))
-//        orderList?.append(Model.WorshipElement(title: "*헌금", detail: "", presenter: "표준범"))
-//        orderList?.append(Model.WorshipElement(title: "*봉헌기도", detail: "", presenter: "설교자"))
-//        orderList?.append(Model.WorshipElement(title: "성도의교제", detail: "", presenter: "인도자"))
-//        orderList?.append(Model.WorshipElement(title: "*파송찬양", detail: "", presenter: "회중"))
-//        orderList?.append(Model.WorshipElement(title: "*주기도문", detail: "", presenter: "회중"))
-    }
-    func makeDummyDatasForNextPresenter() {
-        self.worshipInfo?.nextPresenters = Model.Worship.NextPresenter(mainPresenter: "정민기", prayer: "강윤호", offer: "박재현")
-    }
+//    func makeDummyDatas() {
+//        self.worshipOrderList?.orderList = [Model.WorshipOrder]()
+//
+////        orderList?.append(Model.WorshipElement(title: "경배와찬양", detail: "", presenter: "회중"))
+////        orderList?.append(Model.WorshipElement(title: "기도", detail: "", presenter: "황대연"))
+////        orderList?.append(Model.WorshipElement(title: "*성경봉독", detail: "요나서 2:7-10", presenter: "인도자"))
+////        orderList?.append(Model.WorshipElement(title: "설교", detail: "감사의 노래", presenter: "김희선전도사"))
+////        orderList?.append(Model.WorshipElement(title: "*헌금", detail: "", presenter: "표준범"))
+////        orderList?.append(Model.WorshipElement(title: "*봉헌기도", detail: "", presenter: "설교자"))
+////        orderList?.append(Model.WorshipElement(title: "성도의교제", detail: "", presenter: "인도자"))
+////        orderList?.append(Model.WorshipElement(title: "*파송찬양", detail: "", presenter: "회중"))
+////        orderList?.append(Model.WorshipElement(title: "*주기도문", detail: "", presenter: "회중"))
+//    }
+//    func makeDummyDatasForNextPresenter() {
+//        self.worshipInfo?.nextPresenters = Model.Worship.NextPresenter(mainPresenter: "정민기", prayer: "강윤호", offer: "박재현")
+//    }
 }
 
 
