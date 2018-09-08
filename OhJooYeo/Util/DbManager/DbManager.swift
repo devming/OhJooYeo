@@ -11,6 +11,32 @@ import CoreData
 class DbManager{    // 싱글톤으로 구현할 것임
     static let shared = DbManager() /// 처음 사용할때 그때 생성되나?
     
+    var worshipMO: WorshipMO? {
+        get {
+            return NSEntityDescription.insertNewObject(forEntityName: DbManager.EntityName.worshipEntityName, into: defaultContext) as? WorshipMO
+        }
+    }
+    var worshipOrderMO: WorshipOrderMO? {
+        get {
+            return NSEntityDescription.insertNewObject(forEntityName: DbManager.EntityName.worshipOrderEntityName, into: defaultContext) as? WorshipOrderMO
+        }
+    }
+    var phraseMessageMO: PhraseMessageMO? {
+        get {
+            return NSEntityDescription.insertNewObject(forEntityName: DbManager.EntityName.phraseMessageEntityName, into: defaultContext) as? PhraseMessageMO
+        }
+    }
+    var praiseMO: PraiseMO? {
+        get {
+            return NSEntityDescription.insertNewObject(forEntityName: DbManager.EntityName.praiseEntityName, into: defaultContext) as? PraiseMO
+        }
+    }
+    var advertisement: AdvertisementMO? {
+        get {
+            return NSEntityDescription.insertNewObject(forEntityName: DbManager.EntityName.advertisementEntityName, into: defaultContext) as? AdvertisementMO
+        }
+    }
+    
     private init() {        // 싱글톤 구현할 때 기본적으로 private init으로 생성자를 만들어 준다. 그래야 밖에서 생성 못하니까.
     }
     
@@ -59,5 +85,11 @@ class DbManager{    // 싱글톤으로 구현할 것임
         self.defaultContext.delete(obj)          /// context의 모든 작업은 메모리에서 이루어진다.
         saveContext()   /// 이걸 호출해야만!!! 실제로 지워진다.    context를 save해야 file에 저장이 된다.
     }
+    
 }
-
+//guard let entity = NSEntityDescription.entity(forEntityName: DbManager.Name.worshipOrderEntityName, in: defaultContext) else {
+//    return
+//}
+//guard let worshipOrderMO = NSManagedObject(entity: entity, insertInto: defaultContext) as? WorshipOrderMO else {
+//    return
+//}

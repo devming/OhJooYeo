@@ -24,20 +24,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 return
             }
             worshipIdDates.sort {
-                return $0.worshipId > $1.worshipId
+                return $0.worshipId < $1.worshipId
+//                return $0.worshipId > $1.worshipId
             }
             guard let worshipIdDate = worshipIdDates.first else {
                 return
             }
             GlobalState.shared.recentWorshipId = worshipIdDate.worshipId
-        }
-        //GlobalState.shared.recentWorshipId
+        }//GlobalState.shared.recentWorshipId
         App.api.getRecentDatas(worshipId: "36-09", version: GlobalState.shared.version) { (worshipData) in
             guard let worshipData = worshipData else {
                 return
             }
             WorshipCellData.shared.setWorship(worshipData)
-            DbManager.shared.addWorship(mainPresenter: worshipData.mainPresenter, worshipOrder: worshipData.worshipOrders, nextPresenter: worshipData.nextPresenter)
         }
         
         return true

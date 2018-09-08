@@ -32,35 +32,41 @@ extension Model {
             }
             
             init?(json: JSON) {
-                guard let mainPresenter = json["mainPresenter"].string else {
+                guard let mainPresenter = json[Name.mainPresenter].string else {
                     return nil
                 }
                 self.mainPresenter = mainPresenter
                 
-                guard let prayer = json["prayer"].string else {
+                guard let prayer = json[Name.prayer].string else {
                     return nil
                 }
                 self.prayer = prayer
                 
-                guard let offer = json["offer"].string else {
+                guard let offer = json[Name.offer].string else {
                     return nil
                 }
                 self.offer = offer
             }
+            
+            struct Name {
+                static let mainPresenter = "mainPresenter"
+                static let prayer = "prayer"
+                static let offer = "offer"
+            }
         }
         
         init?(json: JSON) {
-            guard let mainPresenter = json["mainPresenter"].string else {
+            guard let mainPresenter = json[Name.mainPresenter].string else {
                 return nil
             }
             self.mainPresenter = mainPresenter
             
-            guard let nextPresenter = NextPresenter(json: json["nextPresenter"]) else {
+            guard let nextPresenter = NextPresenter(json: json[Name.nextPresenter]) else {
                 return nil
             }
             self.nextPresenter = nextPresenter
             
-            guard let orderList = json["worshipOrder"].array else {
+            guard let orderList = json[Name.worshipOrders].array else {
                 return nil
             }
             
@@ -113,8 +119,10 @@ extension Model {
                 self.music = nil
             }
             
-            if let currentVersion = json["currentVersion"].string {
+            if let currentVersion = json[Name.currentVersion].string {
                 GlobalState.shared.version = currentVersion
+            } else {
+                GlobalState.shared.version = "***"
             }
         }
     }

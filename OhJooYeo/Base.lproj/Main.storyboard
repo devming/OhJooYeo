@@ -127,9 +127,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="8oM-Vr-bRp"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="말씀" image="tab_bible" id="YYA-yg-3iy">
-                        <inset key="imageInsets" minX="0.0" minY="1" maxX="0.0" maxY="1"/>
-                    </tabBarItem>
+                    <tabBarItem key="tabBarItem" title="말씀" image="tab_bible" id="YYA-yg-3iy"/>
                     <connections>
                         <outlet property="listTableView" destination="dIB-bf-QTb" id="GPB-yT-Qc5"/>
                     </connections>
@@ -253,9 +251,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="nqp-0g-fd1"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="광고" image="tab_advertisement" id="hPl-kc-eq1">
-                        <inset key="imageInsets" minX="0.0" minY="1" maxX="0.0" maxY="1"/>
-                    </tabBarItem>
+                    <tabBarItem key="tabBarItem" title="광고" image="tab_advertisement" id="hPl-kc-eq1"/>
                     <connections>
                         <outlet property="listTableView" destination="tKJ-Pa-Kgb" id="3tJ-DU-9Z7"/>
                     </connections>
@@ -349,9 +345,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="PfE-Dp-eRj"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="찬양" image="tab_praise" id="mED-FI-axi">
-                        <inset key="imageInsets" minX="0.0" minY="1" maxX="0.0" maxY="1"/>
-                    </tabBarItem>
+                    <tabBarItem key="tabBarItem" title="찬양" image="tab_praise" id="mED-FI-axi"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pyl-8Q-Vu8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -607,9 +601,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="xsm-jc-uSD"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="순서" image="tab_list" id="m0Z-nB-Jti">
-                        <inset key="imageInsets" minX="0.0" minY="1" maxX="0.0" maxY="1"/>
-                    </tabBarItem>
+                    <tabBarItem key="tabBarItem" title="순서" image="tab_list" id="m0Z-nB-Jti"/>
                     <connections>
                         <outlet property="dateLabel" destination="AbS-dO-yCe" id="grp-3l-UWg"/>
                         <outlet property="listTableView" destination="7OI-tv-Dqf" id="NvA-iy-1Cd"/>

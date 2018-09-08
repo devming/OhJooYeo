@@ -20,22 +20,17 @@ extension Model {
         var worshipId: String
         
         init?(json: JSON) {
-//            if let datas = json.array {
-//                datas.map { (data) -> T in
-//                    <#code#>
-//                }
-                if let date = json[Name.date].string {
-                    self.date = date
-                } else {
-                    self.date = Model.Constant.emptyString
-                }
-                
-                if let worshipId = json[Name.worshipId].string {
-                    self.worshipId = worshipId
-                } else {
-                    self.worshipId = Model.Constant.emptyString
-                }
-//            }
+            if let date = json[Name.date].string {
+                self.date = date
+            } else {
+                self.date = Model.Constant.emptyString
+            }
+            
+            if let worshipId = json[Name.worshipId].string {
+                self.worshipId = worshipId
+            } else {
+                self.worshipId = Model.Constant.emptyString
+            }
         }
     }
 }

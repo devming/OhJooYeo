@@ -10,7 +10,7 @@ import UIKit
 
 class MainViewController: UIViewController {
     
-    var worshipOrderList: [Model.WorshipOrder]?
+//    var worshipOrderList: [Model.WorshipOrder]?
     var nextPresenter: Model.Worship.NextPresenter?
     
     @IBOutlet weak var listTableView: UITableView!
@@ -20,7 +20,7 @@ class MainViewController: UIViewController {
         super.viewDidLoad()
         
         self.listTableView.rowHeight = UITableViewAutomaticDimension
-        self.worshipOrderList = WorshipCellData.shared.orderList
+//        self.worshipOrderList = WorshipCellData.shared.orderList
         self.nextPresenter = WorshipCellData.shared.nextPresenters
     }
     
@@ -38,7 +38,7 @@ class MainViewController: UIViewController {
 
 extension MainViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        guard let orderList = self.worshipOrderList else {
+        guard let orderList = WorshipCellData.shared.worshipOrderMO else {
             return 0
         }
         
@@ -46,7 +46,7 @@ extension MainViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let orderList = self.worshipOrderList, let nextPresenters = self.nextPresenter else {
+        guard let orderList = WorshipCellData.shared.worshipOrderMO, let nextPresenters = self.nextPresenter else {
             return UITableViewCell()
         }
         
@@ -83,7 +83,7 @@ extension MainViewController: UITableViewDataSource {
 extension MainViewController: UITableViewDelegate {
    
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        guard let worshipOrderList = self.worshipOrderList else {
+        guard let worshipOrderList = WorshipCellData.shared.worshipOrderMO else {
             return 50
         }
         if indexPath.row == worshipOrderList.count {

@@ -10,21 +10,9 @@ import Foundation
 import CoreData
 
 extension DbManager {
-    
-    struct KeyName {
-        static let mainPresenter = "mainPresenter"
-        static let nextOffer = "nextOffer"
-        static let nextPrayer = "nextPrayer"
-        static let nextPresenter = "nextPresenter"
-        static let version = "version"
-        static let worshipDate = "worshipDate"
-        static let worshipId = "worshipId"
-    }
-    
     func addWorship(mainPresenter: String?, worshipOrder: [Model.WorshipOrder]?, nextPresenter: Model.Worship.NextPresenter?) {
-        if let newPhrase = NSEntityDescription.insertNewObject(forEntityName: DbManager.Name.worshipEntityName, into: defaultContext) as? WorshipMO
-        {      // type casting을 해서 내가 사용할 엔티티를 가져와야한다.
-            
+        if let newPhrase = self.worshipMO {
+              // type casting을 해서 내가 사용할 엔티티를 가져와야한다.
             if let mainPresenter = mainPresenter {
                 newPhrase.mainPresenter = mainPresenter
             }
@@ -33,21 +21,31 @@ extension DbManager {
                 newPhrase.nextOffer = nextPresenter.offer
                 newPhrase.nextPrayer = nextPresenter.prayer
             }
-            if let worshipOrderValue = worshipOrder {
+            if let worshipOrderValue = worshipOrder, let worshipOrderMO = self.worshipOrderMO {
                 addWorshipOrder(worshipOrders: worshipOrderValue)
+//                let worshipOrderMOList = getWorshipOrderList()
+                newPhrase.addToWorshipOrders(worshipOrderMO)
             }
             
             saveContext()
         }
     }
     
+    func getRecentWorship(/*id or date 필터링 조건 넣어야할듯*/) -> WorshipMO {
+        if let result = getWorshipList().first {
+            return result
+        }
+        return WorshipMO()
+    }
+    
     func getWorshipList() -> [WorshipMO] {
         // 1. NSFetchRequest
-        let request = NSFetchRequest<WorshipMO>(entityName: DbManager.Name.worshipEntityName)
+        let request = NSFetchRequest<WorshipMO>(entityName: DbManager.EntityName.worshipEntityName)
         
-        // 2. sorting
-        let sortByDateDesc = NSSortDescriptor(key: KeyName.worshipDate, ascending: false)
-        request.sortDescriptors = [sortByDateDesc]
+        // 2. sorting - 내림차순이어야 가장 위에 최신 것을 받을 수 있음
+        let sortByDateDesc = NSSortDescriptor(key: ColumnKey.Worship.worshipDate, ascending: false)
+        let sortByVersionDesc = NSSortDescriptor(key: ColumnKey.Worship.version, ascending: false)
+        request.sortDescriptors = [sortByDateDesc, sortByVersionDesc]
         
         /// Pattern1-예외처리 안하는 방식 - 발생하는 예외를 처리하지 않고 그냥 넘어감.
         if let result = try? self.defaultContext.fetch(request) {

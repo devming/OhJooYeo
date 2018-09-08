@@ -11,32 +11,41 @@ import SwiftyJSON
 
 extension Model {
     struct Music {
-        var id: String
+        var lyricist: String
         var title: String
-        //var imageName: String
-        var image: UIImage?
+        var imageName: String
+//        var image: UIImage?
         var order: Int
-        var content: String
+        var composer: String
+        var category: String
         
         init?(json: JSON) {
-            guard let id = json["id"].string else {
+            guard let lyricist = json[Name.lyricist].string else {
                 return nil
             }
-            self.id = id
-            guard let title = json["title"].string else {
+            self.lyricist = lyricist
+            guard let title = json[Name.title].string else {
                 return nil
             }
             self.title = title
-            guard let order = json["order"].int else {
+            guard let order = json[Name.order].int else {
                 return nil
             }
             self.order = order
-            guard let content = json["content"].string else {
+            guard let imageName = json[Name.imageName].string else {
                 return nil
             }
-            self.content = content
+            self.imageName = imageName
+            guard let composer = json[Name.composer].string else {
+                return nil
+            }
+            self.composer = composer
+            guard let category = json[Name.category].string else {
+                return nil
+            }
+            self.category = category
             
-            self.image = getImageData()
+//            self.image = getImageData()
         }
         
         func getImageData() -> UIImage {
@@ -48,9 +57,11 @@ extension Model {
 
 extension Model.Music {
     struct Name {
-        static let id = "id"
+        static let lyricist = "lyricist"
         static let title = "title"
+        static let imageName = "imageName"
         static let order = "order"
-        static let content = "content"
+        static let composer = "composer"
+        static let category = "category"
     }
 }

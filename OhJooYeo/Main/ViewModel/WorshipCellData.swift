@@ -11,27 +11,37 @@ import Foundation
 class WorshipCellData {
     
     static var shared = WorshipCellData()
-    var worship: Model.Worship?
+//    var worship: Model.Worship?
+    var worshipMO: WorshipMO?
+    var worshipOrderMO: [WorshipOrderMO]?
     var orderList: [Model.WorshipOrder]?
     var nextPresenters: Model.Worship.NextPresenter?
     
-    var dateInfo: String? {
-        didSet {
-            self.dateInfo = showDateData()
-        }
-    }
+    var dateInfo: String?
     
     private init() {}
     
     func setWorship(_ worship: Model.Worship) {
-        self.worship = worship
+        DbManager.shared.addWorship(mainPresenter: worship.mainPresenter, worshipOrder: worship.worshipOrders, nextPresenter: worship.nextPresenter)
+        self.worshipMO = DbManager.shared.getRecentWorship()
         
-        self.dateInfo = ConstantString.definedStringNoValue
+        guard let date = self.worshipMO?.worshipDate else {
+            return
+        }
+        self.dateInfo = showDateData(date: date)
+        
+//        guard let worshipOrders = self.worshipMO?.worshipOrders else {
+//            return
+//        }
+        self.worshipOrderMO = DbManager.shared.getWorshipOrderList()
+//        worshipOrders.setValue(<#T##value: Any?##Any?#>, forKey: DbManager.ColumnKey.WorshipOrder.order)
+        
+        /// TODO: Notification 등록하기. TableView 갱신을 위해
     }
 }
 
 extension WorshipCellData {
-    func showDateData() -> String {
+    func showDateData(date: String) -> String {
         let formatter = DateFormatter()
         formatter.dateStyle = .long
         formatter.timeStyle = .none

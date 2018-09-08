@@ -22,18 +22,18 @@ extension Model {
         }
         
         init?(json: JSON) {
-            if let title = json["title"].string {
+            if let title = json[Name.title].string {
                 self.title = title
             } else {
                 self.title = ""
             }
             
-            guard let description = json["content"].string else {
+            guard let description = json[Name.description].string else {
                 return nil
             }
             self.description = description
             
-            guard let order = json["order"].int else {
+            guard let order = json[Name.order].int else {
                 return nil
             }
             self.order = order
