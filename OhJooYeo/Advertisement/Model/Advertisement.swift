@@ -40,3 +40,11 @@ extension Model {
         }
     }
 }
+
+extension Model.Advertisement {
+    struct Name {
+        static let title = "title"
+        static let description = "description"
+        static let order = "order"
+    }
+}

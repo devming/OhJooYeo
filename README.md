@@ -30,7 +30,7 @@ __port__:
 
 
 
-### <font color="blue"> POST /worship-id/{id}/check/version/{version} </font>
+### <font color="blue"> POST /worship-id/{id}/check/version/{version} </font> __[Enabled]__
 
 1. __Description__ 
    
@@ -233,7 +233,7 @@ __port__:
 	
 
 
-### <font color="blue"> GET /worship-list </font>
+### <font color="blue"> GET /worship-list </font> __[Enabled]__
 
 1. __Description__ 
    
@@ -372,7 +372,7 @@ __port__:
    ```
 
    
-### <font color="green"> POST /detail/phrase </font>
+### <font color="green"> POST /phrase </font> __[Enabled]__
 
 1. __Description__ 
    
@@ -386,7 +386,7 @@ __port__:
    
    ```json 
    {
-   		"date": "2018-06-07"
+   		"phraseRange": "성경 a:b(~성경 c:d)(/성경 a:b(~성경 c:d))" [String]
    	}
    ```
 

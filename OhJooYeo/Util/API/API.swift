@@ -24,7 +24,7 @@ struct APIService: API {
             {
             case .failure(let error):
                 if let data = dataResponse.data {
-                    print("Print Server Error: " + String(data: data, encoding: String.Encoding.utf8)!)
+                    print("getWorshipIdList Server Error: " + String(data: data, encoding: String.Encoding.utf8)!)
                 }
                 print(error)
                 
@@ -34,13 +34,12 @@ struct APIService: API {
                     
                     WorshipIdListData.shared.setWorshipIdList(idList: json.array)
                     
-                    return WorshipIdListData.shared.worshipIdList
+                    return WorshipIdListData.shared.worshipIdDate
                 })
                 if let responseData = result.value {
                     handler(responseData)
                 }
             }
-            
         }
     }
     
@@ -51,7 +50,7 @@ struct APIService: API {
             {
             case .failure(let error):
                 if let data = dataResponse.data {
-                    print("Print Server Error: " + String(data: data, encoding: String.Encoding.utf8)!)
+                    print("getRecentDatas Server Error: " + String(data: data, encoding: String.Encoding.utf8)!)
                 }
                 print(error)
                 

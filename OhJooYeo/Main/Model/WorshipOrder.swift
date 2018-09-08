@@ -24,26 +24,36 @@ extension Model {
         }
         
         init?(json: JSON) {
-            guard let title = json["title"].string else {
+            guard let title = json[Name.title].string else {
                 return nil
             }
             self.title = title
             
-            if let detail = json["detail"].string {
+            if let detail = json[Name.detail].string {
                 self.detail = detail
             } else {
                 self.detail = Model.Constant.emptyString
             }
             
-            guard let presenter = json["presenter"].string else {
+            guard let presenter = json[Name.presenter].string else {
                 return nil
             }
             self.presenter = presenter
             
-            guard let order = json["order"].int else {
+            guard let order = json[Name.order].int else {
                 return nil
             }
             self.order = order
         }
     }
 }
+
+extension Model.WorshipOrder {
+    struct Name {
+        static let title = "title"
+        static let detail = "detail"
+        static let presenter = "presenter"
+        static let order = "order"
+    }
+}
+

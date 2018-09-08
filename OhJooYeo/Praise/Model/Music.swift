@@ -16,6 +16,7 @@ extension Model {
         //var imageName: String
         var image: UIImage?
         var order: Int
+        var content: String
         
         init?(json: JSON) {
             guard let id = json["id"].string else {
@@ -30,6 +31,10 @@ extension Model {
                 return nil
             }
             self.order = order
+            guard let content = json["content"].string else {
+                return nil
+            }
+            self.content = content
             
             self.image = getImageData()
         }
@@ -38,5 +43,14 @@ extension Model {
             
             return UIImage()
         }
+    }
+}
+
+extension Model.Music {
+    struct Name {
+        static let id = "id"
+        static let title = "title"
+        static let order = "order"
+        static let content = "content"
     }
 }

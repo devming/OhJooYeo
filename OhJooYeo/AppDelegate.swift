@@ -31,7 +31,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             }
             GlobalState.shared.recentWorshipId = worshipIdDate.worshipId
         }
-        App.api.getRecentDatas(worshipId: GlobalState.shared.recentWorshipId, version: GlobalState.shared.version) { (worshipData) in
+        //GlobalState.shared.recentWorshipId
+        App.api.getRecentDatas(worshipId: "36-09", version: GlobalState.shared.version) { (worshipData) in
             guard let worshipData = worshipData else {
                 return
             }

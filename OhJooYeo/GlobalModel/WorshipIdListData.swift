@@ -12,7 +12,7 @@ import SwiftyJSON
 final class WorshipIdListData {
     
     static var shared = WorshipIdListData()
-    var worshipIdList: [Model.WorshipIdDate]?
+    var worshipIdDate: [Model.WorshipIdDate]?
     
     private init() {}
     
@@ -21,12 +21,12 @@ final class WorshipIdListData {
             return
         }
         
-        worshipIdList = [Model.WorshipIdDate]()
+        self.worshipIdDate = [Model.WorshipIdDate]()
         for worshipId in idList {
             guard let worship = Model.WorshipIdDate(json: worshipId) else {
                 continue
             }
-            worshipIdList?.append(worship)
+            self.worshipIdDate?.append(worship)
         }
     }
     
