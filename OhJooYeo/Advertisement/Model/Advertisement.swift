@@ -12,12 +12,12 @@ import SwiftyJSON
 extension Model {
     struct Advertisement {
         var title: String
-        var description: String
+        var content: String
         var order: Int
         
-        init(title: String, description: String, order: Int) {
+        init(title: String, content: String, order: Int) {
             self.title = title
-            self.description = description
+            self.content = content
             self.order = order
         }
         
@@ -28,10 +28,10 @@ extension Model {
                 self.title = ""
             }
             
-            guard let description = json[Name.description].string else {
+            guard let content = json[Name.content].string else {
                 return nil
             }
-            self.description = description
+            self.content = content
             
             guard let order = json[Name.order].int else {
                 return nil
@@ -44,7 +44,7 @@ extension Model {
 extension Model.Advertisement {
     struct Name {
         static let title = "title"
-        static let description = "description"
+        static let content = "content"
         static let order = "order"
     }
 }

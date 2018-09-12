@@ -12,12 +12,12 @@ import SwiftyJSON
 import Alamofire_SwiftyJSON
 
 protocol API {
-    func getWorshipIdList(handler: @escaping ([Model.WorshipIdDate]?)-> Void) -> Void
-    func getRecentDatas(worshipId: String, version: String, handler: @escaping ((Model.Worship?)-> Void)) -> Void
+    func getWorshipIdList(handler: @escaping ()-> Void) -> Void
+    func getRecentDatas(worshipId: String, version: String, handler: @escaping (()-> Void)) -> Void
 }
 
 struct APIService: API {
-    func getWorshipIdList(handler: @escaping ([Model.WorshipIdDate]?) -> Void) {
+    func getWorshipIdList(handler: @escaping () -> Void) {
         APIRouter.manager.request(APIRouter.getWorshipIdList()).responseSwiftyJSON { (dataResponse: DataResponse<JSON>) in
             
             switch dataResponse.result
@@ -36,14 +36,25 @@ struct APIService: API {
                     
                     return WorshipIdListData.shared.worshipIdDate
                 })
-                if let responseData = result.value {
-                    handler(responseData)
+                if let responseData = result.value, var worshipIdDates = responseData {
+                    
+                    worshipIdDates.sort {
+                        return $0.worshipId < $1.worshipId
+                        //                return $0.worshipId > $1.worshipId
+                    }
+                    guard let worshipIdDate = worshipIdDates.first else {
+                        return
+                    }
+                    GlobalState.shared.recentWorshipId = worshipIdDate.worshipId
+                    GlobalState.shared.recentWorshipDate = worshipIdDate.date
                 }
+                
+                handler()
             }
         }
     }
     
-    func getRecentDatas(worshipId: String, version: String, handler: @escaping ((Model.Worship?) -> Void)) {
+    func getRecentDatas(worshipId: String, version: String, handler: @escaping (() -> Void)) {
         APIRouter.manager.request(APIRouter.getRecentDatas(worshipId: worshipId, version: version, parameters: nil)).responseSwiftyJSON { (dataResponse: DataResponse<JSON>) in
             
             switch dataResponse.result
@@ -63,8 +74,11 @@ struct APIService: API {
                     }
                     return data
                 })
-                if let responseWholeDatas = result.value {
-                    handler(responseWholeDatas)
+                
+                /// result가 네트워크상에서 받아온 데이터를 객체로 가지고 있음.
+                if let responseWholeDatas = result.value, let data = responseWholeDatas {
+//                    WorshipCellData.shared.setWorship(worship: data, version: GlobalState.shared.version, date: GlobalState.shared.recentWorshipDate, id: GlobalState.shared.recentWorshipId)
+                    WorshipCellData.shared.setWorship(worship: data, id: GlobalState.shared.recentWorshipId)
                 }
             }
         }

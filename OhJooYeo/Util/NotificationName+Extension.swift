@@ -9,5 +9,5 @@
 import Foundation
 
 extension Notification.Name {
-    
+    public static let WorshipDidUpdated: Notification.Name = Notification.Name("WorshipDidUpdated")
 }

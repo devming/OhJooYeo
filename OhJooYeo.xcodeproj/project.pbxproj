@@ -19,7 +19,7 @@
 		CA3080C52130F6EC00255A7E /* WorshipCellData.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA3080C42130F6EC00255A7E /* WorshipCellData.swift */; };
 		CA3080C92130FDB600255A7E /* UtilFunction.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA3080C82130FDB600255A7E /* UtilFunction.swift */; };
 		CA3080CC2130FE0400255A7E /* ConstantString.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA3080CB2130FE0400255A7E /* ConstantString.swift */; };
-		CA3080CE2130FE1600255A7E /* ExtensionNotificationName.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA3080CD2130FE1600255A7E /* ExtensionNotificationName.swift */; };
+		CA3080CE2130FE1600255A7E /* NotificationName+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA3080CD2130FE1600255A7E /* NotificationName+Extension.swift */; };
 		CA42ED10213A36F400F9BB6E /* WorshipIdDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA42ED0F213A36F400F9BB6E /* WorshipIdDate.swift */; };
 		CA4FA40420B926C600BE6730 /* PhraseDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA4FA40320B926C600BE6730 /* PhraseDetailViewController.swift */; };
 		CA4FA40720B926E400BE6730 /* AdvertisementViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA4FA40620B926E400BE6730 /* AdvertisementViewController.swift */; };
@@ -69,7 +69,7 @@
 		CA3080C42130F6EC00255A7E /* WorshipCellData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorshipCellData.swift; sourceTree = "<group>"; };
 		CA3080C82130FDB600255A7E /* UtilFunction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UtilFunction.swift; sourceTree = "<group>"; };
 		CA3080CB2130FE0400255A7E /* ConstantString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConstantString.swift; sourceTree = "<group>"; };
-		CA3080CD2130FE1600255A7E /* ExtensionNotificationName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionNotificationName.swift; sourceTree = "<group>"; };
+		CA3080CD2130FE1600255A7E /* NotificationName+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NotificationName+Extension.swift"; sourceTree = "<group>"; };
 		CA42ED0F213A36F400F9BB6E /* WorshipIdDate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorshipIdDate.swift; sourceTree = "<group>"; };
 		CA4FA40320B926C600BE6730 /* PhraseDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhraseDetailViewController.swift; sourceTree = "<group>"; };
 		CA4FA40620B926E400BE6730 /* AdvertisementViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdvertisementViewController.swift; sourceTree = "<group>"; };
@@ -157,7 +157,7 @@
 				CAFB287C20D4E7DE00B72722 /* GlobalState.swift */,
 				CA3080C82130FDB600255A7E /* UtilFunction.swift */,
 				CA3080CB2130FE0400255A7E /* ConstantString.swift */,
-				CA3080CD2130FE1600255A7E /* ExtensionNotificationName.swift */,
+				CA3080CD2130FE1600255A7E /* NotificationName+Extension.swift */,
 			);
 			path = Util;
 			sourceTree = "<group>";
@@ -540,7 +540,7 @@
 				CAFB288020D4EF1F00B72722 /* OhJooYeo.xcdatamodeld in Sources */,
 				CA050141214196BC00B89F3D /* WorshipIdListData.swift in Sources */,
 				CAFB287B20D4E7CA00B72722 /* App.swift in Sources */,
-				CA3080CE2130FE1600255A7E /* ExtensionNotificationName.swift in Sources */,
+				CA3080CE2130FE1600255A7E /* NotificationName+Extension.swift in Sources */,
 				CA0AB21820C23ECE0028BC69 /* Advertisement.swift in Sources */,
 				CA3080C92130FDB600255A7E /* UtilFunction.swift in Sources */,
 				CA70536420BAEDBC00815D37 /* PhraseMessage.swift in Sources */,

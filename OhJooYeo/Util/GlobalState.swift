@@ -15,11 +15,12 @@ final class GlobalState {
     enum Constants: String {
         case currentVersion
         case recentWorshipId
+        case recentWorshipDate
     }
     
     var version: String {
         get {
-            let version = UserDefaults.standard.string(forKey: Constants.currentVersion.rawValue) ?? "***"
+            let version = UserDefaults.standard.string(forKey: Constants.currentVersion.rawValue) ?? ConstantString.recentVersions
             return version
         }
         set {
@@ -34,6 +35,16 @@ final class GlobalState {
         }
         set {
             UserDefaults.standard.set(newValue, forKey: Constants.recentWorshipId.rawValue)
+        }
+    }
+    
+    var recentWorshipDate: String {
+        get {
+            let recentWorshipDate = UserDefaults.standard.string(forKey: Constants.recentWorshipDate.rawValue) ?? ConstantString.definedStringNoValue
+            return recentWorshipDate
+        }
+        set {
+            UserDefaults.standard.set(newValue, forKey: Constants.recentWorshipDate.rawValue)
         }
     }
     

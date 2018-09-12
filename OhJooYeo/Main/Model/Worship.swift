@@ -11,14 +11,99 @@ import SwiftyJSON
 
 extension Model {
     struct Worship {
+        var musics: [Music]?
+        var worshipDate: String
+        var advertisements: [Advertisement]?
+        var currentVersion: String
+        
+        var worshipJson: [String: JSON]
         var mainPresenter: String
         var nextPresenter: NextPresenter
         var worshipOrders: [WorshipOrder]
-        var currentVersion: String
-        var worshipDate: String
-        var worshipId: String
-        var advertisements: [Advertisement]?
-        var music: Music?
+        
+        var worshipVersion: String
+        var advertisementVersion: String
+        var musicVersion: String
+        
+        init?(json: JSON) {
+            if let currentVersion = json[Name.currentVersion].string {
+                self.currentVersion = currentVersion
+            } else {
+                self.currentVersion = ConstantString.nilVersion
+            }
+            self.worshipVersion = "\(self.currentVersion[self.currentVersion.index(self.currentVersion.startIndex, offsetBy: 0)])"
+            self.advertisementVersion = "\(self.currentVersion[self.currentVersion.index(self.currentVersion.startIndex, offsetBy: 1)])"
+            self.musicVersion = "\(self.currentVersion[self.currentVersion.index(self.currentVersion.startIndex, offsetBy: 2)])"
+            
+            guard let worshipJson = json[Name.worship].dictionary else {
+                return nil
+            }
+            self.worshipJson = worshipJson
+            
+            guard let mainPresenter = worshipJson[Name.mainPresenter]?.string else {
+                return nil
+            }
+            self.mainPresenter = mainPresenter
+            
+            guard let worshipJsonNextPresenter = worshipJson[Name.nextPresenter],
+                let nextPresenter = NextPresenter(json: worshipJsonNextPresenter) else {
+                    return nil
+            }
+            self.nextPresenter = nextPresenter
+            
+            guard let orderList = worshipJson[Name.worshipOrder]?.array else {
+                return nil
+            }
+            
+            self.worshipOrders = [WorshipOrder]()
+            
+            for orderJson in orderList {
+                
+                guard let order = WorshipOrder(json: orderJson) else {
+                    return nil
+                }
+                self.worshipOrders.append(order)
+            }
+            
+            if let worshipDate = json[Name.worshipDate].string {
+                self.worshipDate = worshipDate
+            } else {
+                self.worshipDate = ConstantString.emptyString
+            }
+            
+            
+            if let advertisementList = json[Name.advertisement].array {
+                
+                self.advertisements = [Advertisement]()
+                
+                for advertisementJson in advertisementList {
+                    
+                    guard let advertisement = Advertisement(json: advertisementJson) else {
+                        return nil
+                    }
+                    self.advertisements?.append(advertisement)
+                }
+            } else {
+                self.advertisements = nil
+            }
+            
+            if let musicList = json[Name.music].array {
+                
+                self.musics = [Music]()
+                
+                for musicJson in musicList {
+                    
+                    guard let music = Music(json: musicJson) else {
+                        return nil
+                    }
+                    self.musics?.append(music)
+                }
+            } else {
+                self.musics = nil
+            }
+            
+            GlobalState.shared.version = self.currentVersion
+        }
         
         struct NextPresenter {
             var mainPresenter: String
@@ -54,88 +139,17 @@ extension Model {
                 static let offer = "offer"
             }
         }
-        
-        init?(json: JSON) {
-            guard let mainPresenter = json[Name.mainPresenter].string else {
-                return nil
-            }
-            self.mainPresenter = mainPresenter
-            
-            guard let nextPresenter = NextPresenter(json: json[Name.nextPresenter]) else {
-                return nil
-            }
-            self.nextPresenter = nextPresenter
-            
-            guard let orderList = json[Name.worshipOrders].array else {
-                return nil
-            }
-            
-            self.worshipOrders = [WorshipOrder]()
-            
-            for orderJson in orderList {
-                
-                guard let order = WorshipOrder(json: orderJson) else {
-                    return nil
-                }
-                self.worshipOrders.append(order)
-            }
-            
-            if let currentVersion = json[Name.currentVersion].string {
-                self.currentVersion = currentVersion
-            } else {
-                self.currentVersion = Model.Constant.emptyString
-            }
-            
-            if let worshipDate = json[Name.worshipDate].string {
-                self.worshipDate = worshipDate
-            } else {
-                self.worshipDate = Model.Constant.emptyString
-            }
-            
-            if let worshipId = json[Name.worshipId].string {
-                self.worshipId = worshipId
-            } else {
-                self.worshipId = Model.Constant.emptyString
-            }
-            
-            if let advertisementList = json[Name.advertisement].array {
-                
-                self.advertisements = [Advertisement]()
-                
-                for advertisementJson in advertisementList {
-                    
-                    guard let advertisement = Advertisement(json: advertisementJson) else {
-                        return nil
-                    }
-                    self.advertisements?.append(advertisement)
-                }
-            } else {
-                self.advertisements = nil
-            }
-            
-            if let music = Music(json: json[Name.music]) {
-                self.music = music
-            } else {
-                self.music = nil
-            }
-            
-            if let currentVersion = json[Name.currentVersion].string {
-                GlobalState.shared.version = currentVersion
-            } else {
-                GlobalState.shared.version = "***"
-            }
-        }
     }
 }
 
 extension Model.Worship {
     struct Name {
+        static let worship = "worship"
         static let mainPresenter = "mainPresenter"
         static let nextPresenter = "nextPresenter"
-        static let worshipOrders = "worshipOrders"
+        static let worshipOrder = "worshipOrder"
         static let currentVersion = "currentVersion"
         static let worshipDate = "worshipDate"
-        static let worshipId = "worshipId"
         static let advertisement = "advertisement"
         static let music = "music"
     }

@@ -10,8 +10,8 @@ import Foundation
 import CoreData
 
 extension DbManager {
-    func addWorship(mainPresenter: String?, worshipOrder: [Model.WorshipOrder]?, nextPresenter: Model.Worship.NextPresenter?) {
-        if let newPhrase = self.worshipMO {
+    func addWorship(mainPresenter: String?, worshipOrder: [Model.WorshipOrder]?, nextPresenter: Model.Worship.NextPresenter?, version: String, worshipDate: String, worshipId: String) {
+        if let newPhrase = NSEntityDescription.insertNewObject(forEntityName: DbManager.EntityName.worshipEntityName, into: defaultContext) as? WorshipMO {
               // type casting을 해서 내가 사용할 엔티티를 가져와야한다.
             if let mainPresenter = mainPresenter {
                 newPhrase.mainPresenter = mainPresenter
@@ -21,10 +21,13 @@ extension DbManager {
                 newPhrase.nextOffer = nextPresenter.offer
                 newPhrase.nextPrayer = nextPresenter.prayer
             }
-            if let worshipOrderValue = worshipOrder, let worshipOrderMO = self.worshipOrderMO {
-                addWorshipOrder(worshipOrders: worshipOrderValue)
+            newPhrase.version = version
+            newPhrase.worshipDate = worshipDate
+            newPhrase.worshipId = worshipId
+            if let worshipOrderValue = worshipOrder {
+                addWorshipOrder(worshipOrders: worshipOrderValue, worshipMO: newPhrase)
 //                let worshipOrderMOList = getWorshipOrderList()
-                newPhrase.addToWorshipOrders(worshipOrderMO)
+//                newPhrase.addToWorshipOrders(worshipOrderMO)
             }
             
             saveContext()

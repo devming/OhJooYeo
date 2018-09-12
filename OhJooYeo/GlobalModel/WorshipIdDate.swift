@@ -9,11 +9,7 @@
 import Foundation
 import SwiftyJSON
 
-struct Model {
-    struct Constant {
-        static let emptyString = ""
-    }
-}
+struct Model {}
 extension Model {
     struct WorshipIdDate {
         var date: String
@@ -23,13 +19,13 @@ extension Model {
             if let date = json[Name.date].string {
                 self.date = date
             } else {
-                self.date = Model.Constant.emptyString
+                self.date = ConstantString.emptyString
             }
             
             if let worshipId = json[Name.worshipId].string {
                 self.worshipId = worshipId
             } else {
-                self.worshipId = Model.Constant.emptyString
+                self.worshipId = ConstantString.emptyString
             }
         }
     }

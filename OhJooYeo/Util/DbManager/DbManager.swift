@@ -11,31 +11,35 @@ import CoreData
 class DbManager{    // 싱글톤으로 구현할 것임
     static let shared = DbManager() /// 처음 사용할때 그때 생성되나?
     
-    var worshipMO: WorshipMO? {
-        get {
-            return NSEntityDescription.insertNewObject(forEntityName: DbManager.EntityName.worshipEntityName, into: defaultContext) as? WorshipMO
-        }
-    }
-    var worshipOrderMO: WorshipOrderMO? {
-        get {
-            return NSEntityDescription.insertNewObject(forEntityName: DbManager.EntityName.worshipOrderEntityName, into: defaultContext) as? WorshipOrderMO
-        }
-    }
-    var phraseMessageMO: PhraseMessageMO? {
-        get {
-            return NSEntityDescription.insertNewObject(forEntityName: DbManager.EntityName.phraseMessageEntityName, into: defaultContext) as? PhraseMessageMO
-        }
-    }
-    var praiseMO: PraiseMO? {
-        get {
-            return NSEntityDescription.insertNewObject(forEntityName: DbManager.EntityName.praiseEntityName, into: defaultContext) as? PraiseMO
-        }
-    }
-    var advertisement: AdvertisementMO? {
-        get {
-            return NSEntityDescription.insertNewObject(forEntityName: DbManager.EntityName.advertisementEntityName, into: defaultContext) as? AdvertisementMO
-        }
-    }
+//    var worshipMO: WorshipMO? {
+//        get {
+//            return NSEntityDescription.insertNewObject(forEntityName: DbManager.EntityName.worshipEntityName, into: defaultContext) as? WorshipMO
+//        }
+//        set {}
+//    }
+//    var worshipOrderMO: WorshipOrderMO? {
+//        get {
+//            return NSEntityDescription.insertNewObject(forEntityName: DbManager.EntityName.worshipOrderEntityName, into: defaultContext) as? WorshipOrderMO
+//        }
+//        set {}
+//    }
+//    var phraseMessageMO: PhraseMessageMO? {
+//        get {
+//            return NSEntityDescription.insertNewObject(forEntityName: DbManager.EntityName.phraseMessageEntityName, into: defaultContext) as? PhraseMessageMO
+//        }
+//        set {}
+//    }
+//    var praiseMO: PraiseMO? {
+//        get {
+//            return NSEntityDescription.insertNewObject(forEntityName: DbManager.EntityName.praiseEntityName, into: defaultContext) as? PraiseMO
+//        }
+//    }
+//    var advertisement: AdvertisementMO? {
+//        get {
+//            return NSEntityDescription.insertNewObject(forEntityName: DbManager.EntityName.advertisementEntityName, into: defaultContext) as? AdvertisementMO
+//        }
+//        set {}
+//    }
     
     private init() {        // 싱글톤 구현할 때 기본적으로 private init으로 생성자를 만들어 준다. 그래야 밖에서 생성 못하니까.
     }
@@ -64,6 +68,10 @@ class DbManager{    // 싱글톤으로 구현할 것임
     
     var defaultContext: NSManagedObjectContext {
         return self.persistentContainer.viewContext
+    }
+    
+    func contextHasChanges() -> Bool {
+        return self.defaultContext.hasChanges
     }
     
     // MARK: - Core Data Saving

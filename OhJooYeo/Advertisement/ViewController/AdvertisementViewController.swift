@@ -38,7 +38,7 @@ extension AdvertisementViewController: UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: AdvertisementTableViewCell.cellName) as! AdvertisementTableViewCell
         
         cell.titleLabel.text = advertisementList[indexPath.row].title
-        cell.descriptionLabel.text = advertisementList[indexPath.row].description
+        cell.descriptionLabel.text = advertisementList[indexPath.row].content
         
         return cell
     }

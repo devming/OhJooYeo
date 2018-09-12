@@ -10,5 +10,8 @@ import Foundation
 
 struct ConstantString {
     static let definedStringNoValue = "- No Value -"
-
+    static let emptyString = ""
+    static let recentVersions = "***"
+    static let nilVersion = "---"
+    static let recentVersion = "*"
 }

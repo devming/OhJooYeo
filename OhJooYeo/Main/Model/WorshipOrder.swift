@@ -32,7 +32,7 @@ extension Model {
             if let detail = json[Name.detail].string {
                 self.detail = detail
             } else {
-                self.detail = Model.Constant.emptyString
+                self.detail = ConstantString.emptyString
             }
             
             guard let presenter = json[Name.presenter].string else {
