@@ -11,7 +11,7 @@ import Foundation
 struct ConstantString {
     static let definedStringNoValue = "- No Value -"
     static let emptyString = ""
-    static let recentVersions = "***"
+    static let notSetVersions = "***"
     static let nilVersion = "---"
-    static let recentVersion = "*"
+    static let notSetVersion: Character = "*"
 }

@@ -20,7 +20,7 @@ final class GlobalState {
     
     var version: String {
         get {
-            let version = UserDefaults.standard.string(forKey: Constants.currentVersion.rawValue) ?? ConstantString.recentVersions
+            let version = UserDefaults.standard.string(forKey: Constants.currentVersion.rawValue) ?? ConstantString.notSetVersions
             return version
         }
         set {

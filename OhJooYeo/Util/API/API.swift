@@ -12,7 +12,22 @@ import SwiftyJSON
 import Alamofire_SwiftyJSON
 
 protocol API {
+    
+    /// 등록된 모든 예배 id와 date 정보를 가져온다.
+    /// 앱 실행 시 가장 먼저 호출되며, 가장 마지막으로 등록된 예배 id와 date를 가지고 getRecentDatas 메소드를 통해 주보 데이터를 얻기 위한 api를 호출 한다.
+    ///
+    /// - parameter handler: Callback Method
+    ///
+    /// - returns: Void
     func getWorshipIdList(handler: @escaping ()-> Void) -> Void
+    
+    /// 해당 예배 ID값을 가지고 등록된 주보 정보를 가져오는 API 호출 메소드
+    ///
+    /// - parameter worshipId:  예배에 해당하는 ID 값
+    /// - parameter version:    현재 로컬에서 가지고 있는 version 정보
+    /// - parameter handler:    Callback Method
+    ///
+    /// - returns: Void
     func getRecentDatas(worshipId: String, version: String, handler: @escaping (()-> Void)) -> Void
 }
 
@@ -77,7 +92,6 @@ struct APIService: API {
                 
                 /// result가 네트워크상에서 받아온 데이터를 객체로 가지고 있음.
                 if let responseWholeDatas = result.value, let data = responseWholeDatas {
-//                    WorshipCellData.shared.setWorship(worship: data, version: GlobalState.shared.version, date: GlobalState.shared.recentWorshipDate, id: GlobalState.shared.recentWorshipId)
                     WorshipCellData.shared.setWorship(worship: data, id: GlobalState.shared.recentWorshipId)
                 }
             }
