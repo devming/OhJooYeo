@@ -395,22 +395,22 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="tZE-pX-fcq">
-                                                    <rect key="frame" x="16" y="8" width="343" height="63.5"/>
+                                                    <rect key="frame" x="24" y="8" width="327" height="63.5"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4qm-oo-A4g">
-                                                            <rect key="frame" x="0.0" y="0.0" width="114.5" height="63.5"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="109" height="63.5"/>
                                                             <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" text=" detail" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jEZ-AD-fBR">
-                                                            <rect key="frame" x="114.5" y="0.0" width="114" height="63.5"/>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" text=" detail" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" minimumScaleFactor="0.29999999999999999" translatesAutoresizingMaskIntoConstraints="NO" id="jEZ-AD-fBR">
+                                                            <rect key="frame" x="109" y="0.0" width="109" height="63.5"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" text="presenter" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="E1c-Rd-KIg">
-                                                            <rect key="frame" x="228.5" y="0.0" width="114.5" height="63.5"/>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" text="presenter" textAlignment="right" lineBreakMode="characterWrap" baselineAdjustment="alignBaselines" minimumScaleFactor="0.29999999999999999" translatesAutoresizingMaskIntoConstraints="NO" id="E1c-Rd-KIg">
+                                                            <rect key="frame" x="218" y="0.0" width="109" height="63.5"/>
                                                             <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
                                                             <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                             <nil key="highlightedColor"/>
@@ -420,9 +420,9 @@
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="tZE-pX-fcq" firstAttribute="top" secondItem="haZ-Pq-5Zf" secondAttribute="top" constant="8" id="34u-rW-04S"/>
-                                                <constraint firstAttribute="trailing" secondItem="tZE-pX-fcq" secondAttribute="trailing" constant="16" id="3cJ-On-UGr"/>
+                                                <constraint firstAttribute="trailing" secondItem="tZE-pX-fcq" secondAttribute="trailing" constant="24" id="3cJ-On-UGr"/>
                                                 <constraint firstAttribute="bottom" secondItem="tZE-pX-fcq" secondAttribute="bottom" constant="8" id="Tp1-W5-lQX"/>
-                                                <constraint firstItem="tZE-pX-fcq" firstAttribute="leading" secondItem="haZ-Pq-5Zf" secondAttribute="leading" constant="16" id="ZR9-bq-JuL"/>
+                                                <constraint firstItem="tZE-pX-fcq" firstAttribute="leading" secondItem="haZ-Pq-5Zf" secondAttribute="leading" constant="24" id="ZR9-bq-JuL"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>

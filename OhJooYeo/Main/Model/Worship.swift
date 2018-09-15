@@ -102,7 +102,13 @@ extension Model {
                 self.musics = nil
             }
             
-            GlobalState.shared.version = self.currentVersion
+            if let version = json[Name.currentVersion].string {
+                self.currentVersion = version
+            } else {
+                self.currentVersion = ConstantString.notSetVersions
+            }
+            
+//            GlobalState.shared.version = self.currentVersion
         }
         
         struct NextPresenter {

@@ -29,8 +29,11 @@ class WorshipCellData {
         let currentLocalAdvertisementVersion = currentLocalVersion[currentLocalVersion.index(currentLocalVersion.startIndex, offsetBy: 1)]
         let currentLocalMusicVersion = currentLocalVersion[currentLocalVersion.index(currentLocalVersion.startIndex, offsetBy: 2)]
         
-        if currentLocalWorshipVersion == ConstantString.notSetVersion || currentLocalWorshipVersion < worship.worshipVersion[worship.worshipVersion.startIndex] { // 받아온 Worship 정보가 더 최신일 경우
+        if currentLocalWorshipVersion == ConstantString.notSetVersion { // 현재 로컬 버전이 최초 아무것도 없는 경우(*인경우) - Add
             DbManager.shared.addWorship(mainPresenter: worship.mainPresenter, worshipOrder: worship.worshipOrders, nextPresenter: worship.nextPresenter, version: worship.currentVersion, worshipDate: worship.worshipDate, worshipId: id)
+        } else if currentLocalWorshipVersion < worship.worshipVersion[worship.worshipVersion.startIndex] { // 받아온 Worship 정보가 더 최신일 경우 - Update
+//            DbManager.shared.updateWorship()
+            print("Update 수행 예정")
         }
         
         if currentLocalAdvertisementVersion == ConstantString.notSetVersion
@@ -43,6 +46,7 @@ class WorshipCellData {
             
         }
         
+        GlobalState.shared.version = worship.currentVersion // 로컬을 원격 버전으로 교체
         self.worshipMO = DbManager.shared.getRecentWorship()
         
         guard let date = self.worshipMO?.worshipDate else {
