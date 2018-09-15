@@ -26,6 +26,29 @@ extension DbManager {
         }
     }
     
+    func updateWorshipOrder(worshipOrders: [Model.WorshipOrder], worshipMO: WorshipMO) {
+        if let worshipOrderMO = worshipMO.worshipOrders {
+            for worshipOrderItem in worshipOrderMO {
+                guard let item = worshipOrderItem as? WorshipOrderMO else {
+                    continue
+                }
+                delete(item)
+            }
+            saveContext()
+        }
+        for worshipOrder in worshipOrders {
+            if let newPhrase = NSEntityDescription.insertNewObject(forEntityName: DbManager.EntityName.worshipOrderEntityName, into: defaultContext) as? WorshipOrderMO {
+                newPhrase.title = worshipOrder.title
+                newPhrase.detail = worshipOrder.detail
+                newPhrase.presenter = worshipOrder.presenter
+                newPhrase.order = Int32(worshipOrder.order)
+                worshipMO.addToWorshipOrders(newPhrase)
+                // let dd = worshipMO.worshipOrders?.allObjects as! [WorshipOrderMO]
+                saveContext()
+            }
+        }
+    }
+    
     func getWorshipOrderList(worshipMO: WorshipMO?) -> [WorshipOrderMO] {
         //        guard let worshipObjID = worshipMO?.objectID,
         //            let worshipOrder = (defaultContext.object(with: worshipObjID) as? WorshipMO)?.worshipOrders,

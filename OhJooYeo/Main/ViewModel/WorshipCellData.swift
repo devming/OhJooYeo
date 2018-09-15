@@ -11,11 +11,8 @@ import Foundation
 class WorshipCellData {
     
     static var shared = WorshipCellData()
-//    var worship: Model.Worship?
     weak var worshipMO: WorshipMO?
     var worshipOrderMO: [WorshipOrderMO]?
-//    var orderList: [Model.WorshipOrder]?
-//    var nextPresenters: Model.Worship.NextPresenter?
     
     var dateInfo: String?
     
@@ -29,12 +26,16 @@ class WorshipCellData {
         let currentLocalAdvertisementVersion = currentLocalVersion[currentLocalVersion.index(currentLocalVersion.startIndex, offsetBy: 1)]
         let currentLocalMusicVersion = currentLocalVersion[currentLocalVersion.index(currentLocalVersion.startIndex, offsetBy: 2)]
         
+        let currentWorshipInfo = DbManager.shared.getRecentWorship()
+        
         if currentLocalWorshipVersion == ConstantString.notSetVersion { // 현재 로컬 버전이 최초 아무것도 없는 경우(*인경우) - Add
             DbManager.shared.addWorship(mainPresenter: worship.mainPresenter, worshipOrder: worship.worshipOrders, nextPresenter: worship.nextPresenter, version: worship.currentVersion, worshipDate: worship.worshipDate, worshipId: id)
         } else if currentLocalWorshipVersion < worship.worshipVersion[worship.worshipVersion.startIndex] { // 받아온 Worship 정보가 더 최신일 경우 - Update
-//            DbManager.shared.updateWorship()
-            print("Update 수행 예정")
-        }
+            if let currentWorshipInfo = currentWorshipInfo {
+                DbManager.shared.updateWorship(worshipObject: currentWorshipInfo, mainPresenter: worship.mainPresenter, worshipOrder: worship.worshipOrders, nextPresenter: worship.nextPresenter, version: worship.currentVersion, worshipDate: worship.worshipDate, worshipId: id)
+            }
+            print("Update 수행")
+        } // else 인 경우는 최신 버전으로 동기화 되어 있는 경우
         
         if currentLocalAdvertisementVersion == ConstantString.notSetVersion
             || currentLocalAdvertisementVersion < worship.advertisementVersion[worship.advertisementVersion.startIndex] {
@@ -54,11 +55,7 @@ class WorshipCellData {
         }
         self.dateInfo = showDateData(worshipDate: date)
         
-//        guard let worshipOrders = self.worshipMO?.worshipOrders else {
-//            return
-//        }
         self.worshipOrderMO = DbManager.shared.getWorshipOrderList(worshipMO: self.worshipMO)
-//        worshipOrders.setValue(<#T##value: Any?##Any?#>, forKey: DbManager.ColumnKey.WorshipOrder.order)
         
         NotificationCenter.default.post(name: .WorshipDidUpdated, object: nil)
     }

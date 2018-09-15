@@ -26,19 +26,38 @@ extension DbManager {
             newPhrase.worshipId = worshipId
             if let worshipOrderValue = worshipOrder {
                 addWorshipOrder(worshipOrders: worshipOrderValue, worshipMO: newPhrase)
-//                let worshipOrderMOList = getWorshipOrderList()
-//                newPhrase.addToWorshipOrders(worshipOrderMO)
             }
             
             saveContext()
         }
     }
     
-    func getRecentWorship(/*id or date 필터링 조건 넣어야할듯*/) -> WorshipMO {
-        if let result = getWorshipList().first {
-            return result
+    func updateWorship(worshipObject: WorshipMO, mainPresenter: String?, worshipOrder: [Model.WorshipOrder]?, nextPresenter: Model.Worship.NextPresenter?, version: String, worshipDate: String, worshipId: String) {
+        if let newPhrase = NSEntityDescription.insertNewObject(forEntityName: DbManager.EntityName.worshipEntityName, into: defaultContext) as? WorshipMO {
+            // type casting을 해서 내가 사용할 엔티티를 가져와야한다.
+            if let mainPresenter = mainPresenter {
+                newPhrase.mainPresenter = mainPresenter
+            }
+            if let nextPresenter = nextPresenter {
+                newPhrase.nextPresenter = nextPresenter.mainPresenter
+                newPhrase.nextOffer = nextPresenter.offer
+                newPhrase.nextPrayer = nextPresenter.prayer
+            }
+            newPhrase.version = version
+            newPhrase.worshipDate = worshipDate
+            newPhrase.worshipId = worshipId
+            if let worshipOrderValue = worshipOrder {
+                updateWorshipOrder(worshipOrders: worshipOrderValue, worshipMO: newPhrase)
+            }
+            saveContext()
         }
-        return WorshipMO()
+    }
+    
+    func getRecentWorship(/*id or date 필터링 조건 넣어야할듯*/) -> WorshipMO? {
+        guard let result = getWorshipList().first else {
+            return nil
+        }
+        return result
     }
     
     func getWorshipList() -> [WorshipMO] {
