@@ -100,8 +100,8 @@ extension MainViewController: UITableViewDelegate {
 extension MainViewController {
     @objc func worshipUpdate(_ notification: Notification) {
         OperationQueue.main.addOperation { [weak self] in
-            self?.listTableView.reloadData()
             self?.dateLabel.text = WorshipCellData.shared.dateInfo
+            self?.listTableView.reloadData()
         }
     }
 }

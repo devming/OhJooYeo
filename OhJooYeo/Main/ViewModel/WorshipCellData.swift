@@ -11,7 +11,7 @@ import Foundation
 class WorshipCellData {
     
     static var shared = WorshipCellData()
-    weak var worshipMO: WorshipMO?
+    var worshipMO: WorshipMO?   // weak 로 선언하면 데이터가 사라짐.. 메모리 해제로 인해
     var worshipOrderMO: [WorshipOrderMO]?
     
     var dateInfo: String?
@@ -64,13 +64,22 @@ class WorshipCellData {
 extension WorshipCellData {
     
     func showDateData(worshipDate: String) -> String {
-        let formatter = DateFormatter()
-        formatter.dateStyle = .long
-        formatter.timeStyle = .none
-        formatter.locale = Locale(identifier: "ko-KR")
-        guard let date = formatter.date(from: worshipDate) else { //TODO: 이게 변경이 안됨
-            return "\(Date())"
+        let dateComponentString = worshipDate.split(separator: "-")
+        var components = DateComponents()
+        components.year = Int(dateComponentString[dateComponentString.index(0, offsetBy: 0)])
+        components.month = Int(dateComponentString[dateComponentString.index(1, offsetBy: 0)])
+        components.day = Int(dateComponentString[dateComponentString.index(2, offsetBy: 0)])
+        
+        guard let year = components.year, let month = components.month, let day = components.day else {
+            return "\(worshipDate)"
         }
-        return "제 \(formatter.calendar.component(.year, from: Date.init(timeIntervalSinceNow: 0))-1982)권 제 \(formatter.calendar.component(.weekOfYear, from: date))호 \(date)"
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy-MM-dd"
+        formatter.locale = Locale(identifier: "ko-KR")
+        guard let date = formatter.date(from: worshipDate) else {
+            return "\(worshipDate)"
+        }
+        
+        return "제 \(year-1982)권 제 \(formatter.calendar.component(.weekOfYear, from: date))호 \(year)년 \(month)월 \(day)일"
     }
 }

@@ -20,7 +20,6 @@ extension DbManager {
                 newPhrase.presenter = worshipOrder.presenter
                 newPhrase.order = Int32(worshipOrder.order)
                 worshipMO.addToWorshipOrders(newPhrase)
-                //                let dd = worshipMO.worshipOrders?.allObjects as! [WorshipOrderMO]
                 saveContext()
             }
         }
@@ -43,22 +42,14 @@ extension DbManager {
                 newPhrase.presenter = worshipOrder.presenter
                 newPhrase.order = Int32(worshipOrder.order)
                 worshipMO.addToWorshipOrders(newPhrase)
-                // let dd = worshipMO.worshipOrders?.allObjects as! [WorshipOrderMO]
                 saveContext()
             }
         }
     }
     
     func getWorshipOrderList(worshipMO: WorshipMO?) -> [WorshipOrderMO] {
-        //        guard let worshipObjID = worshipMO?.objectID,
-        //            let worshipOrder = (defaultContext.object(with: worshipObjID) as? WorshipMO)?.worshipOrders,
-        //            let worshipOrderList = worshipOrder.allObjects as? [WorshipOrderMO] else {
-        //            return DbManager.shared.getWorshipOrderList()
-        //        }
-        //        return worshipOrderList
         
         // 1. NSFetchRequest
-        //        let request = NSFetchRequest<WorshipOrderMO>(entityName: DbManager.EntityName.worshipOrderEntityName)
         let request: NSFetchRequest<WorshipOrderMO> = WorshipOrderMO.fetchRequest()
         
         // 2. sorting

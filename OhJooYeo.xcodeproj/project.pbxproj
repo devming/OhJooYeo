@@ -190,7 +190,7 @@
 				CA4FA40A20B93FF200BE6730 /* Main */,
 				CA4FA40B20B9400900BE6730 /* PhraseDetail */,
 				CA4FA40C20B9401300BE6730 /* Advertisement */,
-				CA4FA40D20B9401A00BE6730 /* Praise */,
+				CA4FA40D20B9401A00BE6730 /* Music */,
 				CA22838020943F2A0023B3C1 /* AppDelegate.swift */,
 				CA22838420943F2B0023B3C1 /* Main.storyboard */,
 				CAFB287E20D4EF1F00B72722 /* OhJooYeo.xcdatamodeld */,
@@ -312,14 +312,14 @@
 			path = Advertisement;
 			sourceTree = "<group>";
 		};
-		CA4FA40D20B9401A00BE6730 /* Praise */ = {
+		CA4FA40D20B9401A00BE6730 /* Music */ = {
 			isa = PBXGroup;
 			children = (
 				CA3080C22130F63500255A7E /* Model */,
 				CA3080C12130F62D00255A7E /* ViewModel */,
 				CA3080C32130F63F00255A7E /* ViewController */,
 			);
-			path = Praise;
+			path = Music;
 			sourceTree = "<group>";
 		};
 		CA4FA41020B9406700BE6730 /* ViewController */ = {
