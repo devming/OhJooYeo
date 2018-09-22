@@ -32,7 +32,7 @@ extension DbManager {
         }
     }
     
-    func updateWorship(worshipObject: WorshipMO, mainPresenter: String?, worshipOrder: [Model.WorshipOrder]?, nextPresenter: Model.Worship.NextPresenter?, version: String, worshipDate: String, worshipId: String) {
+    func updateWorship(mainPresenter: String?, worshipOrder: [Model.WorshipOrder]?, nextPresenter: Model.Worship.NextPresenter?, version: String, worshipDate: String, worshipId: String) {
         if let newPhrase = NSEntityDescription.insertNewObject(forEntityName: DbManager.EntityName.worshipEntityName, into: defaultContext) as? WorshipMO {
             // type casting을 해서 내가 사용할 엔티티를 가져와야한다.
             if let mainPresenter = mainPresenter {

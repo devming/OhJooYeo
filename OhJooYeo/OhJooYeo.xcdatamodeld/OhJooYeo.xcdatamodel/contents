@@ -6,18 +6,18 @@
         <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="worship" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="Worship" inverseName="advertisements" inverseEntity="Worship" syncable="YES"/>
     </entity>
-    <entity name="PhraseMessage" representedClassName="PhraseMessageMO" syncable="YES" codeGenerationType="class">
-        <attribute name="contents" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="order" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
-        <attribute name="phrase" optional="YES" attributeType="String" syncable="YES"/>
-        <relationship name="worship" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="Worship" inverseName="phraseMessages" inverseEntity="Worship" syncable="YES"/>
-    </entity>
-    <entity name="Praise" representedClassName="PraiseMO" syncable="YES" codeGenerationType="class">
+    <entity name="Music" representedClassName="MusicMO" syncable="YES" codeGenerationType="class">
         <attribute name="image" optional="YES" attributeType="Binary" syncable="YES"/>
         <attribute name="imageName" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="order" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
-        <relationship name="worship" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="Worship" inverseName="praises" inverseEntity="Worship" syncable="YES"/>
+        <relationship name="worship" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="Worship" inverseName="musics" inverseEntity="Worship" syncable="YES"/>
+    </entity>
+    <entity name="PhraseMessage" representedClassName="PhraseMessageMO" syncable="YES" codeGenerationType="class">
+        <attribute name="content" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="phraseKey" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="worshipId" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="worship" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="Worship" inverseName="phraseMessages" inverseEntity="Worship" syncable="YES"/>
     </entity>
     <entity name="Worship" representedClassName="WorshipMO" syncable="YES" codeGenerationType="class">
         <attribute name="mainPresenter" optional="YES" attributeType="String" syncable="YES"/>
@@ -28,8 +28,8 @@
         <attribute name="worshipDate" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="worshipId" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="advertisements" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="Advertisement" inverseName="worship" inverseEntity="Advertisement" syncable="YES"/>
+        <relationship name="musics" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="Music" inverseName="worship" inverseEntity="Music" syncable="YES"/>
         <relationship name="phraseMessages" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="PhraseMessage" inverseName="worship" inverseEntity="PhraseMessage" syncable="YES"/>
-        <relationship name="praises" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="Praise" inverseName="worship" inverseEntity="Praise" syncable="YES"/>
         <relationship name="worshipOrders" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="WorshipOrder" inverseName="worship" inverseEntity="WorshipOrder" syncable="YES"/>
     </entity>
     <entity name="WorshipOrder" representedClassName="WorshipOrderMO" syncable="YES" codeGenerationType="class">
@@ -41,9 +41,9 @@
     </entity>
     <elements>
         <element name="Advertisement" positionX="-776" positionY="227" width="128" height="103"/>
-        <element name="PhraseMessage" positionX="-297" positionY="180" width="128" height="103"/>
-        <element name="Praise" positionX="-236" positionY="306" width="128" height="118"/>
-        <element name="Worship" positionX="-504" positionY="197" width="128" height="208"/>
+        <element name="PhraseMessage" positionX="-297" positionY="180" width="128" height="105"/>
+        <element name="Music" positionX="-236" positionY="306" width="128" height="120"/>
+        <element name="Worship" positionX="-504" positionY="197" width="128" height="210"/>
         <element name="WorshipOrder" positionX="-785" positionY="386" width="128" height="118"/>
     </elements>
 </model>

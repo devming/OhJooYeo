@@ -10,4 +10,5 @@ import Foundation
 
 extension Notification.Name {
     public static let WorshipDidUpdated: Notification.Name = Notification.Name("WorshipDidUpdated")
+    public static let PhraseMessageDidUpdated: Notification.Name = Notification.Name("PhraseMessageDidUpdated")
 }

@@ -23,7 +23,7 @@
 		CA42ED10213A36F400F9BB6E /* WorshipIdDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA42ED0F213A36F400F9BB6E /* WorshipIdDate.swift */; };
 		CA4FA40420B926C600BE6730 /* PhraseDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA4FA40320B926C600BE6730 /* PhraseDetailViewController.swift */; };
 		CA4FA40720B926E400BE6730 /* AdvertisementViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA4FA40620B926E400BE6730 /* AdvertisementViewController.swift */; };
-		CA4FA40920B9270800BE6730 /* PraiseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA4FA40820B9270800BE6730 /* PraiseViewController.swift */; };
+		CA4FA40920B9270800BE6730 /* MusicViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA4FA40820B9270800BE6730 /* MusicViewController.swift */; };
 		CA4FA40F20B9406300BE6730 /* OrderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA4FA40E20B9406300BE6730 /* OrderTableViewCell.swift */; };
 		CA4FA41220B940D900BE6730 /* NextPresenterTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA4FA41120B940D900BE6730 /* NextPresenterTableViewCell.swift */; };
 		CA4FA41520B9420400BE6730 /* WorshipOrder.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA4FA41420B9420400BE6730 /* WorshipOrder.swift */; };
@@ -31,6 +31,7 @@
 		CA70536420BAEDBC00815D37 /* PhraseMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA70536320BAEDBC00815D37 /* PhraseMessage.swift */; };
 		CA7A426A20B94C080097D99E /* Worship.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7A426920B94C080097D99E /* Worship.swift */; };
 		CAA6B99E20F9CAFB00E802BC /* Music.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAA6B99D20F9CAFB00E802BC /* Music.swift */; };
+		CAA914ED2155E530002E2CE6 /* PhraseMessageCellData.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAA914EC2155E530002E2CE6 /* PhraseMessageCellData.swift */; };
 		CAE645E42123C19700B109B7 /* DbEntityNameConstant.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAE645E32123C19700B109B7 /* DbEntityNameConstant.swift */; };
 		CAE645E62123C45F00B109B7 /* WorshipOrderDAO.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAE645E52123C45F00B109B7 /* WorshipOrderDAO.swift */; };
 		CAFA549C2104765300C4A808 /* OhJooYeoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAFA549B2104765300C4A808 /* OhJooYeoTests.swift */; };
@@ -73,7 +74,7 @@
 		CA42ED0F213A36F400F9BB6E /* WorshipIdDate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorshipIdDate.swift; sourceTree = "<group>"; };
 		CA4FA40320B926C600BE6730 /* PhraseDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhraseDetailViewController.swift; sourceTree = "<group>"; };
 		CA4FA40620B926E400BE6730 /* AdvertisementViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdvertisementViewController.swift; sourceTree = "<group>"; };
-		CA4FA40820B9270800BE6730 /* PraiseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PraiseViewController.swift; sourceTree = "<group>"; };
+		CA4FA40820B9270800BE6730 /* MusicViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicViewController.swift; sourceTree = "<group>"; };
 		CA4FA40E20B9406300BE6730 /* OrderTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderTableViewCell.swift; sourceTree = "<group>"; };
 		CA4FA41120B940D900BE6730 /* NextPresenterTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NextPresenterTableViewCell.swift; sourceTree = "<group>"; };
 		CA4FA41420B9420400BE6730 /* WorshipOrder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorshipOrder.swift; sourceTree = "<group>"; };
@@ -81,6 +82,7 @@
 		CA70536320BAEDBC00815D37 /* PhraseMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhraseMessage.swift; sourceTree = "<group>"; };
 		CA7A426920B94C080097D99E /* Worship.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Worship.swift; sourceTree = "<group>"; };
 		CAA6B99D20F9CAFB00E802BC /* Music.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Music.swift; sourceTree = "<group>"; };
+		CAA914EC2155E530002E2CE6 /* PhraseMessageCellData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhraseMessageCellData.swift; sourceTree = "<group>"; };
 		CAE645E32123C19700B109B7 /* DbEntityNameConstant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DbEntityNameConstant.swift; sourceTree = "<group>"; };
 		CAE645E52123C45F00B109B7 /* WorshipOrderDAO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorshipOrderDAO.swift; sourceTree = "<group>"; };
 		CAFA54992104765300C4A808 /* OhJooYeoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = OhJooYeoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -204,6 +206,7 @@
 		CA3080BE2130F5FB00255A7E /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				CAA914EC2155E530002E2CE6 /* PhraseMessageCellData.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -241,7 +244,7 @@
 		CA3080C32130F63F00255A7E /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
-				CA4FA40820B9270800BE6730 /* PraiseViewController.swift */,
+				CA4FA40820B9270800BE6730 /* MusicViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -296,8 +299,8 @@
 			isa = PBXGroup;
 			children = (
 				CA7A428E20BAE6C00097D99E /* Model */,
+				CAA914EA2155E0B5002E2CE6 /* View */,
 				CA3080BE2130F5FB00255A7E /* ViewModel */,
-				CA7A428F20BAE6F00097D99E /* ViewController */,
 			);
 			path = PhraseDetail;
 			sourceTree = "<group>";
@@ -354,9 +357,25 @@
 			isa = PBXGroup;
 			children = (
 				CA4FA40320B926C600BE6730 /* PhraseDetailViewController.swift */,
-				CA70536120BAECAF00815D37 /* PhraseDetailTableViewCell.swift */,
 			);
 			path = ViewController;
+			sourceTree = "<group>";
+		};
+		CAA914EA2155E0B5002E2CE6 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				CAA914EB2155E0C1002E2CE6 /* TableViewCells */,
+				CA7A428F20BAE6F00097D99E /* ViewController */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		CAA914EB2155E0C1002E2CE6 /* TableViewCells */ = {
+			isa = PBXGroup;
+			children = (
+				CA70536120BAECAF00815D37 /* PhraseDetailTableViewCell.swift */,
+			);
+			path = TableViewCells;
 			sourceTree = "<group>";
 		};
 		CAE645E22123C17300B109B7 /* DbManager */ = {
@@ -527,8 +546,9 @@
 			files = (
 				CAFB287520D4D47200B72722 /* DbManager.swift in Sources */,
 				CA0AB21620C23C190028BC69 /* AdvertisementTableViewCell.swift in Sources */,
+				CAA914ED2155E530002E2CE6 /* PhraseMessageCellData.swift in Sources */,
 				CAFB287D20D4E7DE00B72722 /* GlobalState.swift in Sources */,
-				CA4FA40920B9270800BE6730 /* PraiseViewController.swift in Sources */,
+				CA4FA40920B9270800BE6730 /* MusicViewController.swift in Sources */,
 				CA4FA40420B926C600BE6730 /* PhraseDetailViewController.swift in Sources */,
 				CA3080CC2130FE0400255A7E /* ConstantString.swift in Sources */,
 				CAFB287720D4D61600B72722 /* PhraseMessageDAO.swift in Sources */,

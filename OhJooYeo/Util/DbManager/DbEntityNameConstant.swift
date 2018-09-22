@@ -13,7 +13,7 @@ extension DbManager {
         static let worshipEntityName = "Worship"
         static let worshipOrderEntityName = "WorshipOrder"
         static let phraseMessageEntityName = "PhraseMessage"
-        static let praiseEntityName = "Praise"
+        static let musicEntityName = "Music"
         static let advertisementEntityName = "Advertisement"
     }
     struct ColumnKey {
@@ -35,9 +35,13 @@ extension DbManager {
         }
         
         struct PhraseMessage {
-            static let phraseKey = "phrase"
-            static let phraseMessage = "content"
-            static let phraseOrder = "order"
+            static let phraseKey = "phraseKey"
+            static let content = "content"
+            static let worshipId = "worshipId"
+        }
+        
+        struct Music {
+            static let title = "title"
         }
     }
 }

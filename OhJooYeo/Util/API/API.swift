@@ -29,9 +29,18 @@ protocol API {
     ///
     /// - returns: Void
     func getRecentDatas(worshipId: String, version: String, handler: @escaping (()-> Void)) -> Void
+    
+    /// 해당 예배 ID값을 가지고 등록된 주보 정보를 가져오는 API 호출 메소드
+    ///
+    /// - parameter shortcut:   성경 줄임말 문자열 - Format : 성경 a:b(~성경 c:d)(/성경 a:b(~성경 c:d))
+    /// - parameter handler:    Callback Method
+    ///
+    /// - returns: Void
+    func getPharseMessages(shortCut: String, handler: @escaping (()-> Void)) -> Void
 }
 
 struct APIService: API {
+    
     func getWorshipIdList(handler: @escaping () -> Void) {
         APIRouter.manager.request(APIRouter.getWorshipIdList()).responseSwiftyJSON { (dataResponse: DataResponse<JSON>) in
             
@@ -45,8 +54,6 @@ struct APIService: API {
                 
             case .success:
                 let result = dataResponse.map({ (json: JSON) -> [Model.WorshipIdDate]? in
-                    print("json data: \(json)")
-                    
                     WorshipIdListData.shared.setWorshipIdList(idList: json.array)
                     
                     return WorshipIdListData.shared.worshipIdDate
@@ -82,7 +89,6 @@ struct APIService: API {
                 
             case .success:
                 let result = dataResponse.map({ (json: JSON) -> Model.Worship? in
-                    print("json data: \(json)")
                     
                     guard let data = Model.Worship(json: json) else {
                         return nil
@@ -94,6 +100,43 @@ struct APIService: API {
                 if let responseWholeDatas = result.value, let data = responseWholeDatas {
                     WorshipCellData.shared.setWorship(worship: data, id: GlobalState.shared.recentWorshipId)
                 }
+                
+                handler()
+            }
+        }
+    }
+    
+    func getPharseMessages(shortCut: String, handler: @escaping (() -> Void)) {
+        let parameter: Parameters = ["phraseRange": shortCut]
+        APIRouter.manager.request(APIRouter.getPharseMessages(shortCut: shortCut, parameters: parameter)).responseSwiftyJSON { (dataResponse: DataResponse<JSON>) in
+            
+            switch dataResponse.result {
+                
+            case .failure(let error):
+                if let data = dataResponse.data {
+                    print("getPharseMessages Server Error: " + String(data: data, encoding: String.Encoding.utf8)!)
+                }
+                print(error)
+                
+            case .success(_):
+                let result = dataResponse.map({ (json: JSON) -> [Model.PhraseMessage]? in
+                    guard let messages = json.array else {
+                        print("json.array error")
+                        return nil
+                    }
+                    var messageList = [Model.PhraseMessage]()
+                    for message in messages {
+                        guard let data = Model.PhraseMessage(json: message) else {
+                            continue
+                        }
+                        messageList.append(data)
+                    }
+                    return messageList
+                })
+                
+                if let responseWholeDatas = result.value, let data = responseWholeDatas {
+                    PhraseMessageCellData.shared.setPhraseMessages(phraseMessageModels: data)
+                }
             }
         }
     }
@@ -102,6 +145,7 @@ struct APIService: API {
 enum APIRouter {
     case getWorshipIdList()
     case getRecentDatas(worshipId: String, version: String, parameters: Parameters?)
+    case getPharseMessages(shortCut: String, parameters: Parameters?)
 }
 
 extension APIRouter: URLRequestConvertible {
@@ -122,6 +166,8 @@ extension APIRouter: URLRequestConvertible {
             return .get
         case .getRecentDatas:
             return .post
+        case .getPharseMessages:
+            return .post
         }
     }
 
@@ -131,6 +177,8 @@ extension APIRouter: URLRequestConvertible {
             return "/worship-list"
         case let .getRecentDatas(worshipId, version, _):
             return "/worship-id/\(worshipId)/check/version/\(version)"
+        case .getPharseMessages(_, _):
+            return "/phrase"
         }
     }
 
@@ -145,6 +193,8 @@ extension APIRouter: URLRequestConvertible {
         case .getWorshipIdList():
             urlRequest = try URLEncoding.default.encode(urlRequest, with: nil)
         case let .getRecentDatas(_, _, parameters):
+            urlRequest = try JSONEncoding.default.encode(urlRequest, with: parameters)
+        case let .getPharseMessages(_, parameters):
             urlRequest = try JSONEncoding.default.encode(urlRequest, with: parameters)
         }
 

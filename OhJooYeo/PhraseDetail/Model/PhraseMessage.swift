@@ -12,8 +12,8 @@ import SwiftyJSON
 extension Model {
     struct PhraseMessage {
         var phraseKey: String
-        var phraseMessage: String
-        var order: Int
+        var content: String
+//        var order: Int
         
         init?(json: JSON) {
             if let phraseKey = json[Name.phraseKey].string {
@@ -22,25 +22,25 @@ extension Model {
                 return nil
             }
             
-            if let phraseMessage = json[Name.phraseMessage].string {
-                self.phraseMessage = phraseMessage
+            if let phraseMessage = json[Name.content].string {
+                self.content = phraseMessage
             } else {
                 return nil
             }
             
-            if let order = json[Name.order].int {
-                self.order = order
-            } else {
-                return nil
-            }
+//            if let order = json[Name.order].int {
+//                self.order = order
+//            } else {
+//                return nil
+//            }
         }
     }
 }
 
 extension Model.PhraseMessage {
     struct Name {
-        static let phraseKey = "phraseKey"
-        static let phraseMessage = "phraseMessage"
-        static let order = "order"
+        static let phraseKey = "phrase"
+        static let content = "contents"
+//        static let order = "order"
     }
 }

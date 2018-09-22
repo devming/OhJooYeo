@@ -405,19 +405,17 @@ __port__:
     - Response Data
 
     ```
-    {
-    	"phraseList": [
-	    	{
-		    	"phrase":"창 1:3",
-		    	"contents":"말씀내용"
-	    	},
-	    	{
-		    	"phrase":"창 1:4",
-		    	"contents":"말씀내용"
-	    	},
-	    	...
-	    ]
-	 }
+    [
+    	{
+	    	"phrase":"창 1:3",
+	    	"contents":"말씀내용"
+    	},
+    	{
+	    	"phrase":"창 1:4",
+	    	"contents":"말씀내용"
+    	},
+    	...
+    ]
     ```
  
 

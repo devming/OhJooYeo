@@ -10,8 +10,6 @@ import UIKit
 
 class MainViewController: UIViewController {
     
-//    var worshipOrderList: [Model.WorshipOrder]?
-    
     @IBOutlet weak var listTableView: UITableView!
     @IBOutlet weak var dateLabel: UILabel!
     
@@ -19,16 +17,12 @@ class MainViewController: UIViewController {
         super.viewDidLoad()
         
         self.listTableView.rowHeight = UITableViewAutomaticDimension
-//        self.worshipOrderList = WorshipCellData.shared.orderList
         
         NotificationCenter.default.addObserver(self, selector: #selector(worshipUpdate(_:)), name: .WorshipDidUpdated, object: nil)
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
-//        makeDummyDatas()
-//        makeDummyDatasForNextPresenter()
         
         self.listTableView.reloadData()
     }

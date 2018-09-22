@@ -7,8 +7,6 @@
 //
 
 import Foundation
-
-import Foundation
 import CoreData
 
 extension DbManager {
@@ -65,5 +63,20 @@ extension DbManager {
             return result
         }
         return [WorshipOrderMO]()
+    }
+    
+    func getPhraseMessageShourCut() -> String {
+        var result = ConstantString.emptyString
+        guard let orderList = WorshipCellData.shared.worshipOrderMO else {
+            return result
+        }
+        for order in orderList {
+            /// TODO: title과 하드코딩으로 비교하는것을 type비교로 바꿔야함 - 지금은 임시방편임
+            if let detail = order.detail, let title = order.title, title == "성경봉독" {
+                result = detail
+                break
+            }
+        }
+        return result
     }
 }

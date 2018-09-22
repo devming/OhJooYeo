@@ -8,11 +8,12 @@
 
 import Foundation
 
-class WorshipCellData {
+final class WorshipCellData {
     
     static var shared = WorshipCellData()
     var worshipMO: WorshipMO?   // weak 로 선언하면 데이터가 사라짐.. 메모리 해제로 인해
     var worshipOrderMO: [WorshipOrderMO]?
+    var phraseMessageShortCut: String?
     
     var dateInfo: String?
     
@@ -26,15 +27,13 @@ class WorshipCellData {
         let currentLocalAdvertisementVersion = currentLocalVersion[currentLocalVersion.index(currentLocalVersion.startIndex, offsetBy: 1)]
         let currentLocalMusicVersion = currentLocalVersion[currentLocalVersion.index(currentLocalVersion.startIndex, offsetBy: 2)]
         
-        let currentWorshipInfo = DbManager.shared.getRecentWorship()
+//        let currentWorshipInfo = DbManager.shared.getRecentWorship()
         
         if currentLocalWorshipVersion == ConstantString.notSetVersion { // 현재 로컬 버전이 최초 아무것도 없는 경우(*인경우) - Add
             DbManager.shared.addWorship(mainPresenter: worship.mainPresenter, worshipOrder: worship.worshipOrders, nextPresenter: worship.nextPresenter, version: worship.currentVersion, worshipDate: worship.worshipDate, worshipId: id)
         } else if currentLocalWorshipVersion < worship.worshipVersion[worship.worshipVersion.startIndex] { // 받아온 Worship 정보가 더 최신일 경우 - Update
-            if let currentWorshipInfo = currentWorshipInfo {
-                DbManager.shared.updateWorship(worshipObject: currentWorshipInfo, mainPresenter: worship.mainPresenter, worshipOrder: worship.worshipOrders, nextPresenter: worship.nextPresenter, version: worship.currentVersion, worshipDate: worship.worshipDate, worshipId: id)
-            }
-            print("Update 수행")
+            DbManager.shared.updateWorship(mainPresenter: worship.mainPresenter, worshipOrder: worship.worshipOrders, nextPresenter: worship.nextPresenter, version: worship.currentVersion, worshipDate: worship.worshipDate, worshipId: id)
+            
         } // else 인 경우는 최신 버전으로 동기화 되어 있는 경우
         
         if currentLocalAdvertisementVersion == ConstantString.notSetVersion
@@ -47,7 +46,7 @@ class WorshipCellData {
             
         }
         
-        GlobalState.shared.version = worship.currentVersion // 로컬을 원격 버전으로 교체
+//        GlobalState.shared.version = worship.currentVersion // 로컬을 원격 버전으로 교체
         self.worshipMO = DbManager.shared.getRecentWorship()
         
         guard let date = self.worshipMO?.worshipDate else {
@@ -56,6 +55,7 @@ class WorshipCellData {
         self.dateInfo = showDateData(worshipDate: date)
         
         self.worshipOrderMO = DbManager.shared.getWorshipOrderList(worshipMO: self.worshipMO)
+        self.phraseMessageShortCut = DbManager.shared.getPhraseMessageShourCut()
         
         NotificationCenter.default.post(name: .WorshipDidUpdated, object: nil)
     }
