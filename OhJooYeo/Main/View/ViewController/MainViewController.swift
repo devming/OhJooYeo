@@ -13,12 +13,16 @@ class MainViewController: UIViewController {
     @IBOutlet weak var listTableView: UITableView!
     @IBOutlet weak var dateLabel: UILabel!
     
+    let refreshControl = UIRefreshControl()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         self.listTableView.rowHeight = UITableViewAutomaticDimension
         
         NotificationCenter.default.addObserver(self, selector: #selector(worshipUpdate(_:)), name: .WorshipDidUpdated, object: nil)
+        
+        initRefreshControl()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -26,8 +30,6 @@ class MainViewController: UIViewController {
         
         self.listTableView.reloadData()
     }
-    
-    
 }
 
 extension MainViewController: UITableViewDataSource {
@@ -52,6 +54,14 @@ extension MainViewController: UITableViewDataSource {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: OrderTableViewCell.cellName) as? OrderTableViewCell else {
                 return UITableViewCell()
             }
+            
+            // 이동해야할 아이템의 경우 여기에서 조건 설정
+            if orderList[indexPath.row].title == "성경봉독" { /// + 다른 타입들
+                cell.accessoryType = .disclosureIndicator
+            } else {
+                cell.isUserInteractionEnabled = false
+            }
+            
             cell.titleLabel.text = orderList[indexPath.row].title
             cell.detailLabel.text = orderList[indexPath.row].detail
             cell.presenterLabel.text = orderList[indexPath.row].presenter
@@ -85,6 +95,9 @@ extension MainViewController: UITableViewDelegate {
         if indexPath.row == worshipOrderList.count {
             return 128
         }
+//        if worshipOrderList[indexPath.row].title == "성경봉독" || worshipOrderList[indexPath.row].title == "특송" {
+//            return 100
+//        }
         
         return 50
     }
@@ -96,6 +109,44 @@ extension MainViewController {
         OperationQueue.main.addOperation { [weak self] in
             self?.dateLabel.text = WorshipCellData.shared.dateInfo
             self?.listTableView.reloadData()
+        }
+    }
+    
+    func initRefreshControl() {
+        self.refreshControl.addTarget(self, action: #selector(reloadDatas), for: .valueChanged)
+        self.listTableView.addSubview(self.refreshControl)
+    }
+    
+    @objc func reloadDatas() {
+        DispatchQueue.main.async { [weak self] in
+            App.api.getWorshipIdList {
+                //GlobalState.shared.recentWorshipId
+                //GlobalState.shared.version
+                App.api.getRecentDatas(worshipId: "36-09", version: "***") {
+                    
+                    if let shortCut = WorshipCellData.shared.phraseMessageShortCut {
+                        App.api.getPharseMessages(shortCut: shortCut) { [weak self] in
+                            self?.listTableView.reloadData()
+                            self?.refreshControl.endRefreshing()
+                        }
+                    } else {
+                        self?.refreshControl.endRefreshing()
+                    }
+                }
+            }
+        }
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        super.prepare(for: segue, sender: sender)
+        
+        if let cell = sender as? OrderTableViewCell, let indexPath = self.listTableView.indexPath(for: cell) {
+            guard let orderList = WorshipCellData.shared.worshipOrderMO, let title = orderList[indexPath.row].title, title == "성경봉독" else {
+                return
+            }
+            if let destination = segue.destination as? PhraseDetailViewController {
+                print("##")
+            }
         }
     }
 }

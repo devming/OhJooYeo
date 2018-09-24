@@ -137,6 +137,7 @@ struct APIService: API {
                 if let responseWholeDatas = result.value, let data = responseWholeDatas {
                     PhraseMessageCellData.shared.setPhraseMessages(phraseMessageModels: data)
                 }
+                handler()
             }
         }
     }

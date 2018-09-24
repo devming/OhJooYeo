@@ -24,7 +24,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             App.api.getRecentDatas(worshipId: "36-09", version: "***") {
                 
                 if let shortCut = WorshipCellData.shared.phraseMessageShortCut {
-//                    let temp = "요 2:7-2:10"
                     App.api.getPharseMessages(shortCut: shortCut) {
                         print("shortCut: \(shortCut)")
                     }
