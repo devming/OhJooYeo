@@ -14,13 +14,15 @@ final class AdvertisementCellData {
     
     func setAdvertisement(advertisementModels: [Model.Advertisement]?) {
         guard let worshipMO = WorshipCellData.shared.worshipMO,
-            let remoteWorshipVersion = worshipMO.version?.first,
+            let worshipVersion = worshipMO.version,
             let advertisementModels = advertisementModels else {
             return
         }
         
+        let remoteWorshipVersion = worshipVersion[worshipVersion.index(worshipVersion.startIndex, offsetBy: 1)]
+        
         let currentLocalVersion = GlobalState.shared.version
-        let currentLocalWorshipVersion = currentLocalVersion[currentLocalVersion.index(currentLocalVersion.startIndex, offsetBy: 0)]
+        let currentLocalWorshipVersion = currentLocalVersion[currentLocalVersion.index(currentLocalVersion.startIndex, offsetBy: 1)]
         //        remoteWorshipVersion = "d"
         if currentLocalWorshipVersion == ConstantString.notSetVersion { // 현재 로컬 버전이 최초 아무것도 없는 경우(*인경우) - Add
             DbManager.shared.addAdvertisement(advertisements: advertisementModels, worshipMO: worshipMO)
@@ -28,11 +30,11 @@ final class AdvertisementCellData {
             DbManager.shared.updateAdvertisement(advertisements: advertisementModels, worshipMO: worshipMO)
         }
         
-        
-        /// TODO: 두번째 문자만 바꾸기
-//        if let version = worshipMO.version {
-//            GlobalState.shared.version = version  // 로컬을 원격 버전으로 교체
-//        }
+        if let version = worshipMO.version {
+            let advertisementVersion = version[version.index(version.startIndex, offsetBy: 1)]
+
+            GlobalState.shared.version = "\(currentLocalVersion[currentLocalVersion.index(currentLocalVersion.startIndex, offsetBy: 0)])" + "\(advertisementVersion)" + "\(currentLocalVersion[currentLocalVersion.index(currentLocalVersion.startIndex, offsetBy: 2)])"  // 로컬을 원격 버전으로 교체
+        }
         
         self.advertisements = DbManager.shared.getAdvertisementList(worshipId: worshipMO.worshipId)
         

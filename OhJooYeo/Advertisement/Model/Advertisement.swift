@@ -25,7 +25,7 @@ extension Model {
             if let title = json[Name.title].string {
                 self.title = title
             } else {
-                self.title = ""
+                self.title = "기타"
             }
             
             guard let content = json[Name.content].string else {

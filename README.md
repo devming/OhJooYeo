@@ -95,8 +95,9 @@ __port__:
 				"id": 악보 이미지 데이터 index값 [Int],
 				"title": "찬양 제목1" [String],
 				"imageName": "악보 이미지 파일 이름.확장자" [String],
-				"category": 카테고리 번호(자세한 종류는 아래 category enum 참고) [String]
-				"order": 악보 순서 [Int]
+				"category": 카테고리 번호(자세한 종류는 아래 category enum 참고) [String],
+				"order": 악보 순서 [Int],
+				"lylics": 악보 가사 [String]
 		}],
        "currentVersion": "현재 서버에서의 버전 정보" [String],
        "worshipDate": "예배 날짜" [String]

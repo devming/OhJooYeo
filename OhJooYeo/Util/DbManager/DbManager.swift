@@ -24,7 +24,6 @@ class DbManager{    // 싱글톤으로 구현할 것임
     // MARK: - Core Data stack
     lazy var persistentContainer: NSPersistentContainer = {     // 내부적으로 sqlite를 관리하는 녀석.
         guard let name = self.modelName else {
-            //TODO: 잘못 된
             return NSPersistentContainer(name: "OhJooYeo")
         }
         let container = NSPersistentContainer(name: name)

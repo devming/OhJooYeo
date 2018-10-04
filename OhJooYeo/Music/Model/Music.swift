@@ -18,6 +18,7 @@ extension Model {
         var order: Int
         var composer: String
         var category: String
+//        var lylics: String
         
         init?(json: JSON) {
             guard let lyricist = json[Name.lyricist].string else {
@@ -44,6 +45,10 @@ extension Model {
                 return nil
             }
             self.category = category
+//            guard let lylics = json[Name.lylics].string else {
+//                return nil
+//            }
+//            self.lylics = lylics
             
 //            self.image = getImageData()
         }
@@ -63,5 +68,6 @@ extension Model.Music {
         static let order = "order"
         static let composer = "composer"
         static let category = "category"
+        static let lylics = "lylics"
     }
 }

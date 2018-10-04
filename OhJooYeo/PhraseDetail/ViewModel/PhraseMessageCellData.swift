@@ -28,9 +28,10 @@ final class PhraseMessageCellData {
             DbManager.shared.updatePhraseMessages(messages: phraseMessageModels, worshipMO: worshipMO)
         }
         
-        /// TODO: 첫번째 문자만 바꾸기
         if let version = worshipMO.version {
-            GlobalState.shared.version = version  // 로컬을 원격 버전으로 교체
+            let worshipVersion = version[version.index(version.startIndex, offsetBy: 0)]
+            
+            GlobalState.shared.version = "\(worshipVersion)" + "\(currentLocalVersion[currentLocalVersion.index(currentLocalVersion.startIndex, offsetBy: 1)])" + "\(currentLocalVersion[currentLocalVersion.index(currentLocalVersion.startIndex, offsetBy: 2)])"
         }
         
         self.phraseMessages = DbManager.shared.getPhraseList(worshipId: worshipMO.worshipId)

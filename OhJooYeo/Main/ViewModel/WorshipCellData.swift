@@ -20,11 +20,9 @@ final class WorshipCellData {
     private init() {}
     
     func setWorship(worship: Model.Worship, id: String) {
-        /// TODO: version에 따라 데이터를 저장할지 안할지 분기
         
         let currentLocalVersion = GlobalState.shared.version
         let currentLocalWorshipVersion = currentLocalVersion[currentLocalVersion.index(currentLocalVersion.startIndex, offsetBy: 0)]
-        let currentLocalAdvertisementVersion = currentLocalVersion[currentLocalVersion.index(currentLocalVersion.startIndex, offsetBy: 1)]
         let currentLocalMusicVersion = currentLocalVersion[currentLocalVersion.index(currentLocalVersion.startIndex, offsetBy: 2)]
         
 //        let currentWorshipInfo = DbManager.shared.getRecentWorship()
@@ -36,17 +34,9 @@ final class WorshipCellData {
             
         } // else 인 경우는 최신 버전으로 동기화 되어 있는 경우
         
-//        GlobalState.shared.version = worship.currentVersion // 로컬을 원격 버전으로 교체
         self.worshipMO = DbManager.shared.getRecentWorship()
         
         AdvertisementCellData.shared.setAdvertisement(advertisementModels: worship.advertisements)
-//        if currentLocalAdvertisementVersion == ConstantString.notSetVersion
-//            || currentLocalAdvertisementVersion < worship.advertisementVersion[worship.advertisementVersion.startIndex] {
-////            DbManager.shared.addAdvertisement(advertisements: worship.advertisements, worshipMO: self.worshipMO)
-//            AdvertisementCellData.shared.setAdvertisement(advertisementModels: worship.advertisements)
-//        } else if currentLocalAdvertisementVersion < worship.advertisementVersion[worship.advertisementVersion.startIndex] {
-////            DbManager.shared.updateAdvertisement(advertisements: worship.advertisements, worshipMO: self.worshipMO)
-//        }
         
         if currentLocalMusicVersion == ConstantString.notSetVersion
             || currentLocalMusicVersion < worship.musicVersion[worship.musicVersion.startIndex] {
