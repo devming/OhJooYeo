@@ -33,7 +33,7 @@ extension DbManager {
             saveContext()
         }
         for message in messages {
-            if let newPhrase = NSEntityDescription.insertNewObject(forEntityName: DbManager.EntityName.worshipOrderEntityName, into: defaultContext) as? PhraseMessageMO {
+            if let newPhrase = NSEntityDescription.insertNewObject(forEntityName: DbManager.EntityName.phraseMessageEntityName, into: defaultContext) as? PhraseMessageMO {
                 newPhrase.phraseKey = message.phraseKey
                 newPhrase.content = message.content
                 newPhrase.worshipId = worshipMO.worshipId

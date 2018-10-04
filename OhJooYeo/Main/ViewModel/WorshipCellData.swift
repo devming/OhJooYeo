@@ -36,18 +36,22 @@ final class WorshipCellData {
             
         } // else 인 경우는 최신 버전으로 동기화 되어 있는 경우
         
-        if currentLocalAdvertisementVersion == ConstantString.notSetVersion
-            || currentLocalAdvertisementVersion < worship.advertisementVersion[worship.advertisementVersion.startIndex] {
-            
-        }
+//        GlobalState.shared.version = worship.currentVersion // 로컬을 원격 버전으로 교체
+        self.worshipMO = DbManager.shared.getRecentWorship()
+        
+        AdvertisementCellData.shared.setAdvertisement(advertisementModels: worship.advertisements)
+//        if currentLocalAdvertisementVersion == ConstantString.notSetVersion
+//            || currentLocalAdvertisementVersion < worship.advertisementVersion[worship.advertisementVersion.startIndex] {
+////            DbManager.shared.addAdvertisement(advertisements: worship.advertisements, worshipMO: self.worshipMO)
+//            AdvertisementCellData.shared.setAdvertisement(advertisementModels: worship.advertisements)
+//        } else if currentLocalAdvertisementVersion < worship.advertisementVersion[worship.advertisementVersion.startIndex] {
+////            DbManager.shared.updateAdvertisement(advertisements: worship.advertisements, worshipMO: self.worshipMO)
+//        }
         
         if currentLocalMusicVersion == ConstantString.notSetVersion
             || currentLocalMusicVersion < worship.musicVersion[worship.musicVersion.startIndex] {
             
         }
-        
-//        GlobalState.shared.version = worship.currentVersion // 로컬을 원격 버전으로 교체
-        self.worshipMO = DbManager.shared.getRecentWorship()
         
         guard let date = self.worshipMO?.worshipDate else {
             return

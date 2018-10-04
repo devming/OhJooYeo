@@ -55,16 +55,17 @@ extension MainViewController: UITableViewDataSource {
                 return UITableViewCell()
             }
             
+            cell.titleLabel.text = orderList[indexPath.row].title
+            cell.detailLabel.text = orderList[indexPath.row].detail
+            cell.presenterLabel.text = orderList[indexPath.row].presenter
+            
             // 이동해야할 아이템의 경우 여기에서 조건 설정
             if orderList[indexPath.row].title == "성경봉독" { /// + 다른 타입들
                 cell.accessoryType = .disclosureIndicator
             } else {
                 cell.isUserInteractionEnabled = false
+                
             }
-            
-            cell.titleLabel.text = orderList[indexPath.row].title
-            cell.detailLabel.text = orderList[indexPath.row].detail
-            cell.presenterLabel.text = orderList[indexPath.row].presenter
             
             return cell
 
@@ -125,7 +126,7 @@ extension MainViewController {
                 App.api.getRecentDatas(worshipId: "36-09", version: "***") {
                     
                     if let shortCut = WorshipCellData.shared.phraseMessageShortCut {
-                        App.api.getPharseMessages(shortCut: shortCut) { [weak self] in
+                        App.api.getPhraseMessages(shortCut: shortCut) { [weak self] in
                             self?.listTableView.reloadData()
                             self?.refreshControl.endRefreshing()
                         }
