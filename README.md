@@ -387,7 +387,7 @@ __port__:
    
    ```json 
    {
-   		"phraseRange": "성경 a:b(~성경 c:d)(/성경 a:b(~성경 c:d))" [String]
+   		"phraseRange": "성경 a:b(-a:b)(/성경 a:b(-a:b))" [String]
    	}
    ```
 
