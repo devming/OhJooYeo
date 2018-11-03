@@ -11,13 +11,13 @@ import SwiftyJSON
 
 extension Model {
     struct Music {
-        var lyricist: String
-        var title: String
         var imageName: String
-//        var image: UIImage?
-        var order: Int
+        var lyricist: String
         var composer: String
+        var title: String
         var category: String
+        var order: Int
+//        var image: UIImage?
 //        var lylics: String
         
         init?(json: JSON) {

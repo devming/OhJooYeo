@@ -13,15 +13,17 @@ extension DbManager {
     func addPhraseMessages(messages: [Model.PhraseMessage], worshipMO: WorshipMO) {
         for message in messages {
             if let newPhrase = NSEntityDescription.insertNewObject(forEntityName: DbManager.EntityName.phraseMessageEntityName, into: defaultContext) as? PhraseMessageMO {
+//                newPhrase.orderId = message.orderId
                 newPhrase.phraseKey = message.phraseKey
                 newPhrase.content = message.content
+                newPhrase.orderId = Int32(message.orderId)
                 newPhrase.worshipId = worshipMO.worshipId
                 worshipMO.addToPhraseMessages(newPhrase)
                 saveContext()
             }
         }
     }
-    /// TODO: worshipMO.phraseMessage이게 호출이 안되나? - 확인할것.
+    /// TODO: worshipMO.phraseMessage 이게 호출이 안되나? - 확인할것.
     func updatePhraseMessages(messages: [Model.PhraseMessage], worshipMO: WorshipMO) {
         if let phraseMessages = worshipMO.phraseMessages {
             for phraseMessage in phraseMessages {
@@ -36,6 +38,7 @@ extension DbManager {
             if let newPhrase = NSEntityDescription.insertNewObject(forEntityName: DbManager.EntityName.phraseMessageEntityName, into: defaultContext) as? PhraseMessageMO {
                 newPhrase.phraseKey = message.phraseKey
                 newPhrase.content = message.content
+                newPhrase.orderId = Int32(message.orderId)
                 newPhrase.worshipId = worshipMO.worshipId
                 worshipMO.addToPhraseMessages(newPhrase)
                 saveContext()

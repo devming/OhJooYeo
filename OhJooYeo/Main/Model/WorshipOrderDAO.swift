@@ -17,6 +17,7 @@ extension DbManager {
                 newPhrase.detail = worshipOrder.detail
                 newPhrase.presenter = worshipOrder.presenter
                 newPhrase.order = Int32(worshipOrder.order)
+                newPhrase.orderId = Int32(worshipOrder.orderId)
                 worshipMO.addToWorshipOrders(newPhrase)
                 saveContext()
             }
@@ -39,6 +40,7 @@ extension DbManager {
                 newPhrase.detail = worshipOrder.detail
                 newPhrase.presenter = worshipOrder.presenter
                 newPhrase.order = Int32(worshipOrder.order)
+                newPhrase.orderId = Int32(worshipOrder.orderId)
                 worshipMO.addToWorshipOrders(newPhrase)
                 saveContext()
             }

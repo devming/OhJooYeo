@@ -78,7 +78,8 @@ __port__:
 				"title": "순서1 - 순서 1에 해당하는 제목" [String],
 				"detail": "순서1 - 순서 1에 해당하는 상세 항목" [String],
 				"presenter": "순서1 - 순서 1에 해당하는 대표자" [String],
-				"order": 예배 순서 [Int]
+				"order": 예배 순서 [Int],
+				"orderId": 각 순서에 대한 식별값ID 정보 [Int]
 			}],
 			"nextPresenter": {
 				"mainPresenter":"다음주 인도자 이름",
@@ -97,7 +98,8 @@ __port__:
 				"imageName": "악보 이미지 파일 이름.확장자" [String],
 				"category": 카테고리 번호(자세한 종류는 아래 category enum 참고) [String],
 				"order": 악보 순서 [Int],
-				"lylics": 악보 가사 [String]
+				"lylics": 악보 가사 [String],
+				"orderId": worshipOrder에 매칭되는 ID 값 [Int]
 		}],
        "currentVersion": "현재 서버에서의 버전 정보" [String],
        "worshipDate": "예배 날짜" [String]

@@ -29,6 +29,7 @@ final class PhraseMessageCellData {
         }
         
         if let version = worshipMO.version {
+            
             let worshipVersion = version[version.index(version.startIndex, offsetBy: 0)]
             
             GlobalState.shared.version = "\(worshipVersion)" + "\(currentLocalVersion[currentLocalVersion.index(currentLocalVersion.startIndex, offsetBy: 1)])" + "\(currentLocalVersion[currentLocalVersion.index(currentLocalVersion.startIndex, offsetBy: 2)])"
