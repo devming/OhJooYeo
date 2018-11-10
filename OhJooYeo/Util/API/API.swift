@@ -36,7 +36,7 @@ protocol API {
     /// - parameter handler:    Callback Method
     ///
     /// - returns: Void
-    func getPhraseMessages(shortCut: String, handler: @escaping (()-> Void)) -> Void
+    func getPhraseMessages(shortCut: String, phraseMessageOrderId: Int32, handler: @escaping (()-> Void)) -> Void
 }
 
 struct APIService: API {}

@@ -60,11 +60,10 @@ extension MainViewController: UITableViewDataSource {
             cell.presenterLabel.text = orderList[indexPath.row].presenter
             
             // 이동해야할 아이템의 경우 여기에서 조건 설정
-            if orderList[indexPath.row].title == "성경봉독" { /// + 다른 타입들
+            if orderList[indexPath.row].type == Model.WorshipOrder.TypeName.phrase.rawValue { /// + 다른 타입들
                 cell.accessoryType = .disclosureIndicator
             } else {
                 cell.isUserInteractionEnabled = false
-                
             }
             
             return cell
@@ -123,16 +122,9 @@ extension MainViewController {
             App.api.getWorshipIdList {
                 //GlobalState.shared.recentWorshipId
                 //GlobalState.shared.version
-                App.api.getRecentDatas(worshipId: "36-09", version: "***") {
-                    
-                    if let shortCut = WorshipCellData.shared.phraseMessageShortCut {
-                        App.api.getPhraseMessages(shortCut: shortCut) { [weak self] in
-                            self?.listTableView.reloadData()
-                            self?.refreshControl.endRefreshing()
-                        }
-                    } else {
-                        self?.refreshControl.endRefreshing()
-                    }
+                App.api.getRecentDatas(worshipId: GlobalState.shared.recentWorshipId, version: GlobalState.shared.version) { [weak self] in
+                    self?.listTableView.reloadData()
+                    self?.refreshControl.endRefreshing()
                 }
             }
         }
@@ -142,7 +134,7 @@ extension MainViewController {
         super.prepare(for: segue, sender: sender)
         
         if let cell = sender as? OrderTableViewCell, let indexPath = self.listTableView.indexPath(for: cell) {
-            guard let orderList = WorshipCellData.shared.worshipOrderMO, let title = orderList[indexPath.row].title, title == "성경봉독" else {
+            guard let orderList = WorshipCellData.shared.worshipOrderMO, orderList[indexPath.row].type == Model.WorshipOrder.TypeName.phrase.rawValue else {
                 return
             }
             if let destination = segue.destination as? PhraseDetailViewController {

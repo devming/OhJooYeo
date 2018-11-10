@@ -18,6 +18,7 @@ extension DbManager {
                 newPhrase.presenter = worshipOrder.presenter
                 newPhrase.order = Int32(worshipOrder.order)
                 newPhrase.orderId = Int32(worshipOrder.orderId)
+                newPhrase.type = Int32(worshipOrder.type)
                 worshipMO.addToWorshipOrders(newPhrase)
                 saveContext()
             }
@@ -41,6 +42,7 @@ extension DbManager {
                 newPhrase.presenter = worshipOrder.presenter
                 newPhrase.order = Int32(worshipOrder.order)
                 newPhrase.orderId = Int32(worshipOrder.orderId)
+                newPhrase.type = Int32(worshipOrder.type)
                 worshipMO.addToWorshipOrders(newPhrase)
                 saveContext()
             }
@@ -67,18 +69,19 @@ extension DbManager {
         return [WorshipOrderMO]()
     }
     
-    func getPhraseMessageShourCut() -> String {
-        var result = ConstantString.emptyString
+    /**
+     성경말씀 shortcut 이름 찾는 부분
+     ex) 여호수아 1:5
+     */
+    func getPhraseMessageShortCutWithOrderId() {
         guard let orderList = WorshipCellData.shared.worshipOrderMO else {
-            return result
+            return
         }
         for order in orderList {
-            /// TODO: title과 하드코딩으로 비교하는것을 type비교로 바꿔야함 - 지금은 임시방편임
-            if let detail = order.detail, let title = order.title, title == "성경봉독" {
-                result = detail
+            if let detail = order.detail, order.type == Model.WorshipOrder.TypeName.phrase.rawValue {
+                App.api.getPhraseMessages(shortCut: detail, phraseMessageOrderId: order.orderId) { }
                 break
             }
         }
-        return result
     }
 }

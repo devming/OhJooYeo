@@ -13,11 +13,16 @@ final class WorshipCellData {
     static var shared = WorshipCellData()
     var worshipMO: WorshipMO?   // weak 로 선언하면 데이터가 사라짐.. 메모리 해제로 인해
     var worshipOrderMO: [WorshipOrderMO]?
-    var phraseMessageShortCut: String?
+    var phraseMessageShortCut: [String]
+    var phraseMessageOrderIds: [Int32]
+    var phraseMessage: [Model.PhraseMessage]?
     
     var dateInfo: String?
     
-    private init() {}
+    private init() {
+        self.phraseMessageShortCut = [String]()
+        self.phraseMessageOrderIds = [Int32]()
+    }
     
     func setWorship(worship: Model.Worship, id: String) {
         
@@ -49,7 +54,7 @@ final class WorshipCellData {
         self.dateInfo = showDateData(worshipDate: date)
         
         self.worshipOrderMO = DbManager.shared.getWorshipOrderList(worshipMO: self.worshipMO)
-        self.phraseMessageShortCut = DbManager.shared.getPhraseMessageShourCut()
+        DbManager.shared.getPhraseMessageShortCutWithOrderId()
         
         NotificationCenter.default.post(name: .WorshipDidUpdated, object: nil)
     }

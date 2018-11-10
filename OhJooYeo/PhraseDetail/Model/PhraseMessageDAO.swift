@@ -16,13 +16,17 @@ extension DbManager {
 //                newPhrase.orderId = message.orderId
                 newPhrase.phraseKey = message.phraseKey
                 newPhrase.content = message.content
-                newPhrase.orderId = Int32(message.orderId)
+                if let id = message.orderId {
+                    newPhrase.orderId = Int32(id)
+                }
+                newPhrase.shortCut = message.shortCut
                 newPhrase.worshipId = worshipMO.worshipId
                 worshipMO.addToPhraseMessages(newPhrase)
                 saveContext()
             }
         }
     }
+    
     /// TODO: worshipMO.phraseMessage 이게 호출이 안되나? - 확인할것.
     func updatePhraseMessages(messages: [Model.PhraseMessage], worshipMO: WorshipMO) {
         if let phraseMessages = worshipMO.phraseMessages {
@@ -38,7 +42,10 @@ extension DbManager {
             if let newPhrase = NSEntityDescription.insertNewObject(forEntityName: DbManager.EntityName.phraseMessageEntityName, into: defaultContext) as? PhraseMessageMO {
                 newPhrase.phraseKey = message.phraseKey
                 newPhrase.content = message.content
-                newPhrase.orderId = Int32(message.orderId)
+                if let id = message.orderId {
+                    newPhrase.orderId = Int32(id)
+                }
+                newPhrase.shortCut = message.shortCut
                 newPhrase.worshipId = worshipMO.worshipId
                 worshipMO.addToPhraseMessages(newPhrase)
                 saveContext()

@@ -20,6 +20,7 @@
         <attribute name="content" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="orderId" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="phraseKey" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="shortCut" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="worshipId" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="worship" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="Worship" inverseName="phraseMessages" inverseEntity="Worship" syncable="YES"/>
     </entity>
@@ -42,13 +43,14 @@
         <attribute name="orderId" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="presenter" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="type" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <relationship name="worship" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="Worship" inverseName="worshipOrders" inverseEntity="Worship" syncable="YES"/>
     </entity>
     <elements>
         <element name="Advertisement" positionX="-776" positionY="227" width="128" height="120"/>
         <element name="Music" positionX="-236" positionY="306" width="128" height="150"/>
-        <element name="PhraseMessage" positionX="-297" positionY="180" width="128" height="120"/>
+        <element name="PhraseMessage" positionX="-297" positionY="180" width="128" height="135"/>
         <element name="Worship" positionX="-504" positionY="197" width="128" height="210"/>
-        <element name="WorshipOrder" positionX="-785" positionY="386" width="128" height="135"/>
+        <element name="WorshipOrder" positionX="-785" positionY="386" width="128" height="150"/>
     </elements>
 </model>

@@ -12,7 +12,7 @@ import SwiftyJSON
 
 extension APIService {
     
-    func getPhraseMessages(shortCut: String, handler: @escaping (() -> Void)) {
+    func getPhraseMessages(shortCut: String, phraseMessageOrderId: Int32, handler: @escaping (() -> Void)) {
         let parameter: Parameters = ["phraseRange": shortCut]
         APIRouter.manager.request(APIRouter.getPharseMessages(shortCut: shortCut, parameters: parameter)).responseSwiftyJSON { (dataResponse: DataResponse<JSON>) in
             

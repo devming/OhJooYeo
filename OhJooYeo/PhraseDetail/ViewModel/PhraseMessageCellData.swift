@@ -20,11 +20,14 @@ final class PhraseMessageCellData {
             return
         }
         
+        // 현재 로컬에 저장된 버전
         let currentLocalVersion = GlobalState.shared.version
+        // 현재 로컬에 저장된 Worship 버전
         let currentLocalWorshipVersion = currentLocalVersion[currentLocalVersion.index(currentLocalVersion.startIndex, offsetBy: 0)]
+        
         if currentLocalWorshipVersion == ConstantString.notSetVersion { // 현재 로컬 버전이 최초 아무것도 없는 경우(*인경우) - Add
             DbManager.shared.addPhraseMessages(messages: phraseMessageModels, worshipMO: worshipMO)
-        } else if currentLocalWorshipVersion < remoteWorshipVersion { // 받아온 정보가 더 최신일 경우 - Update
+        } else if currentLocalWorshipVersion < remoteWorshipVersion {   // 받아온 정보가 더 최신일 경우 - Update
             DbManager.shared.updatePhraseMessages(messages: phraseMessageModels, worshipMO: worshipMO)
         }
         

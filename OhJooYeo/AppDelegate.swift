@@ -21,13 +21,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         App.api.getWorshipIdList {
             //GlobalState.shared.recentWorshipId
             //GlobalState.shared.version
-            App.api.getRecentDatas(worshipId: "36-09", version: "***") {
+            App.api.getRecentDatas(worshipId: GlobalState.shared.recentWorshipId, version: GlobalState.shared.version) {
                 
-                if let shortCut = WorshipCellData.shared.phraseMessageShortCut {
-                    App.api.getPhraseMessages(shortCut: shortCut) {
-                        print("shortCut: \(shortCut)")
-                    }
-                }
+//                App.api.getPhraseMessages(shortCut: WorshipCellData.shared.phraseMessageShortCut, phraseMessageOrderIds: WorshipCellData.shared.phraseMessageOrderIds) {
+//
+//                }
+                
             }
         }
         

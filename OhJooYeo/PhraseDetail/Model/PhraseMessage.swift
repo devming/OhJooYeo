@@ -13,7 +13,8 @@ extension Model {
     struct PhraseMessage {
         var phraseKey: String
         var content: String
-        var orderId: Int
+        var orderId: Int32?
+        var shortCut: String?
         
         init?(json: JSON) {
             if let phraseKey = json[Name.phraseKey].string {
@@ -27,12 +28,6 @@ extension Model {
             } else {
                 return nil
             }
-            
-            if let orderId = json[Name.orderId].int {
-                self.orderId = orderId
-            } else {
-                return nil
-            }
         }
     }
 }
@@ -41,6 +36,5 @@ extension Model.PhraseMessage {
     struct Name {
         static let phraseKey = "phrase"
         static let content = "contents"
-        static let orderId = "orderId"
     }
 }

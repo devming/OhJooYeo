@@ -16,9 +16,9 @@ extension Model {
         var advertisements: [Advertisement]?
         var currentVersion: String
         
-        var worshipJson: [String: JSON]
+        var worshipJson: [String: JSON]?
         var mainPresenter: String
-        var nextPresenter: NextPresenter
+        var nextPresenter: NextPresenter?
         var worshipOrders: [WorshipOrder]
         
         var worshipVersion: String
@@ -35,35 +35,40 @@ extension Model {
             self.advertisementVersion = "\(self.currentVersion[self.currentVersion.index(self.currentVersion.startIndex, offsetBy: 1)])"
             self.musicVersion = "\(self.currentVersion[self.currentVersion.index(self.currentVersion.startIndex, offsetBy: 2)])"
             
-            guard let worshipJson = json[Name.worship].dictionary else {
-                return nil
-            }
-            self.worshipJson = worshipJson
-            
-            guard let mainPresenter = worshipJson[Name.mainPresenter]?.string else {
-                return nil
-            }
-            self.mainPresenter = mainPresenter
-            
-            guard let worshipJsonNextPresenter = worshipJson[Name.nextPresenter],
-                let nextPresenter = NextPresenter(json: worshipJsonNextPresenter) else {
-                    return nil
-            }
-            self.nextPresenter = nextPresenter
-            
-            guard let orderList = worshipJson[Name.worshipOrder]?.array else {
-                return nil
-            }
-            
             self.worshipOrders = [WorshipOrder]()
-            
-            for orderJson in orderList {
+            if let worshipJson = json[Name.worship].dictionary {
+                self.worshipJson = worshipJson
                 
-                guard let order = WorshipOrder(json: orderJson) else {
+                guard let mainPresenter = worshipJson[Name.mainPresenter]?.string else {
                     return nil
                 }
-                self.worshipOrders.append(order)
+                self.mainPresenter = mainPresenter
+                
+                guard let worshipJsonNextPresenter = worshipJson[Name.nextPresenter],
+                    let nextPresenter = NextPresenter(json: worshipJsonNextPresenter) else {
+                        return nil
+                }
+                self.nextPresenter = nextPresenter
+                
+                guard let orderList = worshipJson[Name.worshipOrder]?.array else {
+                    return nil
+                }
+                
+                
+                for orderJson in orderList {
+                    
+                    guard let order = WorshipOrder(json: orderJson) else {
+                        return nil
+                    }
+                    self.worshipOrders.append(order)
+                }
+            } else {
+                self.worshipJson = nil
+                self.nextPresenter = nil
+                self.mainPresenter = "x"
             }
+            
+            
             
             if let worshipDate = json[Name.worshipDate].string {
                 self.worshipDate = worshipDate
