@@ -13,7 +13,6 @@ extension DbManager {
     func addPhraseMessages(messages: [Model.PhraseMessage], worshipMO: WorshipMO) {
         for message in messages {
             if let newPhrase = NSEntityDescription.insertNewObject(forEntityName: DbManager.EntityName.phraseMessageEntityName, into: defaultContext) as? PhraseMessageMO {
-//                newPhrase.orderId = message.orderId
                 newPhrase.phraseKey = message.phraseKey
                 newPhrase.content = message.content
                 if let id = message.orderId {
@@ -59,7 +58,7 @@ extension DbManager {
         let request = NSFetchRequest<PhraseMessageMO>(entityName: DbManager.EntityName.phraseMessageEntityName)
         
         if let worshipId = worshipId {
-            let predicate = NSPredicate(format: "worshipId == %@", worshipId)
+            let predicate = NSPredicate(format: "%K == %@", #keyPath(WorshipMO.worshipId), worshipId)
             request.predicate = predicate
         }
         if let result = try? defaultContext.fetch(request) {

@@ -19,10 +19,12 @@ extension APIService {
             switch dataResponse.result {
                 
             case .failure(let error):
-                if let data = dataResponse.data {
-                    print("getPharseMessages Server Error: " + String(data: data, encoding: String.Encoding.utf8)!)
+                guard let data = dataResponse.data else {
+                    print(error)
+                    return
                 }
-                print(error)
+                print(data)
+//                fallthrough
                 
             case .success(_):
                 let result = dataResponse.map({ (json: JSON) -> [Model.PhraseMessage]? in

@@ -79,8 +79,8 @@ extension DbManager {
         }
         for order in orderList {
             if let detail = order.detail, order.type == Model.WorshipOrder.TypeName.phrase.rawValue {
+                print("detail:\(detail)")
                 App.api.getPhraseMessages(shortCut: detail, phraseMessageOrderId: order.orderId) { }
-                break
             }
         }
     }
