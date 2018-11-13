@@ -10,9 +10,9 @@ import Foundation
 
 final class PhraseMessageCellData {
     static var shared = PhraseMessageCellData()
-    var phraseMessages: [PhraseMessageMO]?
+    var phraseMessages: [[PhraseMessageMO]]?
     
-    func setPhraseMessages(phraseMessageModels: [Model.PhraseMessage]) {
+    func setPhraseMessages(phraseMessageModelLists: [[Model.PhraseMessage]]) {
         guard let worshipMO = WorshipCellData.shared.worshipMO else {
             return
         }
@@ -26,20 +26,36 @@ final class PhraseMessageCellData {
         let currentLocalWorshipVersion = currentLocalVersion[currentLocalVersion.index(currentLocalVersion.startIndex, offsetBy: 0)]
         
         if currentLocalWorshipVersion == ConstantString.notSetVersion { // 현재 로컬 버전이 최초 아무것도 없는 경우(*인경우) - Add
-            DbManager.shared.addPhraseMessages(messages: phraseMessageModels, worshipMO: worshipMO)
+            DbManager.shared.addPhraseMessages(messageLists: phraseMessageModelLists, worshipMO: worshipMO)
         } else if currentLocalWorshipVersion < remoteWorshipVersion {   // 받아온 정보가 더 최신일 경우 - Update
-            DbManager.shared.updatePhraseMessages(messages: phraseMessageModels, worshipMO: worshipMO)
+            DbManager.shared.updatePhraseMessages(messageLists: phraseMessageModelLists, worshipMO: worshipMO)
         }
         
         if let version = worshipMO.version {
-            
             let worshipVersion = version[version.index(version.startIndex, offsetBy: 0)]
             
             GlobalState.shared.version = "\(worshipVersion)" + "\(currentLocalVersion[currentLocalVersion.index(currentLocalVersion.startIndex, offsetBy: 1)])" + "\(currentLocalVersion[currentLocalVersion.index(currentLocalVersion.startIndex, offsetBy: 2)])"
         }
         
-        self.phraseMessages = DbManager.shared.getPhraseList(worshipId: worshipMO.worshipId)
+        
+        for i in 0..<phraseMessageModelLists.count {
+            guard let id = phraseMessageModelLists[i][0].orderId else {
+                continue
+            }
+            getPhraseList(orderId: id)
+        }
+    }
+    
+    func getPhraseList(orderId: Int32) {
+        guard let worshipMO = WorshipCellData.shared.worshipMO else {
+            return
+        }
+        
+        let pharseList = DbManager.shared.getPhraseList(worshipId: worshipMO.worshipId, orderId: orderId)
+        self.phraseMessages?.append(pharseList)
         
         NotificationCenter.default.post(name: .PhraseMessageDidUpdated, object: nil)
     }
+    
+    
 }

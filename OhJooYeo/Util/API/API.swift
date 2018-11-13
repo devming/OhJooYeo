@@ -36,7 +36,7 @@ protocol API {
     /// - parameter handler:    Callback Method
     ///
     /// - returns: Void
-    func getPhraseMessages(shortCut: String, phraseMessageOrderId: Int32, handler: @escaping (()-> Void)) -> Void
+    func getPhraseMessages(shortCuts: [String], phraseMessageOrderIds: [Int32], handler: @escaping (()-> Void)) -> Void
 }
 
 struct APIService: API {}
@@ -44,7 +44,7 @@ struct APIService: API {}
 enum APIRouter {
     case getWorshipIdList()
     case getRecentDatas(worshipId: String, version: String, parameters: Parameters?)
-    case getPharseMessages(shortCut: String, parameters: Parameters?)
+    case getPharseMessages(parameters: Parameters?)
 }
 
 extension APIRouter: URLRequestConvertible {
@@ -76,7 +76,7 @@ extension APIRouter: URLRequestConvertible {
             return "/worship-list"
         case let .getRecentDatas(worshipId, version, _):
             return "/worship-id/\(worshipId)/check/version/\(version)"
-        case .getPharseMessages(_, _):
+        case .getPharseMessages(_):
             return "/phrase"
         }
     }
@@ -93,7 +93,7 @@ extension APIRouter: URLRequestConvertible {
             urlRequest = try URLEncoding.default.encode(urlRequest, with: nil)
         case let .getRecentDatas(_, _, parameters):
             urlRequest = try JSONEncoding.default.encode(urlRequest, with: parameters)
-        case let .getPharseMessages(_, parameters):
+        case let .getPharseMessages(parameters):
             urlRequest = try JSONEncoding.default.encode(urlRequest, with: parameters)
         }
 

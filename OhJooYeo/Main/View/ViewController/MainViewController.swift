@@ -138,6 +138,7 @@ extension MainViewController {
                 return
             }
             if let destination = segue.destination as? PhraseDetailViewController {
+                destination.orderId = orderList[indexPath.row].orderId
                 print("##")
             }
         }

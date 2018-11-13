@@ -19,14 +19,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         DbManager.shared.setup(with: "OhJooYeo")    // OhJooYeo.xcdatamodeld의 이름
         
         App.api.getWorshipIdList {
-            //GlobalState.shared.recentWorshipId
-            //GlobalState.shared.version
             App.api.getRecentDatas(worshipId: GlobalState.shared.recentWorshipId, version: GlobalState.shared.version) {
-                
-//                App.api.getPhraseMessages(shortCut: WorshipCellData.shared.phraseMessageShortCut, phraseMessageOrderIds: WorshipCellData.shared.phraseMessageOrderIds) {
-//
-//                }
-                
             }
         }
         

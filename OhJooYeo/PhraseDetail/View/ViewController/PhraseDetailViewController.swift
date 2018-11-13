@@ -11,6 +11,8 @@ import UIKit
 class PhraseDetailViewController: UIViewController {
 
     @IBOutlet weak var listTableView: UITableView!
+    var orderId: Int32 = 0
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -38,9 +40,13 @@ extension PhraseDetailViewController: UITableViewDataSource {
             return UITableViewCell()
         }
         
-        if let phraseList = PhraseMessageCellData.shared.phraseMessages {
-            cell.phraseKeyLabel.text = phraseList[indexPath.row].phraseKey
-            cell.phraseMessageLabel.text = phraseList[indexPath.row].content
+        if let phraseLists = PhraseMessageCellData.shared.phraseMessages {
+            
+            /// TODO: order id 에 따라 다른 걸 뿌려주도록.
+            
+            cell.phraseKeyLabel.text = phraseLists[Int(self.orderId)][indexPath.row].phraseKey
+            cell.phraseMessageLabel.text = phraseLists[Int(self.orderId)][indexPath.row].content
+            
         }
         
         return cell

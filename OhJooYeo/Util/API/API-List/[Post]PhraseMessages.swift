@@ -12,9 +12,9 @@ import SwiftyJSON
 
 extension APIService {
     
-    func getPhraseMessages(shortCut: String, phraseMessageOrderId: Int32, handler: @escaping (() -> Void)) {
-        let parameter: Parameters = ["phraseRange": shortCut]
-        APIRouter.manager.request(APIRouter.getPharseMessages(shortCut: shortCut, parameters: parameter)).responseSwiftyJSON { (dataResponse: DataResponse<JSON>) in
+    func getPhraseMessages(shortCuts: [String], phraseMessageOrderIds: [Int32], handler: @escaping (() -> Void)) {
+        let parameter: Parameters = ["phraseRange": shortCuts]
+        APIRouter.manager.request(APIRouter.getPharseMessages(parameters: parameter)).responseSwiftyJSON { (dataResponse: DataResponse<JSON>) in
             
             switch dataResponse.result {
                 
@@ -27,23 +27,31 @@ extension APIService {
 //                fallthrough
                 
             case .success(_):
-                let result = dataResponse.map({ (json: JSON) -> [Model.PhraseMessage]? in
+                let result = dataResponse.map({ (json: JSON) -> [[Model.PhraseMessage]]? in
                     guard let messages = json.array else {
                         print("json.array error")
                         return nil
                     }
-                    var messageList = [Model.PhraseMessage]()
+                    var messageLists = [[Model.PhraseMessage]]()
                     for message in messages {
-                        guard let data = Model.PhraseMessage(json: message) else {
-                            continue
+                        var messageList = [Model.PhraseMessage]()
+                        guard let rawMessage = message.array else {
+                            print("json.array error")
+                            return nil
                         }
-                        messageList.append(data)
+                        for msg in rawMessage {
+                            guard let data = Model.PhraseMessage(json: msg) else {
+                                continue
+                            }
+                            messageList.append(data)
+                        }
+                        messageLists.append(messageList)
                     }
-                    return messageList
+                    return messageLists
                 })
                 
                 if let responseWholeDatas = result.value, let data = responseWholeDatas {
-                    PhraseMessageCellData.shared.setPhraseMessages(phraseMessageModels: data)
+                    PhraseMessageCellData.shared.setPhraseMessages(phraseMessageModelLists: data)
                 }
                 handler()
             }
