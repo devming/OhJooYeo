@@ -69,19 +69,4 @@ extension DbManager {
         return [WorshipOrderMO]()
     }
     
-    /**
-     성경말씀 shortcut 이름 찾는 부분
-     ex) 여호수아 1:5
-     */
-    func getPhraseMessageShortCutWithOrderId() {
-        guard let orderList = WorshipCellData.shared.worshipOrderMO else {
-            return
-        }
-        for order in orderList {
-            if let detail = order.detail, order.type == Model.WorshipOrder.TypeName.phrase.rawValue {
-                print("detail:\(detail)")
-                App.api.getPhraseMessages(shortCut: detail, phraseMessageOrderId: order.orderId) { }
-            }
-        }
-    }
 }

@@ -54,9 +54,30 @@ final class WorshipCellData {
         self.dateInfo = showDateData(worshipDate: date)
         
         self.worshipOrderMO = DbManager.shared.getWorshipOrderList(worshipMO: self.worshipMO)
-        DbManager.shared.getPhraseMessageShortCutWithOrderId()
+        getPhraseMessageShortCutWithOrderId()
         
         NotificationCenter.default.post(name: .WorshipDidUpdated, object: nil)
+    }
+    
+    /**
+     성경말씀 shortcut 이름 찾는 부분
+     ex) 여호수아 1:5
+     */
+    func getPhraseMessageShortCutWithOrderId() {
+        var details = [String]()
+        var orderIds = [Int32]()
+        guard let orderList = WorshipCellData.shared.worshipOrderMO else {
+            return
+        }
+        for order in orderList {
+            if let detail = order.detail, order.type == Model.WorshipOrder.TypeName.phrase.rawValue {
+                print("detail:\(detail)")
+                
+                details.append(detail)
+                orderIds.append(order.orderId)
+            }
+        }
+        App.api.getPhraseMessages(shortCuts: details, phraseMessageOrderIds: orderIds) { }
     }
 }
 
