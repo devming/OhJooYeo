@@ -33,16 +33,19 @@ extension APIService {
                         return nil
                     }
                     var messageLists = [[Model.PhraseMessage]]()
-                    for message in messages {
+                    for i in 0..<messages.count {
                         var messageList = [Model.PhraseMessage]()
-                        guard let rawMessage = message.array else {
+                        guard let rawMessage = messages[i].array else {
                             print("json.array error")
                             return nil
                         }
                         for msg in rawMessage {
-                            guard let data = Model.PhraseMessage(json: msg) else {
+                            guard var data = Model.PhraseMessage(json: msg) else {
                                 continue
                             }
+                            data.shortCut = shortCuts[i]
+                            data.orderId = phraseMessageOrderIds[i]
+                            
                             messageList.append(data)
                         }
                         messageLists.append(messageList)

@@ -62,7 +62,7 @@ extension DbManager {
         let request = NSFetchRequest<PhraseMessageMO>(entityName: DbManager.EntityName.phraseMessageEntityName)
         
         if let worshipId = worshipId {
-            let predicate = NSPredicate(format: "%K == %@ AND %K == %@", #keyPath(PhraseMessageMO.worshipId), worshipId, #keyPath(PhraseMessageMO.orderId), orderId)
+            let predicate = NSPredicate(format: "%K == %@ AND %K == %d", #keyPath(PhraseMessageMO.worshipId), worshipId, #keyPath(PhraseMessageMO.orderId), orderId)
             request.predicate = predicate
         }
         if let result = try? defaultContext.fetch(request) {
