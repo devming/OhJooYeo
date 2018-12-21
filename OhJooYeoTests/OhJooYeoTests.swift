@@ -22,7 +22,7 @@ class OhJooYeoTests: XCTestCase {
     }
     
     func testAPI() {
-        App.api.getRecentDatas(date: Date(), version: "aaa") {
+        App.api.getRecentDatas(worshipId: "36-09", version: "***") {
             
         }
     }
