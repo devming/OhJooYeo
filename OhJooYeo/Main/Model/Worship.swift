@@ -14,27 +14,13 @@ extension Model {
         var musics: [Music]?
         var worshipDate: String
         var advertisements: [Advertisement]?
-        var currentVersion: String
         
         var worshipJson: [String: JSON]?
         var mainPresenter: String
         var nextPresenter: NextPresenter?
         var worshipOrders: [WorshipOrder]
         
-        var worshipVersion: String
-        var advertisementVersion: String
-        var musicVersion: String
-        
         init?(json: JSON) {
-            if let currentVersion = json[Name.currentVersion].string {
-                self.currentVersion = currentVersion
-            } else {
-                self.currentVersion = ConstantString.nilVersion
-            }
-            self.worshipVersion = "\(self.currentVersion[self.currentVersion.index(self.currentVersion.startIndex, offsetBy: 0)])"
-            self.advertisementVersion = "\(self.currentVersion[self.currentVersion.index(self.currentVersion.startIndex, offsetBy: 1)])"
-            self.musicVersion = "\(self.currentVersion[self.currentVersion.index(self.currentVersion.startIndex, offsetBy: 2)])"
-            
             self.worshipOrders = [WorshipOrder]()
             if let worshipJson = json[Name.worship].dictionary {
                 self.worshipJson = worshipJson
@@ -106,13 +92,6 @@ extension Model {
             } else {
                 self.musics = nil
             }
-            
-            if let version = json[Name.currentVersion].string {
-                self.currentVersion = version
-            } else {
-                self.currentVersion = ConstantString.notSetVersions
-            }
-            
 //            GlobalState.shared.version = self.currentVersion
         }
         
@@ -159,7 +138,6 @@ extension Model.Worship {
         static let mainPresenter = "mainPresenter"
         static let nextPresenter = "nextPresenter"
         static let worshipOrder = "worshipOrder"
-        static let currentVersion = "currentVersion"
         static let worshipDate = "worshipDate"
         static let advertisement = "advertisement"
         static let music = "music"

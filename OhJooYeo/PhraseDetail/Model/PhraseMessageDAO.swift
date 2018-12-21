@@ -28,7 +28,6 @@ extension DbManager {
         }
     }
     
-    /// TODO: worshipMO.phraseMessage 이게 호출이 안되나? - 확인할것.
     func updatePhraseMessages(messageLists: [[Model.PhraseMessage]], worshipMO: WorshipMO) {
         if let phraseMessages = worshipMO.phraseMessages {
             for phraseMessage in phraseMessages {

@@ -55,11 +55,11 @@ extension DbManager {
         let request: NSFetchRequest<WorshipOrderMO> = WorshipOrderMO.fetchRequest()
         
         // 2. sorting
-        let sortByOrderDesc = NSSortDescriptor(key: ColumnKey.WorshipOrder.order, ascending: true)
+        let sortByOrderDesc = NSSortDescriptor(key: #keyPath(WorshipOrderMO.order), ascending: true)
         request.sortDescriptors = [sortByOrderDesc]
         
         if let worshipMO = worshipMO {
-            let predict = NSPredicate(format: "worship == %@", worshipMO)
+            let predict = NSPredicate(format: "%K == %@", #keyPath(WorshipOrderMO.worship), worshipMO)
             request.predicate = predict
         }
         

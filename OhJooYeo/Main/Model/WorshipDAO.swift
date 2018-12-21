@@ -47,7 +47,19 @@ extension DbManager {
             newPhrase.worshipDate = worshipDate
             newPhrase.worshipId = worshipId
             if let worshipOrderValue = worshipOrder {
-                updateWorshipOrder(worshipOrders: worshipOrderValue, worshipMO: newPhrase)
+//                updateWorshipOrder(worshipOrders: worshipOrderValue, worshipMO: newPhrase)
+                addWorshipOrder(worshipOrders: worshipOrderValue, worshipMO: newPhrase)
+                for worshipOrderItem in worshipOrderValue {
+                    if worshipOrderItem.type == Model.WorshipOrder.TypeName.phrase.rawValue {
+                        let phraseList = getPhraseList(worshipId: worshipId, orderId: worshipOrderItem.orderId)
+                        for phrase in phraseList {
+                            newPhrase.addToPhraseMessages(phrase)
+                        }
+                    }
+                }
+                
+//                addAdvertisement(advertisements: <#T##[Model.Advertisement]?#>, worshipMO: <#T##WorshipMO?#>)
+//                addMusic(musics: <#T##[Model.Music]?#>, worshipMO: <#T##WorshipMO?#>)
             }
             saveContext()
         }
@@ -65,8 +77,8 @@ extension DbManager {
         let request = NSFetchRequest<WorshipMO>(entityName: DbManager.EntityName.worshipEntityName)
         
         // 2. sorting - 내림차순이어야 가장 위에 최신 것을 받을 수 있음
-        let sortByDateDesc = NSSortDescriptor(key: ColumnKey.Worship.worshipDate, ascending: false)
-        let sortByVersionDesc = NSSortDescriptor(key: ColumnKey.Worship.version, ascending: false)
+        let sortByDateDesc = NSSortDescriptor(key: #keyPath(WorshipMO.worshipDate), ascending: false)
+        let sortByVersionDesc = NSSortDescriptor(key: #keyPath(WorshipMO.version), ascending: false)
         request.sortDescriptors = [sortByDateDesc, sortByVersionDesc]
         
         /// Pattern1-예외처리 안하는 방식 - 발생하는 예외를 처리하지 않고 그냥 넘어감.
