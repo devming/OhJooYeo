@@ -13,18 +13,51 @@ final class GlobalState {
     static let shared = GlobalState()
     
     enum Constants: String {
-        case currentVersion
+        case localVersion
+        case worshipVersion
+        case advertisementVersion
+        case musicVersion
         case recentWorshipId
         case recentWorshipDate
     }
     
-    var version: String {
+    var localVersion: String {
         get {
-            let version = UserDefaults.standard.string(forKey: Constants.currentVersion.rawValue) ?? ConstantString.notSetVersions
+            let version = UserDefaults.standard.string(forKey: Constants.localVersion.rawValue) ?? ConstantString.notSetVersions
             return version
         }
         set {
-            UserDefaults.standard.set(newValue, forKey: Constants.currentVersion.rawValue)
+            UserDefaults.standard.set(newValue, forKey: Constants.localVersion.rawValue)
+        }
+    }
+    
+    var worshipVersion: String {
+        get {
+            let version = UserDefaults.standard.string(forKey: Constants.worshipVersion.rawValue) ?? ConstantString.notSetVersions
+            return version
+        }
+        set {
+            UserDefaults.standard.set(newValue, forKey: Constants.worshipVersion.rawValue)
+        }
+    }
+    
+    var advertisementVersion: String {
+        get {
+            let version = UserDefaults.standard.string(forKey: Constants.advertisementVersion.rawValue) ?? ConstantString.notSetVersions
+            return version
+        }
+        set {
+            UserDefaults.standard.set(newValue, forKey: Constants.advertisementVersion.rawValue)
+        }
+    }
+    
+    var musicVersion: String {
+        get {
+            let version = UserDefaults.standard.string(forKey: Constants.musicVersion.rawValue) ?? ConstantString.notSetVersions
+            return version
+        }
+        set {
+            UserDefaults.standard.set(newValue, forKey: Constants.musicVersion.rawValue)
         }
     }
     

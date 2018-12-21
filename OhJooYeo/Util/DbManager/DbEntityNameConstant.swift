@@ -35,9 +35,11 @@ extension DbManager {
         }
         
         struct PhraseMessage {
+            static let orderId = "orderId"
             static let phraseKey = "phraseKey"
             static let content = "content"
             static let worshipId = "worshipId"
+            static let shortCut = "shortCut"
         }
         
         struct Music {

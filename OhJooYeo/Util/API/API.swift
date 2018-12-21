@@ -19,7 +19,7 @@ protocol API {
     /// - parameter handler: Callback Method
     ///
     /// - returns: Void
-    func getWorshipIdList(handler: @escaping ()-> Void) -> Void
+    func getWorshipIdList(handler: @escaping (Bool, Model.WorshipIdDate?)-> Void) -> Void
     
     /// 해당 예배 ID값을 가지고 등록된 주보 정보를 가져오는 API 호출 메소드
     ///
@@ -28,7 +28,7 @@ protocol API {
     /// - parameter handler:    Callback Method
     ///
     /// - returns: Void
-    func getRecentDatas(worshipId: String, version: String, handler: @escaping (()-> Void)) -> Void
+    func getRecentDatas(worshipIDVersion: Model.WorshipIdDate, versionUpdateHandler: @escaping (()-> Void)) -> Void
     
     /// 해당 예배 ID값을 가지고 등록된 주보 정보를 가져오는 API 호출 메소드
     ///
@@ -36,14 +36,14 @@ protocol API {
     /// - parameter handler:    Callback Method
     ///
     /// - returns: Void
-    func getPhraseMessages(shortCuts: [String], phraseMessageOrderIds: [Int32], handler: @escaping (()-> Void)) -> Void
+    func getPhraseMessages(shortCuts: [String], phraseMessageOrderIds: [Int32], worshipMO: WorshipMO?, handler: @escaping (()-> Void)) -> Void
 }
 
 struct APIService: API {}
 
 enum APIRouter {
     case getWorshipIdList()
-    case getRecentDatas(worshipId: String, version: String, parameters: Parameters?)
+    case getRecentDatas(worshipId: String, parameters: Parameters?)
     case getPharseMessages(parameters: Parameters?)
 }
 
@@ -74,8 +74,8 @@ extension APIRouter: URLRequestConvertible {
         switch self {
         case .getWorshipIdList():
             return "/worship-list"
-        case let .getRecentDatas(worshipId, version, _):
-            return "/worship-id/\(worshipId)/check/version/\(version)"
+        case let .getRecentDatas(worshipId, _):
+            return "/worship-id/\(worshipId)"
         case .getPharseMessages(_):
             return "/phrase"
         }
@@ -91,7 +91,7 @@ extension APIRouter: URLRequestConvertible {
         switch self {
         case .getWorshipIdList():
             urlRequest = try URLEncoding.default.encode(urlRequest, with: nil)
-        case let .getRecentDatas(_, _, parameters):
+        case let .getRecentDatas(_, parameters):
             urlRequest = try JSONEncoding.default.encode(urlRequest, with: parameters)
         case let .getPharseMessages(parameters):
             urlRequest = try JSONEncoding.default.encode(urlRequest, with: parameters)

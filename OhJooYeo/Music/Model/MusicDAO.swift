@@ -39,7 +39,7 @@ extension DbManager {
         let request = NSFetchRequest<MusicMO>(entityName: DbManager.EntityName.musicEntityName)
         
         if let worshipId = worshipId {
-            let predicate = NSPredicate(format: "worshipId == %@", worshipId)
+            let predicate = NSPredicate(format: "%K == %@", #keyPath(WorshipMO.worshipId), worshipId)
             request.predicate = predicate
         }
         if let result = try? defaultContext.fetch(request) {

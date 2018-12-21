@@ -12,7 +12,7 @@ import SwiftyJSON
 
 extension APIService {
     
-    func getPhraseMessages(shortCuts: [String], phraseMessageOrderIds: [Int32], handler: @escaping (() -> Void)) {
+    func getPhraseMessages(shortCuts: [String], phraseMessageOrderIds: [Int32], worshipMO: WorshipMO?, handler: @escaping (() -> Void)) {
         let parameter: Parameters = ["phraseRange": shortCuts]
         APIRouter.manager.request(APIRouter.getPharseMessages(parameters: parameter)).responseSwiftyJSON { (dataResponse: DataResponse<JSON>) in
             
@@ -24,7 +24,6 @@ extension APIService {
                     return
                 }
                 print(data)
-//                fallthrough
                 
             case .success(_):
                 let result = dataResponse.map({ (json: JSON) -> [[Model.PhraseMessage]]? in
@@ -54,11 +53,10 @@ extension APIService {
                 })
                 
                 if let responseWholeDatas = result.value, let data = responseWholeDatas {
-                    PhraseMessageCellData.shared.setPhraseMessages(phraseMessageModelLists: data)
+                    PhraseMessageViewModel.shared.setPhraseMessages(phraseMessageModelLists: data, worshipMO: worshipMO)
                 }
                 handler()
             }
         }
     }
-    
 }
