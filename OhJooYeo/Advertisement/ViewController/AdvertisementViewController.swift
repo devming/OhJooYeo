@@ -28,7 +28,7 @@ class AdvertisementViewController: UIViewController {
 extension AdvertisementViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        guard let advertisementList = AdvertisementCellData.shared.advertisements else {
+        guard let advertisementList = AdvertisementViewModel.shared.advertisements else {
             return 0
         }
         
@@ -39,7 +39,7 @@ extension AdvertisementViewController: UITableViewDataSource {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: AdvertisementTableViewCell.cellName) as? AdvertisementTableViewCell else {
             return UITableViewCell()
         }
-        if let advertisementList = AdvertisementCellData.shared.advertisements {
+        if let advertisementList = AdvertisementViewModel.shared.advertisements {
             cell.titleLabel.text = advertisementList[indexPath.row].title
             cell.descriptionLabel.text = advertisementList[indexPath.row].content
         }

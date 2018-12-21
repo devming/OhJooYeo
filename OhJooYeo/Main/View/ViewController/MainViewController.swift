@@ -34,7 +34,7 @@ class MainViewController: UIViewController {
 
 extension MainViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        guard let orderList = WorshipCellData.shared.worshipOrderMO else {
+        guard let orderList = WorshipViewModel.shared.worshipOrderMO else {
             return 0
         }
         
@@ -42,10 +42,10 @@ extension MainViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let orderList = WorshipCellData.shared.worshipOrderMO,
-            let nextPresenter = WorshipCellData.shared.worshipMO?.nextPresenter,
-            let nextOffer = WorshipCellData.shared.worshipMO?.nextOffer,
-            let nextPrayer = WorshipCellData.shared.worshipMO?.nextPrayer else {
+        guard let orderList = WorshipViewModel.shared.worshipOrderMO,
+            let nextPresenter = WorshipViewModel.shared.worshipMO?.nextPresenter,
+            let nextOffer = WorshipViewModel.shared.worshipMO?.nextOffer,
+            let nextPrayer = WorshipViewModel.shared.worshipMO?.nextPrayer else {
             return UITableViewCell()
         }
         
@@ -89,7 +89,7 @@ extension MainViewController: UITableViewDataSource {
 extension MainViewController: UITableViewDelegate {
    
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        guard let worshipOrderList = WorshipCellData.shared.worshipOrderMO else {
+        guard let worshipOrderList = WorshipViewModel.shared.worshipOrderMO else {
             return 50
         }
         if indexPath.row == worshipOrderList.count {
@@ -107,7 +107,7 @@ extension MainViewController: UITableViewDelegate {
 extension MainViewController {
     @objc func worshipUpdate(_ notification: Notification) {
         OperationQueue.main.addOperation { [weak self] in
-            self?.dateLabel.text = WorshipCellData.shared.dateInfo
+            self?.dateLabel.text = WorshipViewModel.shared.dateInfo
             self?.listTableView.reloadData()
         }
     }
@@ -119,14 +119,14 @@ extension MainViewController {
     
     @objc func reloadDatas() {
         DispatchQueue.main.async { [weak self] in
-            App.api.getWorshipIdList {
-                //GlobalState.shared.recentWorshipId
-                //GlobalState.shared.version
-                App.api.getRecentDatas(worshipId: GlobalState.shared.recentWorshipId, version: GlobalState.shared.version) { [weak self] in
-                    self?.listTableView.reloadData()
-                    self?.refreshControl.endRefreshing()
-                }
-            }
+//            App.api.getWorshipIdList {
+//                //GlobalState.shared.recentWorshipId
+//                //GlobalState.shared.version
+//                App.api.getRecentDatas(worshipId: GlobalState.shared.recentWorshipId, version: GlobalState.shared.localVersion) { [weak self] in
+//                    self?.listTableView.reloadData()
+//                    self?.refreshControl.endRefreshing()
+//                }
+//            }
         }
     }
     
@@ -134,7 +134,7 @@ extension MainViewController {
         super.prepare(for: segue, sender: sender)
         
         if let cell = sender as? OrderTableViewCell, let indexPath = self.listTableView.indexPath(for: cell) {
-            guard let orderList = WorshipCellData.shared.worshipOrderMO, orderList[indexPath.row].type == Model.WorshipOrder.TypeName.phrase.rawValue else {
+            guard let orderList = WorshipViewModel.shared.worshipOrderMO, orderList[indexPath.row].type == Model.WorshipOrder.TypeName.phrase.rawValue else {
                 return
             }
             if let destination = segue.destination as? PhraseDetailViewController {

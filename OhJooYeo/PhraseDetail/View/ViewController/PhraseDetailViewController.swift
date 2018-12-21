@@ -28,7 +28,7 @@ class PhraseDetailViewController: UIViewController {
 
 extension PhraseDetailViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        guard let phraseList = PhraseMessageCellData.shared.phraseMessages, let phraseMessage = phraseList[self.orderId] else {
+        guard let phraseList = PhraseMessageViewModel.shared.phraseMessages, let phraseMessage = phraseList[self.orderId] else {
             return 0
         }
         
@@ -40,7 +40,7 @@ extension PhraseDetailViewController: UITableViewDataSource {
             return UITableViewCell()
         }
         
-        if let phraseList = PhraseMessageCellData.shared.phraseMessages, let phraseMessages = phraseList[self.orderId] {
+        if let phraseList = PhraseMessageViewModel.shared.phraseMessages, let phraseMessages = phraseList[self.orderId] {
             cell.phraseKeyLabel.text = phraseMessages[indexPath.row].phraseKey
             cell.phraseMessageLabel.text = phraseMessages[indexPath.row].content
         }
