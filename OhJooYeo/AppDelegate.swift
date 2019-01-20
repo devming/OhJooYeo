@@ -16,17 +16,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        DbManager.shared.setup(with: "OhJooYeo")    // OhJooYeo.xcdatamodeld의 이름
-        
         App.api.getWorshipIdList { isUpdated, willTakeIDVersionData in
             if let idVersionData = willTakeIDVersionData, isUpdated {
                 App.api.getRecentDatas(worshipIDVersion: idVersionData) {
-//                    GlobalState.shared.localVersion = idVersionData.version
-//                    GlobalState.shared.worshipVersion = idVersionData.worshipVersion
-//                    GlobalState.shared.advertisementVersion = idVersionData.advertisementVersion
-//                    GlobalState.shared.musicVersion = idVersionData.musicVersion
-//                    GlobalState.shared.recentWorshipId = idVersionData.worshipId
-//                    GlobalState.shared.recentWorshipDate = idVersionData.date
                 }
             }
         }

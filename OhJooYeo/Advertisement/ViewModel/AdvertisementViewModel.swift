@@ -12,11 +12,11 @@ final class AdvertisementViewModel {
     static var shared = AdvertisementViewModel()
     var advertisements: [AdvertisementMO]?
     
-    func setAdvertisement(advertisementModels: [Model.Advertisement]?, worshipMO: WorshipMO?) {
+    func setAdvertisement(worshipMO: WorshipMO?) {
         guard let worshipMO = worshipMO else {
             return
         }
         
-        self.advertisements = DbManager.shared.getAdvertisementList(worshipId: worshipMO.worshipId)        
+//        self.advertisements = DbManager.shared.getAdvertisementList(worshipId: worshipMO.worshipId)        
     }
 }

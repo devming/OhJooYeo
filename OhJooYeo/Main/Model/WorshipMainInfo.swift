@@ -9,11 +9,11 @@
 import RealmSwift
 import SwiftyJSON
 
-class WorshipMain: Object {
+class WorshipMainInfo: Object {
     @objc dynamic var mainPresenter: String = ""
     @objc dynamic var nextPresenter: NextPresenter? = nil
     let worshipOrders = List<WorshipOrder>()
-    let ownerWorshipData = LinkingObjects(fromType: WorshipData.self, property: "worship")
+    let ownerWorshipData = LinkingObjects(fromType: WorshipData.self, property: "worshipMainInfo")
     
     convenience init(json: JSON) {
         self.init()
@@ -25,6 +25,7 @@ class WorshipMain: Object {
             self.worshipOrders.append(WorshipOrder(json: worshipOrderData))
         }
     }
+    
 //    init?(json: JSON) {
 //        if let worshipJson = json[Name.worship].dictionary {
 //            self.worshipJson = worshipJson
@@ -97,7 +98,7 @@ class WorshipMain: Object {
 //    }
 }
 
-extension WorshipMain {
+extension WorshipMainInfo {
     struct Name {
         static let worship = "worship"
         static let mainPresenter = "mainPresenter"

@@ -6,20 +6,48 @@
 //  Copyright © 2018년 devming. All rights reserved.
 //
 
-import Foundation
+import RealmSwift
 import SwiftyJSON
 
-struct NextPresenter {
-    var mainPresenter: String?
-    var prayer: String?
-    var offer: String?
+class NextPresenter: Object {
+    @objc dynamic var mainPresenter: String = ""
+    @objc dynamic var prayer: String = ""
+    @objc dynamic var offer: String = ""
+    let ownerWorship = LinkingObjects(fromType: WorshipMainInfo.self, property: "nextPresenter")
     
-    init?(mainPresenter: String?, prayer: String?, offer: String?) {
-        guard let mainPresenter = mainPresenter, let prayer = prayer, let offer = offer else {
-            return nil
-        }
-        self.mainPresenter = mainPresenter
-        self.prayer = prayer
-        self.offer = offer
+    convenience init(json: JSON) {
+        self.init()
+        
+        self.mainPresenter = json[Name.mainPresenter].stringValue
+        self.prayer = json[Name.prayer].stringValue
+        self.offer = json[Name.offer].stringValue
+    }
+//    init(mainPresenter: String, prayer: String, offer: String) {
+//        self.mainPresenter = mainPresenter
+//        self.prayer = prayer
+//        self.offer = offer
+//    }
+//
+//    init?(json: JSON) {
+//        guard let mainPresenter = json[Name.mainPresenter].string else {
+//            return nil
+//        }
+//        self.mainPresenter = mainPresenter
+//
+//        guard let prayer = json[Name.prayer].string else {
+//            return nil
+//        }
+//        self.prayer = prayer
+//
+//        guard let offer = json[Name.offer].string else {
+//            return nil
+//        }
+//        self.offer = offer
+//    }
+    
+    struct Name {
+        static let mainPresenter = "mainPresenter"
+        static let prayer = "prayer"
+        static let offer = "offer"
     }
 }

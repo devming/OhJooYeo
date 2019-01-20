@@ -12,7 +12,7 @@ import SwiftyJSON
 
 extension APIService {
     
-    func getPhraseMessages(shortCuts: [String], phraseMessageOrderIds: [Int32], worshipMO: WorshipMO?, handler: @escaping (() -> Void)) {
+    func getPhraseMessages(shortCuts: [String], phraseMessageOrderIds: [Int], worshipMO: WorshipMO?, handler: @escaping (() -> Void)) {
         let parameter: Parameters = ["phraseRange": shortCuts]
         APIRouter.manager.request(APIRouter.getPharseMessages(parameters: parameter)).responseSwiftyJSON { (dataResponse: DataResponse<JSON>) in
             
@@ -26,33 +26,11 @@ extension APIService {
                 print(data)
                 
             case .success(_):
-                let result = dataResponse.map({ (json: JSON) -> [[Model.PhraseMessage]]? in
-                    guard let messages = json.array else {
-                        print("json.array error")
-                        return nil
-                    }
-                    var messageLists = [[Model.PhraseMessage]]()
-                    for i in 0..<messages.count {
-                        var messageList = [Model.PhraseMessage]()
-                        guard let rawMessage = messages[i].array else {
-                            print("json.array error")
-                            return nil
-                        }
-                        for msg in rawMessage {
-                            guard var data = Model.PhraseMessage(json: msg) else {
-                                continue
-                            }
-                            data.shortCut = shortCuts[i]
-                            data.orderId = phraseMessageOrderIds[i]
-                            
-                            messageList.append(data)
-                        }
-                        messageLists.append(messageList)
-                    }
-                    return messageLists
+                let result = dataResponse.map({ (json: JSON) -> [[PhraseMessage]] in
+                    return PhraseMessageDAO.shared.initPhraseMessageData(json: json)
                 })
                 
-                if let responseWholeDatas = result.value, let data = responseWholeDatas {
+                if let data = result.value {
                     PhraseMessageViewModel.shared.setPhraseMessages(phraseMessageModelLists: data, worshipMO: worshipMO)
                 }
                 handler()

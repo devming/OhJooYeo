@@ -10,7 +10,7 @@ import Foundation
 
 extension DbManager {
     struct EntityName {
-        static let worshipEntityName = "Worship"
+        static let worshipEntityName = "WorshipMainInfo"
         static let worshipOrderEntityName = "WorshipOrder"
         static let phraseMessageEntityName = "PhraseMessage"
         static let musicEntityName = "Music"

@@ -9,4 +9,5 @@ target 'OhJooYeo' do
   pod 'SwiftyJSON'
   pod 'Alamofire'
   pod 'Alamofire-SwiftyJSON'
+  pod 'RealmSwift' 
 end

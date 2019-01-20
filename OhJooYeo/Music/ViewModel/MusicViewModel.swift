@@ -17,6 +17,6 @@ final class MusicViewModel {
                 return
         }
         
-        self.musics = DbManager.shared.getMusicList(worshipId: worshipMO.worshipId)
+//        self.musics = DbManager.shared.getMusicList(worshipId: worshipMO.worshipId)
     }
 }

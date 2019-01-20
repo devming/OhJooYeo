@@ -19,7 +19,13 @@ protocol API {
     /// - parameter handler: Callback Method
     ///
     /// - returns: Void
-    func getWorshipIdList(handler: @escaping (Bool, Model.WorshipIdDate?)-> Void) -> Void
+    /// - response:
+    ///     [{
+    ///         "date": "String",
+    ///         "worshipId": "String",
+    ///         "version": "String"
+    ///     }]
+    func getWorshipIdList(handler: @escaping (Bool, WorshipIdDate?)-> Void) -> Void
     
     /// 해당 예배 ID값을 가지고 등록된 주보 정보를 가져오는 API 호출 메소드
     ///
@@ -28,7 +34,7 @@ protocol API {
     /// - parameter handler:    Callback Method
     ///
     /// - returns: Void
-    func getRecentDatas(worshipIDVersion: Model.WorshipIdDate, versionUpdateHandler: @escaping (()-> Void)) -> Void
+    func getRecentDatas(worshipIDVersion: WorshipIdDate, versionUpdateHandler: @escaping (()-> Void)) -> Void
     
     /// 해당 예배 ID값을 가지고 등록된 주보 정보를 가져오는 API 호출 메소드
     ///
@@ -36,7 +42,7 @@ protocol API {
     /// - parameter handler:    Callback Method
     ///
     /// - returns: Void
-    func getPhraseMessages(shortCuts: [String], phraseMessageOrderIds: [Int32], worshipMO: WorshipMO?, handler: @escaping (()-> Void)) -> Void
+    func getPhraseMessages(shortCuts: [String], phraseMessageOrderIds: [Int], worshipMO: WorshipMO?, handler: @escaping (()-> Void)) -> Void
 }
 
 struct APIService: API {}
@@ -51,7 +57,7 @@ extension APIRouter: URLRequestConvertible {
     static let baseURLString: String = "http://ec2-52-79-233-2.ap-northeast-2.compute.amazonaws.com:8080/OhJooYeoMVC"
     static let manager: Alamofire.SessionManager = {
         let configuration = URLSessionConfiguration.default
-        configuration.timeoutIntervalForRequest = 30 // seconds
+        configuration.timeoutIntervalForRequest = 150 // seconds
         configuration.timeoutIntervalForResource = 30
         configuration.httpCookieStorage = HTTPCookieStorage.shared
         configuration.urlCache = URLCache(memoryCapacity: 0, diskCapacity: 0, diskPath: nil)
