@@ -7,11 +7,13 @@
 //
 
 import UIKit
+import RealmSwift
 
 class PhraseDetailViewController: UIViewController {
 
     @IBOutlet weak var listTableView: UITableView!
-    var orderId = 0
+    var orderID = 0
+    var currentIndex = -1
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,6 +23,20 @@ class PhraseDetailViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+
+        guard let worshipID = WorshipMainInfoViewModel.shared.worshipDataObject.worshipData?.worshipID else {
+            return
+        }
+        let result = WholeWorshipDataDAO.shared.getResultPhraseMessages(by: worshipID)
+        WorshipMainInfoViewModel.shared.worshipDataObject.phraseMessageSetList = result?.toArray(ofType: PhraseMessageSet.self)
+        
+        var index = -1
+        WholeWorshipDataDAO.shared.phraseMessageSetList?.forEach({ (set) in
+            index += 1
+            if set.orderID == self.orderID {
+                self.currentIndex = index
+            }
+        })
         
         self.listTableView.reloadData()
     }
@@ -28,11 +44,10 @@ class PhraseDetailViewController: UIViewController {
 
 extension PhraseDetailViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        guard let phraseList = PhraseMessageViewModel.shared.phraseMessages, let phraseMessage = phraseList[self.orderId] else {
+        guard let phraseMessageSetList = WholeWorshipDataDAO.shared.phraseMessageSetList else {
             return 0
         }
-        
-        return phraseMessage.count
+        return phraseMessageSetList[self.currentIndex].phraseMessageList.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -40,9 +55,10 @@ extension PhraseDetailViewController: UITableViewDataSource {
             return UITableViewCell()
         }
         
-        if let phraseList = PhraseMessageViewModel.shared.phraseMessages, let phraseMessages = phraseList[self.orderId] {
-            cell.phraseKeyLabel.text = phraseMessages[indexPath.row].phraseKey
-            cell.phraseMessageLabel.text = phraseMessages[indexPath.row].content
+        if let phraseMessageSetList = WholeWorshipDataDAO.shared.phraseMessageSetList {
+            let phraseMessageList = phraseMessageSetList[self.currentIndex].phraseMessageList
+            cell.phraseKeyLabel.text = phraseMessageList[indexPath.row].phraseKey
+            cell.phraseMessageLabel.text = phraseMessageList[indexPath.row].contents
         }
         
         return cell

@@ -16,51 +16,11 @@ class Music: Object {
     @objc dynamic var title: String = ""
     @objc dynamic var category: String = ""
     @objc dynamic var order: Int = -1
-    let ownerWorshipData = LinkingObjects(fromType: WorshipData.self, property: "musics")
-    //        var image: UIImage?
-    //        var lylics: String
+    let ownerWorshipData = LinkingObjects(fromType: WholeWorshipData.self, property: "musics")
     
     convenience init(json: JSON) {
         self.init()
     }
-    
-//    init?(json: JSON) {
-//        guard let lyricist = json[Name.lyricist].string else {
-//            return nil
-//        }
-//        self.lyricist = lyricist
-//        guard let title = json[Name.title].string else {
-//            return nil
-//        }
-//        self.title = title
-//        guard let order = json[Name.order].int else {
-//            return nil
-//        }
-//        self.order = order
-//        guard let imageName = json[Name.imageName].string else {
-//            return nil
-//        }
-//        self.imageName = imageName
-//        guard let composer = json[Name.composer].string else {
-//            return nil
-//        }
-//        self.composer = composer
-//        guard let category = json[Name.category].string else {
-//            return nil
-//        }
-//        self.category = category
-//        //            guard let lylics = json[Name.lylics].string else {
-//        //                return nil
-//        //            }
-//        //            self.lylics = lylics
-//
-//        //            self.image = getImageData()
-//    }
-//
-//    func getImageData() -> UIImage {
-//
-//        return UIImage()
-//    }
 }
 
 

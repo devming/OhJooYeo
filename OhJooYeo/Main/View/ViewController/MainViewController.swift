@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import NVActivityIndicatorView
 
 class MainViewController: UIViewController {
     
@@ -14,9 +15,13 @@ class MainViewController: UIViewController {
     @IBOutlet weak var dateLabel: UILabel!
     
     let refreshControl = UIRefreshControl()
+    var activityIndicator: NVActivityIndicatorView?
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.activityIndicator = NVActivityIndicatorView(frame: self.view.frame, type: NVActivityIndicatorType.ballTrianglePath, color: UIColor.gray, padding: self.view.frame.width / 2.5)
+        self.view.addSubview(self.activityIndicator!)
+        self.activityIndicator?.startAnimating()
         
         self.listTableView.rowHeight = UITableViewAutomaticDimension
         
@@ -34,7 +39,8 @@ class MainViewController: UIViewController {
 
 extension MainViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        guard let orderList = WorshipMainInfoViewModel.shared.worshipOrderDataResults else {
+        guard let orderList = WorshipMainInfoViewModel.shared.worshipDataObject.worshipData?.worshipMainInfo?.worshipOrders else {
+            print("orderList count is 0")
             return 0
         }
         
@@ -46,6 +52,7 @@ extension MainViewController: UITableViewDataSource {
             let nextPresenter = WorshipMainInfoViewModel.shared.worshipDataObject.worshipData?.worshipMainInfo?.nextPresenter?.mainPresenter,
             let nextPrayer = WorshipMainInfoViewModel.shared.worshipDataObject.worshipData?.worshipMainInfo?.nextPresenter?.prayer,
             let nextOffer = WorshipMainInfoViewModel.shared.worshipDataObject.worshipData?.worshipMainInfo?.nextPresenter?.offer else {
+                print("orderList is null")
                 return UITableViewCell()
         }
         
@@ -107,8 +114,12 @@ extension MainViewController: UITableViewDelegate {
 extension MainViewController {
     @objc func worshipUpdate(_ notification: Notification) {
         OperationQueue.main.addOperation { [weak self] in
-            self?.dateLabel.text = WorshipMainInfoViewModel.shared.dateInfo
-            self?.listTableView.reloadData()
+            if App.isLoadingComplete {
+                self?.dateLabel.text = WorshipMainInfoViewModel.shared.dateInfo
+                self?.activityIndicator?.stopAnimating()
+                self?.listTableView.reloadData()
+                App.isLoadingComplete = false
+            }
         }
     }
     
@@ -118,13 +129,16 @@ extension MainViewController {
     }
     
     @objc func reloadDatas() {
-        DispatchQueue.main.async { [weak self] in
-            self?.listTableView.reloadData()
-            self?.refreshControl.endRefreshing()
+        DispatchQueue.main.async {
+            App.loadAllDataFromServer { [weak self] in
+                App.isLoadingComplete = true
+                self?.refreshControl.endRefreshing()
+                NotificationCenter.default.post(name: .WorshipDidUpdated, object: nil)
+            }
             //            App.api.getWorshipIdList {
-            //                //GlobalState.shared.recentWorshipId
+            //                //GlobalState.shared.recentWorshipID
             //                //GlobalState.shared.version
-            //                App.api.getRecentDatas(worshipId: GlobalState.shared.recentWorshipId, version: GlobalState.shared.localVersion) { [weak self] in
+            //                App.api.getRecentDatas(worshipID: GlobalState.shared.recentWorshipID, version: GlobalState.shared.localVersion) { [weak self] in
             //                    self?.listTableView.reloadData()
             //                    self?.refreshControl.endRefreshing()
             //                }
@@ -139,9 +153,9 @@ extension MainViewController {
             guard let orderList = WorshipMainInfoViewModel.shared.worshipDataObject.worshipData?.worshipMainInfo?.worshipOrders, orderList[indexPath.row].type == WorshipOrder.TypeName.phrase.rawValue else {
                 return
             }
+            
             if let destination = segue.destination as? PhraseDetailViewController {
-                destination.orderId = Int(orderList[indexPath.row].orderId)
-                print("##")
+                destination.orderID = Int(orderList[indexPath.row].orderID)
             }
         }
     }

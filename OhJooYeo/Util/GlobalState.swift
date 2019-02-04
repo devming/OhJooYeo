@@ -17,7 +17,7 @@ final class GlobalState {
         case worshipVersion
         case advertisementVersion
         case musicVersion
-        case recentWorshipId
+        case recentWorshipID
         case recentWorshipDate
     }
     
@@ -61,13 +61,13 @@ final class GlobalState {
         }
     }
     
-    var recentWorshipId: String {
+    var recentWorshipID: String {
         get {
-            let recentWorshipId = UserDefaults.standard.string(forKey: Constants.recentWorshipId.rawValue) ?? "---" ///TODO: 서버에서 예외처리
-            return recentWorshipId
+            let recentWorshipID = UserDefaults.standard.string(forKey: Constants.recentWorshipID.rawValue) ?? "---" ///TODO: 서버에서 예외처리
+            return recentWorshipID
         }
         set {
-            UserDefaults.standard.set(newValue, forKey: Constants.recentWorshipId.rawValue)
+            UserDefaults.standard.set(newValue, forKey: Constants.recentWorshipID.rawValue)
         }
     }
     

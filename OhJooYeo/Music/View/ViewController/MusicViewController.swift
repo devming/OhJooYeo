@@ -16,24 +16,8 @@ class MusicViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
-//        guard let url = URL(string: "http://ec2-52-79-233-2.ap-northeast-2.compute.amazonaws.com:8080/OhJooYeoMVC/img/TestImage.jpg") else {
-//            print("ERR")
-//            return
-//        }
-//        
-//        guard let data = try? Data(contentsOf: url), let image = UIImage(data: data) else {
-//            return
-//        }
-//        self.scoreImageView.image = image
-//        print("@@")
     }
 
-    @IBAction func scoreSwitchChanged(_ sender: UISwitch) {
-        if sender.isOn {
-            
-        }
-    }
 }
 
 extension MusicViewController: UICollectionViewDataSource {

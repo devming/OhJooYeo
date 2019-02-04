@@ -9,14 +9,4 @@
 import Foundation
 
 final class MusicViewModel {
-    static var shared = MusicViewModel()
-    var musics: [MusicMO]?
-    
-    func setMusic(worshipMO: WorshipMO?) {
-        guard let worshipMO = worshipMO else {
-                return
-        }
-        
-//        self.musics = DbManager.shared.getMusicList(worshipId: worshipMO.worshipId)
-    }
 }

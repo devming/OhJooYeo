@@ -9,22 +9,22 @@
 import SwiftyJSON
 import RealmSwift
 
-final class WorshipIdListDAO {
-    static let shared = WorshipIdListDAO()
-    var worshipIdDate: WorshipIdDate?
-    var worshipIdDateList = [WorshipIdDate]()
+final class WorshipIDListDAO {
+    static let shared = WorshipIDListDAO()
+    var worshipIDDate: WorshipIDDate?
+    var worshipIDDateList = [WorshipIDDate]()
     
-    func initWorshipIdListDAO(json: JSON) {
+    func initWorshipIDListDAO(json: JSON) {
         for worshipIdDate in json.arrayValue {
-            self.worshipIdDate = WorshipIdDate(json: worshipIdDate)
+            self.worshipIDDate = WorshipIDDate(json: worshipIdDate)
             
-            guard let worshipIdList = self.worshipIdDate else {
+            guard let worshipIdList = self.worshipIDDate else {
                 continue
             }
             try? DbManager.shared.realm?.write {
                 DbManager.shared.realm?.add(worshipIdList)
             }
-            self.worshipIdDateList.append(worshipIdList)
+            self.worshipIDDateList.append(worshipIdList)
         }
         
     }

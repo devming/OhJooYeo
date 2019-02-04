@@ -6,17 +6,16 @@
 //  Copyright © 2018년 devming. All rights reserved.
 //
 
-import Foundation
+import RealmSwift
 
 final class AdvertisementViewModel {
     static var shared = AdvertisementViewModel()
-    var advertisements: [AdvertisementMO]?
+    var worshipDataObject: WholeWorshipDataDAO
+    var advertisements: List<Advertisement>?
     
-    func setAdvertisement(worshipMO: WorshipMO?) {
-        guard let worshipMO = worshipMO else {
-            return
-        }
-        
-//        self.advertisements = DbManager.shared.getAdvertisementList(worshipId: worshipMO.worshipId)        
+    private init() {
+        self.worshipDataObject = WholeWorshipDataDAO.shared
+        self.advertisements = WholeWorshipDataDAO.shared.worshipData?.advertisements
     }
+    
 }

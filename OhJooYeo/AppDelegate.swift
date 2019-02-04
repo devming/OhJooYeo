@@ -16,11 +16,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        App.api.getWorshipIdList { isUpdated, willTakeIDVersionData in
-            if let idVersionData = willTakeIDVersionData, isUpdated {
-                App.api.getRecentDatas(worshipIDVersion: idVersionData) {
-                }
-            }
+//        App.api.getWorshipIdList { isUpdated, willTakeIDVersionData in
+//            if let idVersionData = willTakeIDVersionData, isUpdated {
+//                App.api.getRecentDatas(worshipIDVersion: idVersionData) {
+//                }
+//            }
+//        }
+        
+        App.loadAllDataFromServer {
+            App.isLoadingComplete = true
+            NotificationCenter.default.post(name: .WorshipDidUpdated, object: nil)
         }
         
         return true

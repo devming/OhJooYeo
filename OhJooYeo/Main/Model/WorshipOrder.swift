@@ -14,7 +14,7 @@ class WorshipOrder: Object {
     @objc dynamic var detail: String = ""
     @objc dynamic var presenter: String = ""
     @objc dynamic var order: Int = 0
-    @objc dynamic var orderId: Int = 0
+    @objc dynamic var orderID: Int = 0
     @objc dynamic var type: Int = 0
     let ownerWorship = LinkingObjects(fromType: WorshipMainInfo.self, property: "worshipOrders")
     
@@ -24,7 +24,7 @@ class WorshipOrder: Object {
         self.detail = json[Name.detail].stringValue
         self.presenter = json[Name.presenter].stringValue
         self.order = json[Name.order].intValue
-        self.orderId = json[Name.orderId].intValue
+        self.orderID = json[Name.orderID].intValue
         self.type = json[Name.type].intValue
     }
 //    init(title: String, detail: String, presenter: String, order: Int, orderId: Int, type: Int) {
@@ -76,7 +76,7 @@ extension WorshipOrder {
         static let detail = "detail"
         static let presenter = "presenter"
         static let order = "order"
-        static let orderId = "orderId"
+        static let orderID = "orderId"
         static let type = "type"
     }
     

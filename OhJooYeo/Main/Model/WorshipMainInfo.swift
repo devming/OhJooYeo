@@ -13,7 +13,7 @@ class WorshipMainInfo: Object {
     @objc dynamic var mainPresenter: String = ""
     @objc dynamic var nextPresenter: NextPresenter? = nil
     let worshipOrders = List<WorshipOrder>()
-    let ownerWorshipData = LinkingObjects(fromType: WorshipData.self, property: "worshipMainInfo")
+    let ownerWorshipData = LinkingObjects(fromType: WholeWorshipData.self, property: "worshipMainInfo")
     
     convenience init(json: JSON) {
         self.init()

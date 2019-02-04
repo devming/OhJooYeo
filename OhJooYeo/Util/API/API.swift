@@ -25,7 +25,7 @@ protocol API {
     ///         "worshipId": "String",
     ///         "version": "String"
     ///     }]
-    func getWorshipIdList(handler: @escaping (Bool, WorshipIdDate?)-> Void) -> Void
+    func getWorshipIDList(handler: @escaping (Bool, WorshipIDDate?)-> Void) -> Void
     
     /// 해당 예배 ID값을 가지고 등록된 주보 정보를 가져오는 API 호출 메소드
     ///
@@ -34,7 +34,7 @@ protocol API {
     /// - parameter handler:    Callback Method
     ///
     /// - returns: Void
-    func getRecentDatas(worshipIDVersion: WorshipIdDate, versionUpdateHandler: @escaping (()-> Void)) -> Void
+    func getRecentDatas(worshipIDVersion: WorshipIDDate, versionUpdateHandler: @escaping (()-> Void)) -> Void
     
     /// 해당 예배 ID값을 가지고 등록된 주보 정보를 가져오는 API 호출 메소드
     ///
@@ -42,14 +42,14 @@ protocol API {
     /// - parameter handler:    Callback Method
     ///
     /// - returns: Void
-    func getPhraseMessages(shortCuts: [String], phraseMessageOrderIds: [Int], worshipMO: WorshipMO?, handler: @escaping (()-> Void)) -> Void
+    func getPhraseMessages(shortCuts: [String], phraseMessageOrderIds: [Int], worshipID: String, handler: @escaping (()-> Void)) -> Void
 }
 
 struct APIService: API {}
 
 enum APIRouter {
-    case getWorshipIdList()
-    case getRecentDatas(worshipId: String, parameters: Parameters?)
+    case getWorshipIDList()
+    case getRecentDatas(worshipID: String, parameters: Parameters?)
     case getPharseMessages(parameters: Parameters?)
 }
 
@@ -67,7 +67,7 @@ extension APIRouter: URLRequestConvertible {
 
     var method: HTTPMethod {
         switch self {
-        case .getWorshipIdList:
+        case .getWorshipIDList:
             return .get
         case .getRecentDatas:
             return .post
@@ -78,7 +78,7 @@ extension APIRouter: URLRequestConvertible {
 
     var path: String {
         switch self {
-        case .getWorshipIdList():
+        case .getWorshipIDList():
             return "/worship-list"
         case let .getRecentDatas(worshipId, _):
             return "/worship-id/\(worshipId)"
@@ -95,7 +95,7 @@ extension APIRouter: URLRequestConvertible {
         urlRequest.addValue("Content-Type", forHTTPHeaderField: "application/json;charset=UTF-8")
         
         switch self {
-        case .getWorshipIdList():
+        case .getWorshipIDList():
             urlRequest = try URLEncoding.default.encode(urlRequest, with: nil)
         case let .getRecentDatas(_, parameters):
             urlRequest = try JSONEncoding.default.encode(urlRequest, with: parameters)
