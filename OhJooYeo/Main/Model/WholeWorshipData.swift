@@ -18,19 +18,20 @@ final class WholeWorshipData: Object {
     
     convenience init(json: JSON, worshipID: String) {
         self.init()
-        self.worshipMainInfo = WorshipMainInfo(json: json[Name.worship])
+        self.worshipMainInfo = WorshipMainInfo(json: json[Name.worship], worshipID: worshipID)
         self.worshipDate = json[Name.worshipDate].stringValue
         self.worshipID = worshipID
         
         for advertisementData in json[Name.advertisement].arrayValue {
-            /**
-             - TODO: Advertisement 생성자 구현 안됨.
-             */
             self.advertisements.append(Advertisement(json: advertisementData))
         }
         for musicData in json[Name.musics].arrayValue {
             self.musics.append(Music(json: musicData))
         }
+    }
+    
+    override static func primaryKey() -> String? {
+        return Name.worshipID
     }
 }
 

@@ -10,11 +10,9 @@ import RealmSwift
 
 final class AdvertisementViewModel {
     static var shared = AdvertisementViewModel()
-    var worshipDataObject: WholeWorshipDataDAO
     var advertisements: List<Advertisement>?
     
     private init() {
-        self.worshipDataObject = WholeWorshipDataDAO.shared
         self.advertisements = WholeWorshipDataDAO.shared.worshipData?.advertisements
     }
     

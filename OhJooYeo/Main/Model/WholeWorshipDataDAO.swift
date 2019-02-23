@@ -21,7 +21,7 @@ final class WholeWorshipDataDAO {
             return
         }
         try? DbManager.shared.realm?.write {
-            DbManager.shared.realm?.add(worshipData)
+            DbManager.shared.realm?.add(worshipData, update: true)
         }
     
         completionHandler(worshipData.worshipMainInfo?.worshipOrders)
@@ -41,24 +41,27 @@ final class WholeWorshipDataDAO {
         }
         if let phraseMessages = self.phraseMessageSetList {
             try? DbManager.shared.realm?.write {
-                DbManager.shared.realm?.add(phraseMessages)
+                DbManager.shared.realm?.add(phraseMessages, update: true)
             }
             completionHandler?(self.phraseMessageSetList)
         }
     }
     
-    func getResult(by worshipID: String) -> Results<WholeWorshipData>? {
+    func getResult(worshipID: String) -> Results<WholeWorshipData>? {
         return DbManager.shared.realm?.objects(WholeWorshipData.self).filter("\(WholeWorshipData.Name.worshipID) = '\(worshipID)'")
     }
     
     func getResultPhraseMessages(by worshipID: String) -> Results<PhraseMessageSet>? {
-        return DbManager.shared.realm?.objects(PhraseMessageSet.self).filter("\(PhraseMessageSet.Name.worshipID) = '\(worshipID)'")
+        return DbManager.shared.realm?.objects(PhraseMessageSet.self).filter("\(PhraseMessageSet.Name.worshipOrderID) BEGINSWITH '\(worshipID)'")
     }
 }
 
 extension Results {
     func toArray<T>(ofType: T.Type) -> [T] {
-        let array = Array(self) as! [T]
-        return array
+        if let array = Array(self) as? [T] {
+            return array
+        }
+        print("[WholeWorshipDataDAO - ResultExtension] toArray")
+        return [T]()
     }
 }

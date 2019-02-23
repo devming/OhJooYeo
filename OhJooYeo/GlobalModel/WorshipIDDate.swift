@@ -9,7 +9,6 @@
 import RealmSwift
 import SwiftyJSON
 
-
 class WorshipIDDate: Object {
     @objc dynamic var date: String = ""
     @objc dynamic var worshipID: String = ""
@@ -29,8 +28,11 @@ class WorshipIDDate: Object {
         self.advertisementVersion = "\(self.version[self.version.index(self.version.startIndex, offsetBy: 1)])"
         self.musicVersion = "\(self.version[self.version.index(self.version.startIndex, offsetBy: 2)])"
     }
+    
+    override static func primaryKey() -> String? {
+        return "worshipID"
+    }
 }
-
 
 extension WorshipIDDate {
     struct Name {
@@ -39,4 +41,3 @@ extension WorshipIDDate {
         static let version = "version"
     }
 }
-

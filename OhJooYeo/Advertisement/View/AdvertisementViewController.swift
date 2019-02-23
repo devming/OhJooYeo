@@ -11,17 +11,35 @@ import UIKit
 class AdvertisementViewController: UIViewController {
 
     @IBOutlet weak var listTableView: UITableView!
+    let refreshControl = UIRefreshControl()
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         NotificationCenter.default.addObserver(self, selector: #selector(advertisementUpdate(_:)), name: .AdvertisementDidUpdated, object: nil)
+        
+        initRefreshControl()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
         self.listTableView.reloadData()
+    }
+    
+    func initRefreshControl() {
+        self.refreshControl.addTarget(self, action: #selector(reloadDatas), for: .valueChanged)
+        self.listTableView.addSubview(self.refreshControl)
+    }
+    
+    @objc func reloadDatas() {
+        DispatchQueue.main.async {
+            App.loadAllDataFromServer { [weak self] in
+                App.isLoadingComplete = true
+                self?.refreshControl.endRefreshing()
+                NotificationCenter.default.post(name: .AdvertisementDidUpdated, object: nil)
+            }
+        }
     }
 }
 

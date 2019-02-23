@@ -1,5 +1,5 @@
 //
-//  ExtensionNotificationName.swift
+//  NotificationNameExtension.swift
 //  OhJooYeo
 //
 //  Created by Minki on 2018. 8. 25..

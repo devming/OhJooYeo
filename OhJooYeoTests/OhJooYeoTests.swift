@@ -22,8 +22,18 @@ class OhJooYeoTests: XCTestCase {
     }
     
     func testAPI() {
-        App.api.getRecentDatas(worshipId: "36-09", version: "***") {
-            
+        App.api.getWorshipIDList { isUpdated, willTakeIDVersionData in
+            if let idVersionData = willTakeIDVersionData, isUpdated {
+                App.api.getRecentDatas(worshipIDVersion: idVersionData) {
+                    WorshipMainInfoViewModel.shared.setDate()
+                    print("Success")
+                    XCTAssert(true)
+                }
+            } else {
+                WorshipMainInfoViewModel.shared.setDate()
+                print("fail")
+                XCTAssert(false)
+            }
         }
     }
     

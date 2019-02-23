@@ -15,17 +15,19 @@ final class WorshipIDListDAO {
     var worshipIDDateList = [WorshipIDDate]()
     
     func initWorshipIDListDAO(json: JSON) {
-        for worshipIdDate in json.arrayValue {
-            self.worshipIDDate = WorshipIDDate(json: worshipIdDate)
-            
-            guard let worshipIdList = self.worshipIDDate else {
+        for worshipIDDate in json.arrayValue {
+            self.worshipIDDate = WorshipIDDate(json: worshipIDDate)
+
+            guard let worshipIDDate = self.worshipIDDate else {
                 continue
             }
-            try? DbManager.shared.realm?.write {
-                DbManager.shared.realm?.add(worshipIdList)
+            /// - TODO: update 해줘야함.
+            if GlobalState.shared.localVersion != worshipIDDate.version {
+                try? DbManager.shared.realm?.write {
+                    DbManager.shared.realm?.add(worshipIDDate, update: true)
+                }
             }
-            self.worshipIDDateList.append(worshipIdList)
+            self.worshipIDDateList.append(worshipIDDate)
         }
-        
     }
 }

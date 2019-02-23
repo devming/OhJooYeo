@@ -6,7 +6,6 @@
 //  Copyright © 2018년 devming. All rights reserved.
 //
 
-import Foundation
 import Alamofire
 import SwiftyJSON
 

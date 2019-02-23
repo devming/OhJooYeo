@@ -23,7 +23,7 @@ class PhraseDetailViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-
+        
         guard let worshipID = WorshipMainInfoViewModel.shared.worshipDataObject.worshipData?.worshipID else {
             return
         }
@@ -33,7 +33,10 @@ class PhraseDetailViewController: UIViewController {
         var index = -1
         WholeWorshipDataDAO.shared.phraseMessageSetList?.forEach({ (set) in
             index += 1
-            if set.orderID == self.orderID {
+            guard let orderID = set.worshipOrderID.split(separator: "_").last else {
+                return
+            }
+            if orderID == "\(self.orderID)" {
                 self.currentIndex = index
             }
         })

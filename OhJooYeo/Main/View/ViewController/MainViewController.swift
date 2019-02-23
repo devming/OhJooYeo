@@ -12,13 +12,17 @@ import NVActivityIndicatorView
 class MainViewController: UIViewController {
     
     @IBOutlet weak var listTableView: UITableView!
-    @IBOutlet weak var dateLabel: UILabel!
+    @IBOutlet weak var yearlyMessage: UITextView!
+    @IBOutlet weak var mainPresenterLabel: UILabel!
+    @IBOutlet weak var dateHistoryButton: UIButton!
     
     let refreshControl = UIRefreshControl()
     var activityIndicator: NVActivityIndicatorView?
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.yearlyMessage.layer.cornerRadius = 3.0
         self.activityIndicator = NVActivityIndicatorView(frame: self.view.frame, type: NVActivityIndicatorType.ballTrianglePath, color: UIColor.gray, padding: self.view.frame.width / 2.5)
         self.view.addSubview(self.activityIndicator!)
         self.activityIndicator?.startAnimating()
@@ -34,6 +38,9 @@ class MainViewController: UIViewController {
         super.viewWillAppear(animated)
         
         self.listTableView.reloadData()
+    }
+    @IBAction func dateHistoryTapped(_ sender: Any) {
+        print("Tapped")
     }
 }
 
@@ -70,6 +77,7 @@ extension MainViewController: UITableViewDataSource {
             if orderList[indexPath.row].type == WorshipOrder.TypeName.phrase.rawValue { /// + 다른 타입들
                 cell.accessoryType = .disclosureIndicator
             } else {
+                cell.presenterLabel.text = "\(orderList[indexPath.row].presenter)        -"
                 cell.isUserInteractionEnabled = false
             }
             
@@ -115,9 +123,10 @@ extension MainViewController {
     @objc func worshipUpdate(_ notification: Notification) {
         OperationQueue.main.addOperation { [weak self] in
             if App.isLoadingComplete {
-                self?.dateLabel.text = WorshipMainInfoViewModel.shared.dateInfo
+                self?.dateHistoryButton.setTitle(" \(WorshipMainInfoViewModel.shared.dateInfo ?? "dateError")", for: .normal)
                 self?.activityIndicator?.stopAnimating()
                 self?.listTableView.reloadData()
+                self?.mainPresenterLabel.text = "인도자: \(WorshipMainInfoViewModel.shared.worshipDataObject.worshipData?.worshipMainInfo?.mainPresenter ?? "OOO")"
                 App.isLoadingComplete = false
             }
         }
@@ -135,14 +144,6 @@ extension MainViewController {
                 self?.refreshControl.endRefreshing()
                 NotificationCenter.default.post(name: .WorshipDidUpdated, object: nil)
             }
-            //            App.api.getWorshipIdList {
-            //                //GlobalState.shared.recentWorshipID
-            //                //GlobalState.shared.version
-            //                App.api.getRecentDatas(worshipID: GlobalState.shared.recentWorshipID, version: GlobalState.shared.localVersion) { [weak self] in
-            //                    self?.listTableView.reloadData()
-            //                    self?.refreshControl.endRefreshing()
-            //                }
-            //            }
         }
     }
     

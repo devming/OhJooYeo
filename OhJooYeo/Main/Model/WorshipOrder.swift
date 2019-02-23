@@ -10,6 +10,7 @@ import RealmSwift
 import SwiftyJSON
 
 class WorshipOrder: Object {
+    @objc dynamic var worshipOrderID: String = ""
     @objc dynamic var title: String = ""
     @objc dynamic var detail: String = ""
     @objc dynamic var presenter: String = ""
@@ -18,7 +19,7 @@ class WorshipOrder: Object {
     @objc dynamic var type: Int = 0
     let ownerWorship = LinkingObjects(fromType: WorshipMainInfo.self, property: "worshipOrders")
     
-    convenience init(json: JSON) {
+    convenience init(json: JSON, worshipID: String) {
         self.init()
         self.title = json[Name.title].stringValue
         self.detail = json[Name.detail].stringValue
@@ -26,52 +27,17 @@ class WorshipOrder: Object {
         self.order = json[Name.order].intValue
         self.orderID = json[Name.orderID].intValue
         self.type = json[Name.type].intValue
+        self.worshipOrderID = "\(worshipID)_\(self.orderID)"
     }
-//    init(title: String, detail: String, presenter: String, order: Int, orderId: Int, type: Int) {
-//        self.title = title
-//        self.detail = detail
-//        self.presenter = presenter
-//        self.order = order
-//        self.orderId = Int32(orderId)
-//        self.type = type
-//    }
-//
-//    init?(json: JSON) {
-//        guard let title = json[Name.title].string else {
-//            return nil
-//        }
-//        self.title = title
-//
-//        if let detail = json[Name.detail].string {
-//            self.detail = detail
-//        } else {
-//            self.detail = ConstantString.emptyString
-//        }
-//
-//        guard let presenter = json[Name.presenter].string else {
-//            return nil
-//        }
-//        self.presenter = presenter
-//
-//        guard let order = json[Name.order].int else {
-//            return nil
-//        }
-//        self.order = order
-//
-//        guard let orderId = json[Name.orderId].int else {
-//            return nil
-//        }
-//        self.orderId = Int32(orderId)
-//
-//        guard let typeString = json[Name.type].string, let type = Int(typeString) else {
-//            return nil
-//        }
-//        self.type = type
-//    }
+    
+    override static func primaryKey() -> String? {
+        return Name.worshipOrderID
+    }
 }
 
 extension WorshipOrder {
     struct Name {
+        static let worshipOrderID = "worshipOrderID"
         static let title = "title"
         static let detail = "detail"
         static let presenter = "presenter"
