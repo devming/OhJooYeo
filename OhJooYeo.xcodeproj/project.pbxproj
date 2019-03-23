@@ -13,7 +13,6 @@
 		CA22838120943F2A0023B3C1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA22838020943F2A0023B3C1 /* AppDelegate.swift */; };
 		CA22838320943F2A0023B3C1 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA22838220943F2A0023B3C1 /* MainViewController.swift */; };
 		CA22838620943F2B0023B3C1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CA22838420943F2B0023B3C1 /* Main.storyboard */; };
-		CA22838B20943F2C0023B3C1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CA22838A20943F2C0023B3C1 /* Assets.xcassets */; };
 		CA22838E20943F2C0023B3C1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CA22838C20943F2C0023B3C1 /* LaunchScreen.storyboard */; };
 		CA2DED8E21CD2769009671FE /* NextPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA2DED8D21CD2769009671FE /* NextPresenter.swift */; };
 		CA3080C52130F6EC00255A7E /* WorshipMainInfoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA3080C42130F6EC00255A7E /* WorshipMainInfoViewModel.swift */; };
@@ -38,6 +37,8 @@
 		CA70536220BAECAF00815D37 /* PhraseDetailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA70536120BAECAF00815D37 /* PhraseDetailTableViewCell.swift */; };
 		CA70536420BAEDBC00815D37 /* PhraseMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA70536320BAEDBC00815D37 /* PhraseMessage.swift */; };
 		CA7A426A20B94C080097D99E /* WorshipMainInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7A426920B94C080097D99E /* WorshipMainInfo.swift */; };
+		CA7D719622351A6C005A0D0F /* UICardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7D719522351A6C005A0D0F /* UICardView.swift */; };
+		CA7DBE53224286B300389556 /* GradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7DBE52224286B300389556 /* GradientView.swift */; };
 		CA9CF3D422081BBF0098CFA7 /* PhraseMessageSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA9CF3D322081BBF0098CFA7 /* PhraseMessageSet.swift */; };
 		CAA025AE21CD484A004DE58C /* WorshipIdListDAO.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAA025AD21CD484A004DE58C /* WorshipIdListDAO.swift */; };
 		CAA025B021CDCC71004DE58C /* WholeWorshipData.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAA025AF21CDCC71004DE58C /* WholeWorshipData.swift */; };
@@ -49,6 +50,7 @@
 		CAA3FA64221804C1006C30F0 /* DonationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAA3FA63221804C1006C30F0 /* DonationViewController.swift */; };
 		CAA3FA66221836BF006C30F0 /* HistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAA3FA65221836BF006C30F0 /* HistoryViewController.swift */; };
 		CAA3FA6822183A47006C30F0 /* HistoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAA3FA6722183A47006C30F0 /* HistoryTableViewCell.swift */; };
+		CAA3FA6A22219366006C30F0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CAA3FA6922219365006C30F0 /* Assets.xcassets */; };
 		CAA6B99E20F9CAFB00E802BC /* Music.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAA6B99D20F9CAFB00E802BC /* Music.swift */; };
 		CAD7BBC82165B77F006661AF /* AdvertisementViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD7BBC72165B77E006661AF /* AdvertisementViewModel.swift */; };
 		CAD7BBCB2165B860006661AF /* [Post]PhraseMessages.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD7BBCA2165B860006661AF /* [Post]PhraseMessages.swift */; };
@@ -100,7 +102,6 @@
 		CA22838020943F2A0023B3C1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CA22838220943F2A0023B3C1 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		CA22838520943F2B0023B3C1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		CA22838A20943F2C0023B3C1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CA22838D20943F2C0023B3C1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		CA22838F20943F2C0023B3C1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CA2DED8D21CD2769009671FE /* NextPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NextPresenter.swift; sourceTree = "<group>"; };
@@ -127,6 +128,8 @@
 		CA70536320BAEDBC00815D37 /* PhraseMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhraseMessage.swift; sourceTree = "<group>"; };
 		CA7A426920B94C080097D99E /* WorshipMainInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorshipMainInfo.swift; sourceTree = "<group>"; };
 		CA7A791A21F47D9400CCEE7B /* OhJooYeo.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = OhJooYeo.entitlements; sourceTree = "<group>"; };
+		CA7D719522351A6C005A0D0F /* UICardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UICardView.swift; sourceTree = "<group>"; };
+		CA7DBE52224286B300389556 /* GradientView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientView.swift; sourceTree = "<group>"; };
 		CA9CF3D322081BBF0098CFA7 /* PhraseMessageSet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhraseMessageSet.swift; sourceTree = "<group>"; };
 		CAA025AD21CD484A004DE58C /* WorshipIdListDAO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorshipIdListDAO.swift; sourceTree = "<group>"; };
 		CAA025AF21CDCC71004DE58C /* WholeWorshipData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WholeWorshipData.swift; sourceTree = "<group>"; };
@@ -138,6 +141,7 @@
 		CAA3FA63221804C1006C30F0 /* DonationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DonationViewController.swift; sourceTree = "<group>"; };
 		CAA3FA65221836BF006C30F0 /* HistoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryViewController.swift; sourceTree = "<group>"; };
 		CAA3FA6722183A47006C30F0 /* HistoryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryTableViewCell.swift; sourceTree = "<group>"; };
+		CAA3FA6922219365006C30F0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CAA6B99D20F9CAFB00E802BC /* Music.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Music.swift; sourceTree = "<group>"; };
 		CAD7BBC72165B77E006661AF /* AdvertisementViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdvertisementViewModel.swift; sourceTree = "<group>"; };
 		CAD7BBCA2165B860006661AF /* [Post]PhraseMessages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "[Post]PhraseMessages.swift"; sourceTree = "<group>"; };
@@ -225,6 +229,8 @@
 				CA3080CB2130FE0400255A7E /* ConstantString.swift */,
 				CA3080CD2130FE1600255A7E /* NotificationNameExtension.swift */,
 				CA6E970D220C578800DFE0AE /* NMapBridgingHeader.h */,
+				CA7D719522351A6C005A0D0F /* UICardView.swift */,
+				CA7DBE52224286B300389556 /* GradientView.swift */,
 			);
 			path = Util;
 			sourceTree = "<group>";
@@ -263,7 +269,7 @@
 				CA4FA40D20B9401A00BE6730 /* Music */,
 				CA68225C2205AE570001126B /* More */,
 				CA22838420943F2B0023B3C1 /* Main.storyboard */,
-				CA22838A20943F2C0023B3C1 /* Assets.xcassets */,
+				CAA3FA6922219365006C30F0 /* Assets.xcassets */,
 				CA22838C20943F2C0023B3C1 /* LaunchScreen.storyboard */,
 				CA22838F20943F2C0023B3C1 /* Info.plist */,
 			);
@@ -695,7 +701,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CA22838E20943F2C0023B3C1 /* LaunchScreen.storyboard in Resources */,
-				CA22838B20943F2C0023B3C1 /* Assets.xcassets in Resources */,
+				CAA3FA6A22219366006C30F0 /* Assets.xcassets in Resources */,
 				CA22838620943F2B0023B3C1 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -785,6 +791,7 @@
 				CAA3FA6822183A47006C30F0 /* HistoryTableViewCell.swift in Sources */,
 				CA0AB21620C23C190028BC69 /* AdvertisementTableViewCell.swift in Sources */,
 				CAD7BBD72166036B006661AF /* MusicCollectionViewCell.swift in Sources */,
+				CA7DBE53224286B300389556 /* GradientView.swift in Sources */,
 				CA6E9718220C71CC00DFE0AE /* NMapViewResources.swift in Sources */,
 				CAFB287D20D4E7DE00B72722 /* GlobalState.swift in Sources */,
 				CA4FA40920B9270800BE6730 /* MusicViewController.swift in Sources */,
@@ -816,6 +823,7 @@
 				CA3080C52130F6EC00255A7E /* WorshipMainInfoViewModel.swift in Sources */,
 				CAD7BBCD2165B8AD006661AF /* [Get]WorshipIDList.swift in Sources */,
 				CAD7BBCF2165B8BB006661AF /* [Post]RecentDatas.swift in Sources */,
+				CA7D719622351A6C005A0D0F /* UICardView.swift in Sources */,
 				CAA3FA5A2218047A006C30F0 /* NoticeViewController.swift in Sources */,
 				CA22838320943F2A0023B3C1 /* MainViewController.swift in Sources */,
 				CA22838120943F2A0023B3C1 /* AppDelegate.swift in Sources */,

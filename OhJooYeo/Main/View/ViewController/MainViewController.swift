@@ -28,10 +28,13 @@ class MainViewController: UIViewController {
         self.activityIndicator?.startAnimating()
         
         self.listTableView.rowHeight = UITableViewAutomaticDimension
+        self.listTableView.layer.cornerRadius = 10.0
         
-        NotificationCenter.default.addObserver(self, selector: #selector(worshipUpdate(_:)), name: .WorshipDidUpdated, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(worshipUpdate), name: .WorshipDidUpdated, object: nil)
         
         initRefreshControl()
+        
+        setGradientBackground()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -75,12 +78,15 @@ extension MainViewController: UITableViewDataSource {
             
             // 이동해야할 아이템의 경우 여기에서 조건 설정
             if orderList[indexPath.row].type == WorshipOrder.TypeName.phrase.rawValue { /// + 다른 타입들
-                cell.accessoryType = .disclosureIndicator
+                cell.accessoryImageView.image = UIImage(named: "ic_detail_gray")
+                cell.accessoryImageView.alpha = 1.0
             } else {
-                cell.presenterLabel.text = "\(orderList[indexPath.row].presenter)        -"
+                cell.accessoryImageView.image = UIImage(named: "ic_detail_empty")
+                cell.accessoryImageView.alpha = 0.0
                 cell.isUserInteractionEnabled = false
             }
-            
+
+//            cell.layer.cornerRadius = 8.0
             return cell
             
         case orderList.count:
@@ -159,5 +165,24 @@ extension MainViewController {
                 destination.orderID = Int(orderList[indexPath.row].orderID)
             }
         }
+    }
+    
+    func setGradientBackground() {
+        let gradientLayer = CAGradientLayer()
+
+        if let navigationController = self.navigationController {
+            gradientLayer.frame = navigationController.navigationBar.frame
+        }
+//        // Render the gradient to UIImage
+        UIGraphicsBeginImageContext(gradientLayer.bounds.size)
+        guard let context = UIGraphicsGetCurrentContext() else {
+            UIGraphicsEndImageContext()
+            return
+        }
+        gradientLayer.render(in: context)
+        let image = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+
+        self.navigationController?.navigationBar.setBackgroundImage(image, for: .default)
     }
 }

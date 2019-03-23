@@ -12,7 +12,6 @@ class HistoryTableViewCell: UITableViewCell {
 
     static let cellName = "historyCell"
     
-    @IBOutlet weak var worshipIDLabel: UILabel!
     @IBOutlet weak var dateLabel: UILabel!
     
 }

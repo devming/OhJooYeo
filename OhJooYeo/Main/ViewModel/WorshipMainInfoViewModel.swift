@@ -45,6 +45,6 @@ extension WorshipMainInfoViewModel {
             return "\(worshipDate)"
         }
         
-        return "제 \(year-1982)권 제 \(formatter.calendar.component(.weekOfYear, from: date))호 \(year)년 \(month)월 \(day)일"
+        return "제 \(year-1982)권 \(formatter.calendar.component(.weekOfYear, from: date))호 \(year)년 \(month)월 \(day)일"
     }
 }

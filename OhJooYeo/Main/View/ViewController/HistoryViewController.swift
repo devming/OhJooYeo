@@ -34,8 +34,8 @@ extension HistoryViewController: UITableViewDataSource {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: HistoryTableViewCell.cellName) as? HistoryTableViewCell else {
             return UITableViewCell()
         }
-        cell.worshipIDLabel.text = worshipIDList?[indexPath.row].worshipID
-        cell.dateLabel.text = worshipIDList?[indexPath.row].date
+//        cell.worshipIDLabel.text = self.worshipIDList?[indexPath.row].worshipID
+        cell.dateLabel.text = self.worshipIDList?[indexPath.row].date
         
         return cell
     }
