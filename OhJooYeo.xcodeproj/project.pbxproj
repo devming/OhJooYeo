@@ -37,7 +37,7 @@
 		CA70536220BAECAF00815D37 /* PhraseDetailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA70536120BAECAF00815D37 /* PhraseDetailTableViewCell.swift */; };
 		CA70536420BAEDBC00815D37 /* PhraseMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA70536320BAEDBC00815D37 /* PhraseMessage.swift */; };
 		CA7A426A20B94C080097D99E /* WorshipMainInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7A426920B94C080097D99E /* WorshipMainInfo.swift */; };
-		CA7D719622351A6C005A0D0F /* UICardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7D719522351A6C005A0D0F /* UICardView.swift */; };
+		CA7D719622351A6C005A0D0F /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7D719522351A6C005A0D0F /* CardView.swift */; };
 		CA7DBE53224286B300389556 /* GradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7DBE52224286B300389556 /* GradientView.swift */; };
 		CA9CF3D422081BBF0098CFA7 /* PhraseMessageSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA9CF3D322081BBF0098CFA7 /* PhraseMessageSet.swift */; };
 		CAA025AE21CD484A004DE58C /* WorshipIdListDAO.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAA025AD21CD484A004DE58C /* WorshipIdListDAO.swift */; };
@@ -128,7 +128,7 @@
 		CA70536320BAEDBC00815D37 /* PhraseMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhraseMessage.swift; sourceTree = "<group>"; };
 		CA7A426920B94C080097D99E /* WorshipMainInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorshipMainInfo.swift; sourceTree = "<group>"; };
 		CA7A791A21F47D9400CCEE7B /* OhJooYeo.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = OhJooYeo.entitlements; sourceTree = "<group>"; };
-		CA7D719522351A6C005A0D0F /* UICardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UICardView.swift; sourceTree = "<group>"; };
+		CA7D719522351A6C005A0D0F /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
 		CA7DBE52224286B300389556 /* GradientView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientView.swift; sourceTree = "<group>"; };
 		CA9CF3D322081BBF0098CFA7 /* PhraseMessageSet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhraseMessageSet.swift; sourceTree = "<group>"; };
 		CAA025AD21CD484A004DE58C /* WorshipIdListDAO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorshipIdListDAO.swift; sourceTree = "<group>"; };
@@ -229,7 +229,7 @@
 				CA3080CB2130FE0400255A7E /* ConstantString.swift */,
 				CA3080CD2130FE1600255A7E /* NotificationNameExtension.swift */,
 				CA6E970D220C578800DFE0AE /* NMapBridgingHeader.h */,
-				CA7D719522351A6C005A0D0F /* UICardView.swift */,
+				CA7D719522351A6C005A0D0F /* CardView.swift */,
 				CA7DBE52224286B300389556 /* GradientView.swift */,
 			);
 			path = Util;
@@ -823,7 +823,7 @@
 				CA3080C52130F6EC00255A7E /* WorshipMainInfoViewModel.swift in Sources */,
 				CAD7BBCD2165B8AD006661AF /* [Get]WorshipIDList.swift in Sources */,
 				CAD7BBCF2165B8BB006661AF /* [Post]RecentDatas.swift in Sources */,
-				CA7D719622351A6C005A0D0F /* UICardView.swift in Sources */,
+				CA7D719622351A6C005A0D0F /* CardView.swift in Sources */,
 				CAA3FA5A2218047A006C30F0 /* NoticeViewController.swift in Sources */,
 				CA22838320943F2A0023B3C1 /* MainViewController.swift in Sources */,
 				CA22838120943F2A0023B3C1 /* AppDelegate.swift in Sources */,

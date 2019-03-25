@@ -111,7 +111,7 @@ extension MainViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         guard let worshipOrderList = WorshipMainInfoViewModel.shared.worshipDataObject.worshipData?.worshipMainInfo?.worshipOrders else {
-            return 50
+            return 80
         }
         if indexPath.row == worshipOrderList.count {
             return 128
@@ -120,7 +120,7 @@ extension MainViewController: UITableViewDelegate {
         //            return 100
         //        }
         
-        return 50
+        return 80
     }
 }
 
