@@ -21,8 +21,6 @@ class NoticeViewController: UIViewController {
         
         if #available(iOS 11.0, *) {
             navigationItem.largeTitleDisplayMode = .never
-        } else {
-            // Fallback on earlier versions
         }
         viewModel.setTestData()
         viewModel.reloadSections = { [weak self] (section: Int) in
@@ -50,10 +48,6 @@ class NoticeViewController: UIViewController {
     }
     
     func bindRx() {
-    }
-    
-    @IBAction func closeButton(_ sender: Any) {
-        self.dismiss(animated: true, completion: nil)
     }
 }
 

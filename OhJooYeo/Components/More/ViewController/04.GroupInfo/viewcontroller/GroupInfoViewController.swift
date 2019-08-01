@@ -13,12 +13,10 @@ class GroupInfoViewController: UIViewController {
     static let segueName = "groupInfoSegue"
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
-    }
-    
-    @IBAction func closeViewController(_ sender: Any) {
-        dismiss(animated: true, completion: nil)
+        
+        if #available(iOS 11.0, *) {
+            navigationItem.largeTitleDisplayMode = .never
+        }
     }
     
     /*

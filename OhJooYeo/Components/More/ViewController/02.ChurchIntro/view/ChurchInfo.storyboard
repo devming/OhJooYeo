@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Voi-Tw-3Ph">
     <device id="retina6_1" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -10,16 +10,16 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--교회소개-->
+        <!--Church Info View Controller-->
         <scene sceneID="uzB-gC-WK5">
             <objects>
-                <viewController id="Voi-Tw-3Ph" customClass="ChurchInfoViewController" customModule="OhJooYeo" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="MwF-JA-hhI" customClass="BackgroundView" customModule="OhJooYeo" customModuleProvider="target">
+                <viewController storyboardIdentifier="churchinfo" id="Voi-Tw-3Ph" customClass="ChurchInfoViewController" customModule="OhJooYeo" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="MwF-JA-hhI">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gdD-KG-dBu">
-                                <rect key="frame" x="0.0" y="88" width="414" height="774"/>
+                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_empty" translatesAutoresizingMaskIntoConstraints="NO" id="tPl-oU-wqx">
                                         <rect key="frame" x="10" y="10" width="394" height="300"/>
@@ -64,35 +64,10 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="YxY-oV-uCs"/>
                     </view>
-                    <navigationItem key="navigationItem" title="교회소개" largeTitleDisplayMode="never" id="C2I-BR-c1p">
-                        <barButtonItem key="rightBarButtonItem" systemItem="stop" id="7iY-3T-aM4">
-                            <connections>
-                                <action selector="closeViewController:" destination="Voi-Tw-3Ph" id="VKU-KK-sjs"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9Rz-tx-gIu" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="5153.6231884057979" y="1353.3482142857142"/>
-        </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="vNl-d9-OnI">
-            <objects>
-                <navigationController storyboardIdentifier="churchinfo" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="dc1-kz-rV9" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="eFB-VL-9hU">
-                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="Voi-Tw-3Ph" kind="relationship" relationship="rootViewController" id="1XZ-XK-lqO"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="YPc-3e-eIN" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="4243.4782608695659" y="1353.3482142857142"/>
         </scene>
     </scenes>
     <resources>

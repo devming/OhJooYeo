@@ -24,10 +24,9 @@ class LocationViewController: UIViewController {
         let marker = NMFMarker(position: donamCoordinate)
         marker.mapView = mapView
         
-    }
-    
-    @IBAction func closeViewController(_ sender: Any) {
-        dismiss(animated: true, completion: nil)
+        if #available(iOS 11.0, *) {
+            navigationItem.largeTitleDisplayMode = .never
+        }
     }
 }
 

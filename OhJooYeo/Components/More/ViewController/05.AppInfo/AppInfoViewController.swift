@@ -12,11 +12,9 @@ class AppInfoViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
-    }
-    
-    @IBAction func closeViewController(_ sender: Any) {
-        dismiss(animated: true)
+        
+        if #available(iOS 11.0, *) {
+            navigationItem.largeTitleDisplayMode = .never
+        }
     }
 }

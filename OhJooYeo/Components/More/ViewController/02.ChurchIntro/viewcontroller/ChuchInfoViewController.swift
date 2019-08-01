@@ -15,10 +15,9 @@ class ChurchInfoViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        if #available(iOS 11.0, *) {
+            navigationItem.largeTitleDisplayMode = .never
+        }
 //        setTransparentBackground(navigationController: self.navigationController)
-    }
-    
-    @IBAction func closeViewController(_ sender: Any) {
-        dismiss(animated: true, completion: nil)
     }
 }
