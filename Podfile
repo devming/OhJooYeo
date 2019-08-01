@@ -1,5 +1,5 @@
 # Uncomment the next line to define a global platform for your project
-# platform :ios, '9.0'
+platform :ios, '10.1'
 
 target 'OhJooYeo' do
   # Comment the next line if you're not using Swift and don't want to use dynamic frameworks
@@ -7,8 +7,15 @@ target 'OhJooYeo' do
 
   # Pods for OhJooYeo
   pod 'SwiftyJSON'
-  pod 'Alamofire'
   pod 'Alamofire-SwiftyJSON'
-  pod 'RealmSwift'
+  pod 'RealmSwift', '~> 3.12.0'
   pod 'NVActivityIndicatorView'
+  pod 'RxAlamofire'
+  pod 'RxSwift'
+  pod 'RxCocoa'
+  pod 'NMapsMap'
+  
+  target 'OhJooYeoTests' do
+      inherit! :search_paths
+  end
 end

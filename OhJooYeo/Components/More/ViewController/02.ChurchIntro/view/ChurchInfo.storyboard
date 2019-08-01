@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--교회소개-->
+        <scene sceneID="uzB-gC-WK5">
+            <objects>
+                <viewController id="Voi-Tw-3Ph" customClass="ChurchInfoViewController" customModule="OhJooYeo" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="MwF-JA-hhI" customClass="BackgroundView" customModule="OhJooYeo" customModuleProvider="target">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gdD-KG-dBu">
+                                <rect key="frame" x="0.0" y="88" width="414" height="774"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_empty" translatesAutoresizingMaskIntoConstraints="NO" id="tPl-oU-wqx">
+                                        <rect key="frame" x="10" y="10" width="394" height="300"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="300" id="4Gj-JY-l2f"/>
+                                        </constraints>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="교회설명" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f5P-KO-680">
+                                        <rect key="frame" x="10" y="361.5" width="394" height="20.5"/>
+                                        <fontDescription key="fontDescription" name="AppleSDGothicNeo-Regular" family="Apple SD Gothic Neo" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="교회 소개" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QAu-ZY-Js9">
+                                        <rect key="frame" x="10" y="320" width="394" height="31.5"/>
+                                        <fontDescription key="fontDescription" name="AppleSDGothicNeo-Bold" family="Apple SD Gothic Neo" pointSize="26"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="f5P-KO-680" secondAttribute="trailing" constant="10" id="32h-D7-NNJ"/>
+                                    <constraint firstItem="tPl-oU-wqx" firstAttribute="leading" secondItem="gdD-KG-dBu" secondAttribute="leading" constant="10" id="JIR-xp-rLF"/>
+                                    <constraint firstAttribute="trailing" secondItem="QAu-ZY-Js9" secondAttribute="trailing" constant="10" id="JJb-z3-FEe"/>
+                                    <constraint firstAttribute="trailing" secondItem="tPl-oU-wqx" secondAttribute="trailing" constant="10" id="Ln9-3L-OAH"/>
+                                    <constraint firstItem="f5P-KO-680" firstAttribute="leading" secondItem="gdD-KG-dBu" secondAttribute="leading" constant="10" id="XNy-SA-u2e"/>
+                                    <constraint firstItem="tPl-oU-wqx" firstAttribute="top" secondItem="gdD-KG-dBu" secondAttribute="top" constant="10" id="ecY-AY-MVq"/>
+                                    <constraint firstItem="QAu-ZY-Js9" firstAttribute="leading" secondItem="gdD-KG-dBu" secondAttribute="leading" constant="10" id="gr0-sX-Fmp"/>
+                                    <constraint firstItem="f5P-KO-680" firstAttribute="top" secondItem="QAu-ZY-Js9" secondAttribute="bottom" constant="10" id="iN8-R6-WZR"/>
+                                    <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="f5P-KO-680" secondAttribute="bottom" constant="10" id="yjN-SQ-EsF"/>
+                                    <constraint firstItem="QAu-ZY-Js9" firstAttribute="top" secondItem="tPl-oU-wqx" secondAttribute="bottom" constant="10" id="zcU-Xe-utX"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="gdD-KG-dBu" firstAttribute="top" secondItem="YxY-oV-uCs" secondAttribute="top" id="8nR-F0-eml"/>
+                            <constraint firstItem="YxY-oV-uCs" firstAttribute="bottom" secondItem="gdD-KG-dBu" secondAttribute="bottom" id="CdQ-4z-RfZ"/>
+                            <constraint firstItem="YxY-oV-uCs" firstAttribute="trailing" secondItem="gdD-KG-dBu" secondAttribute="trailing" id="FmZ-bh-aOV"/>
+                            <constraint firstItem="gdD-KG-dBu" firstAttribute="leading" secondItem="YxY-oV-uCs" secondAttribute="leading" id="mEg-Z5-dM4"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="YxY-oV-uCs"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="교회소개" largeTitleDisplayMode="never" id="C2I-BR-c1p">
+                        <barButtonItem key="rightBarButtonItem" systemItem="stop" id="7iY-3T-aM4">
+                            <connections>
+                                <action selector="closeViewController:" destination="Voi-Tw-3Ph" id="VKU-KK-sjs"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="9Rz-tx-gIu" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="5153.6231884057979" y="1353.3482142857142"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="vNl-d9-OnI">
+            <objects>
+                <navigationController storyboardIdentifier="churchinfo" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="dc1-kz-rV9" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="eFB-VL-9hU">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="Voi-Tw-3Ph" kind="relationship" relationship="rootViewController" id="1XZ-XK-lqO"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="YPc-3e-eIN" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4243.4782608695659" y="1353.3482142857142"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="ic_empty" width="128" height="128"/>
+    </resources>
+</document>

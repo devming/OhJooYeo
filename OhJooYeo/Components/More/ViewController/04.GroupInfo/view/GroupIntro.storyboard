@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Group Info View Controller-->
+        <scene sceneID="XcJ-2Q-PjO">
+            <objects>
+                <viewController id="SM9-Mm-vM0" customClass="GroupInfoViewController" customModule="OhJooYeo" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Qkv-zS-Maa" customClass="BackgroundView" customModule="OhJooYeo" customModuleProvider="target">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tZ5-k7-EvP" customClass="NMFNaverMapView">
+                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="tZ5-k7-EvP" firstAttribute="top" secondItem="aWI-WW-hgh" secondAttribute="top" id="F4U-2N-pAE"/>
+                            <constraint firstItem="aWI-WW-hgh" firstAttribute="trailing" secondItem="tZ5-k7-EvP" secondAttribute="trailing" id="LRY-7c-uqe"/>
+                            <constraint firstItem="aWI-WW-hgh" firstAttribute="bottom" secondItem="tZ5-k7-EvP" secondAttribute="bottom" id="P0g-SO-C3R"/>
+                            <constraint firstItem="tZ5-k7-EvP" firstAttribute="leading" secondItem="aWI-WW-hgh" secondAttribute="leading" id="viX-Eu-yih"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="aWI-WW-hgh"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="TAo-GF-xnf">
+                        <barButtonItem key="rightBarButtonItem" systemItem="stop" id="QuI-Jp-O43">
+                            <connections>
+                                <action selector="closeViewController:" destination="SM9-Mm-vM0" id="0wy-tm-c1d"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="mapView" destination="tZ5-k7-EvP" id="ILH-S3-O86"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="uwy-Nt-MTz" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="6063.7681159420299" y="1353.3482142857142"/>
+        </scene>
+    </scenes>
+</document>
