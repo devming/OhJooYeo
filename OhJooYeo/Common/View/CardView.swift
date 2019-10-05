@@ -12,20 +12,20 @@ import UIKit
 class CardView: UIView {
     
     @IBInspectable var cornerRadius: CGFloat = 2
-    @IBInspectable var shadowOffsetWidth: Int = 0
-    @IBInspectable var shadowOffsetHeight: Int = 3
-    @IBInspectable var shadowColor: UIColor? = UIColor.clear
-    @IBInspectable var shadowOpacity: Float = 0.5
+    @IBInspectable var shadowOffsetWidth: Int = 1
+    @IBInspectable var shadowOffsetHeight: Int = 1
+    @IBInspectable var shadowColor: UIColor? = UIColor.gray
+    @IBInspectable var shadowOpacity: Float = 1
     
     override func layoutSubviews() {
         
-        let colorArea = UIView(frame: CGRect(x: 0, y: 0, width: 5.0, height: self.frame.height))
-        colorArea.backgroundColor = UIColor.blue
-        addSubview(colorArea)
+//        let colorArea = UIView(frame: CGRect(x: 0, y: 0, width: 5.0, height: self.frame.height))
+//        colorArea.backgroundColor = UIColor.blue
+//        addSubview(colorArea)
         
-        layer.borderWidth = 2.0
-        layer.borderColor = UIColor.black.cgColor
-        layer.cornerRadius = cornerRadius
+//        layer.borderWidth = 2.0
+//        layer.borderColor = UIColor.black.cgColor
+//        layer.cornerRadius = cornerRadius
         
         layer.masksToBounds = false
         layer.shadowColor = shadowColor?.cgColor
