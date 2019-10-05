@@ -64,6 +64,7 @@
 		CA9697E12340BC6100969B48 /* BaseTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA9697E02340BC6100969B48 /* BaseTableView.swift */; };
 		CA9697E42340BC7700969B48 /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA9697E22340BC7700969B48 /* CardView.swift */; };
 		CA9697E52340BC7700969B48 /* BackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA9697E32340BC7700969B48 /* BackgroundView.swift */; };
+		CA9CD23E234891B700534FEB /* ColorAssets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CA9CD23D234891B700534FEB /* ColorAssets.xcassets */; };
 		CA9CF3D422081BBF0098CFA7 /* PhraseMessageSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA9CF3D322081BBF0098CFA7 /* PhraseMessageSet.swift */; };
 		CAA025AE21CD484A004DE58C /* WorshipIdListDAO.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAA025AD21CD484A004DE58C /* WorshipIdListDAO.swift */; };
 		CAA025B021CDCC71004DE58C /* WholeWorshipData.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAA025AF21CDCC71004DE58C /* WholeWorshipData.swift */; };
@@ -189,6 +190,7 @@
 		CA9697E02340BC6100969B48 /* BaseTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTableView.swift; sourceTree = "<group>"; };
 		CA9697E22340BC7700969B48 /* CardView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
 		CA9697E32340BC7700969B48 /* BackgroundView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BackgroundView.swift; sourceTree = "<group>"; };
+		CA9CD23D234891B700534FEB /* ColorAssets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = ColorAssets.xcassets; sourceTree = "<group>"; };
 		CA9CF3D322081BBF0098CFA7 /* PhraseMessageSet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhraseMessageSet.swift; sourceTree = "<group>"; };
 		CAA025AD21CD484A004DE58C /* WorshipIdListDAO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorshipIdListDAO.swift; sourceTree = "<group>"; };
 		CAA025AF21CDCC71004DE58C /* WholeWorshipData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WholeWorshipData.swift; sourceTree = "<group>"; };
@@ -312,6 +314,7 @@
 				CA0AB21420C23BEB0028BC69 /* Common */,
 				CA83971C22F3202700248A8C /* Components */,
 				CA83972722F32C5900248A8C /* Assets.xcassets */,
+				CA9CD23D234891B700534FEB /* ColorAssets.xcassets */,
 				CA22838F20943F2C0023B3C1 /* Info.plist */,
 			);
 			path = OhJooYeo;
@@ -1032,6 +1035,7 @@
 				CA22838620943F2B0023B3C1 /* Main.storyboard in Resources */,
 				CAE1749022DB3B16002F2A03 /* Notice.storyboard in Resources */,
 				CA8E2EEE22E30AF80027BCA1 /* AppInfo.storyboard in Resources */,
+				CA9CD23E234891B700534FEB /* ColorAssets.xcassets in Resources */,
 				CA8E2EE322E308120027BCA1 /* GroupInfo.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
