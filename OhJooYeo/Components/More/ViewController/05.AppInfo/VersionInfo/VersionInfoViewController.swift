@@ -11,22 +11,11 @@ import UIKit
 class VersionInfoViewController: UIViewController {
     
     static let segueName = "versionInfoSegue"
-
+    @IBOutlet weak var versionInfoLabel: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        
+        versionInfoLabel.text = "Version: \(APP_VERSION)"
     }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

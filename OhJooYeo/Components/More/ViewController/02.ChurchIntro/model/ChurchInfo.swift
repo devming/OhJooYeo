@@ -7,6 +7,7 @@
 //
 
 struct ChurchInfo: Codable {
-    var name: String
-    var content: String
+    var title: String?
+    var content: String?
+    var image: String?
 }

@@ -7,7 +7,7 @@
 //
 
 import XCTest
-@testable import OhJooYeo
+//@testable import OhJooYeo
 
 class OhJooYeoTests: XCTestCase {
     
@@ -22,19 +22,19 @@ class OhJooYeoTests: XCTestCase {
     }
     
     func testAPI() {
-        App.api.getWorshipIDList { isUpdated, willTakeIDVersionData in
-            if let idVersionData = willTakeIDVersionData, isUpdated {
-                App.api.getRecentDatas(worshipIDVersion: idVersionData) {
-                    WorshipMainInfoViewModel.shared.setDate()
-                    print("Success")
-                    XCTAssert(true)
-                }
-            } else {
-                WorshipMainInfoViewModel.shared.setDate()
-                print("fail")
-                XCTAssert(false)
-            }
-        }
+//        App.api.getWorshipIDList { isUpdated, willTakeIDVersionData in
+//            if let idVersionData = willTakeIDVersionData, isUpdated {
+//                App.api.getRecentDatas(worshipIDVersion: idVersionData) {
+//                    WorshipMainInfoViewModel.shared.setDate()
+//                    print("Success")
+//                    XCTAssert(true)
+//                }
+//            } else {
+//                WorshipMainInfoViewModel.shared.setDate()
+//                print("fail")
+//                XCTAssert(false)
+//            }
+//        }
     }
     
 }

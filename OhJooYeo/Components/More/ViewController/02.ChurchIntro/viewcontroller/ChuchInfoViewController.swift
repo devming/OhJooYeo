@@ -12,12 +12,24 @@ class ChurchInfoViewController: UIViewController {
 
     static let segueName = "churchInfoSegue"
     
+    @IBOutlet weak var churchInfoTitle: UILabel!
+    @IBOutlet weak var churchInfoContent: UILabel!
+    @IBOutlet weak var churchInfoImageView: UIImageView!
+    
+    let viewModel = ChurchInfoViewModel()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         if #available(iOS 11.0, *) {
             navigationItem.largeTitleDisplayMode = .never
         }
-//        setTransparentBackground(navigationController: self.navigationController)
+        setViews(data: viewModel.loadChurchInfoDatas())
+    }
+    
+    func setViews(data: ChurchInfo?) {
+        churchInfoTitle.text = data?.title
+        churchInfoContent.text = data?.content
+        churchInfoImageView.image = UIImage(named: data?.image ?? "img_church_intro")
     }
 }

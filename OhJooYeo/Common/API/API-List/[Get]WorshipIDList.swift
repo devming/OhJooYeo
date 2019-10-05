@@ -9,6 +9,7 @@
 import Alamofire
 import SwiftyJSON
 import RealmSwift
+import RxAlamofire
 
 extension APIService {
     

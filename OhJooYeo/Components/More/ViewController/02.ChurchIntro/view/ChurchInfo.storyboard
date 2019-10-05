@@ -21,20 +21,20 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gdD-KG-dBu">
                                 <rect key="frame" x="0.0" y="44" width="414" height="818"/>
                                 <subviews>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_empty" translatesAutoresizingMaskIntoConstraints="NO" id="tPl-oU-wqx">
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_empty" translatesAutoresizingMaskIntoConstraints="NO" id="tPl-oU-wqx">
                                         <rect key="frame" x="10" y="10" width="394" height="300"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="300" id="4Gj-JY-l2f"/>
                                         </constraints>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="교회설명" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f5P-KO-680">
-                                        <rect key="frame" x="10" y="361.5" width="394" height="20.5"/>
+                                        <rect key="frame" x="10" y="371.5" width="394" height="20.5"/>
                                         <fontDescription key="fontDescription" name="AppleSDGothicNeo-Regular" family="Apple SD Gothic Neo" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="교회 소개" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QAu-ZY-Js9">
-                                        <rect key="frame" x="10" y="320" width="394" height="31.5"/>
+                                        <rect key="frame" x="10" y="330" width="394" height="31.5"/>
                                         <fontDescription key="fontDescription" name="AppleSDGothicNeo-Bold" family="Apple SD Gothic Neo" pointSize="26"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -51,7 +51,7 @@
                                     <constraint firstItem="QAu-ZY-Js9" firstAttribute="leading" secondItem="gdD-KG-dBu" secondAttribute="leading" constant="10" id="gr0-sX-Fmp"/>
                                     <constraint firstItem="f5P-KO-680" firstAttribute="top" secondItem="QAu-ZY-Js9" secondAttribute="bottom" constant="10" id="iN8-R6-WZR"/>
                                     <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="f5P-KO-680" secondAttribute="bottom" constant="10" id="yjN-SQ-EsF"/>
-                                    <constraint firstItem="QAu-ZY-Js9" firstAttribute="top" secondItem="tPl-oU-wqx" secondAttribute="bottom" constant="10" id="zcU-Xe-utX"/>
+                                    <constraint firstItem="QAu-ZY-Js9" firstAttribute="top" secondItem="tPl-oU-wqx" secondAttribute="bottom" constant="20" id="zcU-Xe-utX"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -64,6 +64,11 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="YxY-oV-uCs"/>
                     </view>
+                    <connections>
+                        <outlet property="churchInfoContent" destination="f5P-KO-680" id="xFP-Cj-wxP"/>
+                        <outlet property="churchInfoImageView" destination="tPl-oU-wqx" id="dIb-Af-zlx"/>
+                        <outlet property="churchInfoTitle" destination="QAu-ZY-Js9" id="VGs-Ye-QmU"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9Rz-tx-gIu" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

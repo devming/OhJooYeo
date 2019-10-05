@@ -11,22 +11,25 @@ import UIKit
 class GroupInfoViewController: UIViewController {
 
     static let segueName = "groupInfoSegue"
+    
+    @IBOutlet weak var groupTitle: UILabel!
+    @IBOutlet weak var groupContent: UILabel!
+    @IBOutlet weak var groupImageView: UIImageView!
+    let viewModel = GroupInfoViewModel()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         if #available(iOS 11.0, *) {
             navigationItem.largeTitleDisplayMode = .never
         }
+        
+        setViews(data: viewModel.loadGroupInfoDatas())
     }
     
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    func setViews(data: GroupInfo?) {
+        groupContent.text = data?.title
+        groupContent.text = data?.content
+        groupImageView.image = UIImage(named: data?.image ?? "img_young_intro")
     }
-    */
-
 }

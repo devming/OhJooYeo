@@ -15,5 +15,6 @@ class OrderTableViewCell: UITableViewCell {
     @IBOutlet weak var detailLabel: UILabel!
     @IBOutlet weak var presenterLabel: UILabel!
     @IBOutlet weak var accessoryImageView: UIImageView!
+    @IBOutlet weak var asteriskImageView: UIImageView!
     
 }

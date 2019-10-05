@@ -18,7 +18,7 @@ class MoreViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        setTransparentBackground(navigationController: self.navigationController)
+//        setTransparentBackground(navigationController: self.navigationController)
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

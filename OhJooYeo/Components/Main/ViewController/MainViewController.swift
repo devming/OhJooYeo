@@ -11,10 +11,12 @@ import NVActivityIndicatorView
 
 class MainViewController: UIViewController {
     
+    @IBOutlet var backgroundView: BackgroundView!
     @IBOutlet weak var listTableView: UITableView!
     @IBOutlet weak var yearlyMessage: UITextView!
     @IBOutlet weak var mainPresenterLabel: UILabel!
     @IBOutlet weak var dateHistoryButton: UIButton!
+    @IBOutlet weak var standupLabel: UILabel!
     
     let refreshControl = UIRefreshControl()
     var activityIndicator: NVActivityIndicatorView?
@@ -23,7 +25,7 @@ class MainViewController: UIViewController {
         super.viewDidLoad()
         
         self.yearlyMessage.layer.cornerRadius = 3.0
-        self.activityIndicator = NVActivityIndicatorView(frame: self.view.frame, type: NVActivityIndicatorType.ballTrianglePath, color: UIColor.gray, padding: self.view.frame.width / 2.5)
+        self.activityIndicator = NVActivityIndicatorView(frame: self.view.frame, type: NVActivityIndicatorType.ballTrianglePath, color: UIColor.white, padding: self.view.frame.width / 2.5)
         self.view.addSubview(self.activityIndicator!)
         self.activityIndicator?.startAnimating()
         
@@ -140,12 +142,24 @@ extension MainViewController {
     
     func updateWorship() {
         OperationQueue.main.addOperation { [weak self] in
+            guard let `self` = self else { return }
             if App.isLoadingComplete {
-                self?.dateHistoryButton.setTitle(" \(WorshipMainInfoViewModel.shared.dateInfo ?? "dateError")", for: .normal)
-                self?.activityIndicator?.stopAnimating()
-                self?.listTableView.reloadData()
-                self?.mainPresenterLabel.text = "인도자: \(WorshipMainInfoViewModel.shared.worshipDataObject.worshipData?.worshipMainInfo?.mainPresenter ?? "OOO")"
+                self.dateHistoryButton.setTitle(" \(WorshipMainInfoViewModel.shared.dateInfo ?? "dateError")", for: .normal)
+                self.activityIndicator?.stopAnimating()
+                self.listTableView.reloadData()
+                self.mainPresenterLabel.text = "인도자: \(WorshipMainInfoViewModel.shared.worshipDataObject.worshipData?.worshipMainInfo?.mainPresenter ?? "OOO")"
                 App.isLoadingComplete = false
+            } else {
+//                let errorView = NetworkErrorView(frame: self.view.frame)
+//                self.view.addSubview(errorView)
+                self.backgroundView.showErrorView(.network) {
+                    self.yearlyMessage.isHidden = true
+                    self.dateHistoryButton.isHidden = true
+                    self.listTableView.isHidden = true
+                    self.mainPresenterLabel.isHidden = true
+                    self.standupLabel.isHidden = true
+                }
+                self.activityIndicator?.stopAnimating()
             }
         }
     }

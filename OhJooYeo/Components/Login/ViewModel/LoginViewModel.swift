@@ -18,10 +18,10 @@ final class LoginViewModel {
     /// TODO: 패스워드 체크는 회원가입시에만 할것.
     func validatePassword(_ passwordString: String) -> Bool {
         return true
-        let passwordRegex = """
-        (?=^.{6,255}$)((?=.*\\d)(?=.*[A-Z])(?=.*[a-z])|(?=.*\\d)(?=.*[^A-Za-z0-9])(?=.*[a-z])|(?=.*[^A-Za-z0-9])(?=.*[A-Z])(?=.*[a-z])|(?=.*\\d)(?=.*[A-Z])(?=.*[^A-Za-z0-9]))^.*
-        """
-        return NSPredicate(format: "SELF MATCHES %@", passwordRegex).evaluate(with: passwordString)
+//        let passwordRegex = """
+//        (?=^.{6,255}$)((?=.*\\d)(?=.*[A-Z])(?=.*[a-z])|(?=.*\\d)(?=.*[^A-Za-z0-9])(?=.*[a-z])|(?=.*[^A-Za-z0-9])(?=.*[A-Z])(?=.*[a-z])|(?=.*\\d)(?=.*[A-Z])(?=.*[^A-Za-z0-9]))^.*
+//        """
+//        return NSPredicate(format: "SELF MATCHES %@", passwordRegex).evaluate(with: passwordString)
     }
     
     func validateChangeTextField(_ isValid: Bool) -> UIColor {

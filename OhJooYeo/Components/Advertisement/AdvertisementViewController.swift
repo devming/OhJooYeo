@@ -10,6 +10,7 @@ import UIKit
 
 class AdvertisementViewController: UIViewController {
 
+    @IBOutlet var backgroundView: BackgroundView!
     @IBOutlet weak var listTableView: UITableView!
     let refreshControl = UIRefreshControl()
     
@@ -69,8 +70,16 @@ extension AdvertisementViewController: UITableViewDataSource {
 
 extension AdvertisementViewController {
     @objc func advertisementUpdate(_ notification: Notification) {
-        OperationQueue.main.addOperation { [weak self] in
-            self?.listTableView.reloadData()
+        if App.isLoadingComplete {
+            OperationQueue.main.addOperation { [weak self] in
+                self?.listTableView.isHidden = false
+                self?.listTableView.reloadData()
+                App.isLoadingComplete = false
+            }
+        } else {
+            self.backgroundView.showErrorView(.network) {
+                self.listTableView.isHidden = true
+            }
         }
     }
 }
