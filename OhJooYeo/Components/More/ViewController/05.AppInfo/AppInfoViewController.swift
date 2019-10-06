@@ -10,11 +10,13 @@ import UIKit
 
 class AppInfoViewController: UITableViewController {
 
+    static let segueName = "appInfoSegue"
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
         if #available(iOS 11.0, *) {
-            navigationItem.largeTitleDisplayMode = .never
+            navigationItem.largeTitleDisplayMode = .always
         }
     }
 }

@@ -19,21 +19,7 @@ class CardView: UIView {
     
     override func layoutSubviews() {
         
-//        let colorArea = UIView(frame: CGRect(x: 0, y: 0, width: 5.0, height: self.frame.height))
-//        colorArea.backgroundColor = UIColor.blue
-//        addSubview(colorArea)
-        
-//        layer.borderWidth = 2.0
-//        layer.borderColor = UIColor.black.cgColor
-//        layer.cornerRadius = cornerRadius
-        
-        layer.masksToBounds = false
-        layer.shadowColor = shadowColor?.cgColor
-        layer.shadowOffset = CGSize(width: shadowOffsetWidth, height: shadowOffsetHeight)
-        layer.shadowOpacity = shadowOpacity
-        
-        let shadowPath = UIBezierPath(roundedRect: bounds, cornerRadius: cornerRadius)
-        layer.shadowPath = shadowPath.cgPath
+        layer.cornerRadius = cornerRadius
     }
     
 }

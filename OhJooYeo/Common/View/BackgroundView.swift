@@ -19,6 +19,14 @@ class BackgroundView: UIImageView {
     override func layoutSubviews() {
         super.layoutSubviews()
         
+        setBackgroundByColor()
+    }
+    
+    func setBackgroundByColor() {
+        self.backgroundColor = UIColor.colorBackgroundDark
+    }
+    
+    func setBackgroundByImage() {
         UIGraphicsBeginImageContext(self.frame.size)
         
         image = UIImage(named: "bg_all_blur")

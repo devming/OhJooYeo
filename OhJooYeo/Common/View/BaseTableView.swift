@@ -21,7 +21,21 @@ class BaseTableView: UITableView {
     }
     
     func setupView() {
+
+        let cornerRadius: CGFloat = 2
+        let shadowOffsetWidth: Int = 1
+        let shadowOffsetHeight: Int = 1
+        let shadowColor: UIColor = UIColor.gray
+        let shadowOpacity: Float = 1
         
+        layer.cornerRadius = cornerRadius
+        
+//        layer.masksToBounds = false
+        layer.shadowColor = shadowColor.cgColor
+        layer.shadowOffset = CGSize(width: shadowOffsetWidth, height: shadowOffsetHeight)
+        layer.shadowOpacity = shadowOpacity
+        
+        let shadowPath = UIBezierPath(roundedRect: bounds, cornerRadius: cornerRadius)
+        layer.shadowPath = shadowPath.cgPath
     }
-    
 }

@@ -65,6 +65,7 @@
 		CA9697E42340BC7700969B48 /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA9697E22340BC7700969B48 /* CardView.swift */; };
 		CA9697E52340BC7700969B48 /* BackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA9697E32340BC7700969B48 /* BackgroundView.swift */; };
 		CA9CD23E234891B700534FEB /* ColorAssets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CA9CD23D234891B700534FEB /* ColorAssets.xcassets */; };
+		CA9CD240234897A000534FEB /* UIColorEx.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA9CD23F234897A000534FEB /* UIColorEx.swift */; };
 		CA9CF3D422081BBF0098CFA7 /* PhraseMessageSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA9CF3D322081BBF0098CFA7 /* PhraseMessageSet.swift */; };
 		CAA025AE21CD484A004DE58C /* WorshipIdListDAO.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAA025AD21CD484A004DE58C /* WorshipIdListDAO.swift */; };
 		CAA025B021CDCC71004DE58C /* WholeWorshipData.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAA025AF21CDCC71004DE58C /* WholeWorshipData.swift */; };
@@ -76,6 +77,7 @@
 		CAA3FA6822183A47006C30F0 /* HistoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAA3FA6722183A47006C30F0 /* HistoryTableViewCell.swift */; };
 		CAA6B99E20F9CAFB00E802BC /* Music.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAA6B99D20F9CAFB00E802BC /* Music.swift */; };
 		CAA821E322E355DB00B91194 /* AppInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAA821E222E355DB00B91194 /* AppInfoViewController.swift */; };
+		CAA924E42349EF0A0037C23D /* MainTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAA924E32349EF0A0037C23D /* MainTabBar.swift */; };
 		CABB716B22DF626D00C2FE5B /* NoticeModelItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = CABB716A22DF626D00C2FE5B /* NoticeModelItem.swift */; };
 		CAD7BBC82165B77F006661AF /* AdvertisementViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD7BBC72165B77E006661AF /* AdvertisementViewModel.swift */; };
 		CAD7BBCB2165B860006661AF /* [Post]PhraseMessages.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD7BBCA2165B860006661AF /* [Post]PhraseMessages.swift */; };
@@ -191,6 +193,7 @@
 		CA9697E22340BC7700969B48 /* CardView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
 		CA9697E32340BC7700969B48 /* BackgroundView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BackgroundView.swift; sourceTree = "<group>"; };
 		CA9CD23D234891B700534FEB /* ColorAssets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = ColorAssets.xcassets; sourceTree = "<group>"; };
+		CA9CD23F234897A000534FEB /* UIColorEx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColorEx.swift; sourceTree = "<group>"; };
 		CA9CF3D322081BBF0098CFA7 /* PhraseMessageSet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhraseMessageSet.swift; sourceTree = "<group>"; };
 		CAA025AD21CD484A004DE58C /* WorshipIdListDAO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorshipIdListDAO.swift; sourceTree = "<group>"; };
 		CAA025AF21CDCC71004DE58C /* WholeWorshipData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WholeWorshipData.swift; sourceTree = "<group>"; };
@@ -202,6 +205,7 @@
 		CAA3FA6722183A47006C30F0 /* HistoryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryTableViewCell.swift; sourceTree = "<group>"; };
 		CAA6B99D20F9CAFB00E802BC /* Music.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Music.swift; sourceTree = "<group>"; };
 		CAA821E222E355DB00B91194 /* AppInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppInfoViewController.swift; sourceTree = "<group>"; };
+		CAA924E32349EF0A0037C23D /* MainTabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBar.swift; sourceTree = "<group>"; };
 		CABB716A22DF626D00C2FE5B /* NoticeModelItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoticeModelItem.swift; sourceTree = "<group>"; };
 		CAD7BBC72165B77E006661AF /* AdvertisementViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdvertisementViewModel.swift; sourceTree = "<group>"; };
 		CAD7BBCA2165B860006661AF /* [Post]PhraseMessages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "[Post]PhraseMessages.swift"; sourceTree = "<group>"; };
@@ -781,6 +785,8 @@
 				CA8BB6FF228FDC2500E6FFD5 /* OJYUIButton.swift */,
 				CA85B08022C74CB100431E74 /* BackgroundView.swift */,
 				CA9697E02340BC6100969B48 /* BaseTableView.swift */,
+				CA9CD23F234897A000534FEB /* UIColorEx.swift */,
+				CAA924E32349EF0A0037C23D /* MainTabBar.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1162,6 +1168,7 @@
 				CAFB287D20D4E7DE00B72722 /* GlobalState.swift in Sources */,
 				CA91B25B22F5CDC100970B31 /* RealmHelper.swift in Sources */,
 				CA4FA40920B9270800BE6730 /* MusicViewController.swift in Sources */,
+				CAA924E42349EF0A0037C23D /* MainTabBar.swift in Sources */,
 				CAE1748A22DB38F7002F2A03 /* NoticeCell.swift in Sources */,
 				CA4FA40420B926C600BE6730 /* PhraseDetailViewController.swift in Sources */,
 				CA3080CC2130FE0400255A7E /* ConstantString.swift in Sources */,
@@ -1171,6 +1178,7 @@
 				CA2DED8E21CD2769009671FE /* NextPresenter.swift in Sources */,
 				CA6E9716220C69DA00DFE0AE /* LocationViewController.swift in Sources */,
 				CAA6B99E20F9CAFB00E802BC /* Music.swift in Sources */,
+				CA9CD240234897A000534FEB /* UIColorEx.swift in Sources */,
 				CA91B25D22F5CDEB00970B31 /* BaseRealm.swift in Sources */,
 				CAA3FA66221836BF006C30F0 /* HistoryViewController.swift in Sources */,
 				CA8E2EE822E30ABA0027BCA1 /* ChurchInfo.swift in Sources */,

@@ -15,10 +15,11 @@ class MoreViewController: UIViewController {
 //    let moreMenuImageList = ["ic_notice.png", "ic_church.png", "ic_map.png", "ic_group.png", "ic_version.png", "ic_opensource.png", "ic_donation.png", "ic_document.png"]
     let moreMenuList = ["공지사항", "교회소개", "교회약도", "청년부소개", "앱 정보", "구글광고"]
     
+    @IBOutlet weak var tableViewHeightConstraint: NSLayoutConstraint!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-//        setTransparentBackground(navigationController: self.navigationController)
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -90,7 +91,7 @@ extension MoreViewController: UITableViewDelegate {
         case 3:
             segueName = GroupInfoViewController.segueName
         case 4:
-            segueName = "appInfoSegue"
+            segueName = AppInfoViewController.segueName
         default:
             tableView.deselectRow(at: indexPath, animated: false)
             return
