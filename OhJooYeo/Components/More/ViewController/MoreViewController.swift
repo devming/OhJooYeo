@@ -44,7 +44,7 @@ class MoreViewController: UIViewController {
             break
         case GroupInfoViewController.segueName:
             break
-        case "appInfoSegue":
+        case AppInfoViewController.segueName:
             break
         case "openSource":
             showConfirmationAlert(alertTitle: "준비중입니다.", alertMessage: "오픈소스라이선스", viewController: self)

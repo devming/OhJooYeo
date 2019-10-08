@@ -14,6 +14,7 @@ target 'OhJooYeo' do
   pod 'RxSwift'
   pod 'RxCocoa'
   pod 'NMapsMap'
+  pod 'Swinject'
   
   target 'OhJooYeoTests' do
       inherit! :search_paths

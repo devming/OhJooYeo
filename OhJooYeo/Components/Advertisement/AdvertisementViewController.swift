@@ -21,6 +21,10 @@ class AdvertisementViewController: UIViewController {
         
         initRefreshControl()
         setTransparentBackground(navigationController: self.navigationController)
+
+        self.backgroundView.showErrorView(.network) {
+            self.listTableView.isHidden = true
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {

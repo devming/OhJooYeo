@@ -22,7 +22,7 @@ class BaseTableView: UITableView {
     
     func setupView() {
 
-        let cornerRadius: CGFloat = 2
+        let cornerRadius: CGFloat = 10
         let shadowOffsetWidth: Int = 1
         let shadowOffsetHeight: Int = 1
         let shadowColor: UIColor = UIColor.gray
