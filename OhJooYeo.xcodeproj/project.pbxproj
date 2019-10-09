@@ -93,6 +93,8 @@
 		CAE1749422DB4291002F2A03 /* NoticeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAE1749322DB4291002F2A03 /* NoticeViewModel.swift */; };
 		CAE1749622DB45A8002F2A03 /* NoticeHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAE1749522DB45A8002F2A03 /* NoticeHeaderView.swift */; };
 		CAE645E42123C19700B109B7 /* DbEntityNameConstant.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAE645E32123C19700B109B7 /* DbEntityNameConstant.swift */; };
+		CAF3DEA4234CDB5F0018FA6B /* APIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF3DEA3234CDB5F0018FA6B /* APIService.swift */; };
+		CAF3DEA6234D71780018FA6B /* NetworkDefine.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF3DEA5234D71780018FA6B /* NetworkDefine.swift */; };
 		CAFA549C2104765300C4A808 /* OhJooYeoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAFA549B2104765300C4A808 /* OhJooYeoTests.swift */; };
 		CAFB287520D4D47200B72722 /* DbManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAFB287420D4D47200B72722 /* DbManager.swift */; };
 		CAFB287920D4E6F400B72722 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAFB287820D4E6F400B72722 /* API.swift */; };
@@ -221,6 +223,8 @@
 		CAE1749322DB4291002F2A03 /* NoticeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoticeViewModel.swift; sourceTree = "<group>"; };
 		CAE1749522DB45A8002F2A03 /* NoticeHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoticeHeaderView.swift; sourceTree = "<group>"; };
 		CAE645E32123C19700B109B7 /* DbEntityNameConstant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DbEntityNameConstant.swift; sourceTree = "<group>"; };
+		CAF3DEA3234CDB5F0018FA6B /* APIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIService.swift; sourceTree = "<group>"; };
+		CAF3DEA5234D71780018FA6B /* NetworkDefine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkDefine.swift; sourceTree = "<group>"; };
 		CAFA54992104765300C4A808 /* OhJooYeoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = OhJooYeoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		CAFA549B2104765300C4A808 /* OhJooYeoTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OhJooYeoTests.swift; sourceTree = "<group>"; };
 		CAFA549D2104765300C4A808 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -285,6 +289,7 @@
 				CA91B25322F59D1A00970B31 /* Util */,
 				CA888F7E227AFF76001B6E87 /* View */,
 				CA3080CA2130FDBB00255A7E /* API */,
+				CAF3DEA2234CDABA0018FA6B /* API-Renewal */,
 				CAE645E22123C17300B109B7 /* DbManager */,
 			);
 			path = Common;
@@ -858,6 +863,7 @@
 				CA84C24223095E1600526BAB /* AppInfo.swift */,
 				CA84C2442309662900526BAB /* NoDataErrorView.swift */,
 				CA84C2462309663400526BAB /* NetworkErrorView.swift */,
+				CAF3DEA5234D71780018FA6B /* NetworkDefine.swift */,
 			);
 			path = Util;
 			sourceTree = "<group>";
@@ -916,6 +922,14 @@
 				CA91B25C22F5CDEB00970B31 /* BaseRealm.swift */,
 			);
 			path = DbManager;
+			sourceTree = "<group>";
+		};
+		CAF3DEA2234CDABA0018FA6B /* API-Renewal */ = {
+			isa = PBXGroup;
+			children = (
+				CAF3DEA3234CDB5F0018FA6B /* APIService.swift */,
+			);
+			path = "API-Renewal";
 			sourceTree = "<group>";
 		};
 		CAFA549A2104765300C4A808 /* OhJooYeoTests */ = {
@@ -1209,6 +1223,7 @@
 				CA84C2472309663400526BAB /* NetworkErrorView.swift in Sources */,
 				CA9CF3D422081BBF0098CFA7 /* PhraseMessageSet.swift in Sources */,
 				CA84C24323095E1600526BAB /* AppInfo.swift in Sources */,
+				CAF3DEA6234D71780018FA6B /* NetworkDefine.swift in Sources */,
 				CAA025AE21CD484A004DE58C /* WorshipIdListDAO.swift in Sources */,
 				CA83A16022B2923F00B2F549 /* Notice.swift in Sources */,
 				CA70536220BAECAF00815D37 /* PhraseDetailTableViewCell.swift in Sources */,
@@ -1224,6 +1239,7 @@
 				CA8BB6FE228FDB5D00E6FFD5 /* LoginViewModel.swift in Sources */,
 				CA4FA40720B926E400BE6730 /* AdvertisementViewController.swift in Sources */,
 				CA8BB700228FDC2500E6FFD5 /* OJYUIButton.swift in Sources */,
+				CAF3DEA4234CDB5F0018FA6B /* APIService.swift in Sources */,
 				CA6822672205AFA50001126B /* MoreViewController.swift in Sources */,
 				CAA821E322E355DB00B91194 /* AppInfoViewController.swift in Sources */,
 				CAE645E42123C19700B109B7 /* DbEntityNameConstant.swift in Sources */,

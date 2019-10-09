@@ -63,7 +63,7 @@ enum APIRouter {
 }
 
 extension APIRouter: URLRequestConvertible {
-    static let baseURLString: String = "http://ec2-52-79-233-2.ap-northeast-2.compute.amazonaws.com:8080/OhJooYeoMVC"
+    static let baseURLString: String = "http://aaaicu.synology.me:8088/OhJooYeoMVC"
     static let manager: Alamofire.SessionManager = {
         let configuration = URLSessionConfiguration.default
         configuration.timeoutIntervalForRequest = 150 // seconds
