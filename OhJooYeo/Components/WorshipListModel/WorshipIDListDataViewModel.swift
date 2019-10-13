@@ -6,6 +6,7 @@
 //  Copyright © 2018년 devming. All rights reserved.
 //
 
+import RxSwift
 import Alamofire
 
 final class WorshipIDListDataViewModel: ViewModel {
@@ -14,17 +15,16 @@ final class WorshipIDListDataViewModel: ViewModel {
     
     override init() {
         super.init()
-        bindRx()
     }
     
-    private func bindRx() {
+    func bindWorshipIdDate() -> Observable<[WorshipIdDate]> {
         let params: Parameters = [BaseRequest.CodingKeys.churchId.rawValue: WorshipManager.shared.churchId]
         
-            APIService.postWorshipList(parameters: params)
+        return APIService.postWorshipList(parameters: params)
             .map { try JSONDecoder().decode([WorshipIdDate].self, from: $0) }
-            .subscribe(onNext: { worshipIds in
+            .do(onNext: { worshipIds in
                 self.worshipIdDate = worshipIds
-            }).disposed(by: disposeBag)
+            })
     }
     
 }

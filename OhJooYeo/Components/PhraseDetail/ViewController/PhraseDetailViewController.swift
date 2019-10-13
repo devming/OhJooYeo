@@ -14,6 +14,7 @@ class PhraseDetailViewController: UIViewController {
     @IBOutlet weak var listTableView: UITableView!
     var orderID = 0
     var currentIndex = -1
+    let viewModel = Phrase
     
     override func viewDidLoad() {
         super.viewDidLoad()

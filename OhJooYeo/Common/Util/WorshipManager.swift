@@ -13,6 +13,7 @@ class WorshipManager {
     
     /// worship-list API호출하고나서 바로 할당해 줘야함.
     var currentWorshipInfo: WorshipInfoRequest?
+    var date: String = ""
 //    var currentWorshipId: String = ""
     var churchId = 0
     
@@ -24,6 +25,7 @@ class WorshipManager {
         if let item = list.first {
             self.currentWorshipInfo = WorshipInfoRequest(churchId: churchId, worshipId: item.worshipId)
 //            self.currentWorshipId = list.first!.worshipId
+            self.date = item.date
         }
     }
 }

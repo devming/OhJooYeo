@@ -38,7 +38,7 @@ final class LoginViewModel: ViewModel {
         return text.isEmpty
     }
     
-    func callLogin(id: String, pw: String, completionHandler: @escaping () -> Void, errorHandler: @escaping () -> Void) {
+    func callLogin(id: String, pw: String) {
         let params: Parameters = ["id": id, "pw": pw]
         APIService.postSignin(parameters: params)
             .subscribe(onNext: { result in

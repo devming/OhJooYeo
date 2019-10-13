@@ -17,4 +17,21 @@ class OrderTableViewCell: UITableViewCell {
     @IBOutlet weak var accessoryImageView: UIImageView!
     @IBOutlet weak var asteriskImageView: UIImageView!
     
+    func setItem(item: WorshipOrder) {
+        titleLabel.text = item.title
+        detailLabel.text = item.detail
+        presenterLabel.text = item.presenter
+        
+        if item.type == WorshipOrder.TypeName.phrase.rawValue {
+            accessoryImageView.alpha = 1.0
+            isUserInteractionEnabled = true
+        } else {
+            accessoryImageView.alpha = 0.0
+            isUserInteractionEnabled = false
+        }
+        
+        let bgColorView = UIView()
+        bgColorView.backgroundColor = UIColor.white
+        selectedBackgroundView = bgColorView
+    }
 }

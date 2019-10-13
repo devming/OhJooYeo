@@ -8,6 +8,7 @@
 
 import Alamofire
 import RxSwift
+import RxCocoa
 
 final class WorshipMainInfoViewModel: ViewModel {
     
@@ -16,25 +17,23 @@ final class WorshipMainInfoViewModel: ViewModel {
         get { return worshipInfoSubject.asObservable() }
     }
     var worshipInfo: WorshipMainInfo?
-    var dateInfo: String?
     
     override init() {
         super.init()
-        
-        bindRx()
     }
     
-    private func bindRx() {
+    func bindWorshipMainInfo() -> Observable<WorshipMainInfo> {
+        
         let params: Parameters = [BaseRequest.CodingKeys.churchId.rawValue: WorshipManager.shared.churchId,
                                   WorshipInfoRequest.CodingKeys.worshipId.rawValue: WorshipManager.shared.currentWorshipInfo?.worshipId as Any,
                                   WorshipInfoRequest.CodingKeys.version.rawValue: WorshipManager.shared.currentWorshipInfo?.version as Any]
         
-        APIService.postWorshipInfo(parameters: params)
+        return APIService.postWorshipInfo(parameters: params)
             .map { try JSONDecoder().decode(WorshipMainInfo.self, from: $0) }
-            .subscribe(onNext: { worshipInfo in
+            .do(onNext: { (worshipInfo) in
                 self.worshipInfo = worshipInfo
-                self.worshipInfoSubject.onNext(worshipInfo)
-            }).disposed(by: disposeBag)
+            })
+            .retry(3)
     }
     
     private func showDateData(worshipDate: String) -> String {

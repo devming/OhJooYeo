@@ -38,6 +38,9 @@
 		CA7A426A20B94C080097D99E /* WorshipMainInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7A426920B94C080097D99E /* WorshipMainInfo.swift */; };
 		CA7D2B2D2353485B00640B13 /* FirstSectionHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = CA7D2B2C2353485B00640B13 /* FirstSectionHeader.xib */; };
 		CA7D2B2F2353486600640B13 /* NextPresenterSectionHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = CA7D2B2E2353486600640B13 /* NextPresenterSectionHeader.xib */; };
+		CA7D2B3123534D2600640B13 /* FirstSectionHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7D2B3023534D2600640B13 /* FirstSectionHeader.swift */; };
+		CA7D2B3323534D3000640B13 /* NextPresenterSectionHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7D2B3223534D3000640B13 /* NextPresenterSectionHeader.swift */; };
+		CA7D2B3623535C8C00640B13 /* PhraseMessageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7D2B3523535C8C00640B13 /* PhraseMessageViewModel.swift */; };
 		CA8330C822C8C4DC00462412 /* LocationView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CA8330C722C8C4DC00462412 /* LocationView.storyboard */; };
 		CA83972522F32B1B00248A8C /* ChuchInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA83972122F32B1B00248A8C /* ChuchInfoViewController.swift */; };
 		CA83972622F32B1B00248A8C /* ChurchInfo.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CA83972322F32B1B00248A8C /* ChurchInfo.storyboard */; };
@@ -173,6 +176,9 @@
 		CA7A791A21F47D9400CCEE7B /* OhJooYeo.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = OhJooYeo.entitlements; sourceTree = "<group>"; };
 		CA7D2B2C2353485B00640B13 /* FirstSectionHeader.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FirstSectionHeader.xib; sourceTree = "<group>"; };
 		CA7D2B2E2353486600640B13 /* NextPresenterSectionHeader.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NextPresenterSectionHeader.xib; sourceTree = "<group>"; };
+		CA7D2B3023534D2600640B13 /* FirstSectionHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstSectionHeader.swift; sourceTree = "<group>"; };
+		CA7D2B3223534D3000640B13 /* NextPresenterSectionHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NextPresenterSectionHeader.swift; sourceTree = "<group>"; };
+		CA7D2B3523535C8C00640B13 /* PhraseMessageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhraseMessageViewModel.swift; sourceTree = "<group>"; };
 		CA8330C722C8C4DC00462412 /* LocationView.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LocationView.storyboard; sourceTree = "<group>"; };
 		CA83972122F32B1B00248A8C /* ChuchInfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChuchInfoViewController.swift; sourceTree = "<group>"; };
 		CA83972322F32B1B00248A8C /* ChurchInfo.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ChurchInfo.storyboard; sourceTree = "<group>"; };
@@ -437,6 +443,7 @@
 			isa = PBXGroup;
 			children = (
 				CA7A428E20BAE6C00097D99E /* Model */,
+				CA7D2B3423535C7900640B13 /* ViewModel */,
 				CAA914EA2155E0B5002E2CE6 /* View */,
 				CA7A428F20BAE6F00097D99E /* ViewController */,
 			);
@@ -620,6 +627,14 @@
 				CA4FA40320B926C600BE6730 /* PhraseDetailViewController.swift */,
 			);
 			path = ViewController;
+			sourceTree = "<group>";
+		};
+		CA7D2B3423535C7900640B13 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				CA7D2B3523535C8C00640B13 /* PhraseMessageViewModel.swift */,
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 		CA8330C122C8C4A400462412 /* view */ = {
@@ -954,6 +969,8 @@
 			children = (
 				CA7D2B2C2353485B00640B13 /* FirstSectionHeader.xib */,
 				CA7D2B2E2353486600640B13 /* NextPresenterSectionHeader.xib */,
+				CA7D2B3023534D2600640B13 /* FirstSectionHeader.swift */,
+				CA7D2B3223534D3000640B13 /* NextPresenterSectionHeader.swift */,
 			);
 			path = SectionHeader;
 			sourceTree = "<group>";
@@ -1206,6 +1223,7 @@
 				CAFB287520D4D47200B72722 /* DbManager.swift in Sources */,
 				CA91B25722F59F0A00970B31 /* [Get]GroupInfoDatas.swift in Sources */,
 				CAA3FA6822183A47006C30F0 /* HistoryTableViewCell.swift in Sources */,
+				CA7D2B3323534D3000640B13 /* NextPresenterSectionHeader.swift in Sources */,
 				CA0AB21620C23C190028BC69 /* AdvertisementTableViewCell.swift in Sources */,
 				CA91B25922F5CDB700970B31 /* RealmManager.swift in Sources */,
 				CA8E2EDF22E301E50027BCA1 /* GroupInfo.swift in Sources */,
@@ -1227,6 +1245,7 @@
 				CA6E9716220C69DA00DFE0AE /* LocationViewController.swift in Sources */,
 				CAA6B99E20F9CAFB00E802BC /* Music.swift in Sources */,
 				CA9CD240234897A000534FEB /* UIColorEx.swift in Sources */,
+				CA7D2B3123534D2600640B13 /* FirstSectionHeader.swift in Sources */,
 				CA91B25D22F5CDEB00970B31 /* BaseRealm.swift in Sources */,
 				CAA3FA66221836BF006C30F0 /* HistoryViewController.swift in Sources */,
 				CA8E2EE822E30ABA0027BCA1 /* ChurchInfo.swift in Sources */,
@@ -1263,6 +1282,7 @@
 				CA3080C52130F6EC00255A7E /* WorshipMainInfoViewModel.swift in Sources */,
 				CA9697E52340BC7700969B48 /* BackgroundView.swift in Sources */,
 				CAD7BBCD2165B8AD006661AF /* [Get]WorshipIDList.swift in Sources */,
+				CA7D2B3623535C8C00640B13 /* PhraseMessageViewModel.swift in Sources */,
 				CAD7BBCF2165B8BB006661AF /* [Post]RecentDatas.swift in Sources */,
 				CA9697E12340BC6100969B48 /* BaseTableView.swift in Sources */,
 				CA22838320943F2A0023B3C1 /* MainViewController.swift in Sources */,

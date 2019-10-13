@@ -10,7 +10,8 @@ import XCTest
 @testable import OhJooYeo
 
 class OhJooYeoTests: XCTestCase {
-    
+
+    let loginViewModel = LoginViewModel()
     override func setUp() {
         super.setUp()
         // Put setup code here. This method is called before the invocation of each test method in the class.
@@ -22,7 +23,11 @@ class OhJooYeoTests: XCTestCase {
     }
     
     func testAPI() {
-        APIService.request()
+        loginViewModel.callLogin(id: "admin", pw: "admin", completionHandler: {
+            print("compeltion")
+        }) {
+            print("err")
+        }
 //        App.api.getWorshipIDList { isUpdated, willTakeIDVersionData in
 //            if let idVersionData = willTakeIDVersionData, isUpdated {
 //                App.api.getRecentDatas(worshipIDVersion: idVersionData) {

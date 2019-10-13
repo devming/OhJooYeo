@@ -8,6 +8,8 @@
 
 import UIKit
 import NVActivityIndicatorView
+import RxSwift
+import RxCocoa
 
 class MainViewController: UIViewController {
     
@@ -21,10 +23,13 @@ class MainViewController: UIViewController {
     let refreshControl = UIRefreshControl()
     var activityIndicator: NVActivityIndicatorView?
     
+    let viewModel = WorshipMainInfoViewModel()
+    let disposeBag = DisposeBag()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.yearlyMessage.layer.cornerRadius = 3.0
+//        self.yearlyMessage.layer.cornerRadius = 3.0
         self.activityIndicator = NVActivityIndicatorView(frame: self.view.frame, type: NVActivityIndicatorType.ballTrianglePath, color: UIColor.white, padding: self.view.frame.width / 2.5)
         self.view.addSubview(self.activityIndicator!)
         self.activityIndicator?.startAnimating()
@@ -32,13 +37,14 @@ class MainViewController: UIViewController {
         self.listTableView.rowHeight = UITableViewAutomaticDimension
         self.listTableView.layer.cornerRadius = 10.0
         
-        NotificationCenter.default.addObserver(self, selector: #selector(worshipUpdate), name: .WorshipDidUpdated, object: nil)
+//        NotificationCenter.default.addObserver(self, selector: #selector(worshipUpdate), name: .WorshipDidUpdated, object: nil)
         
         initRefreshControl()
         
         setTransparentBackground(navigationController: self.navigationController)
         
-        updateWorship()
+        reloadDatas()
+//        updateWorship()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -55,7 +61,7 @@ class MainViewController: UIViewController {
 
 extension MainViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        guard let orderList = WorshipMainInfoViewModel.shared.worshipDataObject.worshipData?.worshipMainInfo?.worshipOrderList else {
+        guard let orderList = viewModel.worshipInfo?.worshipOrderList else {
             return 0
         }
         
@@ -63,13 +69,15 @@ extension MainViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let orderList = WorshipMainInfoViewModel.shared.worshipDataObject.worshipData?.worshipMainInfo?.worshipOrderList,
-            let nextPresenter = WorshipMainInfoViewModel.shared.worshipDataObject.worshipData?.worshipMainInfo?.nextPresenter?.mainPresenter,
-            let nextPrayer = WorshipMainInfoViewModel.shared.worshipDataObject.worshipData?.worshipMainInfo?.nextPresenter?.prayer,
-            let nextOffer = WorshipMainInfoViewModel.shared.worshipDataObject.worshipData?.worshipMainInfo?.nextPresenter?.offer else {
-                print("orderList is null")
-                return UITableViewCell()
-        }
+        guard let orderList = viewModel.worshipInfo?.worshipOrderList,
+            let nextPresenter = viewModel.worshipInfo?.nextPresenter else { return UITableViewCell() }
+//        guard let orderList = WorshipMainInfoViewModel.shared.worshipDataObject.worshipData?.worshipMainInfo?.worshipOrderList,
+//            let nextPresenter = WorshipMainInfoViewModel.shared.worshipDataObject.worshipData?.worshipMainInfo?.nextPresenter?.mainPresenter,
+//            let nextPrayer = WorshipMainInfoViewModel.shared.worshipDataObject.worshipData?.worshipMainInfo?.nextPresenter?.prayer,
+//            let nextOffer = WorshipMainInfoViewModel.shared.worshipDataObject.worshipData?.worshipMainInfo?.nextPresenter?.offer else {
+//                print("orderList is null")
+//                return UITableViewCell()
+//        }
         
         switch indexPath.row {
         case 0..<orderList.count:
@@ -77,26 +85,7 @@ extension MainViewController: UITableViewDataSource {
                 return UITableViewCell()
             }
             
-            cell.titleLabel.text = orderList[indexPath.row].title
-            cell.detailLabel.text = orderList[indexPath.row].detail
-            cell.presenterLabel.text = orderList[indexPath.row].presenter
-            
-            // 이동해야할 아이템의 경우 여기에서 조건 설정
-            if orderList[indexPath.row].type == WorshipOrder.TypeName.phrase.rawValue { /// + 다른 타입들
-                cell.accessoryImageView.image = UIImage(named: "ic_detail_gray")
-                cell.accessoryImageView.alpha = 1.0
-                cell.isUserInteractionEnabled = true
-            } else {
-                cell.accessoryImageView.image = UIImage(named: "ic_detail_empty")
-                cell.accessoryImageView.alpha = 0.0
-                cell.isUserInteractionEnabled = false
-            }
-            
-            let bgColorView = UIView()
-            bgColorView.backgroundColor = UIColor.white
-            cell.selectedBackgroundView = bgColorView
-
-//            cell.layer.cornerRadius = 8.0
+            cell.setItem(item: orderList[indexPath.row])
             return cell
             
         case orderList.count:
@@ -104,10 +93,7 @@ extension MainViewController: UITableViewDataSource {
                 return UITableViewCell()
             }
             
-            cell.mainPresenterLabel.text = nextPresenter
-            cell.prayerLabel.text = nextPrayer
-            cell.offerLabel.text = nextOffer
-            
+            cell.setItem(item: nextPresenter)
             return cell
             
         default:
@@ -121,13 +107,15 @@ extension MainViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         if section == 1 {
-            return Bundle.main.loadNibNamed("NextPresenterSectionHeader", owner: self, options: nil)?.first as? FirstSectionHeader
+            return Bundle.main.loadNibNamed("NextPresenterSectionHeader", owner: self, options: nil)?.first as? NextPresenterSectionHeader
         }
-        return Bundle.main.loadNibNamed("FirstSectionHeader", owner: self, options: nil)?.first as? NextPresenterSectionHeader
+        let firstView = FirstSectionHeader(frame: CGRect.zero)
+        firstView.setMainPresenter(mainPresenter: viewModel.worshipInfo?.mainPresenter)
+        return firstView
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        guard let worshipOrderList = WorshipMainInfoViewModel.shared.worshipDataObject.worshipData?.worshipMainInfo?.worshipOrderList else {
+        guard let worshipOrderList = viewModel.worshipInfo?.worshipOrderList else {
             return 80
         }
         if indexPath.row == worshipOrderList.count {
@@ -143,54 +131,61 @@ extension MainViewController: UITableViewDelegate {
 
 /// Custom Methods
 extension MainViewController {
-    @objc func worshipUpdate(_ notification: Notification) {
-        updateWorship()
-    }
-    
-    func updateWorship() {
-        OperationQueue.main.addOperation { [weak self] in
-            guard let `self` = self else { return }
-            if App.isLoadingComplete {
-                self.dateHistoryButton.setTitle(" \(WorshipMainInfoViewModel.shared.dateInfo ?? "dateError")", for: .normal)
-                self.activityIndicator?.stopAnimating()
-                self.listTableView.reloadData()
-                self.mainPresenterLabel.text = "인도자: \(WorshipMainInfoViewModel.shared.worshipDataObject.worshipData?.worshipMainInfo?.mainPresenter ?? "OOO")"
-                App.isLoadingComplete = false
-            } else {
-//                let errorView = NetworkErrorView(frame: self.view.frame)
-//                self.view.addSubview(errorView)
-                self.backgroundView.showErrorView(.network) {
-                    self.yearlyMessage.isHidden = true
-                    self.dateHistoryButton.isHidden = true
-                    self.listTableView.isHidden = true
-                    self.mainPresenterLabel.isHidden = true
-                    self.standupLabel.isHidden = true
-                }
-                self.activityIndicator?.stopAnimating()
-            }
-        }
-    }
+//    @objc func worshipUpdate(_ notification: Notification) {
+//        updateWorship()
+//    }
+//
+//    func updateWorship() {
+//        OperationQueue.main.addOperation { [weak self] in
+//            guard let `self` = self else { return }
+//            if App.isLoadingComplete {
+//                self.dateHistoryButton.setTitle(" \(WorshipManager.shared.date)", for: .normal)
+//                self.activityIndicator?.stopAnimating()
+//                self.listTableView.reloadData()
+//                self.mainPresenterLabel.text = "인도자: \(self.viewModel.worshipInfo?.mainPresenter ?? "OOO")"
+//                App.isLoadingComplete = false
+//            } else {
+////                let errorView = NetworkErrorView(frame: self.view.frame)
+////                self.view.addSubview(errorView)
+//                self.backgroundView.showErrorView(.network) {
+////                    self.yearlyMessage.isHidden = true
+//                    self.dateHistoryButton.isHidden = true
+//                    self.listTableView.isHidden = true
+////                    self.mainPresenterLabel.isHidden = true
+////                    self.standupLabel.isHidden = true
+//                }
+//                self.activityIndicator?.stopAnimating()
+//            }
+//        }
+//    }
     
     func initRefreshControl() {
+//        viewModel.
         self.refreshControl.addTarget(self, action: #selector(reloadDatas), for: .valueChanged)
+//        self.refreshControl.rx.
         self.listTableView.addSubview(self.refreshControl)
     }
     
     @objc func reloadDatas() {
-        DispatchQueue.main.async {
-            App.loadAllDataFromServer { [weak self] in
-                App.isLoadingComplete = true
-                self?.refreshControl.endRefreshing()
-                NotificationCenter.default.post(name: .WorshipDidUpdated, object: nil)
-            }
-        }
+        viewModel.bindWorshipMainInfo()
+            .subscribe(onNext: { _ in
+                self.listTableView.reloadData()
+            }).disposed(by: disposeBag)
+//        DispatchQueue.main.async {
+//            App.loadAllDataFromServer { [weak self] in
+//                App.isLoadingComplete = true
+//                self?.refreshControl.endRefreshing()
+//                NotificationCenter.default.post(name: .WorshipDidUpdated, object: nil)
+//            }
+//        }
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         super.prepare(for: segue, sender: sender)
         
         if let cell = sender as? OrderTableViewCell, let indexPath = self.listTableView.indexPath(for: cell) {
-            guard let orderList = WorshipMainInfoViewModel.shared.worshipDataObject.worshipData?.worshipMainInfo?.worshipOrderList, orderList[indexPath.row].type == WorshipOrder.TypeName.phrase.rawValue else {
+            
+            guard let orderList = viewModel.worshipInfo?.worshipOrderList, orderList[indexPath.row].type == WorshipOrder.TypeName.phrase.rawValue else {
                 return
             }
             
