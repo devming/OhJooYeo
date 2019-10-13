@@ -9,38 +9,36 @@
 import RealmSwift
 import SwiftyJSON
 
-class Advertisement: Object {
-    @objc dynamic var adWorshipID: String = ""
-    @objc dynamic var advertisementID: Int = 0
-    @objc dynamic var worshipID: String = ""
+class Advertisement: Object, Decodable {
+    
+    @objc dynamic var advertisementId: Int = 0
+    @objc dynamic var worshipId: String?
     @objc dynamic var title: String = "-"
     @objc dynamic var content: String = "-"
     @objc dynamic var order: Int = 0
-    let ownerWorshipData = LinkingObjects(fromType: WholeWorshipData.self, property: "advertisements")
+    @objc dynamic var adWorshipId: String?
     
-    convenience init(json: JSON) {
+    public required convenience init(from decoder: Decoder) throws {
         self.init()
-        
-        self.advertisementID = json[Name.adID].intValue
-        self.worshipID = json[Name.worshipID].stringValue
-        self.adWorshipID = "\(worshipID)_\(advertisementID)"
-        self.title = json[Name.title].stringValue
-        self.content = json[Name.content].stringValue
-        self.order = json[Name.order].intValue
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        self.advertisementId = try container.decode(Int.self, forKey:  .advertisementId)
+        self.worshipId = try container.decode(String.self, forKey: .worshipId)
+        self.title = try container.decode(String.self, forKey: .title)
+        self.content = try container.decode(String.self, forKey: .content)
+        self.order = try container.decode(Int.self, forKey: .order)
+        self.adWorshipId = "\(String(describing: worshipId))_\(advertisementId)"
     }
     
     override static func primaryKey() -> String? {
-        return Name.adWorshipID
+        return CodingKeys.adWorshipId.rawValue
     }
-}
-
-extension Advertisement {
-    struct Name {
-        static let adWorshipID = "adWorshipID"
-        static let worshipID = "worshipId"
-        static let adID = "adId"
-        static let title = "title"
-        static let content = "content"
-        static let order = "order"
+        
+    enum CodingKeys: String, CodingKey {
+        case adWorshipId = "adWorshipID"
+        case worshipId = "worshipId"
+        case advertisementId = "adId"
+        case order = "order"
+        case title = "title"
+        case content = "content"
     }
 }

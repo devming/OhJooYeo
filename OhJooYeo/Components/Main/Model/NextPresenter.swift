@@ -7,35 +7,32 @@
 //
 
 import RealmSwift
-import SwiftyJSON
 
-class NextPresenter: Object {
-    @objc dynamic var worshipID: String = ""
+class NextPresenter: Object, Decodable {
     @objc dynamic var mainPresenter: String = ""
     @objc dynamic var prayer: String = ""
     @objc dynamic var offer: String = ""
     let ownerWorship = LinkingObjects(fromType: WorshipMainInfo.self, property: "nextPresenter")
+    @objc dynamic var worshipId: String?
     
-    convenience init(json: JSON, worshipID: String) {
+    public required convenience init(from decoder: Decoder) throws {
         self.init()
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        self.mainPresenter = try container.decode(String.self, forKey: .mainPresenter)
+        self.prayer = try container.decode(String.self, forKey: .prayer)
+        self.offer = try container.decode(String.self, forKey: .offer)
         
-        self.worshipID = worshipID
-        
-        self.mainPresenter = json[Name.mainPresenter].stringValue
-        self.prayer = json[Name.prayer].stringValue
-        self.offer = json[Name.offer].stringValue
+        self.worshipId = WorshipManager.shared.currentWorshipInfo?.worshipId
     }
     
     override static func primaryKey() -> String? {
-        return Name.worshipID
+        return CodingKeys.worshipId.rawValue
     }
-}
-
-extension NextPresenter {
-    struct Name {
-        static let worshipID = "worshipID"
-        static let mainPresenter = "mainPresenter"
-        static let prayer = "prayer"
-        static let offer = "offer"
+    
+    enum CodingKeys: String, CodingKey {
+        case worshipId = "worshipID"
+        case mainPresenter = "mainPresenter"
+        case prayer = "prayer"
+        case offer = "offer"
     }
 }

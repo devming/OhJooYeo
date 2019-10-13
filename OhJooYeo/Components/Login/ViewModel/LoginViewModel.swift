@@ -7,8 +7,11 @@
 //
 
 import RxSwift
+import Alamofire
 
-final class LoginViewModel {
+final class LoginViewModel: ViewModel {
+    
+//    let loginSubject = PublishSubject<Login
     
     func validateEmail(_ emailString: String) -> Bool {
         let emailRegex = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
@@ -36,12 +39,23 @@ final class LoginViewModel {
     }
     
     func callLogin(id: String, pw: String, completionHandler: @escaping () -> Void, errorHandler: @escaping () -> Void) {
-        App.api.signIn(id: id, pw: pw) { isSuccess in
-            if isSuccess {
-                completionHandler()
-            } else {
-                errorHandler()
-            }
-        }
+        let params: Parameters = ["id": id, "pw": pw]
+        APIService.postSignin(parameters: params)
+            .subscribe(onNext: { result in
+                if result == "true" {
+                    print("로그인 성공")
+                    WorshipManager.shared.churchId = 1
+                } else {
+                    print("로그인 실패")
+                }
+            })
+            .disposed(by: disposeBag)
+//        App.api.signIn(id: id, pw: pw) { isSuccess in
+//            if isSuccess {
+//                completionHandler()
+//            } else {
+//                errorHandler()
+//            }
+//        }
     }
 }

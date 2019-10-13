@@ -5,31 +5,37 @@
 //  Created by Minki on 2018. 8. 25..
 //  Copyright © 2018년 devming. All rights reserved.
 //
-import Foundation
 
-final class WorshipMainInfoViewModel {
+import Alamofire
+import RxSwift
+
+final class WorshipMainInfoViewModel: ViewModel {
     
-    static var shared = WorshipMainInfoViewModel()
-    var worshipDataObject: WholeWorshipDataDAO
+    private let worshipInfoSubject = PublishSubject<WorshipMainInfo>()
+    var worshipInfoObservable: Observable<WorshipMainInfo> {
+        get { return worshipInfoSubject.asObservable() }
+    }
+    var worshipInfo: WorshipMainInfo?
     var dateInfo: String?
     
-    private init() {
-        self.worshipDataObject = WholeWorshipDataDAO.shared
-    }
-    
-    func setDate() {
-        guard let date = self.worshipDataObject.worshipData?.worshipDate else {
-            return
-        }
-        self.dateInfo = showDateData(worshipDate: date)
-    }
-    
-    func getWorshipIDList() {
+    override init() {
+        super.init()
         
+        bindRx()
     }
-}
-
-extension WorshipMainInfoViewModel {
+    
+    private func bindRx() {
+        let params: Parameters = [BaseRequest.CodingKeys.churchId.rawValue: WorshipManager.shared.churchId,
+                                  WorshipInfoRequest.CodingKeys.worshipId.rawValue: WorshipManager.shared.currentWorshipInfo?.worshipId as Any,
+                                  WorshipInfoRequest.CodingKeys.version.rawValue: WorshipManager.shared.currentWorshipInfo?.version as Any]
+        
+        APIService.postWorshipInfo(parameters: params)
+            .map { try JSONDecoder().decode(WorshipMainInfo.self, from: $0) }
+            .subscribe(onNext: { worshipInfo in
+                self.worshipInfo = worshipInfo
+                self.worshipInfoSubject.onNext(worshipInfo)
+            }).disposed(by: disposeBag)
+    }
     
     private func showDateData(worshipDate: String) -> String {
         let dateComponentString = worshipDate.split(separator: "-")

@@ -1,13 +1,13 @@
-//
-//  [Get]GroupInfoDatas.swift
-//  OhJooYeo
-//
-//  Created by Minki on 03/08/2019.
-//  Copyright © 2019 devming. All rights reserved.
-//
 
-import RxAlamofire
+import SwiftyJSON
+import Alamofire
+import RxSwift
 
 extension APIRouter {
-    
+//    func worshipList (parameters: Parameters) -> Observable<DataResponse<Any>> {
+//        
+//        return APIRouter.manager.rx
+//            .request(urlRequest: APIRouter.postPhrase(parameters: parameters))
+//            .responseJSON()
+//    }
 }

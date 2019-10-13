@@ -7,7 +7,7 @@
 //
 
 import XCTest
-//@testable import OhJooYeo
+@testable import OhJooYeo
 
 class OhJooYeoTests: XCTestCase {
     
@@ -22,6 +22,7 @@ class OhJooYeoTests: XCTestCase {
     }
     
     func testAPI() {
+        APIService.request()
 //        App.api.getWorshipIDList { isUpdated, willTakeIDVersionData in
 //            if let idVersionData = willTakeIDVersionData, isUpdated {
 //                App.api.getRecentDatas(worshipIDVersion: idVersionData) {

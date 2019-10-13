@@ -6,14 +6,25 @@
 //  Copyright © 2018년 devming. All rights reserved.
 //
 
-import RealmSwift
+import Alamofire
 
-final class AdvertisementViewModel {
-    static var shared = AdvertisementViewModel()
-    var advertisements: List<Advertisement>?
+final class AdvertisementViewModel: ViewModel {
+    var advertisements: [Advertisement]
     
-    private init() {
-        self.advertisements = WholeWorshipDataDAO.shared.worshipData?.advertisements
+    override init() {
+        advertisements = [Advertisement]()
+        super.init()
+        
+        bindRx()
     }
     
+    private func bindRx() {
+        let params: Parameters = [AdvertisementRequest.CodingKeys.churchId.rawValue: WorshipManager.shared.churchId]
+        
+        APIService.postAd(parameters: params)
+            .map { try JSONDecoder().decode(Advertisement.self, from: $0) }
+            .subscribe(onNext: { advertisement in
+                self.advertisements.append(advertisement)
+            }).disposed(by: disposeBag)
+    }
 }

@@ -7,43 +7,34 @@
 //
 
 import RealmSwift
-import SwiftyJSON
 
-class WorshipOrder: Object {
-    @objc dynamic var worshipOrderID: String = ""
-    @objc dynamic var title: String = ""
-    @objc dynamic var detail: String = ""
-    @objc dynamic var presenter: String = ""
+class WorshipOrder: Object, Decodable {
+    @objc dynamic var title: String?
+    @objc dynamic var detail: String?
+    @objc dynamic var presenter: String?
     @objc dynamic var order: Int = 0
     @objc dynamic var orderID: Int = 0
     @objc dynamic var type: Int = 0
     let ownerWorship = LinkingObjects(fromType: WorshipMainInfo.self, property: "worshipOrders")
+    @objc dynamic var worshipOrderID: String?
     
-    convenience init(json: JSON, worshipID: String) {
+    @objc dynamic var worshipId: String?
+
+    public required convenience init(from decoder: Decoder) throws {
         self.init()
-        self.title = json[Name.title].stringValue
-        self.detail = json[Name.detail].stringValue
-        self.presenter = json[Name.presenter].stringValue
-        self.order = json[Name.order].intValue
-        self.orderID = json[Name.orderID].intValue
-        self.type = json[Name.type].intValue
-        self.worshipOrderID = "\(worshipID)_\(self.orderID)"
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        self.title = try container.decode(String.self, forKey: .title)
+        self.detail = try container.decode(String.self, forKey: .detail)
+        self.presenter = try container.decode(String.self, forKey: .presenter)
+        self.order = try container.decode(Int.self, forKey: .order)
+        self.orderID = try container.decode(Int.self, forKey: .orderID)
+        self.type = try container.decode(Int.self, forKey: .type)
+        self.worshipId = WorshipManager.shared.currentWorshipInfo?.worshipId
+        self.worshipOrderID = "\(String(describing: self.worshipId))_\(self.orderID)"
     }
     
     override static func primaryKey() -> String? {
-        return Name.worshipOrderID
-    }
-}
-
-extension WorshipOrder {
-    struct Name {
-        static let worshipOrderID = "worshipOrderID"
-        static let title = "title"
-        static let detail = "detail"
-        static let presenter = "presenter"
-        static let order = "order"
-        static let orderID = "orderId"
-        static let type = "type"
+        return CodingKeys.worshipOrderID.rawValue
     }
     
     enum TypeName: Int {
@@ -51,5 +42,14 @@ extension WorshipOrder {
         case phrase = 1
         case music = 2
     }
+    
+    enum CodingKeys: String, CodingKey {
+        case title = "title"
+        case detail = "detail"
+        case presenter = "presenter"
+        case order = "order"
+        case orderID = "orderId"
+        case type = "type"
+        case worshipOrderID = "worshipOrderID"
+    }
 }
-

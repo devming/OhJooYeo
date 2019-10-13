@@ -7,39 +7,34 @@
 //
 
 import RealmSwift
-import SwiftyJSON
 
-class WorshipMainInfo: Object {
-    @objc dynamic var worshipID: String = ""
-    @objc dynamic var mainPresenter: String = ""
+class WorshipMainInfo: Object, Decodable {
+    @objc dynamic var mainPresenter: String?
     @objc dynamic var nextPresenter: NextPresenter? = nil
-    let worshipOrders = List<WorshipOrder>()
-    let ownerWorshipData = LinkingObjects(fromType: WholeWorshipData.self, property: "worshipMainInfo")
+    var worshipOrderList = List<WorshipOrder>()
+    var worshipId: String?
+    var version: String?
     
-    convenience init(json: JSON, worshipID: String) {
+    public required convenience init(from decoder: Decoder) throws {
         self.init()
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        self.mainPresenter = try container.decode(String.self, forKey: .mainPresenter)
+        self.nextPresenter = try container.decodeIfPresent(NextPresenter.self, forKey: .nextPresenter)
+        let worshipOrders = try container.decodeIfPresent([WorshipOrder].self, forKey: .worshipOrderList) ?? [WorshipOrder()]
+        self.worshipOrderList.append(objectsIn: worshipOrders)
         
-        self.worshipID = worshipID
-        
-        self.mainPresenter = json[Name.mainPresenter].stringValue
-        self.nextPresenter = NextPresenter(json: json[Name.nextPresenter], worshipID: worshipID)
-        
-        for worshipOrderData in json[Name.worshipOrder].arrayValue {
-            self.worshipOrders.append(WorshipOrder(json: worshipOrderData, worshipID: worshipID))
-        }
+        self.worshipId = WorshipManager.shared.currentWorshipInfo?.worshipId
     }
     
     override static func primaryKey() -> String? {
-        return Name.worshipID
+        return CodingKeys.worshipId.rawValue
     }
-}
-
-extension WorshipMainInfo {
-    struct Name {
-        static let worshipID = "worshipID"
-        static let mainPresenter = "mainPresenter"
-        static let nextPresenter = "nextPresenter"
-        static let worshipOrder = "worshipOrder"
-        static let worshipDate = "worshipDate"
+    
+    enum CodingKeys: String, CodingKey {
+        case worshipId = "worshipID"
+        case mainPresenter = "mainPresenter"
+        case nextPresenter = "nextPresenter"
+        case worshipOrderList = "worshipOrder"
+        case worshipDate = "worshipDate"
     }
 }

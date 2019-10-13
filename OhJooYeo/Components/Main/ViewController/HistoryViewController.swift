@@ -10,7 +10,7 @@ import UIKit
 
 class HistoryViewController: UIViewController {
 
-    var worshipIDList: [WorshipIDDate]?
+    var worshipIDList: [WorshipIdDate]?
     @IBOutlet weak var listTableView: UITableView!
     
     override func viewDidLoad() {

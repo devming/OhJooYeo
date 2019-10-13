@@ -6,7 +6,11 @@
 //  Copyright © 2019 devming. All rights reserved.
 //
 
-protocol ViewModel {
+import RxSwift
+
+class ViewModel {
+    
+    var disposeBag = DisposeBag()
 //    func initializer()
 //    func viewWillAppear()
 }

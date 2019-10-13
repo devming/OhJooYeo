@@ -12,6 +12,7 @@ class AdvertisementViewController: UIViewController {
 
     @IBOutlet var backgroundView: BackgroundView!
     @IBOutlet weak var listTableView: UITableView!
+    let viewModel = AdvertisementViewModel()
     let refreshControl = UIRefreshControl()
     
     override func viewDidLoad() {
@@ -52,21 +53,17 @@ class AdvertisementViewController: UIViewController {
 extension AdvertisementViewController: UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        guard let advertisementList = AdvertisementViewModel.shared.advertisements else {
-            return 0
-        }
 
-        return advertisementList.count
+        return viewModel.advertisements.count
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: AdvertisementTableViewCell.cellName) as? AdvertisementTableViewCell else {
             return UITableViewCell()
         }
-        if let advertisementList = AdvertisementViewModel.shared.advertisements {
-            cell.titleLabel.text = advertisementList[indexPath.row].title
-            cell.descriptionLabel.text = advertisementList[indexPath.row].content
-        }
+        cell.titleLabel.text = viewModel.advertisements[indexPath.row].title
+        cell.descriptionLabel.text = viewModel.advertisements[indexPath.row].content
+        
 
         return cell
     }

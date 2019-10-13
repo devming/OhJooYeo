@@ -9,5 +9,5 @@
 import Foundation
 
 class NetworkDefine {
-    static let TIMEOUT_INTERVAL = 10
+    static let TIMEOUT_INTERVAL: TimeInterval = 20
 }

@@ -9,32 +9,34 @@
 import RealmSwift
 import SwiftyJSON
 
-final class PhraseMessage: Object {
-    @objc dynamic var messageID: String = ""
-    @objc dynamic var phraseKey: String = ""
-    @objc dynamic var contents: String = ""
+class PhraseMessage: Object, Decodable {
+    @objc dynamic var messageId: String?
+    @objc dynamic var phraseKey: String?
+    @objc dynamic var contents: String?
     
-    convenience init(withJSON json: JSON, worshipOrderID: String) {
+    @objc dynamic var primaryKey: String?
+    @objc dynamic var worshipId: String?
+    
+    
+    public required convenience init(from decoder: Decoder) throws {
         self.init()
-        if let phraseKey = json[Name.phraseKey].string {
-            self.phraseKey = phraseKey
-        }
-        if let contents = json[Name.contents].string {
-            self.contents = contents
-        }
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        self.messageId = try container.decode(String.self, forKey: .messageId)
+        self.phraseKey = try container.decode(String.self, forKey: .phraseKey)
+        self.contents = try container.decode(String.self, forKey: .contents)
         
-        self.messageID = "\(worshipOrderID)_\(self.phraseKey)"
+        self.worshipId = WorshipManager.shared.currentWorshipId
+        self.primaryKey = "\(String(describing: self.worshipId))_\(String(describing: messageId))"
     }
     
     override static func primaryKey() -> String? {
-        return Name.messageID
+        return CodingKeys.primaryKey.rawValue
     }
-}
-
-extension PhraseMessage {
-    struct Name {
-        static let messageID = "messageID"
-        static let phraseKey = "phrase"
-        static let contents = "contents"
+    
+    enum CodingKeys: String, CodingKey {
+        case primaryKey = "primaryKey"
+        case messageId = "messageId"
+        case phraseKey = "phrase"
+        case contents = "contents"
     }
 }
