@@ -119,6 +119,13 @@ extension MainViewController: UITableViewDataSource {
 
 extension MainViewController: UITableViewDelegate {
     
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        if section == 1 {
+            return Bundle.main.loadNibNamed("NextPresenterSectionHeader", owner: self, options: nil)?.first as? FirstSectionHeader
+        }
+        return Bundle.main.loadNibNamed("FirstSectionHeader", owner: self, options: nil)?.first as? NextPresenterSectionHeader
+    }
+    
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         guard let worshipOrderList = WorshipMainInfoViewModel.shared.worshipDataObject.worshipData?.worshipMainInfo?.worshipOrderList else {
             return 80

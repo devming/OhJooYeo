@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		6631508FC50701815B50903F /* Pods_OhJooYeoTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F9BAB264DBB516523741259C /* Pods_OhJooYeoTests.framework */; };
 		CA050141214196BC00B89F3D /* WorshipIDListDataViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA050140214196BC00B89F3D /* WorshipIDListDataViewModel.swift */; };
-		CA05788D2350D3B20025E8AD /* WorshipList.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA05788C2350D3B20025E8AD /* WorshipList.swift */; };
 		CA0AB21620C23C190028BC69 /* AdvertisementTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA0AB21520C23C190028BC69 /* AdvertisementTableViewCell.swift */; };
 		CA0AB21820C23ECE0028BC69 /* Advertisement.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA0AB21720C23ECE0028BC69 /* Advertisement.swift */; };
 		CA22838120943F2A0023B3C1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA22838020943F2A0023B3C1 /* AppDelegate.swift */; };
@@ -37,6 +36,8 @@
 		CA70536220BAECAF00815D37 /* PhraseDetailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA70536120BAECAF00815D37 /* PhraseDetailTableViewCell.swift */; };
 		CA70536420BAEDBC00815D37 /* PhraseMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA70536320BAEDBC00815D37 /* PhraseMessage.swift */; };
 		CA7A426A20B94C080097D99E /* WorshipMainInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7A426920B94C080097D99E /* WorshipMainInfo.swift */; };
+		CA7D2B2D2353485B00640B13 /* FirstSectionHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = CA7D2B2C2353485B00640B13 /* FirstSectionHeader.xib */; };
+		CA7D2B2F2353486600640B13 /* NextPresenterSectionHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = CA7D2B2E2353486600640B13 /* NextPresenterSectionHeader.xib */; };
 		CA8330C822C8C4DC00462412 /* LocationView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CA8330C722C8C4DC00462412 /* LocationView.storyboard */; };
 		CA83972522F32B1B00248A8C /* ChuchInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA83972122F32B1B00248A8C /* ChuchInfoViewController.swift */; };
 		CA83972622F32B1B00248A8C /* ChurchInfo.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CA83972322F32B1B00248A8C /* ChurchInfo.storyboard */; };
@@ -139,7 +140,6 @@
 		9D27ECAC31BF081321680EC2 /* Pods-OhJooYeo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OhJooYeo.debug.xcconfig"; path = "Target Support Files/Pods-OhJooYeo/Pods-OhJooYeo.debug.xcconfig"; sourceTree = "<group>"; };
 		AEBAFC4EFBE85C934F60FCE7 /* Pods-OhJooYeo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OhJooYeo.release.xcconfig"; path = "Target Support Files/Pods-OhJooYeo/Pods-OhJooYeo.release.xcconfig"; sourceTree = "<group>"; };
 		CA050140214196BC00B89F3D /* WorshipIDListDataViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorshipIDListDataViewModel.swift; sourceTree = "<group>"; };
-		CA05788C2350D3B20025E8AD /* WorshipList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorshipList.swift; sourceTree = "<group>"; };
 		CA0AB21520C23C190028BC69 /* AdvertisementTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdvertisementTableViewCell.swift; sourceTree = "<group>"; };
 		CA0AB21720C23ECE0028BC69 /* Advertisement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Advertisement.swift; sourceTree = "<group>"; };
 		CA22837D20943F290023B3C1 /* OhJooYeo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OhJooYeo.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -171,6 +171,8 @@
 		CA70536320BAEDBC00815D37 /* PhraseMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhraseMessage.swift; sourceTree = "<group>"; };
 		CA7A426920B94C080097D99E /* WorshipMainInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorshipMainInfo.swift; sourceTree = "<group>"; };
 		CA7A791A21F47D9400CCEE7B /* OhJooYeo.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = OhJooYeo.entitlements; sourceTree = "<group>"; };
+		CA7D2B2C2353485B00640B13 /* FirstSectionHeader.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FirstSectionHeader.xib; sourceTree = "<group>"; };
+		CA7D2B2E2353486600640B13 /* NextPresenterSectionHeader.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NextPresenterSectionHeader.xib; sourceTree = "<group>"; };
 		CA8330C722C8C4DC00462412 /* LocationView.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LocationView.storyboard; sourceTree = "<group>"; };
 		CA83972122F32B1B00248A8C /* ChuchInfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChuchInfoViewController.swift; sourceTree = "<group>"; };
 		CA83972322F32B1B00248A8C /* ChurchInfo.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ChurchInfo.storyboard; sourceTree = "<group>"; };
@@ -394,6 +396,7 @@
 		CA3080C72130F74C00255A7E /* View */ = {
 			isa = PBXGroup;
 			children = (
+				CAF7E59C2353456C00F341F7 /* SectionHeader */,
 				CA3080C62130F73700255A7E /* TableViewCells */,
 			);
 			path = View;
@@ -475,10 +478,10 @@
 			isa = PBXGroup;
 			children = (
 				CAA025AF21CDCC71004DE58C /* WholeWorshipData.swift */,
+				CAFB288120D4F13900B72722 /* WholeWorshipDataDAO.swift */,
 				CA7A426920B94C080097D99E /* WorshipMainInfo.swift */,
 				CA4FA41420B9420400BE6730 /* WorshipOrder.swift */,
 				CA2DED8D21CD2769009671FE /* NextPresenter.swift */,
-				CAFB288120D4F13900B72722 /* WholeWorshipDataDAO.swift */,
 				CA4C68A62352114E0057BEC3 /* WorshipInfoRequest.swift */,
 			);
 			path = Model;
@@ -942,9 +945,17 @@
 			isa = PBXGroup;
 			children = (
 				CAF3DEA3234CDB5F0018FA6B /* APIService.swift */,
-				CA05788C2350D3B20025E8AD /* WorshipList.swift */,
 			);
 			path = "API-Renewal";
+			sourceTree = "<group>";
+		};
+		CAF7E59C2353456C00F341F7 /* SectionHeader */ = {
+			isa = PBXGroup;
+			children = (
+				CA7D2B2C2353485B00640B13 /* FirstSectionHeader.xib */,
+				CA7D2B2E2353486600640B13 /* NextPresenterSectionHeader.xib */,
+			);
+			path = SectionHeader;
 			sourceTree = "<group>";
 		};
 		CAFA549A2104765300C4A808 /* OhJooYeoTests */ = {
@@ -1066,9 +1077,11 @@
 				CA83972622F32B1B00248A8C /* ChurchInfo.storyboard in Resources */,
 				CA8330C822C8C4DC00462412 /* LocationView.storyboard in Resources */,
 				CA8BB704228FDFE300E6FFD5 /* SignUpStoryBoard.storyboard in Resources */,
+				CA7D2B2F2353486600640B13 /* NextPresenterSectionHeader.xib in Resources */,
 				CAE1748C22DB39A7002F2A03 /* NoticeHeaderView.xib in Resources */,
 				CA22838620943F2B0023B3C1 /* Main.storyboard in Resources */,
 				CAE1749022DB3B16002F2A03 /* Notice.storyboard in Resources */,
+				CA7D2B2D2353485B00640B13 /* FirstSectionHeader.xib in Resources */,
 				CA8E2EEE22E30AF80027BCA1 /* AppInfo.storyboard in Resources */,
 				CA9CD23E234891B700534FEB /* ColorAssets.xcassets in Resources */,
 				CA8E2EE322E308120027BCA1 /* GroupInfo.storyboard in Resources */,
@@ -1145,6 +1158,7 @@
 				"${BUILT_PRODUCTS_DIR}/RxAlamofire/RxAlamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/RxCocoa/RxCocoa.framework",
 				"${BUILT_PRODUCTS_DIR}/RxSwift/RxSwift.framework",
+				"${BUILT_PRODUCTS_DIR}/SnapKit/SnapKit.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
 				"${BUILT_PRODUCTS_DIR}/Swinject/Swinject.framework",
 			);
@@ -1159,6 +1173,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxAlamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxCocoa.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxSwift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SnapKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Swinject.framework",
 			);
@@ -1234,7 +1249,6 @@
 				CAD7BBD32165BD6F006661AF /* MusicDAO.swift in Sources */,
 				CA91B25522F59D2A00970B31 /* ViewModel.swift in Sources */,
 				CA9697E42340BC7700969B48 /* CardView.swift in Sources */,
-				CA05788D2350D3B20025E8AD /* WorshipList.swift in Sources */,
 				CA888F80227AFFBA001B6E87 /* OJYUITextField.swift in Sources */,
 				CAA3FA64221804C1006C30F0 /* DonationViewController.swift in Sources */,
 				CAA3FA62221804B9006C30F0 /* OpenSourceViewController.swift in Sources */,
