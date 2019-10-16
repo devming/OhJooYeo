@@ -41,6 +41,7 @@
 		CA7D2B3123534D2600640B13 /* FirstSectionHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7D2B3023534D2600640B13 /* FirstSectionHeader.swift */; };
 		CA7D2B3323534D3000640B13 /* NextPresenterSectionHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7D2B3223534D3000640B13 /* NextPresenterSectionHeader.swift */; };
 		CA7D2B3623535C8C00640B13 /* PhraseMessageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7D2B3523535C8C00640B13 /* PhraseMessageViewModel.swift */; };
+		CA7D2B3823535D2D00640B13 /* PhraseMessageRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7D2B3723535D2D00640B13 /* PhraseMessageRequest.swift */; };
 		CA8330C822C8C4DC00462412 /* LocationView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CA8330C722C8C4DC00462412 /* LocationView.storyboard */; };
 		CA83972522F32B1B00248A8C /* ChuchInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA83972122F32B1B00248A8C /* ChuchInfoViewController.swift */; };
 		CA83972622F32B1B00248A8C /* ChurchInfo.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CA83972322F32B1B00248A8C /* ChurchInfo.storyboard */; };
@@ -179,6 +180,7 @@
 		CA7D2B3023534D2600640B13 /* FirstSectionHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstSectionHeader.swift; sourceTree = "<group>"; };
 		CA7D2B3223534D3000640B13 /* NextPresenterSectionHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NextPresenterSectionHeader.swift; sourceTree = "<group>"; };
 		CA7D2B3523535C8C00640B13 /* PhraseMessageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhraseMessageViewModel.swift; sourceTree = "<group>"; };
+		CA7D2B3723535D2D00640B13 /* PhraseMessageRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhraseMessageRequest.swift; sourceTree = "<group>"; };
 		CA8330C722C8C4DC00462412 /* LocationView.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LocationView.storyboard; sourceTree = "<group>"; };
 		CA83972122F32B1B00248A8C /* ChuchInfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChuchInfoViewController.swift; sourceTree = "<group>"; };
 		CA83972322F32B1B00248A8C /* ChurchInfo.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ChurchInfo.storyboard; sourceTree = "<group>"; };
@@ -617,6 +619,7 @@
 			children = (
 				CA70536320BAEDBC00815D37 /* PhraseMessage.swift */,
 				CA9CF3D322081BBF0098CFA7 /* PhraseMessageSet.swift */,
+				CA7D2B3723535D2D00640B13 /* PhraseMessageRequest.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1257,6 +1260,7 @@
 				CA4FA41520B9420400BE6730 /* WorshipOrder.swift in Sources */,
 				CA4C68A72352114E0057BEC3 /* WorshipInfoRequest.swift in Sources */,
 				CA4FA40F20B9406300BE6730 /* OrderTableViewCell.swift in Sources */,
+				CA7D2B3823535D2D00640B13 /* PhraseMessageRequest.swift in Sources */,
 				CA050141214196BC00B89F3D /* WorshipIDListDataViewModel.swift in Sources */,
 				CAFB287B20D4E7CA00B72722 /* App.swift in Sources */,
 				CA84C2412309590B00526BAB /* ChurchInfoViewModel.swift in Sources */,
