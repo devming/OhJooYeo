@@ -14,7 +14,7 @@ class PhraseDetailViewController: UIViewController {
     @IBOutlet weak var listTableView: UITableView!
     var orderID = 0
     var currentIndex = -1
-    let viewModel = Phrase
+    let viewModel = PhraseMessageViewModel()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,7 +27,7 @@ class PhraseDetailViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        guard let worshipID = WorshipMainInfoViewModel.shared.worshipDataObject.worshipData?.worshipID else {
+        guard let worshipID = viewModel.worshipData?.worshipID else {
             return
         }
         let result = WholeWorshipDataDAO.shared.getResultPhraseMessages(by: worshipID)

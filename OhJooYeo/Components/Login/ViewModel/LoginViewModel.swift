@@ -38,18 +38,17 @@ final class LoginViewModel: ViewModel {
         return text.isEmpty
     }
     
-    func callLogin(id: String, pw: String) {
+    func callLogin(id: String, pw: String) -> Observable<Bool> {
         let params: Parameters = ["id": id, "pw": pw]
-        APIService.postSignin(parameters: params)
-            .subscribe(onNext: { result in
+        
+        return APIService.postSignin(parameters: params)
+            .map { result in
                 if result == "true" {
-                    print("로그인 성공")
                     WorshipManager.shared.churchId = 1
-                } else {
-                    print("로그인 실패")
+                    return true
                 }
-            })
-            .disposed(by: disposeBag)
+                return false
+            }
 //        App.api.signIn(id: id, pw: pw) { isSuccess in
 //            if isSuccess {
 //                completionHandler()

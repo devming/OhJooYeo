@@ -404,6 +404,7 @@
 		CA3080C72130F74C00255A7E /* View */ = {
 			isa = PBXGroup;
 			children = (
+				CA4FA41020B9406700BE6730 /* ViewController */,
 				CAF7E59C2353456C00F341F7 /* SectionHeader */,
 				CA3080C62130F73700255A7E /* TableViewCells */,
 			);
@@ -436,7 +437,6 @@
 				CA4FA41320B941F600BE6730 /* Model */,
 				CA3080C72130F74C00255A7E /* View */,
 				CA3080BF2130F61200255A7E /* ViewModel */,
-				CA4FA41020B9406700BE6730 /* ViewController */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -776,7 +776,6 @@
 				CA888F7A227AFC9F001B6E87 /* Model */,
 				CA888F78227AFC3E001B6E87 /* View */,
 				CA888F7B227AFCA4001B6E87 /* ViewModel */,
-				CA888F79227AFC96001B6E87 /* ViewController */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -784,6 +783,7 @@
 		CA888F78227AFC3E001B6E87 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				CA888F79227AFC96001B6E87 /* ViewController */,
 				CA8BB703228FDFE300E6FFD5 /* SignUpStoryBoard.storyboard */,
 				CA8AED7922A2689B00DF6144 /* SignIn.storyboard */,
 			);

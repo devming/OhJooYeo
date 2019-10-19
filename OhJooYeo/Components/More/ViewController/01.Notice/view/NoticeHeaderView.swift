@@ -18,7 +18,8 @@ class NoticeHeaderView: UITableViewHeaderFooterView {
     var item: NoticeModelItem? {
         didSet {
             guard let item = item else { return }
-            titleLabel.text = item.title
+            /// TODO: 이건 뭐로 설정해야되지?
+//            titleLabel.text = item.title
             setCollapsed(collapsed: item.isCollapsed)
         }
     }

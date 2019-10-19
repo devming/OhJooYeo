@@ -8,7 +8,7 @@
 
 class AdvertisementRequest: BaseRequest {
     
-    enum CodingKeys: String, CodingKey {
-        case churchId = "churchId"
-    }
+//    enum CodingKeys: String, CodingKey {
+//        case churchId = "churchId"
+//    }
 }

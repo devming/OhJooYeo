@@ -7,6 +7,7 @@
 //
 
 import Alamofire
+import RxSwift
 
 final class AdvertisementViewModel: ViewModel {
     var advertisements: [Advertisement]
@@ -15,16 +16,27 @@ final class AdvertisementViewModel: ViewModel {
         advertisements = [Advertisement]()
         super.init()
         
-        bindRx()
+//        bindRx()
     }
     
-    private func bindRx() {
+//    private func bindRx() {
+//        let params: Parameters = [AdvertisementRequest.CodingKeys.churchId.rawValue: WorshipManager.shared.churchId]
+//
+//        APIService.postAd(parameters: params)
+//            .map { try JSONDecoder().decode(Advertisement.self, from: $0) }
+//            .subscribe(onNext: { advertisement in
+//                self.advertisements.append(advertisement)
+//            }).disposed(by: disposeBag)
+//    }
+    
+    func callData() -> Observable<Advertisement> {
         let params: Parameters = [AdvertisementRequest.CodingKeys.churchId.rawValue: WorshipManager.shared.churchId]
         
-        APIService.postAd(parameters: params)
+        return APIService.postAd(parameters: params)
             .map { try JSONDecoder().decode(Advertisement.self, from: $0) }
-            .subscribe(onNext: { advertisement in
+            .map { advertisement -> Advertisement in
                 self.advertisements.append(advertisement)
-            }).disposed(by: disposeBag)
+                return advertisement
+            }
     }
 }

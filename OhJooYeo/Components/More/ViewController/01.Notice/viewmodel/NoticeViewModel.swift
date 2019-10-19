@@ -22,21 +22,21 @@ class NoticeViewModel: NSObject {
     }
     
     func setTestData() {
-        let data: [Notice] = [
-            Notice(isCollapsed: true, date: Date.init(timeIntervalSinceNow: TimeInterval()), title: "테스트 공지1", content: "테스트 내용테스트 내용테스트 내용테스트 내용테스트 내용테스트 내용테스트 내용테스트 내용테스트 내용테스트 내용테스트 내용테스트 내용테스트 내용테스트 내용테스트 내용테스트 내용테스트 내용테스트 내용1"),
-            Notice(isCollapsed: true, date: Date.init(timeIntervalSinceNow: TimeInterval()), title: "테스트 공지2", content: "테스트 내용2"),
-            Notice(isCollapsed: true, date: Date.init(timeIntervalSinceNow: TimeInterval()), title: "테스트 공지3", content: "테스트 내용3"),
-            Notice(isCollapsed: true, date: Date.init(timeIntervalSinceNow: TimeInterval()), title: "테스트 공지4", content: "테스트 내용테스트 내용테스트 내용테스트 내용테스트 내용테스트 내용테스트 내용테스트 내용테스트 내용테스트 내용테스트 내용4"),
-            Notice(isCollapsed: true, date: Date.init(timeIntervalSinceNow: TimeInterval()), title: "테스트 공지5", content: "테스트 내용테스트 내용테스트 내용테스트 내용테스트 내용테스트 내용테스트 내용테스트 내용테스트 내용테스트 내용테스트 내용테스트 내용테스트 내용테스트 내용테스트 내용테스트 내용테스트 내용테스트 내용테스트 내용테스트 내용테스트 내용테스트 내용테스트 내용테스트 내용테스트 내용테스트 내용테스트 내용테스트 내용테스트 내용테스트 내용테스트 내용테스트 내용테스트 내용테스트 내용테스트 내용테스트 내용테스트 내용테스트 내용5"),
-            Notice(isCollapsed: true, date: Date.init(timeIntervalSinceNow: TimeInterval()), title: "테스트 공지6", content: "테스트 내용6")
-                              ]
-        items = data
+//        let data: [Notice] = [
+//            Notice(isCollapsed: true, date: Date.init(timeIntervalSinceNow: TimeInterval()), title: "테스트 공지1", content: "테스트 내용테스트 내용테스트 내용테스트 내용테스트 내용테스트 내용테스트 내용테스트 내용테스트 내용테스트 내용테스트 내용테스트 내용테스트 내용테스트 내용테스트 내용테스트 내용테스트 내용테스트 내용1"),
+//            Notice(isCollapsed: true, date: Date.init(timeIntervalSinceNow: TimeInterval()), title: "테스트 공지2", content: "테스트 내용2"),
+//            Notice(isCollapsed: true, date: Date.init(timeIntervalSinceNow: TimeInterval()), title: "테스트 공지3", content: "테스트 내용3"),
+//            Notice(isCollapsed: true, date: Date.init(timeIntervalSinceNow: TimeInterval()), title: "테스트 공지4", content: "테스트 내용테스트 내용테스트 내용테스트 내용테스트 내용테스트 내용테스트 내용테스트 내용테스트 내용테스트 내용테스트 내용4"),
+//            Notice(isCollapsed: true, date: Date.init(timeIntervalSinceNow: TimeInterval()), title: "테스트 공지5", content: "테스트 내용테스트 내용테스트 내용테스트 내용테스트 내용테스트 내용테스트 내용테스트 내용테스트 내용테스트 내용테스트 내용테스트 내용테스트 내용테스트 내용테스트 내용테스트 내용테스트 내용테스트 내용테스트 내용테스트 내용테스트 내용테스트 내용테스트 내용테스트 내용테스트 내용테스트 내용테스트 내용테스트 내용테스트 내용테스트 내용테스트 내용테스트 내용테스트 내용테스트 내용테스트 내용테스트 내용테스트 내용테스트 내용5"),
+//            Notice(isCollapsed: true, date: Date.init(timeIntervalSinceNow: TimeInterval()), title: "테스트 공지6", content: "테스트 내용6")
+//                              ]
+//        items = data
     }
 }
 
 extension NoticeViewModel: HeaderViewDelegate {
     func toggleSection(header: NoticeHeaderView, section: Int) {
-        var item = items[section]
+        let item = items[section]
         if item.isCollapsible {
             print("#### \(item.isCollapsed)")
             let collapsed = !item.isCollapsed

@@ -20,8 +20,8 @@ class LoginViewController: UIViewController {
     let viewModel = LoginViewModel()
     
 //    @IBOutlet weak var bottomConstraint: NSLayoutConstraint!
-    let test = true
-    let disposeBag = DisposeBag()
+//    let test = true
+    var disposeBag = DisposeBag()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -52,23 +52,18 @@ class LoginViewController: UIViewController {
             .disposed(by: disposeBag)
         
         loginButton.rx.tap
-            .asDriver()
-//            .filter { self.emailTextField.text == "cc@cc.cc"  && self.passwordTextField.text == ".cc123456" }
-            .drive(onNext: {
-                // API Call
-                self.viewModel.callLogin(id: self.emailTextField.text ?? "", pw: self.passwordTextField.text ?? "",
-                                         completionHandler: {
-                                            GlobalState.shared.autoLogin = true
-                                            loginCompletionHandler() {
-                                                self.performSegue(withIdentifier: "mainSegue", sender: self)
-                                            }
-                },
-                                         errorHandler: {
-                                            GlobalState.shared.autoLogin = false
-                                            showConfirmationAlert(alertTitle: "로그인 실패", alertMessage: "이메일 주소와 비밀번호를 다시 확인하세요.", viewController: self)
-                })
+            .map { (self.emailTextField.text, self.passwordTextField.text) }
+            .filter { $0.0 != nil && $0.1 != nil }
+            .map { _ -> (String?, String?) in return ("admin", "admin") }     /// TODO: [테스트용코드] 이건 반드시 지울것
+            .flatMap { self.viewModel.callLogin(id: $0.0!, pw: $0.1!) }
+            .asDriver(onErrorJustReturn: false)
+            .drive(onNext: { isSuccess in
+                GlobalState.shared.autoLogin = isSuccess
+                if isSuccess {
+                    self.performSegue(withIdentifier: "mainSegue", sender: self)
+                }
             }).disposed(by: disposeBag)
-        
+            
         
         
 //        /// Test Code
@@ -76,14 +71,14 @@ class LoginViewController: UIViewController {
 //            self.performSegue(withIdentifier: "mainSegue", sender: self)
 //            return
 //        }
-        
-        if GlobalState.shared.autoLogin {
-            loginCompletionHandler() {
-                
-                self.performSegue(withIdentifier: "mainSegue", sender: self)
-            }
-            return
-        }
+//
+//        if GlobalState.shared.autoLogin {
+//            loginCompletionHandler() {
+//
+//                self.performSegue(withIdentifier: "mainSegue", sender: self)
+//            }
+//            return
+//        }
     }
     
     //    func controlKeyboardConstraint() {
@@ -115,4 +110,9 @@ class LoginViewController: UIViewController {
 //            }
 //        }
 //    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        self.disposeBag = DisposeBag()
+    }
 }
