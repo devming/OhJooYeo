@@ -18,7 +18,7 @@ class AdvertisementViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        NotificationCenter.default.addObserver(self, selector: #selector(advertisementUpdate(_:)), name: .AdvertisementDidUpdated, object: nil)
+//        NotificationCenter.default.addObserver(self, selector: #selector(advertisementUpdate(_:)), name: .AdvertisementDidUpdated, object: nil)
         
         initRefreshControl()
         setTransparentBackground(navigationController: self.navigationController)
@@ -40,13 +40,13 @@ class AdvertisementViewController: UIViewController {
     }
     
     @objc func reloadDatas() {
-        DispatchQueue.main.async {
-            App.loadAllDataFromServer { [weak self] in
-                App.isLoadingComplete = true
-                self?.refreshControl.endRefreshing()
-                NotificationCenter.default.post(name: .AdvertisementDidUpdated, object: nil)
-            }
-        }
+//        DispatchQueue.main.async {
+//            App.loadAllDataFromServer { [weak self] in
+//                App.isLoadingComplete = true
+//                self?.refreshControl.endRefreshing()
+//                NotificationCenter.default.post(name: .AdvertisementDidUpdated, object: nil)
+//            }
+//        }
     }
 }
 
@@ -61,26 +61,25 @@ extension AdvertisementViewController: UITableViewDataSource {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: AdvertisementTableViewCell.cellName) as? AdvertisementTableViewCell else {
             return UITableViewCell()
         }
-        cell.titleLabel.text = viewModel.advertisements[indexPath.row].title
-        cell.descriptionLabel.text = viewModel.advertisements[indexPath.row].content
         
+        cell.setItem(item: viewModel.advertisements[indexPath.row])
 
         return cell
     }
 }
 
 extension AdvertisementViewController {
-    @objc func advertisementUpdate(_ notification: Notification) {
-        if App.isLoadingComplete {
-            OperationQueue.main.addOperation { [weak self] in
-                self?.listTableView.isHidden = false
-                self?.listTableView.reloadData()
-                App.isLoadingComplete = false
-            }
-        } else {
-            self.backgroundView.showErrorView(.network) {
-                self.listTableView.isHidden = true
-            }
-        }
-    }
+//    @objc func advertisementUpdate(_ notification: Notification) {
+//        if App.isLoadingComplete {
+//            OperationQueue.main.addOperation { [weak self] in
+//                self?.listTableView.isHidden = false
+//                self?.listTableView.reloadData()
+//                App.isLoadingComplete = false
+//            }
+//        } else {
+//            self.backgroundView.showErrorView(.network) {
+//                self.listTableView.isHidden = true
+//            }
+//        }
+//    }
 }

@@ -15,13 +15,13 @@ func showConfirmationAlert(alertTitle title: String, alertMessage message: Strin
     vc.present(alertController, animated: true, completion: nil)
 }
 
-func loginCompletionHandler(completionHandler: @escaping () -> Void) {
-    App.loadAllDataFromServer {
-        App.isLoadingComplete = true
-        NotificationCenter.default.post(name: .WorshipDidUpdated, object: nil)
-        completionHandler()
-    }
-}
+//func loginCompletionHandler(completionHandler: @escaping () -> Void) {
+//    App.loadAllDataFromServer {
+//        App.isLoadingComplete = true
+//        NotificationCenter.default.post(name: .WorshipDidUpdated, object: nil)
+//        completionHandler()
+//    }
+//}
 
 func setTransparentBackground(navigationController: UINavigationController?) {
     let gradientLayer = CAGradientLayer()

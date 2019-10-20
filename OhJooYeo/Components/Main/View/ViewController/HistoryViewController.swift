@@ -7,38 +7,56 @@
 //
 
 import UIKit
+import RxSwift
 
 class HistoryViewController: UIViewController {
 
-    var worshipIDList: [WorshipIdDate]?
+    let viewModel = WorshipIDListDataViewModel()
+    var mainViewModel: WorshipMainInfoViewModel? {
+        didSet {
+            print("mainViewModel is set in HistoryViewController")
+        }
+    }
     @IBOutlet weak var listTableView: UITableView!
+    var disposeBag = DisposeBag()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.worshipIDList = WorshipIDListDAO.shared.worshipIDDateList
         
 //        setTransparentBackground(navigationController: self.navigationController)
 //        navigationBar.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0)
     }
     
     @IBAction func closeButtonTapped(_ sender: Any) {
-        self.dismiss(animated: true, completion: nil)
+        self.dismiss(animated: true) {
+
+            if let mainViewController = self.presentingViewController as? MainViewController {
+                self.dismiss(animated: true) {
+                    mainViewController.listTableView.reloadData()
+                }
+            }
+        }
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        disposeBag = DisposeBag()
     }
 }
 
 extension HistoryViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        guard let worshipIDList = self.worshipIDList else {
+        guard let worshipIdDateList = self.viewModel.worshipIdDateList else {
             return 0
         }
-        return worshipIDList.count
+        return worshipIdDateList.count
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: HistoryTableViewCell.cellName) as? HistoryTableViewCell else {
             return UITableViewCell()
         }
 //        cell.worshipIDLabel.text = self.worshipIDList?[indexPath.row].worshipID
-        cell.dateLabel.text = self.worshipIDList?[indexPath.row].date
+        cell.dateLabel.text = self.viewModel.worshipIdDateList?[indexPath.row].date
         
         return cell
     }
@@ -49,19 +67,24 @@ extension HistoryViewController: UITableViewDelegate {
         tableView.deselectRow(at: indexPath, animated: true)
         /// - TODO: Loading Progress.
         /// - TODO: Local에서 해당하는 ID의 데이터를 불러온다.
-        guard let worshipIDList = self.worshipIDList,
-            let data = WholeWorshipDataDAO.shared.getResult(worshipID: worshipIDList[indexPath.row].worshipID)?.first else {
-            showConfirmationAlert(alertTitle: "오류", alertMessage: "해당 날짜 주보가 없습니다.", viewController: self)
-            return
-        }
-        /// data를 MainViewController로 보내야함
-        WholeWorshipDataDAO.shared.worshipData = data
-        WorshipMainInfoViewModel.shared.setDate()
-        App.isLoadingComplete = true
         
-        /// - TODO: Notification보내서
-        self.dismiss(animated: true) {
-            NotificationCenter.default.post(name: .WorshipDidUpdated, object: nil)
+        /// - 선택한것 가지고 불러오고 main view controller 업데이트하기
+        /// 1. 선택한다.
+        /// 2. 선택한 WorshipId로 주보 내용 불러온다.
+        /// 3. 현재 창을 종료
+        /// 4. 불러온 내용을 가지고 main view controller 업데이트
+        if let id = viewModel.worshipIdDateList?[indexPath.row].worshipId {
+            mainViewModel?.callApi(worshipId: id)
+                .observeOn(MainScheduler.instance)
+                .subscribe(onNext: { (worshipInfo) in
+                    if let mainViewController = self.presentingViewController as? MainViewController {
+                        mainViewController.viewModel.worshipInfo = worshipInfo
+                        self.dismiss(animated: true) {
+                            mainViewController.listTableView.reloadData()
+                        }
+                    }
+                }).disposed(by: disposeBag)
         }
     }
+    
 }

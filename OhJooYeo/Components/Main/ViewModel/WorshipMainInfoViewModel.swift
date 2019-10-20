@@ -22,10 +22,10 @@ final class WorshipMainInfoViewModel: ViewModel {
         super.init()
     }
     
-    func bindWorshipMainInfo() -> Observable<WorshipMainInfo> {
+    func callApi(worshipId: String) -> Observable<WorshipMainInfo> {
         
         let params: Parameters = [BaseRequest.CodingKeys.churchId.rawValue: WorshipManager.shared.churchId,
-                                  WorshipInfoRequest.CodingKeys.worshipId.rawValue: WorshipManager.shared.currentWorshipInfo?.worshipId as Any,
+                                  WorshipInfoRequest.CodingKeys.worshipId.rawValue: worshipId,
                                   WorshipInfoRequest.CodingKeys.version.rawValue: WorshipManager.shared.currentWorshipInfo?.version as Any]
         
         return APIService.postWorshipInfo(parameters: params)
@@ -33,10 +33,9 @@ final class WorshipMainInfoViewModel: ViewModel {
             .do(onNext: { (worshipInfo) in
                 self.worshipInfo = worshipInfo
             })
-            .retry(3)
     }
     
-    private func showDateData(worshipDate: String) -> String {
+    func showDateData(worshipDate: String) -> String {
         let dateComponentString = worshipDate.split(separator: "-")
         var components = DateComponents()
         components.year = Int(dateComponentString[dateComponentString.index(0, offsetBy: 0)])

@@ -53,7 +53,7 @@ class MainViewController: UIViewController {
         self.listTableView.reloadData()
     }
     @IBAction func dateHistoryTapped(_ sender: Any) {
-        print("Tapped")
+        performSegue(withIdentifier: SegueName.historySegue.rawValue, sender: sender)
     }
     
     
@@ -167,17 +167,13 @@ extension MainViewController {
     }
     
     @objc func reloadDatas() {
-        viewModel.bindWorshipMainInfo()
-            .subscribe(onNext: { _ in
-                self.listTableView.reloadData()
-            }).disposed(by: disposeBag)
-//        DispatchQueue.main.async {
-//            App.loadAllDataFromServer { [weak self] in
-//                App.isLoadingComplete = true
-//                self?.refreshControl.endRefreshing()
-//                NotificationCenter.default.post(name: .WorshipDidUpdated, object: nil)
-//            }
-//        }
+        if let worshipId = WorshipManager.shared.currentWorshipInfo?.worshipId {
+            viewModel.callApi(worshipId: worshipId)
+                .observeOn(MainScheduler.instance)
+                .subscribe(onNext: { _ in
+                    self.listTableView.reloadData()
+                }).disposed(by: disposeBag)
+        }
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -192,6 +188,10 @@ extension MainViewController {
             if let destination = segue.destination as? PhraseDetailViewController {
                 destination.orderID = Int(orderList[indexPath.row].orderID)
             }
+        }
+        
+        if let _ = sender as? UIButton, let vc = segue.destination as? HistoryViewController {
+            vc.mainViewModel = self.viewModel
         }
     }
 }
