@@ -8,14 +8,24 @@
 
 import UIKit
 
-class NextPresenterSectionHeader: UIView {
+class NextPresenterSectionHeader: UITableViewHeaderFooterView {
 
-    /*
-    // Only override draw() if you perform custom drawing.
-    // An empty implementation adversely affects performance during animation.
-    override func draw(_ rect: CGRect) {
-        // Drawing code
+    static let headerName = "NextPresenterSectionHeader"
+    required init?(coder: NSCoder) {
+        super.init(coder: coder)
+        
+        setup()
     }
-    */
 
+    override init(reuseIdentifier: String?) {
+        super.init(reuseIdentifier: reuseIdentifier)
+        
+        setup()
+    }
+    
+    func setup() {
+        if let view = Bundle.main.loadNibNamed(NextPresenterSectionHeader.headerName, owner: self, options: nil)?.first as? NextPresenterSectionHeader {
+            addSubview(view)
+        }
+    }
 }

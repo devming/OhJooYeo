@@ -8,27 +8,31 @@
 
 import UIKit
 
-class FirstSectionHeader: UIView {
+class FirstSectionHeader: UITableViewHeaderFooterView {
+    
+    static let headerName = "FirstSectionHeader"
 
-    @IBOutlet weak var mainPresenterLabel: UILabel!
+    @IBOutlet weak var mainPresenterLabel: UILabel?
     
     required init?(coder: NSCoder) {
         super.init(coder: coder)
+        
         setup()
     }
     
-    override init(frame: CGRect) {
-        super.init(frame: frame)
+    override init(reuseIdentifier: String?) {
+        super.init(reuseIdentifier: reuseIdentifier)
+        
         setup()
     }
 
     func setup() {
-        if let view = Bundle.main.loadNibNamed("FirstSectionHeader", owner: self, options: nil)?.first as? FirstSectionHeader {
+        if let view = Bundle.main.loadNibNamed(FirstSectionHeader.headerName, owner: self, options: nil)?.first as? FirstSectionHeader {
             self.addSubview(view)
         }
     }
     
     func setMainPresenter(mainPresenter: String?) {
-        mainPresenterLabel.text = mainPresenter
+        self.mainPresenterLabel?.text = "인도자: \(mainPresenter)"
     }
 }

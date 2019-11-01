@@ -6,7 +6,7 @@
 //  Copyright © 2018년 devming. All rights reserved.
 //
 
-import RealmSwift
+//import RealmSwift
 /**
  
  
@@ -24,9 +24,14 @@ class WorshipOrder: Decodable {
     var presenter: String?
     var order: Int = 0
     var orderId: Int = 0
-    var churchId: Int? = 0
-    
+//    var churchId: Int? = 0
+//
     var type: Int? = 0
+    var standUp: Int? = 0
+    var isStandUp: Bool {
+        return standUp == 1 ? true : false
+    }
+    
 //    let ownerWorship = LinkingObjects(fromType: WorshipMainInfo.self, property: "worshipOrders")
     var worshipOrderId: String?
     
@@ -35,12 +40,13 @@ class WorshipOrder: Decodable {
     public required convenience init(from decoder: Decoder) throws {
         self.init()
         let container = try decoder.container(keyedBy: CodingKeys.self)
-        self.title = try container.decode(String.self, forKey: .title)
-        self.detail = try container.decode(String.self, forKey: .detail)
-        self.presenter = try container.decode(String.self, forKey: .presenter)
+        self.title = try container.decodeIfPresent(String.self, forKey: .title)
+        self.detail = try container.decodeIfPresent(String.self, forKey: .detail)
+        self.presenter = try container.decodeIfPresent(String.self, forKey: .presenter)
         self.order = try container.decode(Int.self, forKey: .order)
         self.orderId = try container.decode(Int.self, forKey: .orderId)
-//        self.type = try container.decode(Int.self, forKey: .type)
+        self.type = try container.decodeIfPresent(Int.self, forKey: .type)
+        self.standUp = try container.decodeIfPresent(Int.self, forKey: .standUp)
         
         self.worshipId = WorshipManager.shared.currentWorshipInfo?.worshipId
         self.worshipOrderId = "\(String(describing: self.worshipId))_\(self.orderId)"
@@ -56,6 +62,11 @@ class WorshipOrder: Decodable {
         case music = 2
     }
     
+//    enum StandUpType: Int {
+//        case down = 0
+//        case up = 1
+//    }
+    
     enum CodingKeys: String, CodingKey {
         case title = "title"
         case detail = "detail"
@@ -64,6 +75,7 @@ class WorshipOrder: Decodable {
         case orderId = "orderId"
         
         case type = "type"
+        case standUp = "standupYn"
 //        case worshipOrderId = "worshipOrderId"
     }
 }

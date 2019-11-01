@@ -15,10 +15,10 @@ class MainViewController: UIViewController {
     
     @IBOutlet var backgroundView: BackgroundView!
     @IBOutlet weak var listTableView: UITableView!
-    @IBOutlet weak var yearlyMessage: UITextView!
-    @IBOutlet weak var mainPresenterLabel: UILabel!
+//    @IBOutlet weak var yearlyMessage: UITextView!
+//    @IBOutlet weak var mainPresenterLabel: UILabel!
     @IBOutlet weak var dateHistoryButton: UIButton!
-    @IBOutlet weak var standupLabel: UILabel!
+//    @IBOutlet weak var standupLabel: UILabel!
     
     let refreshControl = UIRefreshControl()
     var activityIndicator: NVActivityIndicatorView?
@@ -36,15 +36,15 @@ class MainViewController: UIViewController {
         
         self.listTableView.rowHeight = UITableViewAutomaticDimension
         self.listTableView.layer.cornerRadius = 10.0
-        
-//        NotificationCenter.default.addObserver(self, selector: #selector(worshipUpdate), name: .WorshipDidUpdated, object: nil)
+        self.listTableView.register(FirstSectionHeader.self, forHeaderFooterViewReuseIdentifier: FirstSectionHeader.headerName)
+        self.listTableView.register(NextPresenterSectionHeader.self, forHeaderFooterViewReuseIdentifier: NextPresenterSectionHeader.headerName)
+       
         
         initRefreshControl()
         
         setTransparentBackground(navigationController: self.navigationController)
         
         reloadDatas()
-//        updateWorship()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -60,12 +60,23 @@ class MainViewController: UIViewController {
 }
 
 extension MainViewController: UITableViewDataSource {
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 3
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         guard let orderList = viewModel.worshipInfo?.worshipOrderList else {
             return 0
         }
         
-        return orderList.count + 1
+        if section == 0 {
+            return orderList.count
+        } else if section == 1 {
+            return 1
+        }
+        return 1
+        
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -78,40 +89,55 @@ extension MainViewController: UITableViewDataSource {
 //                print("orderList is null")
 //                return UITableViewCell()
 //        }
-        
-        switch indexPath.row {
-        case 0..<orderList.count:
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: OrderTableViewCell.cellName) as? OrderTableViewCell else {
+        if indexPath.section == 0 {
+
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: OrderRowCell.cellName) as? OrderRowCell else {
                 return UITableViewCell()
             }
             
             cell.setItem(item: orderList[indexPath.row])
             return cell
-            
-        case orderList.count:
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: NextPresenterTableViewCell.cellName) as? NextPresenterTableViewCell else {
+        } else if indexPath.section == 1 {
+         
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: NextPresenterRowCell.cellName) as? NextPresenterRowCell else {
                 return UITableViewCell()
             }
             
             cell.setItem(item: nextPresenter)
             return cell
-            
-        default:
-            return UITableViewCell()
         }
+        
+        return UITableViewCell()
     }
     
 }
 
 extension MainViewController: UITableViewDelegate {
     
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 40.0
+    }
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         if section == 1 {
-            return Bundle.main.loadNibNamed("NextPresenterSectionHeader", owner: self, options: nil)?.first as? NextPresenterSectionHeader
+            guard let headerView = tableView.dequeueReusableHeaderFooterView(withIdentifier: NextPresenterSectionHeader.headerName) as? NextPresenterSectionHeader else { return nil }
+            
+            return headerView
         }
-        let firstView = FirstSectionHeader(frame: CGRect.zero)
-        firstView.setMainPresenter(mainPresenter: viewModel.worshipInfo?.mainPresenter)
-        return firstView
+        
+        guard let headerView = tableView.dequeueReusableHeaderFooterView(withIdentifier: FirstSectionHeader.headerName) as? FirstSectionHeader else { return nil }
+        
+        viewModel.mainPresenterObservable
+            .asDriver(onErrorJustReturn: " ")
+            .drive(onNext: { mainPresenter in
+                headerView.setMainPresenter(mainPresenter: mainPresenter) 
+            }).disposed(by: disposeBag)
+//            .bind(to: headerView.mainPresenterLabel!.rx.text)
+//            .disposed(by: disposeBag)
+//        headerView.mainPresenterLabel.rx.text
+            
+//        headerView.setMainPresenter(mainPresenter: viewModel.worshipInfo?.mainPresenter)
+        
+        return headerView
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -167,6 +193,7 @@ extension MainViewController {
     }
     
     @objc func reloadDatas() {
+        /// [TestCode]
 //        if let worshipId = WorshipManager.shared.currentWorshipInfo?.worshipId {
         let worshipId = "19-001"
             viewModel.callApi(worshipId: worshipId)
@@ -187,7 +214,7 @@ extension MainViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         super.prepare(for: segue, sender: sender)
         
-        if let cell = sender as? OrderTableViewCell, let indexPath = self.listTableView.indexPath(for: cell) {
+        if let cell = sender as? OrderRowCell, let indexPath = self.listTableView.indexPath(for: cell) {
             
             guard let orderList = viewModel.worshipInfo?.worshipOrderList, orderList[indexPath.row].type == WorshipOrder.TypeName.phrase.rawValue else {
                 return

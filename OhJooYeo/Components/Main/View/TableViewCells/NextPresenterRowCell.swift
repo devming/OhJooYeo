@@ -8,9 +8,9 @@
 
 import UIKit
 
-class NextPresenterTableViewCell: UITableViewCell {
+class NextPresenterRowCell: UITableViewCell {
 
-    static let cellName = "nextPresenterCell"
+    static let cellName = "NextPresenterRowCell"
     @IBOutlet weak var mainPresenterLabel: UILabel!
     @IBOutlet weak var prayerLabel: UILabel!
     @IBOutlet weak var offerLabel: UILabel!

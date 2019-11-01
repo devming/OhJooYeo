@@ -10,23 +10,23 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="NextPresenterSectionHeader" customModule="OhJooYeo" customModuleProvider="target"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <view contentMode="scaleToFill" id="iN0-l3-epB">
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="UITableViewHeaderFooterView">
             <rect key="frame" x="0.0" y="0.0" width="399" height="58"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="다음주 예배섬김" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gug-p3-zPd">
-                    <rect key="frame" x="0.0" y="0.0" width="399" height="58"/>
+                    <rect key="frame" x="10" y="5" width="379" height="48"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <fontDescription key="fontDescription" name="AppleSDGothicNeo-Bold" family="Apple SD Gothic Neo" pointSize="17"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
             </subviews>
-            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="Gug-p3-zPd" secondAttribute="trailing" id="Bqs-rp-QAa"/>
-                <constraint firstItem="Gug-p3-zPd" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="CkR-ld-YxV"/>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="Gug-p3-zPd" secondAttribute="bottom" id="PSP-H9-AV7"/>
-                <constraint firstItem="Gug-p3-zPd" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="fhp-gV-09m"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="Gug-p3-zPd" secondAttribute="trailing" constant="10" id="Bqs-rp-QAa"/>
+                <constraint firstItem="Gug-p3-zPd" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="5" id="CkR-ld-YxV"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="Gug-p3-zPd" secondAttribute="bottom" constant="5" id="PSP-H9-AV7"/>
+                <constraint firstItem="Gug-p3-zPd" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="10" id="fhp-gV-09m"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>

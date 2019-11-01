@@ -19,7 +19,7 @@
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleAspectFit" showsHorizontalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="dIB-bf-QTb" customClass="BaseTableView" customModule="OhJooYeo" customModuleProvider="target">
                                 <rect key="frame" x="10" y="98" width="394" height="705"/>
-                                <color key="backgroundColor" name="defaultTableViewBackground"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <color key="separatorColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="cell" rowHeight="120" id="Xqw-lm-uW4" customClass="PhraseDetailTableViewCell" customModule="OhJooYeo" customModuleProvider="target">
@@ -122,7 +122,7 @@
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleAspectFit" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="tKJ-Pa-Kgb" customClass="BaseTableView" customModule="OhJooYeo" customModuleProvider="target">
                                 <rect key="frame" x="10" y="158.5" width="394" height="644.5"/>
-                                <color key="backgroundColor" name="defaultTableViewBackground"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <color key="separatorColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="cell" rowHeight="120" id="DuU-XL-4jt" customClass="AdvertisementTableViewCell" customModule="OhJooYeo" customModuleProvider="target">
@@ -341,19 +341,12 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textView hidden="YES" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" delaysContentTouches="NO" bouncesZoom="NO" editable="NO" text="네 믿음을 내게 보이라 나는 행함으로 내 믿음을 네게 보이리라 하리라 - 야고보서 2:18 -" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1hG-Tb-haj">
-                                <rect key="frame" x="15" y="168" width="384" height="14"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                            </textView>
-                            <tableView autoresizesSubviews="NO" contentMode="scaleAspectFit" bounces="NO" showsHorizontalScrollIndicator="NO" bouncesZoom="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="7OI-tv-Dqf" customClass="BaseTableView" customModule="OhJooYeo" customModuleProvider="target">
-                                <rect key="frame" x="10" y="220.5" width="394" height="582.5"/>
-                                <color key="backgroundColor" name="defaultTableViewBackground"/>
-                                <color key="separatorColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleAspectFit" bounces="NO" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" bouncesZoom="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="7OI-tv-Dqf" customClass="BaseTableView" customModule="OhJooYeo" customModuleProvider="target">
+                                <rect key="frame" x="10" y="138" width="394" height="665"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <inset key="separatorInset" minX="10" minY="0.0" maxX="10" maxY="0.0"/>
                                 <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="orderCell" rowHeight="80" id="Wss-TL-zTq" customClass="OrderTableViewCell" customModule="OhJooYeo" customModuleProvider="target">
+                                    <tableViewCell contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="OrderRowCell" rowHeight="80" id="Wss-TL-zTq" customClass="OrderRowCell" customModule="OhJooYeo" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="394" height="80"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" multipleTouchEnabled="YES" alpha="0.80000000000000004" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Wss-TL-zTq" id="haZ-Pq-5Zf">
@@ -404,16 +397,16 @@
                                                     </constraints>
                                                 </view>
                                                 <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_asterisk" translatesAutoresizingMaskIntoConstraints="NO" id="Ne8-hM-fse">
-                                                    <rect key="frame" x="13" y="6" width="15" height="15"/>
+                                                    <rect key="frame" x="13" y="15" width="8" height="8"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="height" constant="15" id="9xt-f5-UtZ"/>
-                                                        <constraint firstAttribute="width" constant="15" id="Wh5-I8-SDK"/>
+                                                        <constraint firstAttribute="height" constant="8" id="9xt-f5-UtZ"/>
+                                                        <constraint firstAttribute="width" constant="8" id="Wh5-I8-SDK"/>
                                                     </constraints>
                                                 </imageView>
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <constraints>
-                                                <constraint firstItem="Ne8-hM-fse" firstAttribute="top" secondItem="haZ-Pq-5Zf" secondAttribute="top" constant="6" id="DJi-oa-xz1"/>
+                                                <constraint firstItem="Ne8-hM-fse" firstAttribute="top" secondItem="haZ-Pq-5Zf" secondAttribute="top" constant="15" id="DJi-oa-xz1"/>
                                                 <constraint firstItem="qoT-MO-BkC" firstAttribute="top" secondItem="haZ-Pq-5Zf" secondAttribute="top" constant="3" id="Xc2-X8-Hhm"/>
                                                 <constraint firstAttribute="trailing" secondItem="qoT-MO-BkC" secondAttribute="trailing" constant="5" id="iiK-fz-4VE"/>
                                                 <constraint firstItem="Ne8-hM-fse" firstAttribute="leading" secondItem="haZ-Pq-5Zf" secondAttribute="leading" constant="13" id="msH-SI-EQH"/>
@@ -424,14 +417,14 @@
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <connections>
                                             <outlet property="accessoryImageView" destination="Jys-MS-D1P" id="s1f-71-Zk3"/>
-                                            <outlet property="asteriskImageView" destination="Ne8-hM-fse" id="jLi-g8-7Qo"/>
                                             <outlet property="detailLabel" destination="jEZ-AD-fBR" id="eDP-cT-6rf"/>
                                             <outlet property="presenterLabel" destination="E1c-Rd-KIg" id="mhF-Ff-sBE"/>
+                                            <outlet property="standupMarkImageView" destination="Ne8-hM-fse" id="jLi-g8-7Qo"/>
                                             <outlet property="titleLabel" destination="4qm-oo-A4g" id="Dy2-Nh-PuE"/>
                                             <segue destination="71S-uG-Xnd" kind="show" id="thl-Su-Jej"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="nextPresenterCell" rowHeight="128" id="vtV-UY-I2W" customClass="NextPresenterTableViewCell" customModule="OhJooYeo" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="NextPresenterRowCell" rowHeight="128" id="vtV-UY-I2W" customClass="NextPresenterRowCell" customModule="OhJooYeo" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="108" width="394" height="128"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" alpha="0.80000000000000004" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="vtV-UY-I2W" id="pYI-Op-9rM">
@@ -517,7 +510,7 @@
                                             <outlet property="prayerLabel" destination="SK7-K5-E2B" id="M5n-Pc-vZZ"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="yearlyPhraseCell" rowHeight="80" id="GEX-QM-X9z" customClass="OrderTableViewCell" customModule="OhJooYeo" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="YearlyPhraseRowCell" rowHeight="80" id="GEX-QM-X9z" customClass="YearlyPhraseRowCell" customModule="OhJooYeo" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="236" width="394" height="80"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" alpha="0.80000001192092896" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="GEX-QM-X9z" id="iTO-Pd-5rQ">
@@ -560,9 +553,6 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <connections>
-                                            <outlet property="titleLabel" destination="E6I-BV-kDj" id="JeA-fv-HJw"/>
-                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                                 <connections>
@@ -570,20 +560,8 @@
                                     <outlet property="delegate" destination="ugt-9J-Yw1" id="l7b-5M-ih6"/>
                                 </connections>
                             </tableView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="*표에는 일어나 주시기 바랍니다." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="dLM-0k-cLI">
-                                <rect key="frame" x="15" y="190" width="215" height="20.5"/>
-                                <fontDescription key="fontDescription" name="AppleSDGothicNeo-Regular" family="Apple SD Gothic Neo" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" text="인도자: OOO" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0aM-hC-cdJ">
-                                <rect key="frame" x="310.5" y="190" width="88.5" height="20.5"/>
-                                <fontDescription key="fontDescription" name="AppleSDGothicNeo-Regular" family="Apple SD Gothic Neo" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jtF-xl-Ug5">
-                                <rect key="frame" x="15" y="96" width="369" height="64"/>
+                                <rect key="frame" x="15" y="96" width="337" height="32"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" name="AppleSDGothicNeo-Regular" family="Apple SD Gothic Neo" pointSize="22"/>
                                 <state key="normal" title=" 제 n권 제 m호 yyyy년 MM월 dd일" image="ic_expand_down_grad">
@@ -598,21 +576,12 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="jtF-xl-Ug5" firstAttribute="top" secondItem="xsm-jc-uSD" secondAttribute="top" constant="8" id="0vo-gg-nov"/>
-                            <constraint firstItem="jtF-xl-Ug5" firstAttribute="leading" secondItem="dLM-0k-cLI" secondAttribute="leading" id="1uT-1X-L8Z"/>
-                            <constraint firstItem="xsm-jc-uSD" firstAttribute="trailing" secondItem="1hG-Tb-haj" secondAttribute="trailing" constant="15" id="21u-jp-Sfq"/>
-                            <constraint firstItem="1hG-Tb-haj" firstAttribute="top" secondItem="jtF-xl-Ug5" secondAttribute="bottom" priority="999" constant="8" id="Hzj-lS-Da3"/>
-                            <constraint firstItem="0aM-hC-cdJ" firstAttribute="top" secondItem="dLM-0k-cLI" secondAttribute="top" id="QY1-fo-nuR"/>
-                            <constraint firstItem="0aM-hC-cdJ" firstAttribute="trailing" secondItem="1hG-Tb-haj" secondAttribute="trailing" id="Vzf-9x-rfI"/>
-                            <constraint firstItem="dLM-0k-cLI" firstAttribute="top" secondItem="jtF-xl-Ug5" secondAttribute="bottom" constant="30" id="YUM-f7-WoQ"/>
-                            <constraint firstItem="dLM-0k-cLI" firstAttribute="top" secondItem="1hG-Tb-haj" secondAttribute="bottom" priority="998" constant="8" id="ZMh-xe-BKb"/>
+                            <constraint firstItem="jtF-xl-Ug5" firstAttribute="leading" secondItem="xsm-jc-uSD" secondAttribute="leading" constant="15" id="4R6-AH-6YI"/>
+                            <constraint firstItem="7OI-tv-Dqf" firstAttribute="top" secondItem="jtF-xl-Ug5" secondAttribute="bottom" constant="10" id="OLM-CU-Fpo"/>
                             <constraint firstItem="xsm-jc-uSD" firstAttribute="bottom" secondItem="7OI-tv-Dqf" secondAttribute="bottom" constant="10" id="ZuJ-66-qgy"/>
-                            <constraint firstItem="7OI-tv-Dqf" firstAttribute="top" secondItem="dLM-0k-cLI" secondAttribute="bottom" constant="10" id="cQv-Ag-Imy"/>
-                            <constraint firstItem="1hG-Tb-haj" firstAttribute="leading" secondItem="xsm-jc-uSD" secondAttribute="leading" constant="15" id="cfB-ZH-5HZ"/>
                             <constraint firstItem="xsm-jc-uSD" firstAttribute="trailing" secondItem="7OI-tv-Dqf" secondAttribute="trailing" constant="10" id="fKw-Ae-5XD"/>
                             <constraint firstItem="xsm-jc-uSD" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="jtF-xl-Ug5" secondAttribute="trailing" constant="15" id="gl0-zO-7sY"/>
-                            <constraint firstItem="dLM-0k-cLI" firstAttribute="leading" secondItem="1hG-Tb-haj" secondAttribute="leading" id="hAR-HU-UbO"/>
                             <constraint firstItem="7OI-tv-Dqf" firstAttribute="leading" secondItem="xsm-jc-uSD" secondAttribute="leading" constant="10" id="t1W-nV-pfh"/>
-                            <constraint firstItem="0aM-hC-cdJ" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="dLM-0k-cLI" secondAttribute="trailing" constant="8" id="xma-ev-hQE"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="xsm-jc-uSD"/>
                     </view>
@@ -623,9 +592,6 @@
                         <outlet property="backgroundView" destination="ebc-AN-G2m" id="Vc9-dg-EL8"/>
                         <outlet property="dateHistoryButton" destination="jtF-xl-Ug5" id="sAq-UP-k8M"/>
                         <outlet property="listTableView" destination="7OI-tv-Dqf" id="NvA-iy-1Cd"/>
-                        <outlet property="mainPresenterLabel" destination="0aM-hC-cdJ" id="hgt-9a-kMx"/>
-                        <outlet property="standupLabel" destination="dLM-0k-cLI" id="Xmn-q1-jNK"/>
-                        <outlet property="yearlyMessage" destination="1hG-Tb-haj" id="r7K-zq-GZq"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hwT-hw-lJq" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -671,9 +637,9 @@
                                     <constraint firstItem="AqB-N0-Uyy" firstAttribute="centerY" secondItem="UXi-6w-5Zy" secondAttribute="centerY" id="t70-pZ-VoY"/>
                                 </constraints>
                             </view>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="9g0-6v-7s2">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="9g0-6v-7s2" customClass="BaseTableView" customModule="OhJooYeo" customModuleProvider="target">
                                 <rect key="frame" x="10" y="60" width="394" height="738"/>
-                                <color key="backgroundColor" name="defaultTableViewBackground"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <color key="sectionIndexBackgroundColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="historyCell" rowHeight="80" id="tjQ-Qa-kfP" customClass="HistoryTableViewCell" customModule="OhJooYeo" customModuleProvider="target">
@@ -815,7 +781,7 @@
                     </tabBarItem>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="QHA-O1-thE">
-                        <rect key="frame" x="0.0" y="44" width="414" height="96"/>
+                        <rect key="frame" x="0.0" y="44" width="414" height="103.5"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </navigationBar>
@@ -964,7 +930,7 @@
                     </tabBarItem>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="23G-rQ-vqy">
-                        <rect key="frame" x="0.0" y="44" width="414" height="96"/>
+                        <rect key="frame" x="0.0" y="44" width="414" height="103.5"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -999,7 +965,7 @@
                     <tabBarItem key="tabBarItem" title="묵상" image="tab_bible" id="e6f-a4-mGk"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="MaE-e0-d4e">
-                        <rect key="frame" x="0.0" y="44" width="414" height="96"/>
+                        <rect key="frame" x="0.0" y="44" width="414" height="103.5"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -1065,9 +1031,6 @@
         <image name="tab_more" width="15" height="15"/>
         <namedColor name="colorLight">
             <color red="0.28235294117647058" green="0.50588235294117645" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
-        <namedColor name="defaultTableViewBackground">
-            <color red="0.80000001192092896" green="0.80000001192092896" blue="0.80000001192092896" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="theme1">
             <color red="0.34901960784313724" green="0.43529411764705883" blue="0.94901960784313721" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
