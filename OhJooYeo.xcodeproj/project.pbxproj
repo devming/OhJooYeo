@@ -72,7 +72,6 @@
 		CA91B25D22F5CDEB00970B31 /* BaseRealm.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA91B25C22F5CDEB00970B31 /* BaseRealm.swift */; };
 		CA9697E12340BC6100969B48 /* BaseTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA9697E02340BC6100969B48 /* BaseTableView.swift */; };
 		CA9697E42340BC7700969B48 /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA9697E22340BC7700969B48 /* CardView.swift */; };
-		CA9697E52340BC7700969B48 /* BackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA9697E32340BC7700969B48 /* BackgroundView.swift */; };
 		CA9CD23E234891B700534FEB /* ColorAssets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CA9CD23D234891B700534FEB /* ColorAssets.xcassets */; };
 		CA9CD240234897A000534FEB /* UIColorEx.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA9CD23F234897A000534FEB /* UIColorEx.swift */; };
 		CA9CF3D422081BBF0098CFA7 /* PhraseMessageSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA9CF3D322081BBF0098CFA7 /* PhraseMessageSet.swift */; };
@@ -213,7 +212,6 @@
 		CA925EF922C8D56000F39EE5 /* NMapsMap.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NMapsMap.framework; path = Pods/NMapsMap/framework/NMapsMap.framework; sourceTree = "<group>"; };
 		CA9697E02340BC6100969B48 /* BaseTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTableView.swift; sourceTree = "<group>"; };
 		CA9697E22340BC7700969B48 /* CardView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
-		CA9697E32340BC7700969B48 /* BackgroundView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BackgroundView.swift; sourceTree = "<group>"; };
 		CA9CD23D234891B700534FEB /* ColorAssets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = ColorAssets.xcassets; sourceTree = "<group>"; };
 		CA9CD23F234897A000534FEB /* UIColorEx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColorEx.swift; sourceTree = "<group>"; };
 		CA9CF3D322081BBF0098CFA7 /* PhraseMessageSet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhraseMessageSet.swift; sourceTree = "<group>"; };
@@ -819,7 +817,6 @@
 		CA888F7E227AFF76001B6E87 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				CA9697E32340BC7700969B48 /* BackgroundView.swift */,
 				CA9697E22340BC7700969B48 /* CardView.swift */,
 				CA888F7F227AFFBA001B6E87 /* OJYUITextField.swift */,
 				CA8BB6FF228FDC2500E6FFD5 /* OJYUIButton.swift */,
@@ -1295,7 +1292,6 @@
 				CA83A16022B2923F00B2F549 /* Notice.swift in Sources */,
 				CA70536220BAECAF00815D37 /* PhraseDetailTableViewCell.swift in Sources */,
 				CA3080C52130F6EC00255A7E /* WorshipMainInfoViewModel.swift in Sources */,
-				CA9697E52340BC7700969B48 /* BackgroundView.swift in Sources */,
 				CAD7BBCD2165B8AD006661AF /* [Get]WorshipIDList.swift in Sources */,
 				CA7D2B3623535C8C00640B13 /* PhraseMessageViewModel.swift in Sources */,
 				CAD7BBCF2165B8BB006661AF /* [Post]RecentDatas.swift in Sources */,
@@ -1412,7 +1408,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = NO;
 				SDKROOT = iphoneos;
@@ -1465,7 +1461,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
@@ -1491,7 +1487,7 @@
 					"$(PROJECT_DIR)/Frameworks",
 				);
 				INFOPLIST_FILE = OhJooYeo/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = (
@@ -1537,7 +1533,7 @@
 					"$(PROJECT_DIR)/Frameworks",
 				);
 				INFOPLIST_FILE = OhJooYeo/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = (

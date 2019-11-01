@@ -12,7 +12,7 @@ class NextPresenter: Object, Decodable {
     @objc dynamic var mainPresenter: String = ""
     @objc dynamic var prayer: String = ""
     @objc dynamic var offer: String = ""
-    let ownerWorship = LinkingObjects(fromType: WorshipMainInfo.self, property: "nextPresenter")
+//    let ownerWorship = LinkingObjects(fromType: WorshipMainInfo.self, property: "nextPresenter")
     @objc dynamic var worshipId: String?
     
     public required convenience init(from decoder: Decoder) throws {
@@ -26,11 +26,11 @@ class NextPresenter: Object, Decodable {
     }
     
     override static func primaryKey() -> String? {
-        return CodingKeys.worshipId.rawValue
+        return "worshipId"
     }
     
     enum CodingKeys: String, CodingKey {
-        case worshipId = "worshipID"
+//        case worshipId = "worshipId"
         case mainPresenter = "mainPresenter"
         case prayer = "prayer"
         case offer = "offer"

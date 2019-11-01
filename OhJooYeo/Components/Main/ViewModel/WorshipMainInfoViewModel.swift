@@ -26,11 +26,12 @@ final class WorshipMainInfoViewModel: ViewModel {
         
         let params: Parameters = [BaseRequest.CodingKeys.churchId.rawValue: WorshipManager.shared.churchId,
                                   WorshipInfoRequest.CodingKeys.worshipId.rawValue: worshipId,
-                                  WorshipInfoRequest.CodingKeys.version.rawValue: WorshipManager.shared.currentWorshipInfo?.version as Any]
+                                  WorshipInfoRequest.CodingKeys.version.rawValue: WorshipManager.shared.currentWorshipInfo?.version ?? 0]
         
         return APIService.postWorshipInfo(parameters: params)
             .map { try JSONDecoder().decode(WorshipMainInfo.self, from: $0) }
             .do(onNext: { (worshipInfo) in
+                print("### worshipInfo: \(worshipInfo)")
                 self.worshipInfo = worshipInfo
             })
     }

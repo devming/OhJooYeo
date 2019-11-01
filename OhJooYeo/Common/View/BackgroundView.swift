@@ -7,15 +7,18 @@
 //
 
 import UIKit
+import RxCocoa
+import RxSwift
 
-enum OJYError {
-    case network
-    case data
-    case solved
+enum OJYError: Int {
+    case network = 10
+    case data = 20
+    case solved = 1
 }
 
 class BackgroundView: UIImageView {
     
+    var disposeBag = DisposeBag()
     override func layoutSubviews() {
         super.layoutSubviews()
         
@@ -44,22 +47,38 @@ class BackgroundView: UIImageView {
         self.clipsToBounds = true
     }
     
-    func showErrorView(_ error: OJYError, _ complete: () -> Void) {
+    func showErrorView(_ error: OJYError, _ completeHandler: (() -> Void)? = nil) {
         switch error {
         case .network:
             let errorView = NetworkErrorView(frame: self.frame)
-            errorView.tag = 10
+            errorView.tag = OJYError.network.rawValue
+            errorView.rx.tap
+                .asDriver()
+                .drive(onNext: { _ in
+                    completeHandler?()
+                }).disposed(by: disposeBag)
             self.addSubview(errorView)
         case .data:
             let errorView = NoDataErrorView(frame: self.frame)
-            errorView.tag = 10
+            errorView.tag = OJYError.data.rawValue
+            errorView.rx.tap
+                .asDriver()
+                .drive(onNext: { _ in
+                    completeHandler?()
+                }).disposed(by: disposeBag)
             self.addSubview(errorView)
         case .solved:
-            self.subviews.forEach {
-                let errorView = $0.viewWithTag(10)
-                errorView?.removeFromSuperview()
-            }
+            self.subviews
+                .filter { $0.viewWithTag(OJYError.network.rawValue) != nil || $0.viewWithTag(OJYError.data.rawValue) != nil }
+                .forEach({ view in
+                    view.removeFromSuperview()
+                })
+            
+//            self.subviews.forEach {
+//                $0.viewWithTag(OJYError.network.rawValue)?.removeFromSuperview()
+//                $0.viewWithTag(OJYError.data.rawValue)?.removeFromSuperview()
+//            }
         }
-        complete()
     }
+    
 }

@@ -8,6 +8,15 @@
 
 import Foundation
 
-class PhraseMessageRequest {
+class PhraseMessageRequest: BaseRequest {
     
+    var phraseRange: [String]?
+    
+    init(phraseRange: [String]) {
+        self.phraseRange = phraseRange
+    }
+    
+    enum CodingKeys: String, CodingKey {
+        case phraseRange = "phraseRange"
+    }
 }

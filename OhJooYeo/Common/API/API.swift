@@ -69,6 +69,7 @@ struct APIService {
             .request(urlRequest: APIRouter.postWorshipList(parameters: parameters))
             .responseJSON()
             .map { $0.data }
+            .debug()
             .filter { $0 != nil }
             .map { $0! }
     }
@@ -78,7 +79,11 @@ struct APIService {
         return APIRouter.manager.rx
             .request(urlRequest: APIRouter.postWorshipInfo(parameters: parameters))
             .responseJSON()
+            .do(onNext: { (res) in
+                print("###### res: \(res)")
+            })
             .map { $0.data }
+//            .debug()
             .filter { $0 != nil }
             .map { $0! }
     }

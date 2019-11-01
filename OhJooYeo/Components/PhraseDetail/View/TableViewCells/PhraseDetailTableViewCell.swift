@@ -13,4 +13,9 @@ class PhraseDetailTableViewCell: UITableViewCell {
     static let cellName = "cell"
     @IBOutlet weak var phraseKeyLabel: UILabel!
     @IBOutlet weak var phraseMessageLabel: UILabel!
+    
+    func setItem(item: PhraseMessage?) {
+        self.phraseKeyLabel.text = item?.phraseKey
+        self.phraseMessageLabel.text = item?.contents
+    }
 }

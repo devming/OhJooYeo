@@ -16,6 +16,16 @@ class VersionInfoViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        versionInfoLabel.text = "Version: \(APP_VERSION)"
+//        if isUpdateAvailable() {
+//            /// - TODO: [UI 반영] 업데이트 하기 위한 버튼 UI 제작
+//        }
+        versionInfoLabel.text = "Version: \(getCurrentVersion)"
+    }
+    
+    var getCurrentVersion: String {
+        get {
+            guard let version = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String else { return APP_VERSION }
+            return version
+        }
     }
 }

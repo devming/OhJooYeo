@@ -167,13 +167,21 @@ extension MainViewController {
     }
     
     @objc func reloadDatas() {
-        if let worshipId = WorshipManager.shared.currentWorshipInfo?.worshipId {
+//        if let worshipId = WorshipManager.shared.currentWorshipInfo?.worshipId {
+        let worshipId = "19-001"
             viewModel.callApi(worshipId: worshipId)
                 .observeOn(MainScheduler.instance)
-                .subscribe(onNext: { _ in
-                    self.listTableView.reloadData()
+                .subscribe(onNext: { [weak self] _ in
+                    self?.listTableView.reloadData()
+                    self?.activityIndicator?.stopAnimating()
+                }, onError: { [weak self] err in
+                    print("#### ERROR: \(err)")
+                    self?.activityIndicator?.stopAnimating()
+                    self?.backgroundView.showErrorView(.network) {
+                        self?.reloadDatas()
+                    }
                 }).disposed(by: disposeBag)
-        }
+//        }
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -186,7 +194,7 @@ extension MainViewController {
             }
             
             if let destination = segue.destination as? PhraseDetailViewController {
-                destination.orderID = Int(orderList[indexPath.row].orderID)
+                destination.orderId = Int(orderList[indexPath.row].orderId)
             }
         }
         

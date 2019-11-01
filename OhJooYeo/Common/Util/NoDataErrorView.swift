@@ -8,7 +8,7 @@
 
 import UIKit
 
-class NoDataErrorView: UIView {
+class NoDataErrorView: UIButton {
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)

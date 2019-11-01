@@ -7,18 +7,30 @@
 //
 
 import RealmSwift
+/**
+ 
+ 
+ "title": "제목",
+ "detail": "상세",
+ "presenter": "발표자",
+ "orderId": 1,
+ "churchId": 1,
+ "order": 1
 
-class WorshipOrder: Object, Decodable {
-    @objc dynamic var title: String?
-    @objc dynamic var detail: String?
-    @objc dynamic var presenter: String?
-    @objc dynamic var order: Int = 0
-    @objc dynamic var orderID: Int = 0
-    @objc dynamic var type: Int = 0
-    let ownerWorship = LinkingObjects(fromType: WorshipMainInfo.self, property: "worshipOrders")
-    @objc dynamic var worshipOrderID: String?
+*/
+class WorshipOrder: Decodable {
+    var title: String?
+    var detail: String?
+    var presenter: String?
+    var order: Int = 0
+    var orderId: Int = 0
+    var churchId: Int? = 0
     
-    @objc dynamic var worshipId: String?
+    var type: Int? = 0
+//    let ownerWorship = LinkingObjects(fromType: WorshipMainInfo.self, property: "worshipOrders")
+    var worshipOrderId: String?
+    
+    var worshipId: String?
 
     public required convenience init(from decoder: Decoder) throws {
         self.init()
@@ -27,15 +39,16 @@ class WorshipOrder: Object, Decodable {
         self.detail = try container.decode(String.self, forKey: .detail)
         self.presenter = try container.decode(String.self, forKey: .presenter)
         self.order = try container.decode(Int.self, forKey: .order)
-        self.orderID = try container.decode(Int.self, forKey: .orderID)
-        self.type = try container.decode(Int.self, forKey: .type)
+        self.orderId = try container.decode(Int.self, forKey: .orderId)
+//        self.type = try container.decode(Int.self, forKey: .type)
+        
         self.worshipId = WorshipManager.shared.currentWorshipInfo?.worshipId
-        self.worshipOrderID = "\(String(describing: self.worshipId))_\(self.orderID)"
+        self.worshipOrderId = "\(String(describing: self.worshipId))_\(self.orderId)"
     }
-    
-    override static func primaryKey() -> String? {
-        return CodingKeys.worshipOrderID.rawValue
-    }
+
+//    override static func primaryKey() -> String? {
+//        return CodingKeys.worshipOrderId.rawValue
+//    }
     
     enum TypeName: Int {
         case normal = 0
@@ -48,8 +61,9 @@ class WorshipOrder: Object, Decodable {
         case detail = "detail"
         case presenter = "presenter"
         case order = "order"
-        case orderID = "orderId"
+        case orderId = "orderId"
+        
         case type = "type"
-        case worshipOrderID = "worshipOrderID"
+//        case worshipOrderId = "worshipOrderId"
     }
 }
