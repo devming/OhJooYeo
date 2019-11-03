@@ -12,17 +12,18 @@ import RxCocoa
 
 final class WorshipMainInfoViewModel: ViewModel {
     
-    private let mainPresenterSubject = BehaviorSubject<String>(value: " ")
-    var mainPresenterObservable: Observable<String> {
-        get { return mainPresenterSubject.asObservable() }
-    }
-    private let worshipInfoSubject = PublishSubject<WorshipMainInfo>()
-    var worshipInfoObservable: Observable<WorshipMainInfo> {
+//    private let mainPresenterSubject = BehaviorSubject<String>(value: " ")
+//    var mainPresenterObservable: Observable<String> {
+//        get { return mainPresenterSubject.asObservable() }
+//    }
+    private let worshipInfoSubject = PublishSubject<WorshipMainInfo?>()
+    var worshipInfoObservable: Observable<WorshipMainInfo?> {
         get { return worshipInfoSubject.asObservable() }
     }
     var worshipInfo: WorshipMainInfo? {
         didSet {
-            self.mainPresenterSubject.onNext(self.worshipInfo?.mainPresenter ?? " ")
+            self.worshipInfoSubject.onNext(self.worshipInfo)
+//            self.mainPresenterSubject.onNext(self.worshipInfo?.mainPresenter ?? " ")
         }
     }
     

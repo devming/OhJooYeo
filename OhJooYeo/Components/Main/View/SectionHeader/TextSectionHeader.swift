@@ -8,9 +8,11 @@
 
 import UIKit
 
-class NextPresenterSectionHeader: UITableViewHeaderFooterView {
+class TextSectionHeader: UITableViewHeaderFooterView {
 
-    static let headerName = "NextPresenterSectionHeader"
+    static let headerName = "TextSectionHeader"
+    @IBOutlet weak var titleLabel: UILabel?
+    
     required init?(coder: NSCoder) {
         super.init(coder: coder)
         
@@ -24,8 +26,12 @@ class NextPresenterSectionHeader: UITableViewHeaderFooterView {
     }
     
     func setup() {
-        if let view = Bundle.main.loadNibNamed(NextPresenterSectionHeader.headerName, owner: self, options: nil)?.first as? NextPresenterSectionHeader {
+        if let view = Bundle.main.loadNibNamed(TextSectionHeader.headerName, owner: self, options: nil)?.first as? TextSectionHeader {
             addSubview(view)
         }
+    }
+    
+    func setTitle(text: String) {
+        self.titleLabel?.text = text
     }
 }

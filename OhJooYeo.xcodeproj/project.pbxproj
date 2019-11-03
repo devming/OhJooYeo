@@ -37,9 +37,9 @@
 		CA70536420BAEDBC00815D37 /* PhraseMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA70536320BAEDBC00815D37 /* PhraseMessage.swift */; };
 		CA7A426A20B94C080097D99E /* WorshipMainInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7A426920B94C080097D99E /* WorshipMainInfo.swift */; };
 		CA7D2B2D2353485B00640B13 /* FirstSectionHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = CA7D2B2C2353485B00640B13 /* FirstSectionHeader.xib */; };
-		CA7D2B2F2353486600640B13 /* NextPresenterSectionHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = CA7D2B2E2353486600640B13 /* NextPresenterSectionHeader.xib */; };
+		CA7D2B2F2353486600640B13 /* TextSectionHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = CA7D2B2E2353486600640B13 /* TextSectionHeader.xib */; };
 		CA7D2B3123534D2600640B13 /* FirstSectionHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7D2B3023534D2600640B13 /* FirstSectionHeader.swift */; };
-		CA7D2B3323534D3000640B13 /* NextPresenterSectionHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7D2B3223534D3000640B13 /* NextPresenterSectionHeader.swift */; };
+		CA7D2B3323534D3000640B13 /* TextSectionHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7D2B3223534D3000640B13 /* TextSectionHeader.swift */; };
 		CA7D2B3623535C8C00640B13 /* PhraseMessageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7D2B3523535C8C00640B13 /* PhraseMessageViewModel.swift */; };
 		CA7D2B3823535D2D00640B13 /* PhraseMessageRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7D2B3723535D2D00640B13 /* PhraseMessageRequest.swift */; };
 		CA8330C822C8C4DC00462412 /* LocationView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CA8330C722C8C4DC00462412 /* LocationView.storyboard */; };
@@ -178,9 +178,9 @@
 		CA7A426920B94C080097D99E /* WorshipMainInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorshipMainInfo.swift; sourceTree = "<group>"; };
 		CA7A791A21F47D9400CCEE7B /* OhJooYeo.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = OhJooYeo.entitlements; sourceTree = "<group>"; };
 		CA7D2B2C2353485B00640B13 /* FirstSectionHeader.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FirstSectionHeader.xib; sourceTree = "<group>"; };
-		CA7D2B2E2353486600640B13 /* NextPresenterSectionHeader.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NextPresenterSectionHeader.xib; sourceTree = "<group>"; };
+		CA7D2B2E2353486600640B13 /* TextSectionHeader.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TextSectionHeader.xib; sourceTree = "<group>"; };
 		CA7D2B3023534D2600640B13 /* FirstSectionHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstSectionHeader.swift; sourceTree = "<group>"; };
-		CA7D2B3223534D3000640B13 /* NextPresenterSectionHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NextPresenterSectionHeader.swift; sourceTree = "<group>"; };
+		CA7D2B3223534D3000640B13 /* TextSectionHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextSectionHeader.swift; sourceTree = "<group>"; };
 		CA7D2B3523535C8C00640B13 /* PhraseMessageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhraseMessageViewModel.swift; sourceTree = "<group>"; };
 		CA7D2B3723535D2D00640B13 /* PhraseMessageRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhraseMessageRequest.swift; sourceTree = "<group>"; };
 		CA8330C722C8C4DC00462412 /* LocationView.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LocationView.storyboard; sourceTree = "<group>"; };
@@ -985,9 +985,9 @@
 			isa = PBXGroup;
 			children = (
 				CA7D2B2C2353485B00640B13 /* FirstSectionHeader.xib */,
-				CA7D2B2E2353486600640B13 /* NextPresenterSectionHeader.xib */,
+				CA7D2B2E2353486600640B13 /* TextSectionHeader.xib */,
 				CA7D2B3023534D2600640B13 /* FirstSectionHeader.swift */,
-				CA7D2B3223534D3000640B13 /* NextPresenterSectionHeader.swift */,
+				CA7D2B3223534D3000640B13 /* TextSectionHeader.swift */,
 			);
 			path = SectionHeader;
 			sourceTree = "<group>";
@@ -1111,7 +1111,7 @@
 				CA83972622F32B1B00248A8C /* ChurchInfo.storyboard in Resources */,
 				CA8330C822C8C4DC00462412 /* LocationView.storyboard in Resources */,
 				CA8BB704228FDFE300E6FFD5 /* SignUpStoryBoard.storyboard in Resources */,
-				CA7D2B2F2353486600640B13 /* NextPresenterSectionHeader.xib in Resources */,
+				CA7D2B2F2353486600640B13 /* TextSectionHeader.xib in Resources */,
 				CAE1748C22DB39A7002F2A03 /* NoticeHeaderView.xib in Resources */,
 				CA22838620943F2B0023B3C1 /* Main.storyboard in Resources */,
 				CAE1749022DB3B16002F2A03 /* Notice.storyboard in Resources */,
@@ -1240,7 +1240,7 @@
 				CAFB287520D4D47200B72722 /* DbManager.swift in Sources */,
 				CA91B25722F59F0A00970B31 /* [Get]GroupInfoDatas.swift in Sources */,
 				CAA3FA6822183A47006C30F0 /* HistoryTableViewCell.swift in Sources */,
-				CA7D2B3323534D3000640B13 /* NextPresenterSectionHeader.swift in Sources */,
+				CA7D2B3323534D3000640B13 /* TextSectionHeader.swift in Sources */,
 				CA0AB21620C23C190028BC69 /* AdvertisementTableViewCell.swift in Sources */,
 				CA91B25922F5CDB700970B31 /* RealmManager.swift in Sources */,
 				CA8E2EDF22E301E50027BCA1 /* GroupInfo.swift in Sources */,

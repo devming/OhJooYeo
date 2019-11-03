@@ -15,11 +15,11 @@ class MainViewController: UIViewController {
     
     @IBOutlet var backgroundView: BackgroundView!
     @IBOutlet weak var listTableView: UITableView!
-//    @IBOutlet weak var yearlyMessage: UITextView!
-//    @IBOutlet weak var mainPresenterLabel: UILabel!
+    //    @IBOutlet weak var yearlyMessage: UITextView!
+    //    @IBOutlet weak var mainPresenterLabel: UILabel!
     @IBOutlet weak var dateHistoryButton: UIButton!
-//    @IBOutlet weak var standupLabel: UILabel!
-    
+    //    @IBOutlet weak var standupLabel: UILabel!
+
     let refreshControl = UIRefreshControl()
     var activityIndicator: NVActivityIndicatorView?
     
@@ -29,7 +29,7 @@ class MainViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-//        self.yearlyMessage.layer.cornerRadius = 3.0
+        //        self.yearlyMessage.layer.cornerRadius = 3.0
         self.activityIndicator = NVActivityIndicatorView(frame: self.view.frame, type: NVActivityIndicatorType.ballTrianglePath, color: UIColor.white, padding: self.view.frame.width / 2.5)
         self.view.addSubview(self.activityIndicator!)
         self.activityIndicator?.startAnimating()
@@ -37,8 +37,8 @@ class MainViewController: UIViewController {
         self.listTableView.rowHeight = UITableViewAutomaticDimension
         self.listTableView.layer.cornerRadius = 10.0
         self.listTableView.register(FirstSectionHeader.self, forHeaderFooterViewReuseIdentifier: FirstSectionHeader.headerName)
-        self.listTableView.register(NextPresenterSectionHeader.self, forHeaderFooterViewReuseIdentifier: NextPresenterSectionHeader.headerName)
-       
+        self.listTableView.register(TextSectionHeader.self, forHeaderFooterViewReuseIdentifier: TextSectionHeader.headerName)
+        
         
         initRefreshControl()
         
@@ -82,24 +82,24 @@ extension MainViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let orderList = viewModel.worshipInfo?.worshipOrderList,
             let nextPresenter = viewModel.worshipInfo?.nextPresenter else { return UITableViewCell() }
-//        guard let orderList = WorshipMainInfoViewModel.shared.worshipDataObject.worshipData?.worshipMainInfo?.worshipOrderList,
-//            let nextPresenter = WorshipMainInfoViewModel.shared.worshipDataObject.worshipData?.worshipMainInfo?.nextPresenter?.mainPresenter,
-//            let nextPrayer = WorshipMainInfoViewModel.shared.worshipDataObject.worshipData?.worshipMainInfo?.nextPresenter?.prayer,
-//            let nextOffer = WorshipMainInfoViewModel.shared.worshipDataObject.worshipData?.worshipMainInfo?.nextPresenter?.offer else {
-//                print("orderList is null")
-//                return UITableViewCell()
-//        }
+        //        guard let orderList = WorshipMainInfoViewModel.shared.worshipDataObject.worshipData?.worshipMainInfo?.worshipOrderList,
+        //            let nextPresenter = WorshipMainInfoViewModel.shared.worshipDataObject.worshipData?.worshipMainInfo?.nextPresenter?.mainPresenter,
+        //            let nextPrayer = WorshipMainInfoViewModel.shared.worshipDataObject.worshipData?.worshipMainInfo?.nextPresenter?.prayer,
+        //            let nextOffer = WorshipMainInfoViewModel.shared.worshipDataObject.worshipData?.worshipMainInfo?.nextPresenter?.offer else {
+        //                print("orderList is null")
+        //                return UITableViewCell()
+        //        }
         if indexPath.section == 0 {
-
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: OrderRowCell.cellName) as? OrderRowCell else {
+            
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: OrderRowCell.cellName, for: indexPath) as? OrderRowCell else {
                 return UITableViewCell()
             }
             
             cell.setItem(item: orderList[indexPath.row])
             return cell
         } else if indexPath.section == 1 {
-         
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: NextPresenterRowCell.cellName) as? NextPresenterRowCell else {
+            
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: NextPresenterRowCell.cellName, for: indexPath) as? NextPresenterRowCell else {
                 return UITableViewCell()
             }
             
@@ -107,108 +107,118 @@ extension MainViewController: UITableViewDataSource {
             return cell
         }
         
-        return UITableViewCell()
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: YearlyPhraseRowCell.cellName, for: indexPath) as? YearlyPhraseRowCell else { return UITableViewCell() }
+        
+        cell.setItem(message: "네 믿음을 내게 보이라 나는 행함으로 내 믿음을 네게 보이리라 하리라 - 야고보서 2:18 -")
+        
+        return cell
     }
     
 }
 
 extension MainViewController: UITableViewDelegate {
-    
-    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 40.0
+    func tableView(_ tableView: UITableView,
+                   heightForHeaderInSection section: Int) -> CGFloat {
+        return UITableViewAutomaticDimension
+    }
+
+    func tableView(_ tableView: UITableView,
+                   estimatedHeightForHeaderInSection section: Int) -> CGFloat {
+        return 50.0
     }
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        if section == 1 {
-            guard let headerView = tableView.dequeueReusableHeaderFooterView(withIdentifier: NextPresenterSectionHeader.headerName) as? NextPresenterSectionHeader else { return nil }
+        
+        if section == 0 {
             
+            guard let headerView = tableView.dequeueReusableHeaderFooterView(withIdentifier: FirstSectionHeader.headerName) as? FirstSectionHeader else { return nil }
+            
+            viewModel.worshipInfoObservable
+                .asDriver(onErrorJustReturn: nil)
+                .drive(onNext: { worshipInfo in
+                    headerView.setMainPresenter(mainPresenter: worshipInfo?.mainPresenter)
+                }).disposed(by: disposeBag)
             return headerView
         }
-        
-        guard let headerView = tableView.dequeueReusableHeaderFooterView(withIdentifier: FirstSectionHeader.headerName) as? FirstSectionHeader else { return nil }
-        
-        viewModel.mainPresenterObservable
-            .asDriver(onErrorJustReturn: " ")
-            .drive(onNext: { mainPresenter in
-                headerView.setMainPresenter(mainPresenter: mainPresenter) 
+        guard let headerView = tableView.dequeueReusableHeaderFooterView(withIdentifier: TextSectionHeader.headerName) as? TextSectionHeader else { return nil }
+
+        viewModel.worshipInfoObservable
+            .asDriver(onErrorJustReturn: nil)
+            .drive(onNext: { _ in
+                var title = ""
+                if section == 1 {
+                    title = "다음주 예배섬김"
+                } else {
+                    title = "올해의 말씀"
+                }
+                headerView.setTitle(text: title)
             }).disposed(by: disposeBag)
-//            .bind(to: headerView.mainPresenterLabel!.rx.text)
-//            .disposed(by: disposeBag)
-//        headerView.mainPresenterLabel.rx.text
-            
-//        headerView.setMainPresenter(mainPresenter: viewModel.worshipInfo?.mainPresenter)
-        
         return headerView
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        guard let worshipOrderList = viewModel.worshipInfo?.worshipOrderList else {
+        switch indexPath.section {
+        case 0:
             return 80
+        default:
+            return 100
         }
-        if indexPath.row == worshipOrderList.count {
-            return 128
-        }
-        //        if worshipOrderList[indexPath.row].title == "성경봉독" || worshipOrderList[indexPath.row].title == "특송" {
-        //            return 100
-        //        }
-        
-        return 80
     }
 }
 
 /// Custom Methods
 extension MainViewController {
-//    @objc func worshipUpdate(_ notification: Notification) {
-//        updateWorship()
-//    }
-//
-//    func updateWorship() {
-//        OperationQueue.main.addOperation { [weak self] in
-//            guard let `self` = self else { return }
-//            if App.isLoadingComplete {
-//                self.dateHistoryButton.setTitle(" \(WorshipManager.shared.date)", for: .normal)
-//                self.activityIndicator?.stopAnimating()
-//                self.listTableView.reloadData()
-//                self.mainPresenterLabel.text = "인도자: \(self.viewModel.worshipInfo?.mainPresenter ?? "OOO")"
-//                App.isLoadingComplete = false
-//            } else {
-////                let errorView = NetworkErrorView(frame: self.view.frame)
-////                self.view.addSubview(errorView)
-//                self.backgroundView.showErrorView(.network) {
-////                    self.yearlyMessage.isHidden = true
-//                    self.dateHistoryButton.isHidden = true
-//                    self.listTableView.isHidden = true
-////                    self.mainPresenterLabel.isHidden = true
-////                    self.standupLabel.isHidden = true
-//                }
-//                self.activityIndicator?.stopAnimating()
-//            }
-//        }
-//    }
+    //    @objc func worshipUpdate(_ notification: Notification) {
+    //        updateWorship()
+    //    }
+    //
+    //    func updateWorship() {
+    //        OperationQueue.main.addOperation { [weak self] in
+    //            guard let `self` = self else { return }
+    //            if App.isLoadingComplete {
+    //                self.dateHistoryButton.setTitle(" \(WorshipManager.shared.date)", for: .normal)
+    //                self.activityIndicator?.stopAnimating()
+    //                self.listTableView.reloadData()
+    //                self.mainPresenterLabel.text = "인도자: \(self.viewModel.worshipInfo?.mainPresenter ?? "OOO")"
+    //                App.isLoadingComplete = false
+    //            } else {
+    ////                let errorView = NetworkErrorView(frame: self.view.frame)
+    ////                self.view.addSubview(errorView)
+    //                self.backgroundView.showErrorView(.network) {
+    ////                    self.yearlyMessage.isHidden = true
+    //                    self.dateHistoryButton.isHidden = true
+    //                    self.listTableView.isHidden = true
+    ////                    self.mainPresenterLabel.isHidden = true
+    ////                    self.standupLabel.isHidden = true
+    //                }
+    //                self.activityIndicator?.stopAnimating()
+    //            }
+    //        }
+    //    }
     
     func initRefreshControl() {
-//        viewModel.
+        //        viewModel.
         self.refreshControl.addTarget(self, action: #selector(reloadDatas), for: .valueChanged)
-//        self.refreshControl.rx.
+        //        self.refreshControl.rx.
         self.listTableView.addSubview(self.refreshControl)
     }
     
     @objc func reloadDatas() {
         /// [TestCode]
-//        if let worshipId = WorshipManager.shared.currentWorshipInfo?.worshipId {
+        //        if let worshipId = WorshipManager.shared.currentWorshipInfo?.worshipId {
         let worshipId = "19-001"
-            viewModel.callApi(worshipId: worshipId)
-                .observeOn(MainScheduler.instance)
-                .subscribe(onNext: { [weak self] _ in
-                    self?.listTableView.reloadData()
-                    self?.activityIndicator?.stopAnimating()
+        viewModel.callApi(worshipId: worshipId)
+            .observeOn(MainScheduler.instance)
+            .subscribe(onNext: { [weak self] _ in
+                self?.listTableView.reloadData()
+                self?.activityIndicator?.stopAnimating()
                 }, onError: { [weak self] err in
                     print("#### ERROR: \(err)")
                     self?.activityIndicator?.stopAnimating()
                     self?.backgroundView.showErrorView(.network) {
                         self?.reloadDatas()
                     }
-                }).disposed(by: disposeBag)
-//        }
+            }).disposed(by: disposeBag)
+        //        }
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
