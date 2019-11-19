@@ -35,11 +35,11 @@ class AdvertisementViewController: UIViewController {
     }
     
     func initRefreshControl() {
-        self.refreshControl.addTarget(self, action: #selector(reloadDatas), for: .valueChanged)
+        self.refreshControl.addTarget(self, action: #selector(loadDatas), for: .valueChanged)
         self.listTableView.addSubview(self.refreshControl)
     }
     
-    @objc func reloadDatas() {
+    @objc func loadDatas() {
 //        DispatchQueue.main.async {
 //            App.loadAllDataFromServer { [weak self] in
 //                App.isLoadingComplete = true

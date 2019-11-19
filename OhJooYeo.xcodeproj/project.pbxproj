@@ -35,11 +35,8 @@
 		CA6E9716220C69DA00DFE0AE /* LocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6E9715220C69DA00DFE0AE /* LocationViewController.swift */; };
 		CA70536220BAECAF00815D37 /* PhraseDetailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA70536120BAECAF00815D37 /* PhraseDetailTableViewCell.swift */; };
 		CA70536420BAEDBC00815D37 /* PhraseMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA70536320BAEDBC00815D37 /* PhraseMessage.swift */; };
+		CA711CE02380F23E006D1945 /* WorshipApiHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA711CDF2380F23E006D1945 /* WorshipApiHelper.swift */; };
 		CA7A426A20B94C080097D99E /* WorshipMainInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7A426920B94C080097D99E /* WorshipMainInfo.swift */; };
-		CA7D2B2D2353485B00640B13 /* FirstSectionHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = CA7D2B2C2353485B00640B13 /* FirstSectionHeader.xib */; };
-		CA7D2B2F2353486600640B13 /* TextSectionHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = CA7D2B2E2353486600640B13 /* TextSectionHeader.xib */; };
-		CA7D2B3123534D2600640B13 /* FirstSectionHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7D2B3023534D2600640B13 /* FirstSectionHeader.swift */; };
-		CA7D2B3323534D3000640B13 /* TextSectionHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7D2B3223534D3000640B13 /* TextSectionHeader.swift */; };
 		CA7D2B3623535C8C00640B13 /* PhraseMessageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7D2B3523535C8C00640B13 /* PhraseMessageViewModel.swift */; };
 		CA7D2B3823535D2D00640B13 /* PhraseMessageRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7D2B3723535D2D00640B13 /* PhraseMessageRequest.swift */; };
 		CA8330C822C8C4DC00462412 /* LocationView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CA8330C722C8C4DC00462412 /* LocationView.storyboard */; };
@@ -175,12 +172,9 @@
 		CA6E9715220C69DA00DFE0AE /* LocationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationViewController.swift; sourceTree = "<group>"; };
 		CA70536120BAECAF00815D37 /* PhraseDetailTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhraseDetailTableViewCell.swift; sourceTree = "<group>"; };
 		CA70536320BAEDBC00815D37 /* PhraseMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhraseMessage.swift; sourceTree = "<group>"; };
+		CA711CDF2380F23E006D1945 /* WorshipApiHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorshipApiHelper.swift; sourceTree = "<group>"; };
 		CA7A426920B94C080097D99E /* WorshipMainInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorshipMainInfo.swift; sourceTree = "<group>"; };
 		CA7A791A21F47D9400CCEE7B /* OhJooYeo.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = OhJooYeo.entitlements; sourceTree = "<group>"; };
-		CA7D2B2C2353485B00640B13 /* FirstSectionHeader.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FirstSectionHeader.xib; sourceTree = "<group>"; };
-		CA7D2B2E2353486600640B13 /* TextSectionHeader.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TextSectionHeader.xib; sourceTree = "<group>"; };
-		CA7D2B3023534D2600640B13 /* FirstSectionHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstSectionHeader.swift; sourceTree = "<group>"; };
-		CA7D2B3223534D3000640B13 /* TextSectionHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextSectionHeader.swift; sourceTree = "<group>"; };
 		CA7D2B3523535C8C00640B13 /* PhraseMessageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhraseMessageViewModel.swift; sourceTree = "<group>"; };
 		CA7D2B3723535D2D00640B13 /* PhraseMessageRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhraseMessageRequest.swift; sourceTree = "<group>"; };
 		CA8330C722C8C4DC00462412 /* LocationView.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LocationView.storyboard; sourceTree = "<group>"; };
@@ -358,6 +352,7 @@
 		CA3080BF2130F61200255A7E /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				CA711CDE2380F22E006D1945 /* Helper */,
 				CA3080C42130F6EC00255A7E /* WorshipMainInfoViewModel.swift */,
 			);
 			path = ViewModel;
@@ -412,7 +407,6 @@
 			isa = PBXGroup;
 			children = (
 				CA4FA41020B9406700BE6730 /* ViewController */,
-				CAF7E59C2353456C00F341F7 /* SectionHeader */,
 				CA3080C62130F73700255A7E /* TableViewCells */,
 			);
 			path = View;
@@ -618,6 +612,14 @@
 				CAA3FA63221804C1006C30F0 /* DonationViewController.swift */,
 			);
 			path = 06.Donation;
+			sourceTree = "<group>";
+		};
+		CA711CDE2380F22E006D1945 /* Helper */ = {
+			isa = PBXGroup;
+			children = (
+				CA711CDF2380F23E006D1945 /* WorshipApiHelper.swift */,
+			);
+			path = Helper;
 			sourceTree = "<group>";
 		};
 		CA7A428E20BAE6C00097D99E /* Model */ = {
@@ -981,17 +983,6 @@
 			path = "API-Renewal";
 			sourceTree = "<group>";
 		};
-		CAF7E59C2353456C00F341F7 /* SectionHeader */ = {
-			isa = PBXGroup;
-			children = (
-				CA7D2B2C2353485B00640B13 /* FirstSectionHeader.xib */,
-				CA7D2B2E2353486600640B13 /* TextSectionHeader.xib */,
-				CA7D2B3023534D2600640B13 /* FirstSectionHeader.swift */,
-				CA7D2B3223534D3000640B13 /* TextSectionHeader.swift */,
-			);
-			path = SectionHeader;
-			sourceTree = "<group>";
-		};
 		CAFA549A2104765300C4A808 /* OhJooYeoTests */ = {
 			isa = PBXGroup;
 			children = (
@@ -1111,11 +1102,9 @@
 				CA83972622F32B1B00248A8C /* ChurchInfo.storyboard in Resources */,
 				CA8330C822C8C4DC00462412 /* LocationView.storyboard in Resources */,
 				CA8BB704228FDFE300E6FFD5 /* SignUpStoryBoard.storyboard in Resources */,
-				CA7D2B2F2353486600640B13 /* TextSectionHeader.xib in Resources */,
 				CAE1748C22DB39A7002F2A03 /* NoticeHeaderView.xib in Resources */,
 				CA22838620943F2B0023B3C1 /* Main.storyboard in Resources */,
 				CAE1749022DB3B16002F2A03 /* Notice.storyboard in Resources */,
-				CA7D2B2D2353485B00640B13 /* FirstSectionHeader.xib in Resources */,
 				CA8E2EEE22E30AF80027BCA1 /* AppInfo.storyboard in Resources */,
 				CA9CD23E234891B700534FEB /* ColorAssets.xcassets in Resources */,
 				CA8E2EE322E308120027BCA1 /* GroupInfo.storyboard in Resources */,
@@ -1240,7 +1229,6 @@
 				CAFB287520D4D47200B72722 /* DbManager.swift in Sources */,
 				CA91B25722F59F0A00970B31 /* [Get]GroupInfoDatas.swift in Sources */,
 				CAA3FA6822183A47006C30F0 /* HistoryTableViewCell.swift in Sources */,
-				CA7D2B3323534D3000640B13 /* TextSectionHeader.swift in Sources */,
 				CA0AB21620C23C190028BC69 /* AdvertisementTableViewCell.swift in Sources */,
 				CA91B25922F5CDB700970B31 /* RealmManager.swift in Sources */,
 				CA8E2EDF22E301E50027BCA1 /* GroupInfo.swift in Sources */,
@@ -1253,6 +1241,7 @@
 				CAA924E42349EF0A0037C23D /* MainTabBar.swift in Sources */,
 				CAE1748A22DB38F7002F2A03 /* NoticeCell.swift in Sources */,
 				CA4FA40420B926C600BE6730 /* PhraseDetailViewController.swift in Sources */,
+				CA711CE02380F23E006D1945 /* WorshipApiHelper.swift in Sources */,
 				CA3080CC2130FE0400255A7E /* ConstantString.swift in Sources */,
 				CAD7BBCB2165B860006661AF /* [Post]PhraseMessages.swift in Sources */,
 				CAA3FA5E221804A8006C30F0 /* GroupInfoViewController.swift in Sources */,
@@ -1263,7 +1252,6 @@
 				CAA6B99E20F9CAFB00E802BC /* Music.swift in Sources */,
 				CA9CD240234897A000534FEB /* UIColorEx.swift in Sources */,
 				CAA3A88D236C7EDC004DBAFB /* SubTitleRowCell.swift in Sources */,
-				CA7D2B3123534D2600640B13 /* FirstSectionHeader.swift in Sources */,
 				CA91B25D22F5CDEB00970B31 /* BaseRealm.swift in Sources */,
 				CAA3FA66221836BF006C30F0 /* HistoryViewController.swift in Sources */,
 				CA8E2EE822E30ABA0027BCA1 /* ChurchInfo.swift in Sources */,

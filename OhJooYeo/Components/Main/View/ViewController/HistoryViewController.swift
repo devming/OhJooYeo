@@ -74,7 +74,7 @@ extension HistoryViewController: UITableViewDelegate {
         /// 3. 현재 창을 종료
         /// 4. 불러온 내용을 가지고 main view controller 업데이트
         if let id = viewModel.worshipIdDateList?[indexPath.row].worshipId {
-            mainViewModel?.callApi(worshipId: id)
+            mainViewModel?.requestWorshipMain(worshipId: id)
                 .observeOn(MainScheduler.instance)
                 .subscribe(onNext: { (worshipInfo) in
                     if let mainViewController = self.presentingViewController as? MainViewController {

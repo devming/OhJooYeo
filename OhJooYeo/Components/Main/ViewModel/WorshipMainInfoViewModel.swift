@@ -31,7 +31,8 @@ final class WorshipMainInfoViewModel: ViewModel {
         super.init()
     }
     
-    func callApi(worshipId: String) -> Observable<WorshipMainInfo> {
+    /// callApi
+    func requestWorshipMain(worshipId: String) -> Observable<WorshipMainInfo> {
         
         let params: Parameters = [BaseRequest.CodingKeys.churchId.rawValue: 1, //WorshipManager.shared.churchId,
                                   WorshipInfoRequest.CodingKeys.worshipId.rawValue: worshipId,
