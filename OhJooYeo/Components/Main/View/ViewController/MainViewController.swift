@@ -209,7 +209,7 @@ extension MainViewController {
     @objc func loadDatas() {
         /// [TestCode]
         //        if let worshipId = WorshipManager.shared.currentWorshipInfo?.worshipId {
-        let worshipId = "19-001"
+        let worshipId = "19-003"
         viewModel.requestWorshipMain(worshipId: worshipId)
             .observeOn(MainScheduler.instance)
             .subscribe(onNext: { [weak self] worshipMainInfo in
