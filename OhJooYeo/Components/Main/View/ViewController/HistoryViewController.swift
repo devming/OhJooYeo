@@ -18,6 +18,7 @@ class HistoryViewController: UIViewController {
         }
     }
     @IBOutlet weak var listTableView: UITableView!
+    @IBOutlet weak var refreshButton: UIButton!
     var disposeBag = DisposeBag()
     
     override func viewDidLoad() {
@@ -25,6 +26,25 @@ class HistoryViewController: UIViewController {
         
 //        setTransparentBackground(navigationController: self.navigationController)
 //        navigationBar.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0)
+    }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        callApi()
+        
+        refreshButton.rx.tap
+            .asDriver()
+            .drive(onNext: { [weak self] _ in
+                self?.callApi()
+            }).disposed(by: disposeBag)
+    }
+
+    func callApi() {
+        viewModel.requestWorshipList()
+            .asDriver(onErrorJustReturn: [WorshipIdDate]())
+            .drive(onNext: { [weak self] _ in
+                self?.listTableView.reloadData()
+            }).disposed(by: disposeBag)
     }
     
     @IBAction func closeButtonTapped(_ sender: Any) {
@@ -40,6 +60,7 @@ class HistoryViewController: UIViewController {
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
+        
         disposeBag = DisposeBag()
     }
 }
@@ -52,11 +73,12 @@ extension HistoryViewController: UITableViewDataSource {
         return worshipIdDateList.count
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: HistoryTableViewCell.cellName) as? HistoryTableViewCell else {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: HistoryTableViewCell.cellName) as? HistoryTableViewCell, let cellItems = viewModel.worshipIdDateList else {
             return UITableViewCell()
         }
-//        cell.worshipIDLabel.text = self.worshipIDList?[indexPath.row].worshipID
-        cell.dateLabel.text = self.viewModel.worshipIdDateList?[indexPath.row].date
+        
+        cell.dateLabel.text = cellItems[indexPath.row].date
+        cell.borderLine.isHidden = indexPath.row == cellItems.count - 1
         
         return cell
     }
@@ -87,4 +109,7 @@ extension HistoryViewController: UITableViewDelegate {
         }
     }
     
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 100
+    }
 }

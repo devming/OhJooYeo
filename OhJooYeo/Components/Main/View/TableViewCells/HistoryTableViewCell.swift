@@ -13,5 +13,6 @@ class HistoryTableViewCell: UITableViewCell {
     static let cellName = "historyCell"
     
     @IBOutlet weak var dateLabel: UILabel!
+    @IBOutlet weak var borderLine: UIView!
     
 }

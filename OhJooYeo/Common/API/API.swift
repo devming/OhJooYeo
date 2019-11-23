@@ -174,7 +174,7 @@ extension APIRouter: URLRequestConvertible {
     var path: String {
         switch self {
         case .postSignin(_):
-                return "/signin"
+            return "/signin"
         case .postWorshipList(_):
             return "/worship/list"
         case .postWorshipInfo(_):

@@ -34,7 +34,7 @@ final class WorshipMainInfoViewModel: ViewModel {
     /// callApi
     func requestWorshipMain(worshipId: String) -> Observable<WorshipMainInfo> {
         
-        let params: Parameters = [BaseRequest.CodingKeys.churchId.rawValue: 1, //WorshipManager.shared.churchId,
+        let params: Parameters = [BaseRequest.CodingKeys.churchId.rawValue: WorshipManager.shared.churchId,
                                   WorshipInfoRequest.CodingKeys.worshipId.rawValue: worshipId,
                                   WorshipInfoRequest.CodingKeys.version.rawValue: WorshipManager.shared.currentWorshipInfo?.version ?? 0]
         print("### worshipInfo param: \(params)")

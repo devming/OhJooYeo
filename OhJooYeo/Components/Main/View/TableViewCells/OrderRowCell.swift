@@ -16,6 +16,7 @@ class OrderRowCell: UITableViewCell {
     @IBOutlet weak var presenterLabel: UILabel!
     @IBOutlet weak var accessoryImageView: UIImageView!
     @IBOutlet weak var standupMarkImageView: UIImageView!
+    @IBOutlet weak var titleVerticalCenterConstraint: NSLayoutConstraint!
     
     func setItem(item: WorshipOrder) {
         titleLabel.text = item.title
@@ -30,6 +31,13 @@ class OrderRowCell: UITableViewCell {
             accessoryImageView.alpha = 0.0
             isUserInteractionEnabled = false
         }
+        
+        if item.detail?.isEmpty == true {
+            titleVerticalCenterConstraint.constant = 0
+        } else {
+            titleVerticalCenterConstraint.constant = -10
+        }
+        layoutIfNeeded()
         
 //        let bgColorView = UIView()
 //        bgColorView.backgroundColor = UIColor.white

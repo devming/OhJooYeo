@@ -17,15 +17,18 @@ final class WorshipIDListDataViewModel: ViewModel {
         super.init()
     }
     
-    func callApi() -> Observable<[WorshipIdDate]> {
+    /// callApi
+    func requestWorshipList() -> Observable<[WorshipIdDate]> {
         let params: Parameters = [BaseRequest.CodingKeys.churchId.rawValue: WorshipManager.shared.churchId]
+        print("worship list churchid: \(WorshipManager.shared.churchId)")
         
         return APIService.postWorshipList(parameters: params)
-            .map { try JSONDecoder().decode([WorshipIdDate].self, from: $0) }
-            .map { worshipIdDate in
-                self.worshipIdDateList = worshipIdDate
-                return worshipIdDate
-            }
+            .map {
+                try JSONDecoder().decode([WorshipIdDate].self, from: $0)
+        }
+        .do(onNext: { [weak self] worshipIdDate in
+            self?.worshipIdDateList = worshipIdDate
+        })
     }
     
 }

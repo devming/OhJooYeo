@@ -8,10 +8,13 @@
 
 import RealmSwift
 
-class WorshipIdDate: Object, Decodable {
-    @objc dynamic var date: String = ""
-    @objc dynamic var worshipId: String = ""
-
+class WorshipIdDate: Decodable {
+//    @objc dynamic var date: String = ""
+//    @objc dynamic var worshipId: String = ""
+    
+    var date: String = ""
+    var worshipId: String = ""
+    
     public required convenience init(from decoder: Decoder) throws {
         self.init()
         let container = try decoder.container(keyedBy: CodingKeys.self)
@@ -19,9 +22,9 @@ class WorshipIdDate: Object, Decodable {
         self.worshipId = try container.decode(String.self, forKey: .worshipId)
     }
         
-    override static func primaryKey() -> String? {
-        return CodingKeys.worshipId.rawValue
-    }
+//    override static func primaryKey() -> String? {
+//        return CodingKeys.worshipId.rawValue
+//    }
     
     enum CodingKeys: String, CodingKey {
         case date = "date"

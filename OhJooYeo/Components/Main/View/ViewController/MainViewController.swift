@@ -61,7 +61,11 @@ class MainViewController: UIViewController {
             .bind(to: self.yearlyPhraseLabel.rx.text)
             .disposed(by: disposeBag)
         
-        
+        dateHistoryButton.rx.tap
+            .asDriver()
+            .drive(onNext: { _ in
+                print("Tap!")
+            }).disposed(by: disposeBag)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -70,7 +74,7 @@ class MainViewController: UIViewController {
         self.listTableView.reloadData()
     }
     @IBAction func dateHistoryTapped(_ sender: Any) {
-//        performSegue(withIdentifier: SegueName.historySegue.rawValue, sender: sender)
+        performSegue(withIdentifier: SegueName.historySegue.rawValue, sender: sender)
         
         print("dateHistoryTapped tap")
     }
