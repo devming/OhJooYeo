@@ -116,8 +116,9 @@ extension HistoryViewController: UITableViewDelegate {
         /// 2. 선택한 WorshipId로 주보 내용 불러온다.
         /// 3. 현재 창을 종료
         /// 4. 불러온 내용을 가지고 main view controller 업데이트
-        if let id = viewModel.worshipIdDateList?[indexPath.row].worshipId {
-            mainViewModel?.requestWorshipMain(worshipId: id)
+        if let id = viewModel.worshipIdDateList?[indexPath.row].worshipId,
+            let date = viewModel.worshipIdDateList?[indexPath.row].date {
+            mainViewModel?.requestWorshipMain(worshipId: id, worshipDate: date)
                 .observeOn(MainScheduler.instance)
                 .subscribe(onNext: { [weak self] (worshipInfo) in
                     guard let `self` = self else { return }
@@ -127,6 +128,7 @@ extension HistoryViewController: UITableViewDelegate {
                             guard let `self` = self else { return }
                             if let nav = vc as? UINavigationController,
                                 let mainViewController = nav.topViewController as? MainViewController {
+                                
                                 
                                 mainViewController.viewModel.worshipInfo = worshipInfo
                                 self.dismiss(animated: true) {

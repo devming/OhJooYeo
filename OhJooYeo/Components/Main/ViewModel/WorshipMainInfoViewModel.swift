@@ -32,7 +32,7 @@ final class WorshipMainInfoViewModel: ViewModel {
     }
     
     /// callApi
-    func requestWorshipMain(worshipId: String) -> Observable<WorshipMainInfo> {
+    func requestWorshipMain(worshipId: String, worshipDate: String) -> Observable<WorshipMainInfo> {
         
         let params: Parameters = [BaseRequest.CodingKeys.churchId.rawValue: WorshipManager.shared.churchId,
                                   WorshipInfoRequest.CodingKeys.worshipId.rawValue: worshipId,
@@ -43,6 +43,7 @@ final class WorshipMainInfoViewModel: ViewModel {
             .do(onNext: { [weak self] (worshipInfo) in
                 print("### worshipInfo: \(worshipInfo)")
                 self?.worshipInfo = worshipInfo
+                WorshipManager.shared.date = worshipDate
             })
     }
 }
