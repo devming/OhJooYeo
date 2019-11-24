@@ -102,7 +102,7 @@
                                 </connections>
                             </tableView>
                         </subviews>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" name="theme1"/>
                         <constraints>
                             <constraint firstItem="dIB-bf-QTb" firstAttribute="leading" secondItem="8oM-Vr-bRp" secondAttribute="leading" constant="10" id="IU2-xv-qGk"/>
                             <constraint firstItem="8oM-Vr-bRp" firstAttribute="trailing" secondItem="dIB-bf-QTb" secondAttribute="trailing" constant="10" id="WTB-je-um7"/>
@@ -113,6 +113,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="오늘 우리에게 주시는 하나님의 말씀" largeTitleDisplayMode="never" id="GlW-F7-8V5"/>
                     <connections>
+                        <outlet property="backgroundView" destination="QbH-fO-UpT" id="WMB-Ay-4XI"/>
                         <outlet property="listTableView" destination="dIB-bf-QTb" id="GPB-yT-Qc5"/>
                     </connections>
                 </viewController>
@@ -657,14 +658,14 @@
                                 <rect key="frame" x="0.0" y="88" width="414" height="60"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="제 n권 제 m호 yyyy년 MM월 dd일" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DgJ-ql-Qms">
-                                        <rect key="frame" x="162" y="0.0" width="252" height="60"/>
+                                        <rect key="frame" x="152" y="0.0" width="252" height="60"/>
                                         <fontDescription key="fontDescription" name="AppleSDGothicNeo-Bold" family="Apple SD Gothic Neo" pointSize="18"/>
                                         <color key="textColor" name="labelPrimary"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" alpha="0.80000000000000004" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cya-yh-yL2">
-                                        <rect key="frame" x="120" y="14" width="32" height="32"/>
-                                        <state key="normal" image="ic_expand_down"/>
+                                        <rect key="frame" x="78" y="-2" width="64" height="64"/>
+                                        <state key="normal" image="ic_expand_down_blank"/>
                                         <connections>
                                             <action selector="dateHistoryTapped:" destination="ugt-9J-Yw1" eventType="touchUpInside" id="QMw-No-F3Y"/>
                                         </connections>
@@ -675,7 +676,7 @@
                                     <constraint firstAttribute="bottom" secondItem="DgJ-ql-Qms" secondAttribute="bottom" id="0h8-fD-5BL"/>
                                     <constraint firstAttribute="height" constant="60" id="4uo-BJ-Eb6"/>
                                     <constraint firstItem="cya-yh-yL2" firstAttribute="centerY" secondItem="DgJ-ql-Qms" secondAttribute="centerY" id="Bg5-H3-oLL"/>
-                                    <constraint firstAttribute="trailing" secondItem="DgJ-ql-Qms" secondAttribute="trailing" id="Nx9-5i-23Z"/>
+                                    <constraint firstAttribute="trailing" secondItem="DgJ-ql-Qms" secondAttribute="trailing" constant="10" id="Nx9-5i-23Z"/>
                                     <constraint firstItem="DgJ-ql-Qms" firstAttribute="top" secondItem="sPa-UH-35M" secondAttribute="top" id="Uku-pH-L62"/>
                                     <constraint firstItem="DgJ-ql-Qms" firstAttribute="leading" secondItem="cya-yh-yL2" secondAttribute="trailing" constant="10" id="iFo-t3-gEZ"/>
                                 </constraints>
@@ -699,6 +700,7 @@
                     <connections>
                         <outlet property="backgroundView" destination="ebc-AN-G2m" id="Vc9-dg-EL8"/>
                         <outlet property="dateHistoryButton" destination="cya-yh-yL2" id="cwM-8p-ggZ"/>
+                        <outlet property="dateLabel" destination="DgJ-ql-Qms" id="vmV-ac-qQp"/>
                         <outlet property="listTableView" destination="7OI-tv-Dqf" id="NvA-iy-1Cd"/>
                         <outlet property="nextMainPresenterLabel" destination="gyi-4S-I0O" id="RA7-kC-Jux"/>
                         <outlet property="nextOfferLabel" destination="u4R-tn-EIa" id="Rap-gM-q3j"/>
@@ -842,7 +844,7 @@
                                 </connections>
                             </tableView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" name="theme1"/>
                         <constraints>
                             <constraint firstItem="MYI-fn-gEU" firstAttribute="trailing" secondItem="UXi-6w-5Zy" secondAttribute="trailing" id="7bR-fY-vKI"/>
                             <constraint firstAttribute="trailing" secondItem="9g0-6v-7s2" secondAttribute="trailing" constant="10" id="B9s-Rt-a1q"/>
@@ -915,7 +917,7 @@
                     </tabBarItem>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="QHA-O1-thE">
-                        <rect key="frame" x="0.0" y="44" width="414" height="96"/>
+                        <rect key="frame" x="0.0" y="44" width="414" height="104.5"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <color key="tintColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -1067,7 +1069,7 @@
                     </tabBarItem>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="23G-rQ-vqy">
-                        <rect key="frame" x="0.0" y="44" width="414" height="104.5"/>
+                        <rect key="frame" x="0.0" y="44" width="414" height="96"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <color key="tintColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -1162,7 +1164,7 @@
         <image name="ic_cancel" width="32" height="32"/>
         <image name="ic_cancel_tapped" width="32" height="32"/>
         <image name="ic_detail_gray" width="7.5" height="7.5"/>
-        <image name="ic_expand_down" width="32" height="32"/>
+        <image name="ic_expand_down_blank" width="32" height="32"/>
         <image name="tab_advertisement" width="32" height="32"/>
         <image name="tab_bible" width="32" height="32"/>
         <image name="tab_list" width="32" height="32"/>

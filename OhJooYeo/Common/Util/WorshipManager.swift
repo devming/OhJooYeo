@@ -13,7 +13,8 @@ class WorshipManager {
     
     /// worship-list API호출하고나서 바로 할당해 줘야함.
     var currentWorshipInfo: WorshipInfoRequest?
-    var date: String = ""
+//    var date: String = ""
+    var date: String = "2019-11-22"
 //    var currentWorshipId: String = ""
     var churchId = 1 /// - TODO: [2019-11-22] 원래 0으로 해놓고 0이면 에러나게 해야함
     
@@ -21,8 +22,8 @@ class WorshipManager {
     func setCurrentWorshipId(worshipIdList: [WorshipIdDate]) {
         if worshipIdList.count == 0 { return }
         var list = worshipIdList
-        list.sort { $0.worshipId > $1.worshipId }
-        if let item = list.first {
+        list.sort { $0.worshipId > $1.worshipId } /// 날짜 내림차순 정렬
+        if let item = list.first { /// 가장 처음이니까 최신 날짜 주보
             self.currentWorshipInfo = WorshipInfoRequest(churchId: churchId, worshipId: item.worshipId)
 //            self.currentWorshipId = list.first!.worshipId
             self.date = item.date

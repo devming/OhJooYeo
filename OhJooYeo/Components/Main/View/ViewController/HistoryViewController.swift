@@ -21,22 +21,48 @@ class HistoryViewController: UIViewController {
     @IBOutlet weak var refreshButton: UIButton!
     var disposeBag = DisposeBag()
     
+    let closeEventSubject = PublishSubject<Bool>()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
 //        setTransparentBackground(navigationController: self.navigationController)
 //        navigationBar.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0)
+//        self.closeEventSubject.subscribe(onNext: { isUpdated in
+//            print("## close after 2")
+//            if isUpdated {
+//                if let mainViewController = self.presentingViewController as? MainViewController {
+//                    print("## presentingViewController")
+//                    mainViewController.listTableView.reloadData()
+//
+//                }
+//            }
+//        }).disposed(by: self.disposeBag)
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        callApi()
         
         refreshButton.rx.tap
             .asDriver()
             .drive(onNext: { [weak self] _ in
                 self?.callApi()
             }).disposed(by: disposeBag)
+        
+
+        closeEventSubject.subscribe(onNext: { isUpdated in
+            print("## close after 2")
+            if isUpdated {
+                if let mainViewController = self.presentingViewController as? MainViewController {
+                    mainViewController.listTableView.reloadData()
+                    
+                }
+            }
+        }, onError: { [weak self] _ in
+            self?.closeEventSubject.onNext(false)
+        }).disposed(by: disposeBag)
+        
+        callApi()
     }
 
     func callApi() {
@@ -44,18 +70,13 @@ class HistoryViewController: UIViewController {
             .asDriver(onErrorJustReturn: [WorshipIdDate]())
             .drive(onNext: { [weak self] _ in
                 self?.listTableView.reloadData()
+                self?.closeEventSubject.onNext(true)
             }).disposed(by: disposeBag)
     }
     
     @IBAction func closeButtonTapped(_ sender: Any) {
-        self.dismiss(animated: true) {
-
-            if let mainViewController = self.presentingViewController as? MainViewController {
-                self.dismiss(animated: true) {
-                    mainViewController.listTableView.reloadData()
-                }
-            }
-        }
+        print("## close before")
+        self.dismiss(animated: true)
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -98,11 +119,22 @@ extension HistoryViewController: UITableViewDelegate {
         if let id = viewModel.worshipIdDateList?[indexPath.row].worshipId {
             mainViewModel?.requestWorshipMain(worshipId: id)
                 .observeOn(MainScheduler.instance)
-                .subscribe(onNext: { (worshipInfo) in
-                    if let mainViewController = self.presentingViewController as? MainViewController {
-                        mainViewController.viewModel.worshipInfo = worshipInfo
-                        self.dismiss(animated: true) {
-                            mainViewController.listTableView.reloadData()
+                .subscribe(onNext: { [weak self] (worshipInfo) in
+                    guard let `self` = self else { return }
+                    
+                    if let tabBarController = self.presentingViewController as? UITabBarController {
+                        tabBarController.viewControllers?.forEach { [weak self] vc in
+                            guard let `self` = self else { return }
+                            if let nav = vc as? UINavigationController,
+                                let mainViewController = nav.topViewController as? MainViewController {
+                                
+                                mainViewController.viewModel.worshipInfo = worshipInfo
+                                self.dismiss(animated: true) {
+                                    
+                                    print("## close5")
+                                    mainViewController.reloadAction()
+                                }
+                            }
                         }
                     }
                 }).disposed(by: disposeBag)

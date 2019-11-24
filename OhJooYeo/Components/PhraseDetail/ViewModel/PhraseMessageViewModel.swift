@@ -10,13 +10,16 @@ import RxSwift
 import Alamofire
 
 class PhraseMessageViewModel: ViewModel {
-    var phrases: [PhraseMessage]?
+    var phrases: [[PhraseMessage]]?
     
-    func callApi(phraseRange: [String]) -> Observable<[PhraseMessage]> {
+    /// callApi
+    func requestPhraseMessage(phraseRange: [String]) -> Observable<[[PhraseMessage]]> {
+//        let param: Parameters = [PhraseMessageRequest.CodingKeys.phraseRange.rawValue: phraseRange]
         let param: Parameters = [PhraseMessageRequest.CodingKeys.phraseRange.rawValue: phraseRange]
         
+        
         return APIService.postPhrase(parameters: param)
-            .map { try JSONDecoder().decode([PhraseMessage].self, from: $0) }
+            .map { try JSONDecoder().decode([[PhraseMessage]].self, from: $0) }
             .do(onNext: { phraseMessages in
                 self.phrases = phraseMessages
             })

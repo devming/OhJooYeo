@@ -21,6 +21,7 @@ class MainViewController: UIViewController {
     @IBOutlet weak var listTableView: UITableView!
     @IBOutlet weak var dateHistoryButton: UIButton!
     @IBOutlet weak var yearlyPhraseLabel: UILabel!
+    @IBOutlet weak var dateLabel: UILabel!
     
     @IBOutlet weak var nextMainPresenterLabel: UILabel!
     @IBOutlet weak var nextPrayerLabel: UILabel!
@@ -37,46 +38,36 @@ class MainViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        //        self.yearlyMessage.layer.cornerRadius = 3.0
+        setupUI()
+        setupData()
+    }
+    
+    func setupUI() {
         self.activityIndicator = NVActivityIndicatorView(frame: self.view.frame, type: NVActivityIndicatorType.ballTrianglePath, color: UIColor.white, padding: self.view.frame.width / 2.5)
         self.view.addSubview(self.activityIndicator!)
-        self.activityIndicator?.startAnimating()
         
         self.listTableView.rowHeight = UITableViewAutomaticDimension
         self.listTableView.layer.cornerRadius = 10.0
-//        self.listTableView.register(FirstSectionHeader.self, forHeaderFooterViewReuseIdentifier: FirstSectionHeader.headerName)
-//        self.listTableView.register(TextSectionHeader.self, forHeaderFooterViewReuseIdentifier: TextSectionHeader.headerName)
-        
         
         initRefreshControl()
-        
         setTransparentBackground(navigationController: self.navigationController)
-        
-        loadDatas()
-        setup()
     }
     
-    func setup() {
+    func setupData() {
+        loadDatas()
         WorshipApiHelper.requestYearlyMessage()
             .bind(to: self.yearlyPhraseLabel.rx.text)
             .disposed(by: disposeBag)
-        
-        dateHistoryButton.rx.tap
-            .asDriver()
-            .drive(onNext: { _ in
-                print("Tap!")
-            }).disposed(by: disposeBag)
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        self.listTableView.reloadData()
+        self.reloadAction()
     }
+    
     @IBAction func dateHistoryTapped(_ sender: Any) {
         performSegue(withIdentifier: SegueName.historySegue.rawValue, sender: sender)
-        
-        print("dateHistoryTapped tap")
     }
     
     
@@ -198,9 +189,7 @@ extension MainViewController {
     //    }
     
     func initRefreshControl() {
-        //        viewModel.
         self.refreshControl.addTarget(self, action: #selector(loadDatas), for: .valueChanged)
-        //        self.refreshControl.rx.
         self.listTableView.addSubview(self.refreshControl)
     }
     
@@ -210,37 +199,54 @@ extension MainViewController {
         self.nextOfferLabel.text = nextPresenter?.offer
     }
     
-    @objc func loadDatas() {
+    @objc func loadDatas(worshipId: String? = WorshipManager.shared.currentWorshipInfo?.worshipId) {
+        
+        let date = WorshipApiHelper.requestDate()
+        self.dateLabel.text = date
+        
         /// [TestCode]
-        //        if let worshipId = WorshipManager.shared.currentWorshipInfo?.worshipId {
         let worshipId = "19-003"
+//        guard let worshipId = worshipId else {
+//            self.reloadAction(isSuccess: false)
+//            return
+//        }
+        self.activityIndicator?.startAnimating()
         viewModel.requestWorshipMain(worshipId: worshipId)
             .observeOn(MainScheduler.instance)
             .subscribe(onNext: { [weak self] worshipMainInfo in
                 self?.bindNextPresenter(nextPresenter: worshipMainInfo.nextPresenter)
-                self?.listTableView.reloadData()
-                self?.activityIndicator?.stopAnimating()
+                self?.reloadAction()
                 }, onError: { [weak self] err in
                     print("#### ERROR: \(err)")
-                    self?.activityIndicator?.stopAnimating()
-                    self?.backgroundView.showErrorView(.network) {
-                        self?.loadDatas()
-                    }
+                    self?.reloadAction(isSuccess: false)
             }).disposed(by: disposeBag)
         //        }
+    }
+    
+    func reloadAction(isSuccess: Bool = true) {
+        self.listTableView.reloadData()
+        self.activityIndicator?.stopAnimating()
+        if !isSuccess {
+            self.backgroundView.showErrorView(.network) { [weak self] in
+                self?.loadDatas()
+            }
+        }
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         super.prepare(for: segue, sender: sender)
         
-        if let cell = sender as? OrderRowCell, let indexPath = self.listTableView.indexPath(for: cell) {
+        if let cell = sender as? OrderRowCell,
+            let indexPath = self.listTableView.indexPath(for: cell) {
             
             guard let orderList = viewModel.worshipInfo?.worshipOrderList, orderList[indexPath.row].type == WorshipOrder.TypeName.phrase.rawValue else {
                 return
             }
             
+            
             if let destination = segue.destination as? PhraseDetailViewController {
                 destination.orderId = Int(orderList[indexPath.row].orderId)
+                destination.phraseRange = orderList[indexPath.row].detail
             }
         }
         
