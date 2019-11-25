@@ -46,6 +46,11 @@ class HistoryViewController: UIViewController {
         refreshButton.rx.tap
             .asDriver()
             .drive(onNext: { [weak self] _ in
+
+                self?.refreshButton.alpha = 0.3
+                UIView.animate(withDuration: 0.5) {
+                    self?.refreshButton.alpha = 0.75
+                }
                 self?.callApi()
             }).disposed(by: disposeBag)
         
