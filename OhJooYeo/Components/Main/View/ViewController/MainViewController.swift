@@ -39,6 +39,7 @@ class MainViewController: UIViewController {
         super.viewDidLoad()
         WorshipManager.shared.date = "2019-11-07"
         
+        viewModel.requestWorshipList(churchId: WorshipManager.shared.churchId)
         setupUI()
         setupData()
     }

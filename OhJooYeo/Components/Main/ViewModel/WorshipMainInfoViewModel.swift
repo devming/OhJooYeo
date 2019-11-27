@@ -46,4 +46,15 @@ final class WorshipMainInfoViewModel: ViewModel {
                 WorshipManager.shared.date = worshipDate
             })
     }
+    
+    /// callApi
+    func requestWorshipList(churchId: Int) {//-> Observable<WorshipIdDate> {
+        let params: Parameters = [BaseRequest.CodingKeys.churchId.rawValue: WorshipManager.shared.churchId]
+        print("### worshipInfo param: \(params)")
+        APIService.postWorshipList(parameters: params)
+            .map { try JSONDecoder().decode([WorshipIdDate].self, from: $0) }
+            .subscribe(onNext: { worshipList in
+                WorshipManager.shared.setCurrentWorshipId(worshipIdList: worshipList)
+            }).disposed(by: disposeBag)
+    }
 }
