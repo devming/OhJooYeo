@@ -12,7 +12,7 @@ import RxSwift
 
 class PhraseDetailViewController: UIViewController {
     
-    @IBOutlet var backgroundView: BackgroundView!
+    @IBOutlet weak var backgroundView: BackgroundView!
     @IBOutlet weak var listTableView: UITableView!
     var orderId = 0
     var currentIndex = -1

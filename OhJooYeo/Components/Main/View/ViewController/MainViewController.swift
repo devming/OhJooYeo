@@ -17,7 +17,7 @@ enum UIConstantValue: CGFloat {
 
 class MainViewController: UIViewController {
     
-    @IBOutlet var backgroundView: BackgroundView!
+    @IBOutlet weak var backgroundView: BackgroundView!
     @IBOutlet weak var listTableView: UITableView!
     @IBOutlet weak var dateHistoryButton: UIButton!
     @IBOutlet weak var yearlyPhraseLabel: UILabel!
@@ -38,7 +38,7 @@ class MainViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         WorshipManager.shared.date = "2019-11-07"
-        
+
         viewModel.requestWorshipList(churchId: WorshipManager.shared.churchId)
         setupUI()
         setupData()
@@ -53,6 +53,8 @@ class MainViewController: UIViewController {
         self.listTableView.layer.cornerRadius = 10.0
         
         setTransparentBackground(navigationController: self.navigationController)
+        
+        self.activityIndicator?.startAnimating()
     }
     
     func setupData() {
@@ -65,7 +67,7 @@ class MainViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        self.reloadAction()
+//        self.reloadAction()
     }
     
     @IBAction func dateHistoryTapped(_ sender: Any) {
@@ -127,17 +129,18 @@ extension MainViewController {
     }
     
     @objc func loadDatas(worshipId: String? = WorshipManager.shared.currentWorshipInfo?.worshipId) {
-        
+
+        setBackgroundSubViewsHide(isHidden: true)
         
         /// [TestCode]
-        let worshipId = "19-003"
+//        let worshipId = "19-003"
         let worshipDate = WorshipManager.shared.date
 //        guard let worshipId = worshipId else {
 //            self.reloadAction(isSuccess: false)
 //            return
 //        }
         self.activityIndicator?.startAnimating()
-        self.viewModel.requestWorshipMain(worshipId: worshipId, worshipDate: worshipDate)
+        self.viewModel.requestWorshipMain(worshipId: worshipId ?? "", worshipDate: worshipDate)
             .observeOn(MainScheduler.instance)
             .subscribe(onNext: { [weak self] worshipMainInfo in
                 self?.dateLabel.text = worshipDate
@@ -161,9 +164,16 @@ extension MainViewController {
             
             return
         }
-        
+        setBackgroundSubViewsHide(isHidden: false)
         let date = WorshipApiHelper.requestDate()
         self.dateLabel.text = date
+    }
+    
+    func setBackgroundSubViewsHide(isHidden: Bool) {
+        self.backgroundView.subviews.forEach {
+            $0.isHidden = isHidden
+//            $0.alpha = isHidden ? 0.0 : 1.0
+        }
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

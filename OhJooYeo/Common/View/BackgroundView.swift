@@ -28,25 +28,26 @@ class BackgroundView: UIImageView {
         self.backgroundColor = UIColor.colorBackgroundDark
     }
     
-    func setBackgroundByImage() {
-        UIGraphicsBeginImageContext(self.frame.size)
-        
-        image = UIImage(named: "bg_all_blur")
-        image?.draw(in: self.bounds)
-        
-        if let backImage = UIGraphicsGetImageFromCurrentImageContext(){
-            UIGraphicsEndImageContext()
-            self.backgroundColor = UIColor(patternImage: backImage)
-        } else {
-            UIGraphicsEndImageContext()
-            debugPrint("Image not available")
-        }
-        
-        self.contentMode = .scaleAspectFill
-        self.clipsToBounds = true
-    }
+//    func setBackgroundByImage() {
+//        UIGraphicsBeginImageContext(self.frame.size)
+//
+//        image = UIImage(named: "bg_all_blur")
+//        image?.draw(in: self.bounds)
+//
+//        if let backImage = UIGraphicsGetImageFromCurrentImageContext(){
+//            UIGraphicsEndImageContext()
+//            self.backgroundColor = UIColor(patternImage: backImage)
+//        } else {
+//            UIGraphicsEndImageContext()
+//            debugPrint("Image not available")
+//        }
+//
+//        self.contentMode = .scaleAspectFill
+//        self.clipsToBounds = true
+//    }
     
     func showErrorView(_ error: OJYError, _ reloadHandler: (() -> Void)? = nil) {
+        
         switch error {
         case .network:
             let errorView = NetworkErrorView(frame: self.frame)
@@ -54,10 +55,17 @@ class BackgroundView: UIImageView {
             errorView.rx.tap
                 .asDriver()
                 .drive(onNext: { [weak self] _ in
+
+//                    self?.snp.removeConstraints()
+
                     reloadHandler?()
                     self?.errorSolved()
                 }).disposed(by: disposeBag)
             self.addSubview(errorView)
+            errorView.snp.remakeConstraints { maker in
+                maker.leading.trailing.top.bottom.equalTo(self)
+            }
+            errorView.addTarget(self, action: #selector(clickAnimation), for: .touchDown)
         case .data:
             let errorView = NoDataErrorView(frame: self.frame)
             errorView.tag = OJYError.data.rawValue
@@ -68,6 +76,10 @@ class BackgroundView: UIImageView {
                     self?.errorSolved()
                 }).disposed(by: disposeBag)
             self.addSubview(errorView)
+            errorView.snp.remakeConstraints { maker in
+                maker.leading.trailing.top.bottom.equalTo(self)
+            }
+            errorView.addTarget(self, action: #selector(clickAnimation), for: .touchDown)
         
             
 //            self.subviews.forEach {
@@ -86,4 +98,17 @@ class BackgroundView: UIImageView {
             })
     }
     
+    
+    @objc func clickAnimation() {
+        self.alpha = 1.0
+        UIView.animate(withDuration: 0.3, animations: { [weak self] in
+            
+            self?.alpha = 0.5
+        }) { _ in
+            
+            UIView.animate(withDuration: 0.3) { [weak self] in
+                self?.alpha = 1.0
+            }
+        }
+    }
 }

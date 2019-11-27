@@ -10,7 +10,7 @@ import UIKit
 
 class AdvertisementViewController: UIViewController {
 
-    @IBOutlet var backgroundView: BackgroundView!
+    @IBOutlet weak var backgroundView: BackgroundView!
     @IBOutlet weak var listTableView: UITableView!
     let viewModel = AdvertisementViewModel()
     let refreshControl = UIRefreshControl()

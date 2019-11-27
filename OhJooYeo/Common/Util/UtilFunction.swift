@@ -24,22 +24,26 @@ func showConfirmationAlert(alertTitle title: String, alertMessage message: Strin
 //}
 
 func setTransparentBackground(navigationController: UINavigationController?) {
-    let gradientLayer = CAGradientLayer()
-    
-    if let navigationController = navigationController {
-        gradientLayer.frame = navigationController.navigationBar.frame
-    }
-    //        // Render the gradient to UIImage
-    UIGraphicsBeginImageContext(gradientLayer.bounds.size)
-    guard let context = UIGraphicsGetCurrentContext() else {
-        UIGraphicsEndImageContext()
-        return
-    }
-    gradientLayer.render(in: context)
-    let image = UIGraphicsGetImageFromCurrentImageContext()
-    UIGraphicsEndImageContext()
-    
-    navigationController?.navigationBar.setBackgroundImage(image, for: .default)
+//    let gradientLayer = CAGradientLayer()
+//
+//    if let navigationController = navigationController {
+//        gradientLayer.frame = navigationController.navigationBar.frame
+//    }
+//    //        // Render the gradient to UIImage
+//    UIGraphicsBeginImageContext(gradientLayer.bounds.size)
+//    guard let context = UIGraphicsGetCurrentContext() else {
+//        UIGraphicsEndImageContext()
+//        return
+//    }
+//    gradientLayer.render(in: context)
+//    let image = UIGraphicsGetImageFromCurrentImageContext()
+//    UIGraphicsEndImageContext()
+//
+//    navigationController?.navigationBar.setBackgroundImage(image, for: .default)
+    navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
+    navigationController?.navigationBar.shadowImage = UIImage()
+    navigationController?.navigationBar.isTranslucent = true
+    navigationController?.view.backgroundColor = .clear
 }
 
 func callInitialAPI() {
