@@ -213,6 +213,7 @@ extension MainViewController {
                 destination.orderId = Int(orderList[indexPath.row].orderId)
                 destination.phraseRange = orderList[indexPath.row].detail
             }
+            cell.setSelected(false, animated: true)
         }
         
         if let _ = sender as? UIButton, let vc = segue.destination as? HistoryViewController {

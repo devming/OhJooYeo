@@ -29,13 +29,13 @@ class PhraseDetailViewController: UIViewController {
         
         ///////// test code////////////////////////////////////
         if phraseRange == "행복의 노래" {
-                    backgroundView.showErrorView(.data) { [weak self] in
-                        let temp = "창세기 1:3-1:5"
-                        var range = [String]()
-            //            range.append(phraseRange)
-                        range.append(temp)
-                        self?.callApi(phraseRange: range)
-                    }
+            backgroundView.showErrorView(.data) { [weak self] in
+                let temp = "창세기 1:3-1:5"
+                var range = [String]()
+    //            range.append(phraseRange)
+                range.append(temp)
+                self?.callApi(phraseRange: range)
+            }
             return
         }
         ///////////////////////////////////////////////////////////////

@@ -43,4 +43,13 @@ class OrderRowCell: UITableViewCell {
 //        bgColorView.backgroundColor = UIColor.white
 //        selectedBackgroundView = bgColorView
     }
+    
+//    override func setSelected(_ selected: Bool, animated: Bool) {
+//        super.setSelected(selected, animated: animated)
+//        self.backgroundColor = .clear
+////        UIView.animate(withDuration: 0.5) { [weak self] in
+////            self?.backgroundColor = UIColor.init(red: 0, green: 0, blue: 0, alpha: 0.0)
+////
+////        }
+//    }
 }
