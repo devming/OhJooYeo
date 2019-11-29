@@ -16,7 +16,7 @@ class WorshipManager {
 //    var date: String = ""
     var date: String = ""
 //    var currentWorshipId: String = ""
-    var churchId = 0 /// - TODO: [2019-11-22] 원래 0으로 해놓고 0이면 에러나게 해야함
+    var churchId = 1 /// - TODO: [2019-11-22] 원래 0으로 해놓고 0이면 에러나게 해야함 - 로그인하면 churchId 설정하게 할것!
     
     /// currentWorshipId를 할당해주는 메소드 - 'worship-list' API에서 호출해야함.
     func setCurrentWorshipId(worshipIdList: [WorshipIdDate]) {

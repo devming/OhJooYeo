@@ -32,10 +32,10 @@ final class WorshipMainInfoViewModel: ViewModel {
     }
     
     /// callApi
-    func requestWorshipMain(worshipId: String, worshipDate: String) -> Observable<WorshipMainInfo> {
-        
+//    func requestWorshipMain(worshipId: String, worshipDate: String) -> Observable<WorshipMainInfo> {
+      func requestWorshipMain(worshipIdDate: WorshipIdDate) -> Observable<WorshipMainInfo> {
         let params: Parameters = [BaseRequest.CodingKeys.churchId.rawValue: WorshipManager.shared.churchId,
-                                  WorshipInfoRequest.CodingKeys.worshipId.rawValue: worshipId,
+                                  WorshipInfoRequest.CodingKeys.worshipId.rawValue: worshipIdDate.worshipId,
                                   WorshipInfoRequest.CodingKeys.version.rawValue: WorshipManager.shared.currentWorshipInfo?.version ?? 0]
         print("### worshipInfo param: \(params)")
         return APIService.postWorshipInfo(parameters: params)
@@ -43,18 +43,15 @@ final class WorshipMainInfoViewModel: ViewModel {
             .do(onNext: { [weak self] (worshipInfo) in
                 print("### worshipInfo: \(worshipInfo)")
                 self?.worshipInfo = worshipInfo
-                WorshipManager.shared.date = worshipDate
+                WorshipManager.shared.date = worshipIdDate.date
             })
     }
     
     /// callApi
-    func requestWorshipList(churchId: Int) {//-> Observable<WorshipIdDate> {
+    func requestWorshipList(churchId: Int) -> Observable<[WorshipIdDate]> {
         let params: Parameters = [BaseRequest.CodingKeys.churchId.rawValue: WorshipManager.shared.churchId]
         print("### worshipInfo param: \(params)")
-        APIService.postWorshipList(parameters: params)
+        return APIService.postWorshipList(parameters: params)
             .map { try JSONDecoder().decode([WorshipIdDate].self, from: $0) }
-            .subscribe(onNext: { worshipList in
-                WorshipManager.shared.setCurrentWorshipId(worshipIdList: worshipList)
-            }).disposed(by: disposeBag)
     }
 }

@@ -25,10 +25,10 @@ final class WorshipIDListDataViewModel: ViewModel {
         return APIService.postWorshipList(parameters: params)
             .map {
                 try JSONDecoder().decode([WorshipIdDate].self, from: $0)
-        }
-        .do(onNext: { [weak self] worshipIdDate in
-            self?.worshipIdDateList = worshipIdDate
-        })
+            }
+            .do(onNext: { [weak self] worshipIdDate in
+                self?.worshipIdDateList = worshipIdDate
+            })
     }
     
 }

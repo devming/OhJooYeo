@@ -37,9 +37,10 @@ class MainViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        /// test code
         WorshipManager.shared.date = "2019-11-07"
-
-        viewModel.requestWorshipList(churchId: WorshipManager.shared.churchId)
+            
+        
         setupUI()
         setupData()
     }
@@ -128,7 +129,7 @@ extension MainViewController {
         self.nextOfferLabel.text = nextPresenter?.offer
     }
     
-    @objc func loadDatas(worshipId: String? = WorshipManager.shared.currentWorshipInfo?.worshipId) {
+    @objc func loadDatas() {
 
         setBackgroundSubViewsHide(isHidden: true)
         
@@ -140,7 +141,17 @@ extension MainViewController {
 //            return
 //        }
         self.activityIndicator?.startAnimating()
-        self.viewModel.requestWorshipMain(worshipId: worshipId ?? "", worshipDate: worshipDate)
+        
+
+        let recentWorshipInfoOb = viewModel.requestWorshipList(churchId: WorshipManager.shared.churchId)
+            .filter { $0.count > 0 }
+            .do(onNext: { recentWorshipInfoList in
+                WorshipManager.shared.setCurrentWorshipId(worshipIdList: recentWorshipInfoList)
+            })
+            .map { $0.first! }
+            
+        recentWorshipInfoOb
+            .concatMap(viewModel.requestWorshipMain)
             .observeOn(MainScheduler.instance)
             .subscribe(onNext: { [weak self] worshipMainInfo in
                 self?.dateLabel.text = worshipDate
@@ -150,6 +161,17 @@ extension MainViewController {
                     print("#### ERROR: \(err)")
                     self?.reloadAction(isSuccess: false)
             }).disposed(by: disposeBag)
+        
+//        self.viewModel.requestWorshipMain(worshipId: worshipId ?? "", worshipDate: worshipDate)
+//            .observeOn(MainScheduler.instance)
+//            .subscribe(onNext: { [weak self] worshipMainInfo in
+//                self?.dateLabel.text = worshipDate
+//                self?.bindNextPresenter(nextPresenter: worshipMainInfo.nextPresenter)
+//                self?.reloadAction()
+//                }, onError: { [weak self] err in
+//                    print("#### ERROR: \(err)")
+//                    self?.reloadAction(isSuccess: false)
+//            }).disposed(by: disposeBag)
         //        }
     }
     
