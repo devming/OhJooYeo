@@ -8,12 +8,12 @@
 
 import UIKit
 
-class SignUpViewController: UIViewController {
+class SignUpViewController: BaseViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-//        setTransparentBackground(navigationController: self.navigationController)
+        
+        setTransparentBackground()
     }
 
     @IBAction func closeButtonTapped(_ sender: Any) {

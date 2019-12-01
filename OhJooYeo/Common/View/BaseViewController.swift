@@ -21,4 +21,11 @@ class BaseViewController: UIViewController {
         super.viewWillAppear(animated)
         
     }
+    
+    func setTransparentBackground() {
+        navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
+        navigationController?.navigationBar.shadowImage = UIImage()
+        navigationController?.navigationBar.isTranslucent = true
+        navigationController?.view.backgroundColor = .clear
+    }
 }

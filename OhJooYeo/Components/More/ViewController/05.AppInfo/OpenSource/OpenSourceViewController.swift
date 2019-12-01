@@ -8,7 +8,7 @@
 
 import UIKit
 
-class OpenSourceViewController: UIViewController {
+class OpenSourceViewController: BaseViewController {
 
     static let segueName = "opensourceSegue"
     

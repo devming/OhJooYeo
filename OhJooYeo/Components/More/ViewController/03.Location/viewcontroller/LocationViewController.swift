@@ -9,7 +9,7 @@
 import UIKit
 import NMapsMap
 
-class LocationViewController: UIViewController {
+class LocationViewController: BaseViewController {
     
     @IBOutlet weak var mapView: NMFMapView!
     /// 돈암동감리교회

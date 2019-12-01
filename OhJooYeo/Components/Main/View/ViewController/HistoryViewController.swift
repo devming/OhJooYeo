@@ -9,7 +9,7 @@
 import UIKit
 import RxSwift
 
-class HistoryViewController: UIViewController {
+class HistoryViewController: BaseViewController {
 
     let viewModel = WorshipIDListDataViewModel()
     var mainViewModel: WorshipMainInfoViewModel? {
@@ -26,7 +26,7 @@ class HistoryViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-//        setTransparentBackground(navigationController: self.navigationController)
+        setTransparentBackground()
 //        navigationBar.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0)
 //        self.closeEventSubject.subscribe(onNext: { isUpdated in
 //            print("## close after 2")

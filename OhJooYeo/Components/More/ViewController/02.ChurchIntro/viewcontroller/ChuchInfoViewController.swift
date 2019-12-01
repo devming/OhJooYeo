@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ChurchInfoViewController: UIViewController {
+class ChurchInfoViewController: BaseViewController {
 
     static let segueName = "churchInfoSegue"
     

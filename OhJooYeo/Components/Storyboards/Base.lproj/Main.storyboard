@@ -412,8 +412,27 @@
                                         <rect key="frame" x="10" y="65" width="394" height="589.5"/>
                                         <color key="backgroundColor" name="colorTableViewBackground"/>
                                         <inset key="separatorInset" minX="10" minY="0.0" maxX="10" maxY="0.0"/>
+                                        <view key="tableHeaderView" contentMode="scaleToFill" id="MKP-lw-k2r">
+                                            <rect key="frame" x="0.0" y="0.0" width="394" height="30"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" alpha="0.80000000000000004" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="인도자: OOO" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="H5I-Ad-ix2">
+                                                    <rect key="frame" x="10" y="10" width="349" height="20"/>
+                                                    <fontDescription key="fontDescription" name="AppleSDGothicNeo-SemiBold" family="Apple SD Gothic Neo" pointSize="17"/>
+                                                    <color key="textColor" name="labelPrimary"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <constraints>
+                                                <constraint firstItem="H5I-Ad-ix2" firstAttribute="leading" secondItem="MKP-lw-k2r" secondAttribute="leading" constant="10" id="HWf-6P-wqX"/>
+                                                <constraint firstAttribute="trailing" secondItem="H5I-Ad-ix2" secondAttribute="trailing" constant="35" id="d2r-72-gU0"/>
+                                                <constraint firstItem="H5I-Ad-ix2" firstAttribute="top" secondItem="MKP-lw-k2r" secondAttribute="top" constant="10" id="nnX-5b-cXi"/>
+                                                <constraint firstAttribute="bottom" secondItem="H5I-Ad-ix2" secondAttribute="bottom" id="yrJ-kU-mWK"/>
+                                            </constraints>
+                                        </view>
                                         <view key="tableFooterView" contentMode="scaleToFill" id="Zer-wn-drG">
-                                            <rect key="frame" x="0.0" y="136" width="394" height="282"/>
+                                            <rect key="frame" x="0.0" y="166" width="394" height="282"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <subviews>
                                                 <view alpha="0.40000000000000002" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZvY-h5-f0X">
@@ -607,7 +626,7 @@
                                         </view>
                                         <prototypes>
                                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="OrderRowCell" rowHeight="80" id="Wss-TL-zTq" customClass="OrderRowCell" customModule="OhJooYeo" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="28" width="394" height="80"/>
+                                                <rect key="frame" x="0.0" y="58" width="394" height="80"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Wss-TL-zTq" id="haZ-Pq-5Zf">
                                                     <rect key="frame" x="0.0" y="0.0" width="394" height="80"/>
@@ -732,6 +751,7 @@
                         <outlet property="dateHistoryButton" destination="cya-yh-yL2" id="cwM-8p-ggZ"/>
                         <outlet property="dateLabel" destination="DgJ-ql-Qms" id="vmV-ac-qQp"/>
                         <outlet property="listTableView" destination="7OI-tv-Dqf" id="NvA-iy-1Cd"/>
+                        <outlet property="mainPresenterLabel" destination="H5I-Ad-ix2" id="YC7-uD-CXL"/>
                         <outlet property="nextMainPresenterLabel" destination="gyi-4S-I0O" id="RA7-kC-Jux"/>
                         <outlet property="nextOfferLabel" destination="u4R-tn-EIa" id="Rap-gM-q3j"/>
                         <outlet property="nextPrayerLabel" destination="SK7-K5-E2B" id="dsj-6R-LnU"/>
@@ -773,7 +793,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" alpha="0.75" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oy0-Mq-YcL">
-                                        <rect key="frame" x="10" y="-7" width="64" height="64"/>
+                                        <rect key="frame" x="10" y="9" width="32" height="32"/>
                                         <state key="normal" image="ic_reload"/>
                                     </button>
                                 </subviews>
@@ -1149,7 +1169,7 @@
                     <tabBarItem key="tabBarItem" title="묵상" image="tab_bible" id="e6f-a4-mGk"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="MaE-e0-d4e">
-                        <rect key="frame" x="0.0" y="44" width="414" height="96"/>
+                        <rect key="frame" x="0.0" y="44" width="414" height="104.5"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>

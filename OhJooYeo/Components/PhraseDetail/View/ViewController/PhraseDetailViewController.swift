@@ -10,7 +10,7 @@ import UIKit
 import RealmSwift
 import RxSwift
 
-class PhraseDetailViewController: UIViewController {
+class PhraseDetailViewController: BaseViewController {
     
     @IBOutlet weak var backgroundView: BackgroundView!
     @IBOutlet weak var listTableView: UITableView!
@@ -25,7 +25,8 @@ class PhraseDetailViewController: UIViewController {
         
 //        NotificationCenter.default.addObserver(self, selector: #selector(phraseMessageUpdate(_:)), name: .PhraseMessageDidUpdated, object: nil)
         
-//        setTransparentBackground(navigationController: self.navigationController)
+        setTransparentBackground()
+
         
         ///////// test code////////////////////////////////////
         if phraseRange == "행복의 노래" {

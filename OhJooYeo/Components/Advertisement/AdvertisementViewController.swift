@@ -8,7 +8,7 @@
 
 import UIKit
 
-class AdvertisementViewController: UIViewController {
+class AdvertisementViewController: BaseViewController {
 
     @IBOutlet weak var backgroundView: BackgroundView!
     @IBOutlet weak var listTableView: UITableView!
@@ -21,7 +21,7 @@ class AdvertisementViewController: UIViewController {
 //        NotificationCenter.default.addObserver(self, selector: #selector(advertisementUpdate(_:)), name: .AdvertisementDidUpdated, object: nil)
         
         initRefreshControl()
-//        setTransparentBackground(navigationController: self.navigationController)
+        setTransparentBackground()
 
         self.backgroundView.showErrorView(.network) {
             self.listTableView.isHidden = true

@@ -15,7 +15,9 @@ enum UIConstantValue: CGFloat {
     case tableViewCellHeight = 80.0
 }
 
-class MainViewController: UIViewController {
+class MainViewController: BaseViewController {
+    
+    @IBOutlet weak var mainPresenterLabel: UILabel!
     
     @IBOutlet weak var backgroundView: BackgroundView!
     @IBOutlet weak var listTableView: UITableView!
@@ -27,8 +29,6 @@ class MainViewController: UIViewController {
     @IBOutlet weak var nextPrayerLabel: UILabel!
     @IBOutlet weak var nextOfferLabel: UILabel!
     
-    
-    
     let refreshControl = UIRefreshControl()
     var activityIndicator: NVActivityIndicatorView?
     
@@ -38,8 +38,7 @@ class MainViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         /// test code
-        WorshipManager.shared.date = "2019-11-07"
-            
+//        WorshipManager.shared.date = "2019-11-07"
         
         setupUI()
         setupData()
@@ -53,7 +52,7 @@ class MainViewController: UIViewController {
         self.listTableView.rowHeight = UITableViewAutomaticDimension
         self.listTableView.layer.cornerRadius = 10.0
         
-//        setTransparentBackground(navigationController: self.navigationController)
+        setTransparentBackground()
         
         self.activityIndicator?.startAnimating()
     }
@@ -65,17 +64,9 @@ class MainViewController: UIViewController {
             .disposed(by: disposeBag)
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        
-//        self.reloadAction()
-    }
-    
     @IBAction func dateHistoryTapped(_ sender: Any) {
         performSegue(withIdentifier: SegueName.historySegue.rawValue, sender: sender)
     }
-    
-    
 }
 
 extension MainViewController: UITableViewDataSource {
@@ -154,6 +145,11 @@ extension MainViewController {
             .concatMap(viewModel.requestWorshipMain)
             .observeOn(MainScheduler.instance)
             .subscribe(onNext: { [weak self] worshipMainInfo in
+                if let mainPresenter = worshipMainInfo.mainPresenter {
+                    self?.mainPresenterLabel.text = "인도자: \(mainPresenter)"
+                } else {
+                    self?.mainPresenterLabel.text = "인도자: ---"
+                }
                 self?.dateLabel.text = worshipDate
                 self?.bindNextPresenter(nextPresenter: worshipMainInfo.nextPresenter)
                 self?.reloadAction()

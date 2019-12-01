@@ -10,7 +10,7 @@ import UIKit
 import RxSwift
 import RxCocoa
 
-class LoginViewController: UIViewController {
+class LoginViewController: BaseViewController {
     
     @IBOutlet weak var emailTextField: OJYUITextField!
     @IBOutlet weak var passwordTextField: OJYUITextField!

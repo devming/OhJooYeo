@@ -8,7 +8,7 @@
 
 import UIKit
 
-class VersionInfoViewController: UIViewController {
+class VersionInfoViewController: BaseViewController {
     
     static let segueName = "versionInfoSegue"
     @IBOutlet weak var versionInfoLabel: UILabel!

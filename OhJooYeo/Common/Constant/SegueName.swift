@@ -8,4 +8,6 @@
 
 enum SegueName: String {
     case historySegue
+    case main
+    case signin
 }

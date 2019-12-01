@@ -8,7 +8,7 @@
 
 import UIKit
 
-class DonationViewController: UIViewController {
+class DonationViewController: BaseViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()

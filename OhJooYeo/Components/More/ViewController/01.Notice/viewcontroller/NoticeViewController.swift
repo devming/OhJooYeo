@@ -10,7 +10,7 @@ import UIKit
 import RxSwift
 import RxCocoa
 
-class NoticeViewController: UIViewController {
+class NoticeViewController: BaseViewController {
 
     static let segueName = "noticeSegue"
     let viewModel = NoticeViewModel()
@@ -35,7 +35,7 @@ class NoticeViewController: UIViewController {
             self.noticeTableView.endUpdates()
         }
         
-//        setTransparentBackground(navigationController: self.navigationController)
+        setTransparentBackground()
         
         setup()
 //        noticeTableView.reloadData()

@@ -8,7 +8,7 @@
 
 import UIKit
 
-class GroupInfoViewController: UIViewController {
+class GroupInfoViewController: BaseViewController {
 
     static let segueName = "groupInfoSegue"
     

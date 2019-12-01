@@ -8,7 +8,7 @@
 
 import UIKit
 
-class MoreViewController: UIViewController {
+class MoreViewController: BaseViewController {
 
     @IBOutlet weak var moreTableView: UITableView!
     let moreMenuImageList = ["ic_notice.png", "ic_church.png", "ic_map.png", "ic_group.png", "ic_version.png", "ic_advertisement.png"]
@@ -20,7 +20,7 @@ class MoreViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-//        setTransparentBackground(navigationController: self.navigationController)
+        setTransparentBackground()
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
