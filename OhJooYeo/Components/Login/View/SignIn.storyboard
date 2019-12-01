@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="mn1-Or-sUj">
-    <device id="retina6_1" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="mn1-Or-sUj">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15510"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -35,19 +34,17 @@
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="60" id="Pst-tx-4nS"/>
                                                     </constraints>
-                                                    <nil key="textColor"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                     <textInputTraits key="textInputTraits" autocorrectionType="no" keyboardType="emailAddress" returnKeyType="next" textContentType="email"/>
                                                 </textField>
                                                 <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="••••••" textAlignment="center" minimumFontSize="20" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="pI2-Bc-JJu" customClass="OJYUITextField" customModule="OhJooYeo" customModuleProvider="target">
                                                     <rect key="frame" x="20" y="160" width="354" height="60"/>
-                                                    <nil key="textColor"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                     <textInputTraits key="textInputTraits" enablesReturnKeyAutomatically="YES" secureTextEntry="YES"/>
                                                 </textField>
                                                 <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qHD-OO-65J" customClass="OJYUIButton" customModule="OhJooYeo" customModuleProvider="target">
                                                     <rect key="frame" x="20" y="240" width="354" height="40"/>
-                                                    <color key="backgroundColor" red="0.1176470588" green="0.68235294120000001" blue="0.59607843140000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <color key="backgroundColor" name="colorPrimary"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" priority="991" constant="40" id="eXd-0u-JrA"/>
                                                     </constraints>
@@ -60,7 +57,7 @@
                                                 </button>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CXP-Fy-21q" customClass="OJYUIButton" customModule="OhJooYeo" customModuleProvider="target">
                                                     <rect key="frame" x="20" y="300" width="354" height="40"/>
-                                                    <color key="backgroundColor" red="0.1176470588" green="0.68235294120000001" blue="0.59607843140000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <color key="backgroundColor" name="colorPrimary"/>
                                                     <state key="normal" title="회원 가입">
                                                         <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     </state>
@@ -164,7 +161,7 @@
                 <viewControllerPlaceholder storyboardName="Main" referencedIdentifier="main" id="6IM-2S-WSa" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8Cc-ki-GNE" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1736" y="-1392"/>
+            <point key="canvasLocation" x="1651" y="-1260"/>
         </scene>
         <!--signup-->
         <scene sceneID="dti-aH-95F">
@@ -172,11 +169,14 @@
                 <viewControllerPlaceholder storyboardIdentifier="signup" storyboardName="SignUpStoryBoard" referencedIdentifier="signup" id="j8A-zF-YFJ" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OeJ-lG-UOZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1740" y="-1217"/>
+            <point key="canvasLocation" x="1651" y="-1419"/>
         </scene>
     </scenes>
     <resources>
         <image name="bg_all" width="1512" height="1512"/>
         <image name="tab_bible" width="32" height="32"/>
+        <namedColor name="colorPrimary">
+            <color red="0.16470588235294117" green="0.396078431372549" blue="0.91764705882352937" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
     </resources>
 </document>

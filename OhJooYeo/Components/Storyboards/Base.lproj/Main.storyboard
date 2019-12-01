@@ -14,14 +14,14 @@
             <objects>
                 <viewController id="71S-uG-Xnd" customClass="PhraseDetailViewController" customModule="OhJooYeo" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="QbH-fO-UpT">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CS5-S9-KRu" customClass="BackgroundView" customModule="OhJooYeo" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="88" width="414" height="725"/>
+                                <rect key="frame" x="0.0" y="56" width="414" height="703"/>
                                 <subviews>
                                     <tableView clipsSubviews="YES" contentMode="scaleAspectFit" showsHorizontalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="dIB-bf-QTb" customClass="BaseTableView" customModule="OhJooYeo" customModuleProvider="target">
-                                        <rect key="frame" x="10" y="10" width="394" height="705"/>
+                                        <rect key="frame" x="10" y="10" width="394" height="683"/>
                                         <color key="backgroundColor" name="colorTableViewBackground"/>
                                         <color key="separatorColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <prototypes>
@@ -138,14 +138,14 @@
             <objects>
                 <viewController id="0kh-02-XW2" customClass="AdvertisementViewController" customModule="OhJooYeo" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="bI8-ap-uDf">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OwV-FJ-8Lv" customClass="BackgroundView" customModule="OhJooYeo" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="88" width="414" height="725"/>
+                                <rect key="frame" x="0.0" y="56" width="414" height="703"/>
                                 <subviews>
                                     <tableView clipsSubviews="YES" contentMode="scaleAspectFit" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="tKJ-Pa-Kgb" customClass="BaseTableView" customModule="OhJooYeo" customModuleProvider="target">
-                                        <rect key="frame" x="10" y="10" width="394" height="705"/>
+                                        <rect key="frame" x="10" y="10" width="394" height="683"/>
                                         <color key="backgroundColor" name="colorTableViewBackground"/>
                                         <color key="separatorColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <prototypes>
@@ -371,11 +371,11 @@
             <objects>
                 <viewController id="ugt-9J-Yw1" customClass="MainViewController" customModule="OhJooYeo" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ebc-AN-G2m">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="l5Z-kJ-25h" customClass="BackgroundView" customModule="OhJooYeo" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="148.5" width="414" height="664.5"/>
+                                <rect key="frame" x="0.0" y="116.5" width="414" height="642.5"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sPa-UH-35M">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="60"/>
@@ -409,7 +409,7 @@
                                         </constraints>
                                     </view>
                                     <tableView clipsSubviews="YES" contentMode="scaleAspectFit" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="7OI-tv-Dqf" customClass="BaseTableView" customModule="OhJooYeo" customModuleProvider="target">
-                                        <rect key="frame" x="10" y="65" width="394" height="589.5"/>
+                                        <rect key="frame" x="10" y="65" width="394" height="567.5"/>
                                         <color key="backgroundColor" name="colorTableViewBackground"/>
                                         <inset key="separatorInset" minX="10" minY="0.0" maxX="10" maxY="0.0"/>
                                         <view key="tableFooterView" contentMode="scaleToFill" id="Zer-wn-drG">
@@ -773,7 +773,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" alpha="0.75" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oy0-Mq-YcL">
-                                        <rect key="frame" x="10" y="-7" width="64" height="64"/>
+                                        <rect key="frame" x="10" y="9" width="32" height="32"/>
                                         <state key="normal" image="ic_reload"/>
                                     </button>
                                 </subviews>
@@ -899,6 +899,7 @@
         <scene sceneID="cz9-Di-oGu">
             <objects>
                 <tabBarController storyboardIdentifier="main" useStoryboardIdentifierAsRestorationIdentifier="YES" id="YMA-KL-jtq" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="vTd-7G-RBb"/>
                     <tabBar key="tabBar" contentMode="scaleAspectFit" insetsLayoutMarginsFromSafeArea="NO" barStyle="black" id="fhw-aP-qim" customClass="MainTabBar" customModule="OhJooYeo" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -924,7 +925,7 @@
                     </tabBarItem>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="rDV-Ed-rUG">
-                        <rect key="frame" x="0.0" y="44" width="414" height="96"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="108"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <color key="tintColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -947,7 +948,7 @@
                     </tabBarItem>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="QHA-O1-thE">
-                        <rect key="frame" x="0.0" y="44" width="414" height="96"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="108"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <color key="tintColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -966,11 +967,11 @@
             <objects>
                 <viewController id="Qu0-dH-tMA" customClass="MoreViewController" customModule="OhJooYeo" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="DPj-kV-a3P">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kTf-tz-lzd" customClass="BackgroundView" customModule="OhJooYeo" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="89" width="414" height="724"/>
+                                <rect key="frame" x="0.0" y="57" width="414" height="702"/>
                                 <subviews>
                                     <tableView clipsSubviews="YES" contentMode="scaleAspectFit" bounces="NO" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="6w5-n3-27V" customClass="BaseTableView" customModule="OhJooYeo" customModuleProvider="target">
                                         <rect key="frame" x="10" y="10" width="394" height="480"/>
@@ -1044,7 +1045,7 @@
                                 </constraints>
                             </view>
                             <view hidden="YES" alpha="0.0" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="D0r-T2-uyD" userLabel="Seperator View">
-                                <rect key="frame" x="0.0" y="88" width="414" height="1"/>
+                                <rect key="frame" x="0.0" y="56" width="414" height="1"/>
                                 <color key="backgroundColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="1" id="8Vd-Uz-TYQ"/>
@@ -1111,7 +1112,7 @@
                     </tabBarItem>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="23G-rQ-vqy">
-                        <rect key="frame" x="0.0" y="44" width="414" height="96"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="108"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <color key="tintColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -1148,7 +1149,7 @@
                     <tabBarItem key="tabBarItem" title="묵상" image="tab_bible" id="e6f-a4-mGk"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="MaE-e0-d4e">
-                        <rect key="frame" x="0.0" y="44" width="414" height="96"/>
+                        <rect key="frame" x="0.0" y="44" width="414" height="104.5"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -1163,7 +1164,9 @@
         <!--notice-->
         <scene sceneID="Fys-uy-PLo">
             <objects>
-                <viewControllerPlaceholder storyboardName="Notice" referencedIdentifier="notice" id="5eS-Uu-t6m" sceneMemberID="viewController"/>
+                <viewControllerPlaceholder storyboardName="Notice" referencedIdentifier="notice" id="5eS-Uu-t6m" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="j2R-Hd-0hu"/>
+                </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Mco-VC-A0U" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="5354" y="285"/>
@@ -1171,7 +1174,9 @@
         <!--churchinfo-->
         <scene sceneID="Doq-Z6-34X">
             <objects>
-                <viewControllerPlaceholder storyboardName="ChurchInfo" referencedIdentifier="churchinfo" id="3Cy-Fq-sD2" sceneMemberID="viewController"/>
+                <viewControllerPlaceholder storyboardName="ChurchInfo" referencedIdentifier="churchinfo" id="3Cy-Fq-sD2" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="T0p-eF-det"/>
+                </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="E9O-Y7-ykh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="5374" y="341"/>
@@ -1179,7 +1184,9 @@
         <!--location-->
         <scene sceneID="SXZ-qS-bPV">
             <objects>
-                <viewControllerPlaceholder storyboardName="LocationView" referencedIdentifier="location" id="exj-MP-Eoi" sceneMemberID="viewController"/>
+                <viewControllerPlaceholder storyboardName="LocationView" referencedIdentifier="location" id="exj-MP-Eoi" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="XeW-74-uYZ"/>
+                </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lVl-0Q-vxS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="5362" y="402"/>
@@ -1187,7 +1194,9 @@
         <!--groupinfo-->
         <scene sceneID="Sey-pZ-Cq7">
             <objects>
-                <viewControllerPlaceholder storyboardName="GroupInfo" referencedIdentifier="groupinfo" id="lGP-6d-gkh" sceneMemberID="viewController"/>
+                <viewControllerPlaceholder storyboardName="GroupInfo" referencedIdentifier="groupinfo" id="lGP-6d-gkh" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="3TO-v0-HKc"/>
+                </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LfX-Lv-Lds" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="5381" y="485"/>
@@ -1195,13 +1204,56 @@
         <!--appinfo-->
         <scene sceneID="vE7-WM-cCB">
             <objects>
-                <viewControllerPlaceholder storyboardName="AppInfo" referencedIdentifier="appinfo" id="jee-be-1Ft" sceneMemberID="viewController"/>
+                <viewControllerPlaceholder storyboardName="AppInfo" referencedIdentifier="appinfo" id="jee-be-1Ft" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="ZfN-qg-8Vf"/>
+                </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="n94-kC-kJ2" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="5425" y="536"/>
         </scene>
+        <!--Splash View Controller-->
+        <scene sceneID="DQ7-Ah-p4q">
+            <objects>
+                <viewController id="EL1-eg-Hb3" customClass="SplashViewController" customModule="OhJooYeo" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="p2L-uU-stK">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bg_all" translatesAutoresizingMaskIntoConstraints="NO" id="S8N-MF-TBV">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="S8N-MF-TBV" secondAttribute="bottom" id="Sv6-Rp-n9F"/>
+                            <constraint firstItem="S8N-MF-TBV" firstAttribute="leading" secondItem="g9P-zn-QLK" secondAttribute="leading" id="Wp4-Ii-rFH"/>
+                            <constraint firstItem="S8N-MF-TBV" firstAttribute="top" secondItem="p2L-uU-stK" secondAttribute="top" id="fue-EP-RvJ"/>
+                            <constraint firstItem="S8N-MF-TBV" firstAttribute="trailing" secondItem="g9P-zn-QLK" secondAttribute="trailing" id="qed-dI-bgF"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="g9P-zn-QLK"/>
+                    </view>
+                    <connections>
+                        <segue destination="OM0-qD-9m4" kind="show" identifier="signin" id="kuX-Hb-Ucq"/>
+                        <segue destination="YMA-KL-jtq" kind="show" identifier="main" id="ffp-JK-DuE"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="AND-7G-I6W" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="800" y="-1094"/>
+        </scene>
+        <!--signin-->
+        <scene sceneID="mA4-Lc-xeT">
+            <objects>
+                <viewControllerPlaceholder storyboardName="SignIn" referencedIdentifier="signin" id="OM0-qD-9m4" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="yQI-vU-wIJ"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="gT2-q3-6tB" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1427" y="-897"/>
+        </scene>
     </scenes>
     <resources>
+        <image name="bg_all" width="1512" height="1512"/>
         <image name="ic_asterisk" width="64" height="64"/>
         <image name="ic_cancel_tapped" width="32" height="32"/>
         <image name="ic_close" width="32" height="32"/>

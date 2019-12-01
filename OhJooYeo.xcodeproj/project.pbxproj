@@ -8,14 +8,18 @@
 
 /* Begin PBXBuildFile section */
 		6631508FC50701815B50903F /* Pods_OhJooYeoTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F9BAB264DBB516523741259C /* Pods_OhJooYeoTests.framework */; };
+		CA0094B4239231F600745826 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = CA0094B3239231F600745826 /* GoogleService-Info.plist */; };
 		CA050141214196BC00B89F3D /* WorshipIDListDataViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA050140214196BC00B89F3D /* WorshipIDListDataViewModel.swift */; };
 		CA0AB21620C23C190028BC69 /* AdvertisementTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA0AB21520C23C190028BC69 /* AdvertisementTableViewCell.swift */; };
 		CA0AB21820C23ECE0028BC69 /* Advertisement.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA0AB21720C23ECE0028BC69 /* Advertisement.swift */; };
+		CA192BE12393667600BFEA0A /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA192BE02393667600BFEA0A /* SplashViewController.swift */; };
+		CA192BE32393683A00BFEA0A /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA192BE22393683A00BFEA0A /* BaseViewController.swift */; };
 		CA22838120943F2A0023B3C1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA22838020943F2A0023B3C1 /* AppDelegate.swift */; };
 		CA22838320943F2A0023B3C1 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA22838220943F2A0023B3C1 /* MainViewController.swift */; };
 		CA22838620943F2B0023B3C1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CA22838420943F2B0023B3C1 /* Main.storyboard */; };
 		CA22838E20943F2C0023B3C1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CA22838C20943F2C0023B3C1 /* LaunchScreen.storyboard */; };
 		CA2DED8E21CD2769009671FE /* NextPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA2DED8D21CD2769009671FE /* NextPresenter.swift */; };
+		CA2FEC3D239370D100B38583 /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA2FEC3C239370D100B38583 /* MainTabBarController.swift */; };
 		CA3080C52130F6EC00255A7E /* WorshipMainInfoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA3080C42130F6EC00255A7E /* WorshipMainInfoViewModel.swift */; };
 		CA3080C92130FDB600255A7E /* UtilFunction.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA3080C82130FDB600255A7E /* UtilFunction.swift */; };
 		CA3080CC2130FE0400255A7E /* ConstantString.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA3080CB2130FE0400255A7E /* ConstantString.swift */; };
@@ -142,9 +146,12 @@
 		6B7B7D0D2B3FBA33659BD482 /* Pods-OhJooYeoTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OhJooYeoTests.release.xcconfig"; path = "Target Support Files/Pods-OhJooYeoTests/Pods-OhJooYeoTests.release.xcconfig"; sourceTree = "<group>"; };
 		9D27ECAC31BF081321680EC2 /* Pods-OhJooYeo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OhJooYeo.debug.xcconfig"; path = "Target Support Files/Pods-OhJooYeo/Pods-OhJooYeo.debug.xcconfig"; sourceTree = "<group>"; };
 		AEBAFC4EFBE85C934F60FCE7 /* Pods-OhJooYeo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OhJooYeo.release.xcconfig"; path = "Target Support Files/Pods-OhJooYeo/Pods-OhJooYeo.release.xcconfig"; sourceTree = "<group>"; };
+		CA0094B3239231F600745826 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		CA050140214196BC00B89F3D /* WorshipIDListDataViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorshipIDListDataViewModel.swift; sourceTree = "<group>"; };
 		CA0AB21520C23C190028BC69 /* AdvertisementTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdvertisementTableViewCell.swift; sourceTree = "<group>"; };
 		CA0AB21720C23ECE0028BC69 /* Advertisement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Advertisement.swift; sourceTree = "<group>"; };
+		CA192BE02393667600BFEA0A /* SplashViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashViewController.swift; sourceTree = "<group>"; };
+		CA192BE22393683A00BFEA0A /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		CA22837D20943F290023B3C1 /* OhJooYeo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OhJooYeo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CA22838020943F2A0023B3C1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CA22838220943F2A0023B3C1 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
@@ -152,6 +159,7 @@
 		CA22838D20943F2C0023B3C1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		CA22838F20943F2C0023B3C1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CA2DED8D21CD2769009671FE /* NextPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NextPresenter.swift; sourceTree = "<group>"; };
+		CA2FEC3C239370D100B38583 /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
 		CA3080C42130F6EC00255A7E /* WorshipMainInfoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorshipMainInfoViewModel.swift; sourceTree = "<group>"; };
 		CA3080C82130FDB600255A7E /* UtilFunction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UtilFunction.swift; sourceTree = "<group>"; };
 		CA3080CB2130FE0400255A7E /* ConstantString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConstantString.swift; sourceTree = "<group>"; };
@@ -315,6 +323,14 @@
 			path = Common;
 			sourceTree = "<group>";
 		};
+		CA192BDF2393666000BFEA0A /* Splash */ = {
+			isa = PBXGroup;
+			children = (
+				CA192BE02393667600BFEA0A /* SplashViewController.swift */,
+			);
+			path = Splash;
+			sourceTree = "<group>";
+		};
 		CA22837420943F290023B3C1 = {
 			isa = PBXGroup;
 			children = (
@@ -344,6 +360,7 @@
 				CA83971C22F3202700248A8C /* Components */,
 				CA83972722F32C5900248A8C /* Assets.xcassets */,
 				CA9CD23D234891B700534FEB /* ColorAssets.xcassets */,
+				CA0094B3239231F600745826 /* GoogleService-Info.plist */,
 				CA22838F20943F2C0023B3C1 /* Info.plist */,
 			);
 			path = OhJooYeo;
@@ -682,8 +699,9 @@
 			isa = PBXGroup;
 			children = (
 				CA22838020943F2A0023B3C1 /* AppDelegate.swift */,
-				CA83971E22F320AE00248A8C /* Resources */,
 				CA83971D22F3205900248A8C /* Storyboards */,
+				CA192BDF2393666000BFEA0A /* Splash */,
+				CA83971E22F320AE00248A8C /* Resources */,
 				CA888F77227AFC2B001B6E87 /* Login */,
 				CA4FA40A20B93FF200BE6730 /* Main */,
 				CA4FA40B20B9400900BE6730 /* PhraseDetail */,
@@ -832,6 +850,8 @@
 				CA9697E02340BC6100969B48 /* BaseTableView.swift */,
 				CA9CD23F234897A000534FEB /* UIColorEx.swift */,
 				CAA924E32349EF0A0037C23D /* MainTabBar.swift */,
+				CA192BE22393683A00BFEA0A /* BaseViewController.swift */,
+				CA2FEC3C239370D100B38583 /* MainTabBarController.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1096,6 +1116,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CA0094B4239231F600745826 /* GoogleService-Info.plist in Resources */,
 				CA22838E20943F2C0023B3C1 /* LaunchScreen.storyboard in Resources */,
 				CA8AED7A22A2689B00DF6144 /* SignIn.storyboard in Resources */,
 				CA83972822F32C5900248A8C /* Assets.xcassets in Resources */,
@@ -1174,8 +1195,10 @@
 				"${PODS_ROOT}/Target Support Files/Pods-OhJooYeo/Pods-OhJooYeo-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/Alamofire-SwiftyJSON/Alamofire_SwiftyJSON.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
 				"${PODS_ROOT}/NMapsMap/framework/NMapsMap.framework",
 				"${BUILT_PRODUCTS_DIR}/NVActivityIndicatorView/NVActivityIndicatorView.framework",
+				"${BUILT_PRODUCTS_DIR}/Protobuf/protobuf.framework",
 				"${BUILT_PRODUCTS_DIR}/Realm/Realm.framework",
 				"${BUILT_PRODUCTS_DIR}/RealmSwift/RealmSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/RxAlamofire/RxAlamofire.framework",
@@ -1184,13 +1207,16 @@
 				"${BUILT_PRODUCTS_DIR}/SnapKit/SnapKit.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
 				"${BUILT_PRODUCTS_DIR}/Swinject/Swinject.framework",
+				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire_SwiftyJSON.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/NMapsMap.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/NVActivityIndicatorView.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/protobuf.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Realm.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RealmSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxAlamofire.framework",
@@ -1199,6 +1225,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SnapKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Swinject.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -1231,6 +1258,7 @@
 				CAA3FA6822183A47006C30F0 /* HistoryTableViewCell.swift in Sources */,
 				CA0AB21620C23C190028BC69 /* AdvertisementTableViewCell.swift in Sources */,
 				CA91B25922F5CDB700970B31 /* RealmManager.swift in Sources */,
+				CA2FEC3D239370D100B38583 /* MainTabBarController.swift in Sources */,
 				CA8E2EDF22E301E50027BCA1 /* GroupInfo.swift in Sources */,
 				CAD7BBD72166036B006661AF /* MusicCollectionViewCell.swift in Sources */,
 				CA85B08122C74CB100431E74 /* BackgroundView.swift in Sources */,
@@ -1248,6 +1276,7 @@
 				CAD7BBD921660D38006661AF /* MusicViewModel.swift in Sources */,
 				CA2DED8E21CD2769009671FE /* NextPresenter.swift in Sources */,
 				CA4C68A5235208F00057BEC3 /* AdvertisementRequest.swift in Sources */,
+				CA192BE32393683A00BFEA0A /* BaseViewController.swift in Sources */,
 				CA6E9716220C69DA00DFE0AE /* LocationViewController.swift in Sources */,
 				CAA6B99E20F9CAFB00E802BC /* Music.swift in Sources */,
 				CA9CD240234897A000534FEB /* UIColorEx.swift in Sources */,
@@ -1264,6 +1293,7 @@
 				CA4C68A72352114E0057BEC3 /* WorshipInfoRequest.swift in Sources */,
 				CA4FA40F20B9406300BE6730 /* OrderRowCell.swift in Sources */,
 				CA7D2B3823535D2D00640B13 /* PhraseMessageRequest.swift in Sources */,
+				CA192BE12393667600BFEA0A /* SplashViewController.swift in Sources */,
 				CA050141214196BC00B89F3D /* WorshipIDListDataViewModel.swift in Sources */,
 				CAFB287B20D4E7CA00B72722 /* App.swift in Sources */,
 				CA84C2412309590B00526BAB /* ChurchInfoViewModel.swift in Sources */,
@@ -1473,6 +1503,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CLANG_LINK_OBJC_RUNTIME = YES;
+				CODE_SIGN_ENTITLEMENTS = OhJooYeo/OhJooYeo.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = HGQ9YZ4HTR;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -1519,6 +1550,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CLANG_LINK_OBJC_RUNTIME = YES;
+				CODE_SIGN_ENTITLEMENTS = OhJooYeo/OhJooYeo.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = HGQ9YZ4HTR;
 				FRAMEWORK_SEARCH_PATHS = (

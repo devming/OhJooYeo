@@ -17,6 +17,10 @@ target 'OhJooYeo' do
   pod 'Swinject'
   pod 'SnapKit'
   
+  # Firebase
+  pod 'Firebase/Analytics'
+  pod 'Firebase/RemoteConfig'
+  
   target 'OhJooYeoTests' do
       inherit! :search_paths
   end
