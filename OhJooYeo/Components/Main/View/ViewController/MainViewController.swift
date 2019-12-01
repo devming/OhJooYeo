@@ -53,7 +53,7 @@ class MainViewController: UIViewController {
         self.listTableView.rowHeight = UITableViewAutomaticDimension
         self.listTableView.layer.cornerRadius = 10.0
         
-        setTransparentBackground(navigationController: self.navigationController)
+//        setTransparentBackground(navigationController: self.navigationController)
         
         self.activityIndicator?.startAnimating()
     }

@@ -22,45 +22,13 @@ class SplashViewController: BaseViewController {
         settings.minimumFetchInterval = 0
         remoteConfig.configSettings = settings
         
-        Timer.scheduledTimer(timeInterval: 2.1, target: self, selector: #selector(nextScreen), userInfo: nil, repeats: false)
-        
-         // Do any additional setup after loading the view.
-        
-//        if let vc = self.storyboard?.instantiateViewController(withIdentifier: "main") as? UITabBarController {
-//            present(vc, animated: true, completion: nil)
-//        }
-//        performSegue(withIdentifier: "main", sender: self)
-        
-//        if UserDefaults.standard.bool(forKey: "isLogin") {
-//            performSegue(withIdentifier: "signin", sender: self)
-//        } else {
-//            performSegue(withIdentifier: "main", sender: self)
-//        }
+        Timer.scheduledTimer(timeInterval: 1.5, target: self, selector: #selector(nextScreen), userInfo: nil, repeats: false)
     }
 
     @objc func nextScreen() {
-        
-        var vcIdentifier = "signin"
         /// - TODO: []아래 조건문에 ! 빼고 isLogined를 로그인 했을대 설정하도록 할것
-        if !UserDefaults.standard.bool(forKey: "isLogined") {
-            vcIdentifier = "main"
-
-            let vc =
-                self.storyboard?.instantiateViewController(withIdentifier: vcIdentifier) as! UITabBarController
-//            vc.modalPresentationStyle = .fullScreen
-            let navigationController = UINavigationController(rootViewController: vc)
-            navigationController.modalPresentationStyle = .fullScreen
-            self.present(navigationController, animated: true, completion: nil)
-            
-            return
-        }
-        let signinStoryBoard = UIStoryboard.init(name: "SignIn", bundle: nil)
+        let vcIdentifier = !UserDefaults.standard.bool(forKey: "isLogined") ? "main" : "signin"
         
-        let vc =
-            signinStoryBoard.instantiateViewController(withIdentifier: vcIdentifier) as! LoginViewController
-        vc.modalPresentationStyle = .fullScreen
-        self.present(vc, animated: true, completion: nil)
+        performSegue(withIdentifier: vcIdentifier, sender: nil)
     }
-    
-    
 }

@@ -105,6 +105,7 @@
 		CAE1749422DB4291002F2A03 /* NoticeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAE1749322DB4291002F2A03 /* NoticeViewModel.swift */; };
 		CAE1749622DB45A8002F2A03 /* NoticeHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAE1749522DB45A8002F2A03 /* NoticeHeaderView.swift */; };
 		CAE645E42123C19700B109B7 /* DbEntityNameConstant.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAE645E32123C19700B109B7 /* DbEntityNameConstant.swift */; };
+		CAF3C9822393A79F0059B262 /* FullScreenModalNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF3C9812393A79F0059B262 /* FullScreenModalNavigationController.swift */; };
 		CAF3DEA4234CDB5F0018FA6B /* APIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF3DEA3234CDB5F0018FA6B /* APIService.swift */; };
 		CAF3DEA6234D71780018FA6B /* NetworkDefine.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF3DEA5234D71780018FA6B /* NetworkDefine.swift */; };
 		CAF3DEA8234D8C980018FA6B /* WorshipManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF3DEA7234D8C980018FA6B /* WorshipManager.swift */; };
@@ -248,6 +249,7 @@
 		CAE1749322DB4291002F2A03 /* NoticeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoticeViewModel.swift; sourceTree = "<group>"; };
 		CAE1749522DB45A8002F2A03 /* NoticeHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoticeHeaderView.swift; sourceTree = "<group>"; };
 		CAE645E32123C19700B109B7 /* DbEntityNameConstant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DbEntityNameConstant.swift; sourceTree = "<group>"; };
+		CAF3C9812393A79F0059B262 /* FullScreenModalNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullScreenModalNavigationController.swift; sourceTree = "<group>"; };
 		CAF3DEA3234CDB5F0018FA6B /* APIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIService.swift; sourceTree = "<group>"; };
 		CAF3DEA5234D71780018FA6B /* NetworkDefine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkDefine.swift; sourceTree = "<group>"; };
 		CAF3DEA7234D8C980018FA6B /* WorshipManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorshipManager.swift; sourceTree = "<group>"; };
@@ -852,6 +854,7 @@
 				CAA924E32349EF0A0037C23D /* MainTabBar.swift */,
 				CA192BE22393683A00BFEA0A /* BaseViewController.swift */,
 				CA2FEC3C239370D100B38583 /* MainTabBarController.swift */,
+				CAF3C9812393A79F0059B262 /* FullScreenModalNavigationController.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1296,6 +1299,7 @@
 				CA192BE12393667600BFEA0A /* SplashViewController.swift in Sources */,
 				CA050141214196BC00B89F3D /* WorshipIDListDataViewModel.swift in Sources */,
 				CAFB287B20D4E7CA00B72722 /* App.swift in Sources */,
+				CAF3C9822393A79F0059B262 /* FullScreenModalNavigationController.swift in Sources */,
 				CA84C2412309590B00526BAB /* ChurchInfoViewModel.swift in Sources */,
 				CA888F7D227AFDAF001B6E87 /* LoginViewController.swift in Sources */,
 				CA3080CE2130FE1600255A7E /* NotificationNameExtension.swift in Sources */,

@@ -21,7 +21,7 @@ class AdvertisementViewController: UIViewController {
 //        NotificationCenter.default.addObserver(self, selector: #selector(advertisementUpdate(_:)), name: .AdvertisementDidUpdated, object: nil)
         
         initRefreshControl()
-        setTransparentBackground(navigationController: self.navigationController)
+//        setTransparentBackground(navigationController: self.navigationController)
 
         self.backgroundView.showErrorView(.network) {
             self.listTableView.isHidden = true

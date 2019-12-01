@@ -8,6 +8,8 @@
 
 import UIKit
 
+typealias UINavigationController = FullScreenModalNavigationController
+
 func showConfirmationAlert(alertTitle title: String, alertMessage message: String, viewController vc: UIViewController) {
     let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
     let action = UIAlertAction(title: "OK", style: .default, handler: nil)

@@ -25,7 +25,7 @@ class PhraseDetailViewController: UIViewController {
         
 //        NotificationCenter.default.addObserver(self, selector: #selector(phraseMessageUpdate(_:)), name: .PhraseMessageDidUpdated, object: nil)
         
-        setTransparentBackground(navigationController: self.navigationController)
+//        setTransparentBackground(navigationController: self.navigationController)
         
         ///////// test code////////////////////////////////////
         if phraseRange == "행복의 노래" {

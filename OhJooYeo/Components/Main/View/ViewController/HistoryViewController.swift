@@ -130,9 +130,9 @@ extension HistoryViewController: UITableViewDelegate {
                     if let tabBarController = self.presentingViewController as? UITabBarController {
                         tabBarController.viewControllers?.forEach { [weak self] vc in
                             guard let `self` = self else { return }
-                            if let nav = vc as? UINavigationController,
-                                let mainViewController = nav.topViewController as? MainViewController {
-                                
+//                            if let nav = vc as? UINavigationController,
+//                                let mainViewController = nav.topViewController as? MainViewController {
+                            if let mainViewController = vc.childViewControllers.first as? MainViewController {
                                 
                                 mainViewController.viewModel.worshipInfo = worshipInfo
                                 self.dismiss(animated: true) {
