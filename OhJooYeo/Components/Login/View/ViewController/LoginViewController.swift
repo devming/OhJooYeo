@@ -21,7 +21,6 @@ class LoginViewController: BaseViewController {
     
 //    @IBOutlet weak var bottomConstraint: NSLayoutConstraint!
 //    let test = true
-    var disposeBag = DisposeBag()
     
     override func viewDidLoad() {
         super.viewDidLoad()

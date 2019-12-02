@@ -185,7 +185,7 @@ extension APIRouter: URLRequestConvertible {
         case .postPhrase(_):
             return "/phrase"
         case .postAd(_):
-            return "/ad"
+            return "/worship/ad/info"
         case .postLaunch(_):
             return "/launch"
         case .postNoticeList(_):

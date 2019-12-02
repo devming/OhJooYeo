@@ -12,6 +12,8 @@ import RxCocoa
 
 class BaseViewController: UIViewController {
     
+    var disposeBag = DisposeBag()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -20,6 +22,11 @@ class BaseViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        self.disposeBag = DisposeBag()
     }
     
     func setTransparentBackground() {

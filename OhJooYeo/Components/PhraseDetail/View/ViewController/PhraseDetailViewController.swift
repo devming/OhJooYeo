@@ -18,8 +18,7 @@ class PhraseDetailViewController: BaseViewController {
     var currentIndex = -1
     var phraseRange: String?
     let viewModel = PhraseMessageViewModel()
-    var disposeBag = DisposeBag()
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         

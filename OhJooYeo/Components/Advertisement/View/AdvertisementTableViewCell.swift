@@ -10,7 +10,7 @@ import UIKit
 
 class AdvertisementTableViewCell: UITableViewCell {
 
-    static let cellName = "cell"
+    static let cellName = "AdvertisementTableViewCell"
 
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var contentLabel: UILabel!

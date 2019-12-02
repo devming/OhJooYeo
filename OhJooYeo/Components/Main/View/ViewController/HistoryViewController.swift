@@ -19,7 +19,6 @@ class HistoryViewController: BaseViewController {
     }
     @IBOutlet weak var listTableView: UITableView!
     @IBOutlet weak var refreshButton: UIButton!
-    var disposeBag = DisposeBag()
     
     let closeEventSubject = PublishSubject<Bool>()
     

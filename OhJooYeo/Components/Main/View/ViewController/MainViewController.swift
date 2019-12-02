@@ -33,7 +33,6 @@ class MainViewController: BaseViewController {
     var activityIndicator: NVActivityIndicatorView?
     
     let viewModel = WorshipMainInfoViewModel()
-    let disposeBag = DisposeBag()
     
     override func viewDidLoad() {
         super.viewDidLoad()

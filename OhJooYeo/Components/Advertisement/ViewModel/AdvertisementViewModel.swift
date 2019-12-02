@@ -10,10 +10,9 @@ import Alamofire
 import RxSwift
 
 final class AdvertisementViewModel: ViewModel {
-    var advertisements: [Advertisement]
+    var advertisements: [Advertisement]?
     
     override init() {
-        advertisements = [Advertisement]()
         super.init()
         
 //        bindRx()
@@ -29,14 +28,19 @@ final class AdvertisementViewModel: ViewModel {
 //            }).disposed(by: disposeBag)
 //    }
     
-    func callData() -> Observable<Advertisement> {
-        let params: Parameters = [AdvertisementRequest.CodingKeys.churchId.rawValue: WorshipManager.shared.churchId]
+    func requestAdvertisements() -> Observable<[Advertisement]?> {
+//        let params: Parameters = [AdvertisementRequest.CodingKeys.churchId.rawValue: WorshipManager.shared.churchId]
+        
+        let params: Parameters = [BaseRequest.CodingKeys.churchId.rawValue: WorshipManager.shared.churchId,
+                                  WorshipInfoRequest.CodingKeys.worshipId.rawValue: WorshipManager.shared.currentWorshipInfo?.worshipId ?? "",
+                                  WorshipInfoRequest.CodingKeys.version.rawValue: WorshipManager.shared.currentWorshipInfo?.version ?? 0]
         
         return APIService.postAd(parameters: params)
-            .map { try JSONDecoder().decode(Advertisement.self, from: $0) }
-            .map { advertisement -> Advertisement in
-                self.advertisements.append(advertisement)
-                return advertisement
-            }
+            .map { try JSONDecoder().decode(AdvertisementResponse.self, from: $0) }
+            .map { $0.worshipAd }
+            .filter { $0 != nil }
+            .do(onNext: { [weak self] advertisements in
+                self?.advertisements = advertisements!
+            })
     }
 }

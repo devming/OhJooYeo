@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		6631508FC50701815B50903F /* Pods_OhJooYeoTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F9BAB264DBB516523741259C /* Pods_OhJooYeoTests.framework */; };
 		CA0094B4239231F600745826 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = CA0094B3239231F600745826 /* GoogleService-Info.plist */; };
+		CA0302BA23955A4C0092AF76 /* AdvertisementResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA0302B923955A4C0092AF76 /* AdvertisementResponse.swift */; };
 		CA050141214196BC00B89F3D /* WorshipIDListDataViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA050140214196BC00B89F3D /* WorshipIDListDataViewModel.swift */; };
 		CA0AB21620C23C190028BC69 /* AdvertisementTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA0AB21520C23C190028BC69 /* AdvertisementTableViewCell.swift */; };
 		CA0AB21820C23ECE0028BC69 /* Advertisement.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA0AB21720C23ECE0028BC69 /* Advertisement.swift */; };
@@ -148,6 +149,7 @@
 		9D27ECAC31BF081321680EC2 /* Pods-OhJooYeo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OhJooYeo.debug.xcconfig"; path = "Target Support Files/Pods-OhJooYeo/Pods-OhJooYeo.debug.xcconfig"; sourceTree = "<group>"; };
 		AEBAFC4EFBE85C934F60FCE7 /* Pods-OhJooYeo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OhJooYeo.release.xcconfig"; path = "Target Support Files/Pods-OhJooYeo/Pods-OhJooYeo.release.xcconfig"; sourceTree = "<group>"; };
 		CA0094B3239231F600745826 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		CA0302B923955A4C0092AF76 /* AdvertisementResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdvertisementResponse.swift; sourceTree = "<group>"; };
 		CA050140214196BC00B89F3D /* WorshipIDListDataViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorshipIDListDataViewModel.swift; sourceTree = "<group>"; };
 		CA0AB21520C23C190028BC69 /* AdvertisementTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdvertisementTableViewCell.swift; sourceTree = "<group>"; };
 		CA0AB21720C23ECE0028BC69 /* Advertisement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Advertisement.swift; sourceTree = "<group>"; };
@@ -300,6 +302,7 @@
 			children = (
 				CA0AB21720C23ECE0028BC69 /* Advertisement.swift */,
 				CA4C68A4235208F00057BEC3 /* AdvertisementRequest.swift */,
+				CA0302B923955A4C0092AF76 /* AdvertisementResponse.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1311,6 +1314,7 @@
 				CA9697E42340BC7700969B48 /* CardView.swift in Sources */,
 				CA888F80227AFFBA001B6E87 /* OJYUITextField.swift in Sources */,
 				CAA3FA64221804C1006C30F0 /* DonationViewController.swift in Sources */,
+				CA0302BA23955A4C0092AF76 /* AdvertisementResponse.swift in Sources */,
 				CAA3FA62221804B9006C30F0 /* OpenSourceViewController.swift in Sources */,
 				CAE1749222DB3B1F002F2A03 /* NoticeViewController.swift in Sources */,
 				CAA3A88F236CAC35004DBAFB /* YearlyPhraseRowCell.swift in Sources */,

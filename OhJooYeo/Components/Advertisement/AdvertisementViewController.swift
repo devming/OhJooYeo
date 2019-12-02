@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import RxSwift
+import RxCocoa
 
 class AdvertisementViewController: BaseViewController {
 
@@ -18,14 +20,10 @@ class AdvertisementViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-//        NotificationCenter.default.addObserver(self, selector: #selector(advertisementUpdate(_:)), name: .AdvertisementDidUpdated, object: nil)
-        
         initRefreshControl()
         setTransparentBackground()
-
-        self.backgroundView.showErrorView(.network) {
-            self.listTableView.isHidden = true
-        }
+        
+        loadDatas()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -40,13 +38,16 @@ class AdvertisementViewController: BaseViewController {
     }
     
     @objc func loadDatas() {
-//        DispatchQueue.main.async {
-//            App.loadAllDataFromServer { [weak self] in
-//                App.isLoadingComplete = true
-//                self?.refreshControl.endRefreshing()
-//                NotificationCenter.default.post(name: .AdvertisementDidUpdated, object: nil)
-//            }
-//        }
+        self.viewModel.requestAdvertisements()
+            .observeOn(MainScheduler.instance)
+            .subscribe(onNext: { [weak self] _ in
+                print("Success!")
+                self?.listTableView.reloadData()
+                self?.refreshControl.endRefreshing()
+            }, onError: { [weak self] error in
+                self?.refreshControl.endRefreshing()
+                self?.backgroundView.showErrorView(.network)
+            }).disposed(by: disposeBag)
     }
 }
 
@@ -54,7 +55,7 @@ extension AdvertisementViewController: UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
 
-        return viewModel.advertisements.count
+        return viewModel.advertisements?.count ?? 0
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -62,24 +63,10 @@ extension AdvertisementViewController: UITableViewDataSource {
             return UITableViewCell()
         }
         
-        cell.setItem(item: viewModel.advertisements[indexPath.row])
+        if let advertisement = viewModel.advertisements?[indexPath.row] {
+            cell.setItem(item: advertisement)
+        }
 
         return cell
     }
-}
-
-extension AdvertisementViewController {
-//    @objc func advertisementUpdate(_ notification: Notification) {
-//        if App.isLoadingComplete {
-//            OperationQueue.main.addOperation { [weak self] in
-//                self?.listTableView.isHidden = false
-//                self?.listTableView.reloadData()
-//                App.isLoadingComplete = false
-//            }
-//        } else {
-//            self.backgroundView.showErrorView(.network) {
-//                self.listTableView.isHidden = true
-//            }
-//        }
-//    }
 }
