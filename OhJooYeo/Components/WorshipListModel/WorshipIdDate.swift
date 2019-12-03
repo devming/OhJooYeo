@@ -14,6 +14,7 @@ class WorshipIdDate: Decodable {
     
     var date: String = ""
     var worshipId: String = ""
+    var version: Int = 0
     
     public required convenience init(from decoder: Decoder) throws {
         self.init()

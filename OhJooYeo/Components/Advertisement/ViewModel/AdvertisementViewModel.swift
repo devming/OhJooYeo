@@ -32,15 +32,15 @@ final class AdvertisementViewModel: ViewModel {
 //        let params: Parameters = [AdvertisementRequest.CodingKeys.churchId.rawValue: WorshipManager.shared.churchId]
         
         let params: Parameters = [BaseRequest.CodingKeys.churchId.rawValue: WorshipManager.shared.churchId,
-                                  WorshipInfoRequest.CodingKeys.worshipId.rawValue: WorshipManager.shared.currentWorshipInfo?.worshipId ?? "",
-                                  WorshipInfoRequest.CodingKeys.version.rawValue: WorshipManager.shared.currentWorshipInfo?.version ?? 0]
+                                  WorshipInfoRequest.CodingKeys.worshipId.rawValue: WorshipManager.shared.currentWorshipId,
+                                  WorshipInfoRequest.CodingKeys.version.rawValue: WorshipManager.shared.currentVersion]
         
         return APIService.postAd(parameters: params)
-            .map { try JSONDecoder().decode(AdvertisementResponse.self, from: $0) }
-            .map { $0.worshipAd }
-            .filter { $0 != nil }
-            .do(onNext: { [weak self] advertisements in
-                self?.advertisements = advertisements!
-            })
+            .map { [weak self] data in
+                guard let data = data else { return nil }
+                let advertisement = try JSONDecoder().decode(AdvertisementResponse.self, from: data)
+                self?.advertisements = advertisement.worshipAd
+                return advertisement.worshipAd
+            }
     }
 }

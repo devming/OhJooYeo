@@ -19,6 +19,6 @@ class WorshipApiHelper {
     }
     
     static func requestDate() -> String {
-        return showDate(worshipDate: WorshipManager.shared.date)
+        return showDate(worshipDate: WorshipManager.shared.currentDate)
     }
 }

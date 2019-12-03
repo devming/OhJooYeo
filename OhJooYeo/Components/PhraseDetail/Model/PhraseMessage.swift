@@ -25,7 +25,7 @@ class PhraseMessage: Decodable {
         self.phraseKey = try container.decodeIfPresent(String.self, forKey: .phraseKey)
         self.contents = try container.decodeIfPresent(String.self, forKey: .contents)
         
-        self.worshipId = WorshipManager.shared.currentWorshipInfo?.worshipId
+        self.worshipId = WorshipManager.shared.currentWorshipId
 //        self.primaryKey = "\(String(describing: self.worshipId))_\(String(describing: messageId))"
     }
     

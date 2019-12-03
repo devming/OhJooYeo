@@ -19,9 +19,10 @@ class PhraseMessageViewModel: ViewModel {
         
         
         return APIService.postPhrase(parameters: param)
-            .map { try JSONDecoder().decode([[PhraseMessage]].self, from: $0) }
-            .do(onNext: { phraseMessages in
-                self.phrases = phraseMessages
-            })
+            .map { [weak self] data in
+                let phraseMessages = try JSONDecoder().decode([[PhraseMessage]].self, from: data)
+                self?.phrases = phraseMessages
+                return phraseMessages
+            }
     }
 }

@@ -12,7 +12,7 @@ class WorshipInfoRequest: BaseRequest {
     var worshipId: String?
     var version: Int = 0
     
-    init(churchId: Int, worshipId: String, version: Int = 0) {
+    init(churchId: Int, worshipId: String = "", version: Int = 0) {
         super.init()
         self.churchId = churchId
         self.worshipId = worshipId

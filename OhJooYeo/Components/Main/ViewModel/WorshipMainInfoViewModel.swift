@@ -31,20 +31,27 @@ final class WorshipMainInfoViewModel: ViewModel {
         super.init()
     }
     
+    /// [TODO: history에서 요청할때 version을 바꾸도록..!]
     /// callApi
 //    func requestWorshipMain(worshipId: String, worshipDate: String) -> Observable<WorshipMainInfo> {
-      func requestWorshipMain(worshipIdDate: WorshipIdDate) -> Observable<WorshipMainInfo> {
+    func requestWorshipMain(worshipIdDate: WorshipIdDate, version: Int = WorshipManager.shared.currentVersion) -> Observable<WorshipMainInfo?> {
         let params: Parameters = [BaseRequest.CodingKeys.churchId.rawValue: WorshipManager.shared.churchId,
                                   WorshipInfoRequest.CodingKeys.worshipId.rawValue: worshipIdDate.worshipId,
-                                  WorshipInfoRequest.CodingKeys.version.rawValue: WorshipManager.shared.currentWorshipInfo?.version ?? 0]
+                                  WorshipInfoRequest.CodingKeys.version.rawValue: worshipIdDate.version]
         print("### worshipInfo param: \(params)")
         return APIService.postWorshipInfo(parameters: params)
-            .map { try JSONDecoder().decode(WorshipMainInfo.self, from: $0) }
-            .do(onNext: { [weak self] (worshipInfo) in
-                print("### worshipInfo: \(worshipInfo)")
+            .map { [weak self] data in
+                guard let data = data else { return nil }
+                guard let worshipInfo = try JSONDecoder().decode(WorshipMainInfo?.self, from: data) else { return nil }
+                
+                worshipInfo.worshipId = worshipIdDate.worshipId
                 self?.worshipInfo = worshipInfo
-                WorshipManager.shared.date = worshipIdDate.date
-            })
+                WorshipManager.shared.currentVersion = worshipInfo.version ?? 0
+                WorshipManager.shared.currentDate = worshipIdDate.date
+                WorshipManager.shared.currentWorshipId = worshipIdDate.worshipId
+                
+                return worshipInfo
+            }
     }
     
     /// callApi

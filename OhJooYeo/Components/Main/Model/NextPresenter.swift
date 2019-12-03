@@ -8,12 +8,10 @@
 
 import RealmSwift
 
-class NextPresenter: Object, Decodable {
-    @objc dynamic var mainPresenter: String = ""
-    @objc dynamic var prayer: String = ""
-    @objc dynamic var offer: String = ""
-//    let ownerWorship = LinkingObjects(fromType: WorshipMainInfo.self, property: "nextPresenter")
-    @objc dynamic var worshipId: String?
+class NextPresenter: Decodable {
+    var mainPresenter: String = ""
+    var prayer: String = ""
+    var offer: String = ""
     
     public required convenience init(from decoder: Decoder) throws {
         self.init()
@@ -21,16 +19,9 @@ class NextPresenter: Object, Decodable {
         self.mainPresenter = try container.decode(String.self, forKey: .mainPresenter)
         self.prayer = try container.decode(String.self, forKey: .prayer)
         self.offer = try container.decode(String.self, forKey: .offer)
-        
-        self.worshipId = WorshipManager.shared.currentWorshipInfo?.worshipId
-    }
-    
-    override static func primaryKey() -> String? {
-        return "worshipId"
     }
     
     enum CodingKeys: String, CodingKey {
-//        case worshipId = "worshipId"
         case mainPresenter = "mainPresenter"
         case prayer = "prayer"
         case offer = "offer"

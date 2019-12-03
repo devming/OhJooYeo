@@ -48,7 +48,7 @@ class WorshipOrder: Decodable {
         self.type = try container.decodeIfPresent(Int.self, forKey: .type)
         self.standUp = try container.decodeIfPresent(Int.self, forKey: .standUp)
         
-        self.worshipId = WorshipManager.shared.currentWorshipInfo?.worshipId
+        self.worshipId = WorshipManager.shared.currentWorshipId
         self.worshipOrderId = "\(String(describing: self.worshipId))_\(self.orderId)"
     }
 

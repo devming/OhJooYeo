@@ -27,8 +27,6 @@ class WorshipMainInfo: Decodable {
         self.version = try container.decode(Int.self, forKey: .version)
         self.worshipOrderList.append(contentsOf: orders) //?? [WorshipOrder()]
 //        self.worshipOrderList.append(contentsOf: worshipOrders)
-        
-        self.worshipId = WorshipManager.shared.currentWorshipInfo?.worshipId
     }
     
 //    override static func primaryKey() -> String? {

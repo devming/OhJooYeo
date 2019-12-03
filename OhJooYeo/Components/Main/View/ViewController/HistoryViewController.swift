@@ -123,17 +123,18 @@ extension HistoryViewController: UITableViewDelegate {
         if let worshipIdDate = viewModel.worshipIdDateList?[indexPath.row] {
             mainViewModel?.requestWorshipMain(worshipIdDate: worshipIdDate)
                 .observeOn(MainScheduler.instance)
-                .subscribe(onNext: { [weak self] (worshipInfo) in
+                .subscribe(onNext: { [weak self] worshipInfo in
                     guard let `self` = self else { return }
                     
                     if let tabBarController = self.presentingViewController as? UITabBarController {
-                        tabBarController.viewControllers?.forEach { [weak self] vc in
-                            guard let `self` = self else { return }
-//                            if let nav = vc as? UINavigationController,
-//                                let mainViewController = nav.topViewController as? MainViewController {
+                        tabBarController.viewControllers?.forEach { vc in
+                            
                             if let mainViewController = vc.childViewControllers.first as? MainViewController {
-                                
-                                mainViewController.viewModel.worshipInfo = worshipInfo
+                                if worshipInfo != nil {
+                                    mainViewController.viewModel.worshipInfo = worshipInfo
+                                    WorshipManager.shared.currentVersion = worshipInfo?.version ?? 0
+                                    WorshipManager.shared.currentWorshipId = worshipInfo?.worshipId ?? "None"
+                                }
                                 self.dismiss(animated: true) {
                                     
                                     print("## close5")

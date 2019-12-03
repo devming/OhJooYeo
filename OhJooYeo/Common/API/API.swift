@@ -74,17 +74,18 @@ struct APIService {
             .map { $0! }
     }
     
-    static func postWorshipInfo(parameters: Parameters?) -> Observable<Data> {
+    static func postWorshipInfo(parameters: Parameters?) -> Observable<Data?> {
         
         return APIRouter.manager.rx
             .request(urlRequest: APIRouter.postWorshipInfo(parameters: parameters))
-            .responseJSON()
-            .do(onNext: { (res) in
+            .responseData()
+            .map { res in
                 print("###### postWorshipInfo res: \(res)")
-            })
-            .map { $0.data }
-            .filter { $0 != nil }
-            .map { $0! }
+                if (res.0.allHeaderFields["Content-Length"] as? String) == "0" {
+                    return nil
+                }
+                return res.1
+            }
     }
     
     static func postPhrase(parameters: Parameters?) -> Observable<Data> {
@@ -101,14 +102,20 @@ struct APIService {
             .map { $0! }
     }
     
-    static func postAd(parameters: Parameters?) -> Observable<Data> {
+    static func postAd(parameters: Parameters?) -> Observable<Data?> {
         
         return APIRouter.manager.rx
             .request(urlRequest: APIRouter.postAd(parameters: parameters))
-            .responseJSON()
-            .map { $0.data }
-            .filter { $0 != nil }
-            .map { $0! }
+            .responseData()
+            .debug()
+            .map { res in
+//                $0.data
+//                print("$0.data: \($0.1)")
+                if (res.0.allHeaderFields["Content-Length"] as? String) == "0" {
+                    return nil
+                }
+                return res.1
+        }
     }
     
     static func postLaunch(parameters: Parameters?) -> Observable<Data> {

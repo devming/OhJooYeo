@@ -40,10 +40,10 @@ class AdvertisementViewController: BaseViewController {
     @objc func loadDatas() {
         self.viewModel.requestAdvertisements()
             .observeOn(MainScheduler.instance)
-            .subscribe(onNext: { [weak self] _ in
-                print("Success!")
-                self?.listTableView.reloadData()
+            .subscribe(onNext: { [weak self] advertisements in
                 self?.refreshControl.endRefreshing()
+                guard let _ = advertisements else { return }
+                self?.listTableView.reloadData()
             }, onError: { [weak self] error in
                 self?.refreshControl.endRefreshing()
                 self?.backgroundView.showErrorView(.network)
