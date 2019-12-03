@@ -125,7 +125,7 @@ extension MainViewController {
         
         /// [TestCode]
 //        let worshipId = "19-003"
-        let worshipDate = WorshipManager.shared.currentDate
+//        let worshipDate = WorshipManager.shared.currentDate
 //        guard let worshipId = worshipId else {
 //            self.reloadAction(isSuccess: false)
 //            return
@@ -133,13 +133,16 @@ extension MainViewController {
         self.activityIndicator?.startAnimating()
         
 
+        /// 1. 로그인해서 가져온 churchId로 worshipList 가져옴.
         let recentWorshipInfoOb = viewModel.requestWorshipList(churchId: WorshipManager.shared.churchId)
             .filter { $0.count > 0 }
             .do(onNext: { recentWorshipInfoList in
+                /// 2. worshipList로 가져온 응답 데이터를 WorshipManager 싱글턴에 저장
                 WorshipManager.shared.setRecentWorshipId(worshipIdList: recentWorshipInfoList)
             })
             .map { $0.first! }
             
+        /// 3. 첫번째 데이터로 worship 정보 요청
         recentWorshipInfoOb
             .concatMap(viewModel.requestWorshipMain)
             .observeOn(MainScheduler.instance)
@@ -154,7 +157,7 @@ extension MainViewController {
                 } else {
                     self?.mainPresenterLabel.text = "인도자: ---"
                 }
-                self?.dateLabel.text = worshipDate
+                self?.dateLabel.text = WorshipManager.shared.currentDate
                 self?.bindNextPresenter(nextPresenter: worshipMainInfo.nextPresenter)
                 self?.reloadAction()
                 }, onError: { [weak self] err in

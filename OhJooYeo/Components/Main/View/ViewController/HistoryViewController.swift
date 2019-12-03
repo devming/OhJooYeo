@@ -132,8 +132,9 @@ extension HistoryViewController: UITableViewDelegate {
                             if let mainViewController = vc.childViewControllers.first as? MainViewController {
                                 if worshipInfo != nil {
                                     mainViewController.viewModel.worshipInfo = worshipInfo
-                                    WorshipManager.shared.currentVersion = worshipInfo?.version ?? 0
-                                    WorshipManager.shared.currentWorshipId = worshipInfo?.worshipId ?? "None"
+                                    
+//                                    WorshipManager.shared.setWorshipListData(index: indexPath.row, worshipIdDate: worshipIdDate)
+                                    
                                 }
                                 self.dismiss(animated: true) {
                                     

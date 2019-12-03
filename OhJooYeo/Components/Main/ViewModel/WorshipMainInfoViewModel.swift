@@ -34,7 +34,7 @@ final class WorshipMainInfoViewModel: ViewModel {
     /// [TODO: history에서 요청할때 version을 바꾸도록..!]
     /// callApi
 //    func requestWorshipMain(worshipId: String, worshipDate: String) -> Observable<WorshipMainInfo> {
-    func requestWorshipMain(worshipIdDate: WorshipIdDate, version: Int = WorshipManager.shared.currentVersion) -> Observable<WorshipMainInfo?> {
+    func requestWorshipMain(worshipIdDate: WorshipIdDate) -> Observable<WorshipMainInfo?> {
         let params: Parameters = [BaseRequest.CodingKeys.churchId.rawValue: WorshipManager.shared.churchId,
                                   WorshipInfoRequest.CodingKeys.worshipId.rawValue: worshipIdDate.worshipId,
                                   WorshipInfoRequest.CodingKeys.version.rawValue: worshipIdDate.version]
@@ -46,9 +46,20 @@ final class WorshipMainInfoViewModel: ViewModel {
                 
                 worshipInfo.worshipId = worshipIdDate.worshipId
                 self?.worshipInfo = worshipInfo
-                WorshipManager.shared.currentVersion = worshipInfo.version ?? 0
-                WorshipManager.shared.currentDate = worshipIdDate.date
-                WorshipManager.shared.currentWorshipId = worshipIdDate.worshipId
+
+                var idx = 0
+                WorshipManager.shared.worshipIdDateList?.forEach {
+                    if $0.worshipId == worshipIdDate.worshipId {
+                        WorshipManager.shared.setWorshipListData(index: idx, worshipIdDate: worshipIdDate)
+                        return
+                    }
+                    idx += 1
+                }
+//                WorshipManager.shared.worshipIdDateList?.filter { $0.worshipId == worshipIdDate.worshipId }.first.inde
+//                WorshipManager.shared.setWorshipListData(index: indexPath.row, worshipIdDate: worshipIdDate)
+//                WorshipManager.shared.currentVersion = worshipInfo.version ?? 0
+//                WorshipManager.shared.currentDate = worshipIdDate.date
+//                WorshipManager.shared.currentWorshipId = worshipIdDate.worshipId
                 
                 return worshipInfo
             }

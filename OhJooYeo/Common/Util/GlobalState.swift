@@ -20,6 +20,7 @@ final class GlobalState {
         case recentWorshipID
         case recentWorshipDate
         case autoLogin
+        case none
     }
     
     var localVersion: String {

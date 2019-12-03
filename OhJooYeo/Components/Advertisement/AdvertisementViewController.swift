@@ -23,12 +23,12 @@ class AdvertisementViewController: BaseViewController {
         initRefreshControl()
         setTransparentBackground()
         
-        loadDatas()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
+        loadDatas()
         self.listTableView.reloadData()
     }
     
