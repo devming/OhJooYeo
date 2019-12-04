@@ -31,5 +31,9 @@ class GroupInfoViewController: BaseViewController {
         groupContent.text = data?.title
         groupContent.text = data?.content
         groupImageView.image = UIImage(named: data?.image ?? "img_young_intro")
+        
+        groupImageView.layer.cornerRadius = 5.0
+        groupImageView.layer.borderColor = UIColor.black.cgColor
+        groupImageView.layer.borderWidth = 3.0
     }
 }

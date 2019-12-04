@@ -31,5 +31,9 @@ class ChurchInfoViewController: BaseViewController {
         churchInfoTitle.text = data?.title
         churchInfoContent.text = data?.content
         churchInfoImageView.image = UIImage(named: data?.image ?? "img_church_intro")
+        
+        churchInfoImageView.layer.cornerRadius = 5.0
+        churchInfoImageView.layer.borderColor = UIColor.black.cgColor
+        churchInfoImageView.layer.borderWidth = 3.0
     }
 }

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Firebase
 
 class VersionInfoViewController: BaseViewController {
     
@@ -25,6 +26,8 @@ class VersionInfoViewController: BaseViewController {
     var getCurrentVersion: String {
         get {
             guard let version = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String else { return APP_VERSION }
+            
+            
             return version
         }
     }
