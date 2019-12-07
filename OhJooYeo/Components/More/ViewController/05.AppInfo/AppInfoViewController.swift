@@ -11,6 +11,8 @@ import UIKit
 class AppInfoViewController: UIViewController {
 
     static let segueName = "appInfoSegue"
+    
+    let list = ["오픈소스 라이선스", "애플리케이션 버전 정보"]
 
     @IBOutlet weak var tableView: UITableView!
     
@@ -23,15 +25,26 @@ class AppInfoViewController: UIViewController {
 
 extension AppInfoViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 2
+        return list.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "") else { return UITableViewCell() }
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: AppInfoCell.cellName, for: indexPath) as? AppInfoCell else { return UITableViewCell() }
+        
+        cell.textLabel?.text = list[indexPath.row]
         
         return cell
     }
-    
-    
+}
+
+extension AppInfoViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let segueName = indexPath.row == 0 ? SegueName.versionInfoSegue.rawValue : SegueName.opensourceSegue.rawValue
+        performSegue(withIdentifier: segueName, sender: tableView.cellForRow(at: indexPath))
+    }
+}
+
+class AppInfoCell: UITableViewCell {
+    static let cellName = "AppInfoCell"
 }

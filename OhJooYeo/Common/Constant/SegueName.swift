@@ -10,4 +10,7 @@ enum SegueName: String {
     case historySegue
     case main
     case signin
+    
+    case opensourceSegue
+    case versionInfoSegue
 }
