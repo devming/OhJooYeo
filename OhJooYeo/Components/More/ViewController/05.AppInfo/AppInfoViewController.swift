@@ -12,7 +12,7 @@ class AppInfoViewController: UIViewController {
 
     static let segueName = "appInfoSegue"
     
-    let list = ["오픈소스 라이선스", "애플리케이션 버전 정보"]
+    let list = ["애플리케이션 버전 정보", "오픈소스 라이선스"]
 
     @IBOutlet weak var tableView: UITableView!
     
@@ -20,6 +20,7 @@ class AppInfoViewController: UIViewController {
         super.viewDidLoad()
         
         self.tableView.layer.cornerRadius = 10.0
+        self.navigationController?.navigationBar.prefersLargeTitles = false
     }
 }
 

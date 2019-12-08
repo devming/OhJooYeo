@@ -11,9 +11,8 @@ import UIKit
 class MoreViewController: BaseViewController {
 
     @IBOutlet weak var moreTableView: UITableView!
-    let moreMenuImageList = ["ic_notice.png", "ic_church.png", "ic_map.png", "ic_group.png", "ic_version.png", "ic_advertisement.png"]
-//    let moreMenuImageList = ["ic_notice.png", "ic_church.png", "ic_map.png", "ic_group.png", "ic_version.png", "ic_opensource.png", "ic_donation.png", "ic_document.png"]
-    let moreMenuList = ["공지사항", "교회소개", "교회약도", "청년부소개", "앱 정보", "구글광고"]
+    let moreMenuImageList = ["ic_notice.png", "ic_church.png", "ic_map.png", "ic_group.png", "ic_version.png"/*, "ic_advertisement.png"*/]
+    let moreMenuList = ["공지사항", "교회소개", "교회약도", "청년부소개", "앱 정보"/*, "구글광고"*/]
     
     @IBOutlet weak var tableViewHeightConstraint: NSLayoutConstraint!
     
@@ -47,12 +46,10 @@ class MoreViewController: BaseViewController {
             break
         case AppInfoViewController.segueName:
             break
-        case "openSource":
-            showConfirmationAlert(alertTitle: "준비중입니다.", alertMessage: "오픈소스라이선스", viewController: self)
-        case "donation":
-            showConfirmationAlert(alertTitle: "준비중입니다.", alertMessage: "도네이션", viewController: self)
-        case "googleAd":
-            showConfirmationAlert(alertTitle: "준비중입니다.", alertMessage: "구글광고", viewController: self)
+//        case "donation":
+//            showConfirmationAlert(alertTitle: "준비중입니다.", alertMessage: "도네이션", viewController: self)
+//        case "googleAd":
+//            showConfirmationAlert(alertTitle: "준비중입니다.", alertMessage: "구글광고", viewController: self)
         default:
             break
         }

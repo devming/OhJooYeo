@@ -20,11 +20,8 @@ class GroupInfoViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        if #available(iOS 11.0, *) {
-            navigationItem.largeTitleDisplayMode = .never
-        }
-        
         setViews(data: viewModel.loadGroupInfoDatas())
+        self.navigationController?.navigationBar.prefersLargeTitles = false
     }
     
     func setViews(data: GroupInfo?) {

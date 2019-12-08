@@ -25,9 +25,9 @@ class VersionInfoViewController: BaseViewController {
     
     var getCurrentVersion: String {
         get {
-            guard let version = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String else { return APP_VERSION }
+//            guard let version = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String else { return APP_VERSION }
             
-            
+            guard let version = UserDefaults.standard.string(forKey: FirebaseRemoteKey.APP_VERSION) else { return APP_VERSION }
             return version
         }
     }

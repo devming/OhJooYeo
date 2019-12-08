@@ -8,7 +8,7 @@
 
 import Foundation
 
-let APP_VERSION = "0.0.1"
+let APP_VERSION = "-.-.-"
 let LIBRARYS = ["SwiftyJSON", "Alamofire-SwiftyJSON", "RealmSwift", "NVActivityIndicatorView", "RxAlamofire", "RxSwift", "RxCocoa", "NMapsMap"]
 
 func isUpdateAvailable() -> Bool {

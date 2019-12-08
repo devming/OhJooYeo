@@ -9,10 +9,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Church Info View Controller-->
+        <!--교회소개-->
         <scene sceneID="uzB-gC-WK5">
             <objects>
-                <viewController storyboardIdentifier="churchinfo" id="Voi-Tw-3Ph" customClass="ChurchInfoViewController" customModule="OhJooYeo" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="churchinfo" title="교회소개" id="Voi-Tw-3Ph" customClass="ChurchInfoViewController" customModule="OhJooYeo" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="MwF-JA-hhI">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

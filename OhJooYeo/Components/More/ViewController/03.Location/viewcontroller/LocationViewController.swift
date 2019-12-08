@@ -23,10 +23,7 @@ class LocationViewController: BaseViewController {
         
         let marker = NMFMarker(position: donamCoordinate)
         marker.mapView = mapView
-        
-        if #available(iOS 11.0, *) {
-            navigationItem.largeTitleDisplayMode = .never
-        }
+        self.navigationController?.navigationBar.prefersLargeTitles = false
     }
 }
 

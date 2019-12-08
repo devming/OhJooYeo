@@ -9,10 +9,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--App Info View Controller-->
+        <!--앱 정보-->
         <scene sceneID="Mb5-y8-aVa">
             <objects>
-                <viewController storyboardIdentifier="appinfo" id="LWG-IG-xZF" customClass="AppInfoViewController" customModule="OhJooYeo" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="appinfo" title="앱 정보" id="LWG-IG-xZF" customClass="AppInfoViewController" customModule="OhJooYeo" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="w55-n0-MD7">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -21,15 +21,15 @@
                                 <rect key="frame" x="10" y="54" width="394" height="798"/>
                                 <color key="backgroundColor" name="defaultTableViewBackground"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="AppInfoCell" textLabel="EtD-is-a9b" rowHeight="72" style="IBUITableViewCellStyleDefault" id="aM3-s5-rmg" customClass="AppInfoCell" customModule="OhJooYeo" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="394" height="72"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="AppInfoCell" textLabel="EtD-is-a9b" rowHeight="100" style="IBUITableViewCellStyleDefault" id="aM3-s5-rmg" customClass="AppInfoCell" customModule="OhJooYeo" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="394" height="100"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="aM3-s5-rmg" id="R40-J7-n1q">
-                                            <rect key="frame" x="0.0" y="0.0" width="363" height="72"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="363" height="100"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" alpha="0.80000000000000004" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="EtD-is-a9b">
-                                                    <rect key="frame" x="20" y="0.0" width="335" height="72"/>
+                                                    <rect key="frame" x="20" y="0.0" width="335" height="100"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <fontDescription key="fontDescription" name="AppleSDGothicNeo-Regular" family="Apple SD Gothic Neo" pointSize="17"/>

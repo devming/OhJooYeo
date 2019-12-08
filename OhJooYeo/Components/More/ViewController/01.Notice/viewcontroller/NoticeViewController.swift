@@ -19,9 +19,10 @@ class NoticeViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        if #available(iOS 11.0, *) {
-            navigationItem.largeTitleDisplayMode = .never
-        }
+//        if #available(iOS 11.0, *) {
+//            navigationItem.largeTitleDisplayMode = .never
+//        }
+        self.navigationController?.navigationBar.prefersLargeTitles = false
         viewModel.setTestData()
         viewModel.reloadSections = { [weak self] (section: Int) in
             guard let `self` = self else { return }

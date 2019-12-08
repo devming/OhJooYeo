@@ -21,6 +21,24 @@ class SplashViewController: BaseViewController {
         let settings = RemoteConfigSettings()
         settings.minimumFetchInterval = 0
         remoteConfig.configSettings = settings
+        remoteConfig.fetch(withExpirationDuration: 3600) { [weak self] (status, error) -> Void in
+            if status == .success {
+                print("Config fetched!")
+                if let appVersion = self?.remoteConfig[FirebaseRemoteKey.APP_VERSION].stringValue {
+                    UserDefaults.standard.set(appVersion, forKey: FirebaseRemoteKey.APP_VERSION)
+                }
+//                self?.remoteConfig.activate(completionHandler: { (error) in
+//                    if let error = error {
+//                        print("error: \(error)")
+//                        return
+//                    }
+//
+//                })
+                print("\(self?.remoteConfig[FirebaseRemoteKey.APP_VERSION].stringValue)")
+            } else {
+                print("Config not fetched")
+            }
+        }
         
         Timer.scheduledTimer(timeInterval: 1.5, target: self, selector: #selector(nextScreen), userInfo: nil, repeats: false)
     }
