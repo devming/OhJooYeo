@@ -34,6 +34,7 @@ extension OpenSourceViewController: UITableViewDataSource {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "opensourceCell") else { return UITableViewCell() }
         
         cell.textLabel?.text = LIBRARYS[indexPath.row]
+        cell.textLabel?.textColor = UIColor.init(named: "labelPrimary")
         
         return cell
     }

@@ -18,7 +18,6 @@ class MoreTableViewCell: UITableViewCell {
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
         
-        self.backgroundColor = UIColor.white
         self.alpha = 0.5
         UIView.animate(withDuration: 0.4) {
             self.alpha = 1.0
