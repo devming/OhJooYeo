@@ -54,12 +54,10 @@ class WorshipManager {
 //            self.currentDate = item.date
 //        }
 //    }
-    func setRecentWorshipId(worshipIdList: [WorshipIdDate]) {
+    func setRecentWorshipId(worshipIdList: [WorshipIdDate], index: Int) {
         if worshipIdList.count == 0 { return }
         self.worshipIdDateList = worshipIdList
-        self.worshipIdDateList?.sort { $0.worshipId > $1.worshipId } /// 날짜 내림차순 정렬
-        
-        self.currentIndex = 0
+        self.currentIndex = index
     }
     
     func setWorshipListData(index: Int, worshipIdDate: WorshipIdDate) {

@@ -142,17 +142,17 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="j5A-Nd-rgn">
-                                <rect key="frame" x="0.0" y="148.5" width="414" height="1"/>
+                                <rect key="frame" x="0.0" y="88" width="414" height="1"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="1" id="O7k-IG-gB6"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OwV-FJ-8Lv" customClass="BackgroundView" customModule="OhJooYeo" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="148.5" width="414" height="664.5"/>
+                                <rect key="frame" x="0.0" y="88" width="414" height="725"/>
                                 <subviews>
                                     <tableView clipsSubviews="YES" contentMode="scaleAspectFit" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="tKJ-Pa-Kgb" customClass="BaseTableView" customModule="OhJooYeo" customModuleProvider="target">
-                                        <rect key="frame" x="10" y="10" width="394" height="644.5"/>
+                                        <rect key="frame" x="10" y="10" width="394" height="705"/>
                                         <color key="backgroundColor" name="colorTableViewBackground"/>
                                         <color key="separatorColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <prototypes>
@@ -243,7 +243,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="nqp-0g-fd1"/>
                     </view>
-                    <navigationItem key="navigationItem" title="청년소식" largeTitleDisplayMode="always" id="WWy-W1-yWq"/>
+                    <navigationItem key="navigationItem" title="청년소식" largeTitleDisplayMode="never" id="WWy-W1-yWq"/>
                     <connections>
                         <outlet property="backgroundView" destination="OwV-FJ-8Lv" id="amU-RY-4d4"/>
                         <outlet property="listTableView" destination="tKJ-Pa-Kgb" id="3tJ-DU-9Z7"/>
@@ -383,7 +383,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="l5Z-kJ-25h" customClass="BackgroundView" customModule="OhJooYeo" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="148.5" width="414" height="664.5"/>
+                                <rect key="frame" x="0.0" y="88" width="414" height="725"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sPa-UH-35M">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="60"/>
@@ -417,7 +417,7 @@
                                         </constraints>
                                     </view>
                                     <tableView clipsSubviews="YES" contentMode="scaleAspectFit" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="7OI-tv-Dqf" customClass="BaseTableView" customModule="OhJooYeo" customModuleProvider="target">
-                                        <rect key="frame" x="10" y="65" width="394" height="589.5"/>
+                                        <rect key="frame" x="10" y="65" width="394" height="650"/>
                                         <color key="backgroundColor" name="colorTableViewBackground"/>
                                         <inset key="separatorInset" minX="10" minY="0.0" maxX="10" maxY="0.0"/>
                                         <view key="tableHeaderView" contentMode="scaleToFill" id="MKP-lw-k2r">
@@ -684,8 +684,9 @@
                                                                 <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="jEZ-AD-fBR" secondAttribute="bottom" constant="5" id="ztv-ZN-LDU"/>
                                                             </constraints>
                                                         </view>
-                                                        <imageView hidden="YES" userInteractionEnabled="NO" alpha="0.59999999999999998" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_asterisk" translatesAutoresizingMaskIntoConstraints="NO" id="Ne8-hM-fse">
+                                                        <imageView hidden="YES" userInteractionEnabled="NO" alpha="0.59999999999999998" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_standup" translatesAutoresizingMaskIntoConstraints="NO" id="Ne8-hM-fse">
                                                             <rect key="frame" x="5" y="5" width="8" height="8"/>
+                                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="8" id="9xt-f5-UtZ"/>
                                                                 <constraint firstAttribute="width" constant="8" id="Wh5-I8-SDK"/>
@@ -751,7 +752,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="xsm-jc-uSD"/>
                     </view>
-                    <navigationItem key="navigationItem" title="돈암동감리교회 청년예배" largeTitleDisplayMode="always" id="Bp0-Ln-n4Y">
+                    <navigationItem key="navigationItem" title="돈암동감리교회 청년예배" largeTitleDisplayMode="never" id="Bp0-Ln-n4Y">
                         <barButtonItem key="backBarButtonItem" title=" " id="G44-cy-QWI"/>
                     </navigationItem>
                     <connections>
@@ -1095,7 +1096,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="9uA-wX-6J5"/>
                     </view>
-                    <navigationItem key="navigationItem" title="더보기" largeTitleDisplayMode="always" id="at6-Dq-18i"/>
+                    <navigationItem key="navigationItem" title="더보기" largeTitleDisplayMode="never" id="at6-Dq-18i"/>
                     <connections>
                         <outlet property="moreTableView" destination="6w5-n3-27V" id="1U5-yN-Q7u"/>
                         <outlet property="tableViewHeightConstraint" destination="Lhx-f6-ESJ" id="OxH-0V-q3B"/>
@@ -1284,12 +1285,12 @@
     </scenes>
     <resources>
         <image name="bg_all" width="1512" height="1512"/>
-        <image name="ic_asterisk" width="64" height="64"/>
         <image name="ic_cancel_tapped" width="32" height="32"/>
         <image name="ic_close" width="32" height="32"/>
         <image name="ic_detail_gray" width="7.5" height="7.5"/>
         <image name="ic_expand_down_blank" width="32" height="32"/>
         <image name="ic_reload" width="32" height="32"/>
+        <image name="ic_standup" width="16" height="16"/>
         <image name="tab_advertisement" width="32" height="32"/>
         <image name="tab_bible" width="32" height="32"/>
         <image name="tab_list" width="32" height="32"/>

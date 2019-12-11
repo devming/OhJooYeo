@@ -43,6 +43,7 @@ extension AppInfoViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let segueName = indexPath.row == 0 ? SegueName.versionInfoSegue.rawValue : SegueName.opensourceSegue.rawValue
         performSegue(withIdentifier: segueName, sender: tableView.cellForRow(at: indexPath))
+        tableView.deselectRow(at: indexPath, animated: true)
     }
 }
 

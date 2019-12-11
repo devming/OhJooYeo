@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import NVActivityIndicatorView
 import RxSwift
 import RxCocoa
 
@@ -29,25 +30,55 @@ class AdvertisementViewController: BaseViewController {
         super.viewWillAppear(animated)
         
         loadDatas()
-        self.listTableView.reloadData()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        self.backgroundView.errorSolved()
     }
     
     func initRefreshControl() {
-        self.refreshControl.addTarget(self, action: #selector(loadDatas), for: .valueChanged)
+        
+        self.refreshControl.rx.controlEvent(.valueChanged)
+            .asDriver()
+            .drive(onNext: { [weak self] _ in
+                self?.loadDatas()
+            }).disposed(by: disposeBag)
         self.listTableView.addSubview(self.refreshControl)
     }
     
     @objc func loadDatas() {
+        setBackgroundSubViewsHide(isHidden: true)
+        self.activityIndicator?.startAnimating()
+        
         self.viewModel.requestAdvertisements()
             .observeOn(MainScheduler.instance)
-            .subscribe(onNext: { [weak self] advertisements in
+            .subscribe(onNext: { [weak self] _ in
                 self?.refreshControl.endRefreshing()
-                guard let _ = advertisements else { return }
                 self?.listTableView.reloadData()
             }, onError: { [weak self] error in
-                self?.refreshControl.endRefreshing()
-                self?.backgroundView.showErrorView(.network)
+                self?.reloadAction(isSuccess: false)
             }).disposed(by: disposeBag)
+    }
+    
+    func reloadAction(isSuccess: Bool = true) {
+        self.listTableView.reloadData()
+        self.activityIndicator?.stopAnimating()
+        self.refreshControl.endRefreshing()
+        if !isSuccess {
+            self.backgroundView.showErrorView(.network) { [weak self] in
+                self?.loadDatas()
+            }
+            return
+        }
+        setBackgroundSubViewsHide(isHidden: false)
+    }
+    
+    func setBackgroundSubViewsHide(isHidden: Bool) {
+        self.listTableView.subviews.forEach {
+            $0.isHidden = isHidden
+        }
     }
 }
 

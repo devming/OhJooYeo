@@ -30,7 +30,6 @@ class MainViewController: BaseViewController {
     @IBOutlet weak var nextOfferLabel: UILabel!
     
     let refreshControl = UIRefreshControl()
-    var activityIndicator: NVActivityIndicatorView?
     
     let viewModel = WorshipMainInfoViewModel()
     
@@ -45,8 +44,6 @@ class MainViewController: BaseViewController {
     
     func setupUI() {
         initRefreshControl()
-        self.activityIndicator = NVActivityIndicatorView(frame: self.view.frame, type: NVActivityIndicatorType.ballTrianglePath, color: UIColor.white, padding: self.view.frame.width / 2.5)
-        self.view.addSubview(self.activityIndicator!)
         
         self.listTableView.rowHeight = UITableViewAutomaticDimension
         self.listTableView.layer.cornerRadius = 10.0
@@ -109,7 +106,6 @@ extension MainViewController {
             .drive(onNext: { [weak self] _ in
                 self?.loadDatas()
             }).disposed(by: disposeBag)
-//        self.refreshControl.addTarget(self, action: #selector(), for: .valueChanged)
         self.listTableView.addSubview(self.refreshControl)
     }
     
@@ -120,30 +116,22 @@ extension MainViewController {
     }
     
     @objc func loadDatas() {
-
         setBackgroundSubViewsHide(isHidden: true)
-        
-        /// [TestCode]
-//        let worshipId = "19-003"
-//        let worshipDate = WorshipManager.shared.currentDate
-//        guard let worshipId = worshipId else {
-//            self.reloadAction(isSuccess: false)
-//            return
-//        }
         self.activityIndicator?.startAnimating()
-        
 
         /// 1. 로그인해서 가져온 churchId로 worshipList 가져옴.
-        let recentWorshipInfoOb = viewModel.requestWorshipList(churchId: WorshipManager.shared.churchId)
+        viewModel.requestWorshipList(churchId: WorshipManager.shared.churchId)
             .filter { $0.count > 0 }
             .do(onNext: { recentWorshipInfoList in
                 /// 2. worshipList로 가져온 응답 데이터를 WorshipManager 싱글턴에 저장
-                WorshipManager.shared.setRecentWorshipId(worshipIdList: recentWorshipInfoList)
+
+                /// 날짜 내림차순 정렬
+                let sortedList = recentWorshipInfoList.sorted { $0.worshipId > $1.worshipId }
+                
+                WorshipManager.shared.setRecentWorshipId(worshipIdList: sortedList, index: 0)
             })
             .map { $0.first! }
-            
-        /// 3. 첫번째 데이터로 worship 정보 요청
-        recentWorshipInfoOb
+            /// 3. 첫번째 데이터로 worship 정보 요청
             .concatMap(viewModel.requestWorshipMain)
             .observeOn(MainScheduler.instance)
             .subscribe(onNext: { [weak self] data in
@@ -161,7 +149,6 @@ extension MainViewController {
                 self?.bindNextPresenter(nextPresenter: worshipMainInfo.nextPresenter)
                 self?.reloadAction()
                 }, onError: { [weak self] err in
-                    print("#### ERROR: \(err)")
                     self?.reloadAction(isSuccess: false)
             }).disposed(by: disposeBag)
         
@@ -186,7 +173,6 @@ extension MainViewController {
             self.backgroundView.showErrorView(.network) { [weak self] in
                 self?.loadDatas()
             }
-            
             return
         }
         setBackgroundSubViewsHide(isHidden: false)
@@ -195,10 +181,11 @@ extension MainViewController {
     }
     
     func setBackgroundSubViewsHide(isHidden: Bool) {
-        self.backgroundView.subviews.forEach {
+        self.listTableView.subviews.forEach {
             $0.isHidden = isHidden
-//            $0.alpha = isHidden ? 0.0 : 1.0
         }
+        self.dateHistoryButton.isHidden = isHidden
+        self.dateLabel.isHidden = isHidden
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

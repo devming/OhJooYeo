@@ -9,14 +9,18 @@
 import UIKit
 import RxSwift
 import RxCocoa
+import NVActivityIndicatorView
 
 class BaseViewController: UIViewController {
     
     var disposeBag = DisposeBag()
+    var activityIndicator: NVActivityIndicatorView?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.activityIndicator = NVActivityIndicatorView(frame: self.view.frame, type: NVActivityIndicatorType.ballTrianglePath, color: UIColor.white, padding: self.view.frame.width / 2.5)
+        self.view.addSubview(self.activityIndicator!)
     }
     
     override func viewWillAppear(_ animated: Bool) {
