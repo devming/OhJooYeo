@@ -64,16 +64,16 @@ class AdvertisementViewController: BaseViewController {
                 }
                 self?.listTableView.reloadData()
             }, onError: { [weak self] error in
-                self?.reloadAction(isSuccess: false)
+                self?.reloadAction(errorType: .network)
             }).disposed(by: disposeBag)
     }
     
-    func reloadAction(isSuccess: Bool = true) {
+    func reloadAction(errorType: OJYError) {
         self.listTableView.reloadData()
         self.activityIndicator?.stopAnimating()
         self.refreshControl.endRefreshing()
-        if !isSuccess {
-            self.backgroundView.showErrorView(.network) { [weak self] in
+        if errorType != .success {
+            self.backgroundView.showErrorView(errorType) { [weak self] in
                 self?.loadDatas()
             }
             return

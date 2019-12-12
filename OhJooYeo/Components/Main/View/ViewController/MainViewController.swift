@@ -132,7 +132,7 @@ extension MainViewController {
             .concatMap(viewModel.requestWorshipMain)
             .observeOn(MainScheduler.instance)
             .subscribe(onNext: { [weak self] data in
-                guard let worshipMainInfo = data, worshipMainInfo.worshipOrderList.count == 0 else {
+                guard let worshipMainInfo = data, worshipMainInfo.worshipOrderList.count != 0 else {
                     self?.backgroundView.showErrorView(.data) { [weak self] in
                         self?.reloadAction(errorType: .data)
                     }
