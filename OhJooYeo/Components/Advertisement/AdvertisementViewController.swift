@@ -23,7 +23,6 @@ class AdvertisementViewController: BaseViewController {
 
         initRefreshControl()
         setTransparentBackground()
-        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -54,8 +53,15 @@ class AdvertisementViewController: BaseViewController {
         
         self.viewModel.requestAdvertisements()
             .observeOn(MainScheduler.instance)
-            .subscribe(onNext: { [weak self] _ in
+            .subscribe(onNext: { [weak self] data in
+                self?.activityIndicator?.stopAnimating()
                 self?.refreshControl.endRefreshing()
+                guard let advertisements = data, advertisements.count == 0 else {
+                    self?.backgroundView.showErrorView(.data) { [weak self] in
+                        self?.loadDatas()
+                    }
+                    return
+                }
                 self?.listTableView.reloadData()
             }, onError: { [weak self] error in
                 self?.reloadAction(isSuccess: false)

@@ -139,11 +139,14 @@ extension HistoryViewController: UITableViewDelegate {
                                 self.dismiss(animated: true) {
                                     
                                     print("## close5")
-                                    mainViewController.reloadAction()
+                                    mainViewController.reloadAction(errorType: .success)
                                 }
                             }
                         }
                     }
+                    }, onError: { error in
+                        print("error: \(error)")
+                        
                 }).disposed(by: disposeBag)
         }
     }

@@ -72,10 +72,7 @@ extension MainViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        guard let orderList = viewModel.worshipInfo?.worshipOrderList else {
-            return 0
-        }
-        return orderList.count
+        return viewModel.worshipInfo?.worshipOrderList.count ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -135,9 +132,10 @@ extension MainViewController {
             .concatMap(viewModel.requestWorshipMain)
             .observeOn(MainScheduler.instance)
             .subscribe(onNext: { [weak self] data in
-                guard let worshipMainInfo = data else {
-                    self?.activityIndicator?.stopAnimating()
-                    self?.refreshControl.endRefreshing()
+                guard let worshipMainInfo = data, worshipMainInfo.worshipOrderList.count == 0 else {
+                    self?.backgroundView.showErrorView(.data) { [weak self] in
+                        self?.reloadAction(errorType: .data)
+                    }
                     return 
                 }
                 if let mainPresenter = worshipMainInfo.mainPresenter {
@@ -147,30 +145,18 @@ extension MainViewController {
                 }
                 self?.dateLabel.text = WorshipManager.shared.currentDate
                 self?.bindNextPresenter(nextPresenter: worshipMainInfo.nextPresenter)
-                self?.reloadAction()
+                self?.reloadAction(errorType: .success)
                 }, onError: { [weak self] err in
-                    self?.reloadAction(isSuccess: false)
+                    self?.reloadAction(errorType: .network)
             }).disposed(by: disposeBag)
-        
-//        self.viewModel.requestWorshipMain(worshipId: worshipId ?? "", worshipDate: worshipDate)
-//            .observeOn(MainScheduler.instance)
-//            .subscribe(onNext: { [weak self] worshipMainInfo in
-//                self?.dateLabel.text = worshipDate
-//                self?.bindNextPresenter(nextPresenter: worshipMainInfo.nextPresenter)
-//                self?.reloadAction()
-//                }, onError: { [weak self] err in
-//                    print("#### ERROR: \(err)")
-//                    self?.reloadAction(isSuccess: false)
-//            }).disposed(by: disposeBag)
-        //        }
     }
     
-    func reloadAction(isSuccess: Bool = true) {
+    func reloadAction(errorType: OJYError) {
         self.listTableView.reloadData()
         self.activityIndicator?.stopAnimating()
         self.refreshControl.endRefreshing()
-        if !isSuccess {
-            self.backgroundView.showErrorView(.network) { [weak self] in
+        if errorType != .success {
+            self.backgroundView.showErrorView(errorType) { [weak self] in
                 self?.loadDatas()
             }
             return

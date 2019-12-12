@@ -13,6 +13,7 @@ import RxSwift
 enum OJYError: Int {
     case network = 10
     case data = 20
+    case success = 30
 }
 
 class BackgroundView: UIImageView {
@@ -86,6 +87,9 @@ class BackgroundView: UIImageView {
 //                $0.viewWithTag(OJYError.network.rawValue)?.removeFromSuperview()
 //                $0.viewWithTag(OJYError.data.rawValue)?.removeFromSuperview()
 //            }
+        default:
+            break
+            
         }
     }
     
