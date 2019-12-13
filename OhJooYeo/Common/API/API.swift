@@ -12,46 +12,13 @@ import Alamofire
 import SwiftyJSON
 import Alamofire_SwiftyJSON
 
-protocol API {
-//
-//    /// 등록된 모든 예배 id와 date 정보를 가져온다.
-//    /// 앱 실행 시 가장 먼저 호출되며, 가장 마지막으로 등록된 예배 id와 date를 가지고 getRecentDatas 메소드를 통해 주보 데이터를 얻기 위한 api를 호출 한다.
-//    ///
-//    /// - parameter handler: Callback Method
-//    ///
-//    /// - returns: Void
-//    /// - response:
-//    ///     [{
-//    ///         "date": "String",
-//    ///         "worshipId": "String",
-//    ///         "version": "String"
-//    ///     }]
-//    func getWorshipIDList(handler: @escaping (Bool, WorshipIdDate?)-> Void) -> Void
-//
-//    /// 해당 예배 ID값을 가지고 등록된 주보 정보를 가져오는 API 호출 메소드
-//    ///
-//    /// - parameter worshipId:  예배에 해당하는 ID 값
-//    /// - parameter version:    현재 로컬에서 가지고 있는 version 정보
-//    /// - parameter handler:    Callback Method
-//    ///
-//    /// - returns: Void
-//    func getRecentDatas(worshipIDVersion: WorshipIdDate, versionUpdateHandler: @escaping (()-> Void)) -> Void
-//
-//    /// 해당 예배 ID값을 가지고 등록된 주보 정보를 가져오는 API 호출 메소드
-//    ///
-//    /// - parameter shortcut:   성경 줄임말 문자열 - Format : 성경 a:b(~성경 c:d)(/성경 a:b(~성경 c:d))
-//    /// - parameter handler:    Callback Method
-//    ///
-//    /// - returns: Void
-//    func getPhraseMessages(shortCuts: [String], phraseMessageOrderIds: [Int], worshipID: String, handler: @escaping (()-> Void)) -> Void
-//
-//    /// 로그인
-//    ///
-//    /// - parameter handler:    Callback Method
-//    ///
-//    /// - returns: Void
-//    func signIn(id: String, pw: String, handler: @escaping ((Bool)-> Void)) -> Void
-    
+typealias ResponseData = (responseStatus: ResponseStatus, data: Data?)
+enum ResponseStatus: Int {
+    case success = 200
+    case networkError = 400
+    case serverError = 500
+    case noData = 0
+    case unknownError = 1000
 }
 
 struct APIService {
@@ -63,79 +30,78 @@ struct APIService {
             .map { $0.1 }
     }
     
-    static func postWorshipList(parameters: Parameters?) -> Observable<Data> {
+    static func postWorshipList(parameters: Parameters?) -> Observable<ResponseData> {
         
         return APIRouter.manager.rx
             .request(urlRequest: APIRouter.postWorshipList(parameters: parameters))
-            .responseJSON()
-            .map { $0.data }
-            .debug()
-            .filter { $0 != nil }
-            .map { $0! }
+            .responseData()
+            .map { resultData($0) }
     }
     
-    static func postWorshipInfo(parameters: Parameters?) -> Observable<Data?> {
+    static func postWorshipInfo(parameters: Parameters?) -> Observable<ResponseData> {
         
         return APIRouter.manager.rx
             .request(urlRequest: APIRouter.postWorshipInfo(parameters: parameters))
             .responseData()
-            .map { res in
-                print("###### postWorshipInfo res: \(res)")
-                if (res.0.allHeaderFields["Content-Length"] as? String) == "0" {
-                    return nil
-                }
-                return res.1
-            }
+            .map { resultData($0) }
     }
     
-    static func postPhrase(parameters: Parameters?) -> Observable<Data> {
+    static func postPhrase(parameters: Parameters?) -> Observable<ResponseData> {
         
         return APIRouter.manager.rx
             .request(urlRequest: APIRouter.postPhrase(parameters: parameters))
-            .responseJSON()
-            .debug()
-            .do(onNext: { (res) in
-                print("###### postPhrase res: \(res)")
-            })
-            .map { $0.data }
-            .filter { $0 != nil }
-            .map { $0! }
+            .responseData()
+            .map { resultData($0) }
     }
     
-    static func postAd(parameters: Parameters?) -> Observable<Data?> {
+    static func postAd(parameters: Parameters?) -> Observable<ResponseData> {
         
         return APIRouter.manager.rx
             .request(urlRequest: APIRouter.postAd(parameters: parameters))
             .responseData()
-            .debug()
-            .map { res in
-//                $0.data
-//                print("$0.data: \($0.1)")
-                if (res.0.allHeaderFields["Content-Length"] as? String) == "0" {
-                    return nil
-                }
-                return res.1
-        }
+            .map { resultData($0) }
     }
     
-    static func postLaunch(parameters: Parameters?) -> Observable<Data> {
+    static func postLaunch(parameters: Parameters?) -> Observable<ResponseData> {
         
         return APIRouter.manager.rx
             .request(urlRequest: APIRouter.postLaunch(parameters: parameters))
-            .responseJSON()
-            .map { $0.data }
-            .filter { $0 != nil }
-            .map { $0! }
+            .responseData()
+            .map { resultData($0) }
     }
     
-    static func postNoticeList(parameters: Parameters?) -> Observable<Data> {
+    static func postNoticeList(parameters: Parameters?) -> Observable<ResponseData> {
         
         return APIRouter.manager.rx
             .request(urlRequest: APIRouter.postNoticeList(parameters: parameters))
-            .responseJSON()
-            .map { $0.data }
-            .filter { $0 != nil }
-            .map { $0! }
+            .responseData()
+            .map { resultData($0) }
+    }
+    
+    private static func convertStatusCode(code: Int) -> ResponseStatus {
+        switch code {
+        case 200..<300:
+            return .success
+        case 400 ..< 500:
+            return .networkError
+        case 500 ..< 600:
+            return .serverError
+        case 0:
+            return .noData
+        default:
+            return .unknownError
+        }
+    }
+    
+    private static func resultData(_ response: (HTTPURLResponse, Data)) -> ResponseData {
+        var responseStatus = convertStatusCode(code: response.0.statusCode)
+        var data: Data? = response.1
+        if (response.0.allHeaderFields["Content-Length"] as? String) == "0" {    /// 데이터가 없을 때 처리
+            responseStatus = convertStatusCode(code: 0)
+            data = nil
+        }
+        
+        return ResponseData(responseStatus: responseStatus, data: data)
     }
 }
 
@@ -227,5 +193,3 @@ extension APIRouter: URLRequestConvertible {
         return urlRequest
     }
 }
-
-
